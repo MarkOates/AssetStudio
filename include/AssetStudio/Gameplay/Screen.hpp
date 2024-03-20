@@ -31,6 +31,7 @@ namespace AssetStudio
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         AllegroFlare::BitmapBin assets_bitmap_bin;
          AssetStudio::Database database;
          ALLEGRO_BITMAP* sprite_sheet_atlas;
          AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet;
@@ -43,7 +44,7 @@ namespace AssetStudio
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AssetStudio::GameConfigurations::Main* game_configuration=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AllegroFlare::BitmapBin assets_bitmap_bin={}, AssetStudio::GameConfigurations::Main* game_configuration=nullptr);
          virtual ~Screen();
 
          void set_game_configuration(AssetStudio::GameConfigurations::Main* game_configuration);
@@ -54,6 +55,7 @@ namespace AssetStudio
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          virtual void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]") override;
          void initialize();
+         AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=3);
          void load_database_and_build_assets();
          virtual void on_activate() override;
          virtual void on_deactivate() override;

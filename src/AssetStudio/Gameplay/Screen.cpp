@@ -20,12 +20,13 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AssetStudio::GameConfigurations::Main* game_configuration)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::BitmapBin assets_bitmap_bin, AssetStudio::GameConfigurations::Main* game_configuration)
    : AllegroFlare::Screens::Gameplay()
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , assets_bitmap_bin(assets_bitmap_bin)
    , database()
    , sprite_sheet_atlas(nullptr)
    , sprite_sheet(nullptr)
@@ -205,12 +206,29 @@ void Screen::initialize()
    return;
 }
 
+AllegroFlare::FrameAnimation::SpriteSheet* Screen::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)
+{
+   // TODO: Guard after assets_bitmap_bin is initialized
+   //static std::map<std::string, AllegroFlare::FrameAnimation::SpriteSheet*> sprite_sheets = {
+   //};
+
+   ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
+         assets_bitmap_bin.auto_get(filename)
+         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      );
+   //AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
+   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
+
+   al_destroy_bitmap(sprite_sheet_atlas);
+
+   return result_sprite_sheet;
+}
+
 void Screen::load_database_and_build_assets()
 {
    int asset_id = 0;
    std::string assets_folder = "/Users/markoates/Assets/";
-
-   AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(assets_folder);
 
    sprite_sheet_atlas = al_clone_bitmap(
@@ -218,7 +236,7 @@ void Screen::load_database_and_build_assets()
       );
    //AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
    sprite_sheet =
-      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 3);
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 2);
    //al_destroy_bitmap(atlas);
 
    database.set_assets({
@@ -236,7 +254,25 @@ void Screen::load_database_and_build_assets()
             },
             AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
          )
+      ),
+      new AssetStudio::Asset(
+         asset_id++,
+         "grotto",
+         "grotto_jump",
+         new AllegroFlare::FrameAnimation::Animation(
+            sprite_sheet,
+            "grotto_jump",
+            {
+               { 4, 1.0 },
+            },
+            AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+         )
       )
+
+      //obtain_sprite_sheet
+      //Explosions Pack 7 files/Spritesheet/explosion-h.png
+
+
    });
 
    // Initialize the animations
@@ -293,20 +329,25 @@ void Screen::render()
    float x = 300;
    float y = 200;
    float spacing_x = 300;
+   int sprite_sheet_scale = 2;
    AllegroFlare::Placement2D placement;
+   int asset_i = 0;
    for (auto &asset : database.get_assets())
    {
-      placement.position.x = x;
+      placement.position.x = x + spacing_x * asset_i;
       placement.position.y = y;
-      placement.size.x = 80;
-      placement.size.y = 80;
+      placement.size.x = 16 * sprite_sheet_scale;
+      placement.size.y = 16 * sprite_sheet_scale;
+      placement.scale.x = 4.0f;
+      placement.scale.y = 4.0f;
 
       placement.start_transform();
       asset->animation->draw();
       placement.restore_transform();
-      placement.draw_box(al_color_name("dodgerblue"), false);
-   }
+      //placement.draw_box(al_color_name("dodgerblue"), false);
 
+      asset_i++;
+   }
 
    return;
 }
