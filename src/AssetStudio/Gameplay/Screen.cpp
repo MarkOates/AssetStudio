@@ -309,6 +309,17 @@ void Screen::load_database_and_build_assets()
             build_n_frames(9),
             AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
          )
+      ),
+      new AssetStudio::Asset(
+         asset_id++,
+         "explosion_h",
+         "a blow up",
+         new AllegroFlare::FrameAnimation::Animation(
+            obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-e.png", 48, 48),
+            "explosion_h",
+            build_n_frames(9),
+            AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
+         )
       )
 
       //obtain_sprite_sheet

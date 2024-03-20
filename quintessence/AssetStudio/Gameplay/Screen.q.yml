@@ -187,7 +187,7 @@ methods:
         default_argument: 0
       - name: each_frame_duration
         type: float
-        default_argument: 0.1f
+        default_argument: 0.08f
     guards: [ (num_frames > 1), (start_frame_num >= 0), (each_frame_duration >= 0.0001) ]
     body: |
       std::vector<AllegroFlare::FrameAnimation::Frame> result;
@@ -280,6 +280,17 @@ methods:
             "a blow up",
             new AllegroFlare::FrameAnimation::Animation(
                obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32),
+               "explosion_h",
+               build_n_frames(9),
+               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
+            )
+         ),
+         new AssetStudio::Asset(
+            asset_id++,
+            "explosion_h",
+            "a blow up",
+            new AllegroFlare::FrameAnimation::Animation(
+               obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-e.png", 48, 48),
                "explosion_h",
                build_n_frames(9),
                AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
