@@ -1,0 +1,110 @@
+{
+  "AllegroFlare/GameConfigurations/Complete": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/Levels/Base": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/Gameplay/Level"
+  ],
+  "AllegroFlare/DialogTree/NodeBank": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/NodeBankFactory": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/Nodes/Wait": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/Nodes/ExitProgram": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/Nodes/MultipageWithOptions": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/NodeOptions/GoToNode": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/DialogTree/NodeOptions/ExitDialog": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AssetStudio/Gameplay/Level": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Achievement": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/Elements/StoryboardPages/Base": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/GameSession": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/GameProgressAndStateInfos/Base": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/GameProgressAndStateInfo"
+  ],
+  "AllegroFlare/LoadASavedGame/SaveSlots/Base": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AssetStudio/Gameplay/Screen": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Screens/Gameplay": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Runners/Complete": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/AudioController": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/EventNames": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/GameEventDatas/AchievementUnlocked": [
+    "AssetStudio/GameConfigurations/Main"
+  ],
+  "AllegroFlare/GameEvent": [
+    "AssetStudio/GameConfigurations/Main",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/JSONLoaders/AssetStudio/GameProgressAndStateInfo": [
+    "AssetStudio/GameProgressAndStateInfo"
+  ],
+  "ALLEGRO_FONT": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "ALLEGRO_EVENT": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/EventEmitter": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/FontBin": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/ModelBin": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "al_is_primitives_addon_initialized": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Player": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/VirtualControllers/Base": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/VirtualControllers/GenericController": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/GameConfigurations/Main": [
+    "AssetStudio/Gameplay/Screen"
+  ]
+}

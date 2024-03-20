@@ -247,14 +247,6 @@ methods:
       - AllegroFlare::GameEventDatas::AchievementUnlocked
 
 
-  - name: continue_from_last_save
-    virtual: true
-    override: true
-    body: |
-      // TODO: This method
-      return;
-
-
   - name: build_level_list_for_level_select_screen_by_identifier
     virtual: true
     override: true
