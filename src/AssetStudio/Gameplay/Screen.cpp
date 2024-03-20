@@ -217,9 +217,22 @@ void Screen::load_database_and_build_assets()
       new AllegroFlare::FrameAnimation::SpriteSheet(atlas, 16, 16, 3);
    al_destroy_bitmap(atlas);
 
-   //database.set_assets(
-      //AssetStudio::Asset(asset_id++, "grotto", "grotto_character")
-   //);
+   //database.set_assets({
+      //AssetStudio::Asset(
+         //asset_id++,
+         //"grotto",
+         //"grotto_character",
+         //AllegroFlare::FrameAnimation::Animation(
+            //sprite_sheet,
+            //"grotto_character",
+            //{
+               //{ 0, 0.2 },
+               //{ 1, 0.2 },
+               //{ 2, 0.2 },
+            //}
+         //)
+      //)
+   //});
    return;
 }
 

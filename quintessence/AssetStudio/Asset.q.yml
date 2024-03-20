@@ -19,12 +19,6 @@ properties:
     constructor_arg: true
     exposed: true
 
-  - name: animation_book
-    type: AllegroFlare::FrameAnimation::Book*
-    init_with: nullptr
-    constructor_arg: true
-    exposed: true
-
   - name: animation
     type: AllegroFlare::FrameAnimation::Animation
     init_with: '{}'
