@@ -57,6 +57,7 @@ table td
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/Category.q.yml">quintessence/AssetStudio/Category.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameConfigurations/Main.q.yml">quintessence/AssetStudio/GameConfigurations/Main.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameProgressAndStateInfo.q.yml">quintessence/AssetStudio/GameProgressAndStateInfo.q.yml</a></li>
@@ -182,6 +183,23 @@ table td
 <ul>
   <div class="component">
     <h3 id="quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<p>This class contains no properties</p>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<p>This class contains no dependencies</p>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Category.q.yml">quintessence/AssetStudio/Category.q.yml</h3>
     <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
@@ -616,6 +634,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Database&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Database.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteSheet&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteSheet.hpp&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -749,6 +770,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/Database": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/FrameAnimation/SpriteSheet": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

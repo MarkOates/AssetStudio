@@ -127,5 +127,8 @@
   ],
   "AssetStudio/Database": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/FrameAnimation/SpriteSheet": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }

@@ -3,6 +3,7 @@
 #include <AssetStudio/Gameplay/Screen.hpp>
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <AssetStudio/GameConfigurations/Main.hpp>
 #include <AssetStudio/Gameplay/Level.hpp>
@@ -204,16 +205,17 @@ void Screen::initialize()
 void Screen::load_database_and_build_assets()
 {
    int asset_id = 0;
-   //std::string assets_folder
+   std::string assets_folder = "/Users/markoates/Assets/";
 
-   //AllegroFlare::BitmapBin assets_bitmap_bin;
-   //assets_bitmap_bin.set_full_path("/Users/markoates/Assets/");
+   AllegroFlare::BitmapBin assets_bitmap_bin;
+   assets_bitmap_bin.set_full_path(assets_folder);
 
-   //ALLEGRO_BITMAP *atlas = al_clone_bitmap(
-         //"assets_bitmap_bin->auto_get("grotto_escape_pack/Base pack/graphics/player.png"
-      //));
-   //AllegroFlare::SpriteSheet *sprite_sheet = new AllegroFlare::SpriteSheet(atlas, 16, 16, 3);
-   //al_destroy_bitmap(atlas);
+   ALLEGRO_BITMAP *atlas = al_clone_bitmap(
+         assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      );
+   AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(atlas, 16, 16, 3);
+   al_destroy_bitmap(atlas);
 
    //database.set_assets(
       //AssetStudio::Asset(asset_id++, "grotto", "grotto_character")
