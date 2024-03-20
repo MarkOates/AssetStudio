@@ -130,5 +130,11 @@
   ],
   "AllegroFlare/FrameAnimation/SpriteSheet": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "al_color_name": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "ALLEGRO_BITMAP": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }

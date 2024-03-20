@@ -87,7 +87,7 @@ table td
 </tr>
 <tr>
   <td class="property">animation</td>
-  <td class="property">AllegroFlare::FrameAnimation::Animation</td>
+  <td class="property">AllegroFlare::FrameAnimation::Animation*</td>
 </tr>
 <tr>
   <td class="property">categories</td>
@@ -218,15 +218,15 @@ table td
 <div class="property-box properties">     <table>
 <tr>
   <td class="property">assets</td>
-  <td class="property">std::vector&lt;AssetStudio::Asset&gt;</td>
+  <td class="property">std::vector&lt;AssetStudio::Asset*&gt;</td>
 </tr>
 <tr>
   <td class="property">asset_groups</td>
-  <td class="property">std::vector&lt;AssetStudio::AssetGroup&gt;</td>
+  <td class="property">std::vector&lt;AssetStudio::AssetGroup*&gt;</td>
 </tr>
 <tr>
   <td class="property">categories</td>
-  <td class="property">std::vector&lt;AssetStudio::Category&gt;</td>
+  <td class="property">std::vector&lt;AssetStudio::Category*&gt;</td>
 </tr>
     </table>
 </div>    <h3>Methods</h3>
@@ -485,6 +485,14 @@ table td
   <td class="property">AssetStudio::Database</td>
 </tr>
 <tr>
+  <td class="property">sprite_sheet_atlas</td>
+  <td class="property">ALLEGRO_BITMAP*</td>
+</tr>
+<tr>
+  <td class="property">sprite_sheet</td>
+  <td class="property">AllegroFlare::FrameAnimation::SpriteSheet*</td>
+</tr>
+<tr>
   <td class="property">game_configuration</td>
   <td class="property">AssetStudio::GameConfigurations::Main*</td>
 </tr>
@@ -633,6 +641,12 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteSheet&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteSheet.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -769,6 +783,12 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/FrameAnimation/SpriteSheet": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "al_color_name": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "ALLEGRO_BITMAP": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

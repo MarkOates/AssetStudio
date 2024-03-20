@@ -2,19 +2,19 @@ properties:
 
 
   - name: assets
-    type: std::vector<AssetStudio::Asset>
+    type: std::vector<AssetStudio::Asset*>
     init_with: ''
     getter: true
     setter: true
 
   - name: asset_groups
-    type: std::vector<AssetStudio::AssetGroup>
+    type: std::vector<AssetStudio::AssetGroup*>
     init_with: ''
     getter: true
     setter: true
 
   - name: categories
-    type: std::vector<AssetStudio::Category>
+    type: std::vector<AssetStudio::Category*>
     init_with: ''
     getter: true
     setter: true

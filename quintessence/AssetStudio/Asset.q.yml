@@ -20,7 +20,7 @@ properties:
     exposed: true
 
   - name: animation
-    type: AllegroFlare::FrameAnimation::Animation
+    type: AllegroFlare::FrameAnimation::Animation*
     init_with: '{}'
     constructor_arg: true
     exposed: true

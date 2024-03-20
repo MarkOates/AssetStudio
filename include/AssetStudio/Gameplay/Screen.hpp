@@ -4,6 +4,7 @@
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
+#include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/GameEvent.hpp>
 #include <AllegroFlare/ModelBin.hpp>
 #include <AllegroFlare/Player.hpp>
@@ -31,6 +32,8 @@ namespace AssetStudio
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
          AssetStudio::Database database;
+         ALLEGRO_BITMAP* sprite_sheet_atlas;
+         AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet;
          AssetStudio::GameConfigurations::Main* game_configuration;
          std::string current_level_identifier;
          AssetStudio::Gameplay::Level* current_level;

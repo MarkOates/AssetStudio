@@ -22,37 +22,37 @@ Database::~Database()
 }
 
 
-void Database::set_assets(std::vector<AssetStudio::Asset> assets)
+void Database::set_assets(std::vector<AssetStudio::Asset*> assets)
 {
    this->assets = assets;
 }
 
 
-void Database::set_asset_groups(std::vector<AssetStudio::AssetGroup> asset_groups)
+void Database::set_asset_groups(std::vector<AssetStudio::AssetGroup*> asset_groups)
 {
    this->asset_groups = asset_groups;
 }
 
 
-void Database::set_categories(std::vector<AssetStudio::Category> categories)
+void Database::set_categories(std::vector<AssetStudio::Category*> categories)
 {
    this->categories = categories;
 }
 
 
-std::vector<AssetStudio::Asset> Database::get_assets() const
+std::vector<AssetStudio::Asset*> Database::get_assets() const
 {
    return assets;
 }
 
 
-std::vector<AssetStudio::AssetGroup> Database::get_asset_groups() const
+std::vector<AssetStudio::AssetGroup*> Database::get_asset_groups() const
 {
    return asset_groups;
 }
 
 
-std::vector<AssetStudio::Category> Database::get_categories() const
+std::vector<AssetStudio::Category*> Database::get_categories() const
 {
    return categories;
 }

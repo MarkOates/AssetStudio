@@ -7,6 +7,7 @@
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <AssetStudio/GameConfigurations/Main.hpp>
 #include <AssetStudio/Gameplay/Level.hpp>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -26,6 +27,8 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , font_bin(font_bin)
    , model_bin(model_bin)
    , database()
+   , sprite_sheet_atlas(nullptr)
+   , sprite_sheet(nullptr)
    , game_configuration(game_configuration)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -210,29 +213,37 @@ void Screen::load_database_and_build_assets()
    AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(assets_folder);
 
-   ALLEGRO_BITMAP *atlas = al_clone_bitmap(
+   sprite_sheet_atlas = al_clone_bitmap(
          assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
       );
-   AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
-      new AllegroFlare::FrameAnimation::SpriteSheet(atlas, 16, 16, 3);
-   al_destroy_bitmap(atlas);
+   //AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
+   sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 3);
+   //al_destroy_bitmap(atlas);
 
-   //database.set_assets({
-      //AssetStudio::Asset(
-         //asset_id++,
-         //"grotto",
-         //"grotto_character",
-         //AllegroFlare::FrameAnimation::Animation(
-            //sprite_sheet,
-            //"grotto_character",
-            //{
-               //{ 0, 0.2 },
-               //{ 1, 0.2 },
-               //{ 2, 0.2 },
-            //}
-         //)
-      //)
-   //});
+   database.set_assets({
+      new AssetStudio::Asset(
+         asset_id++,
+         "grotto",
+         "grotto_character",
+         new AllegroFlare::FrameAnimation::Animation(
+            sprite_sheet,
+            "grotto_character",
+            {
+               { 0, 3.2 },
+               { 1, 3.2 },
+               { 2, 3.2 },
+            }
+         )
+      )
+   });
+
+   // Initialize the animations
+   for (auto &asset : database.get_assets())
+   {
+      asset->animation->initialize();
+   }
+
    return;
 }
 
@@ -265,13 +276,37 @@ void Screen::on_deactivate()
 
 void Screen::update()
 {
+   // Run "update" on all animations
+   for (auto &asset : database.get_assets())
+   {
+      asset->animation->update();
+   }
    return;
 }
 
 void Screen::render()
 {
    ALLEGRO_FONT *font = obtain_font();
-   al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
+   //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
+
+   float x = 300;
+   float y = 200;
+   float spacing_x = 300;
+   AllegroFlare::Placement2D placement;
+   for (auto &asset : database.get_assets())
+   {
+      placement.position.x = x;
+      placement.position.y = y;
+      placement.size.x = 80;
+      placement.size.y = 80;
+
+      placement.start_transform();
+      asset->animation->draw();
+      al_draw_bitmap(sprite_sheet_atlas, 20, 20, 0);
+      //al_draw_bitmap(asset->animation->get_sprite_sheet()->get_atlas(), 20, 20, 0);
+      placement.restore_transform();
+      placement.draw_box(al_color_name("dodgerblue"), false);
+   }
 
    return;
 }
