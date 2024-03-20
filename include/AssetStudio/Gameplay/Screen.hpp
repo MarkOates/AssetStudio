@@ -55,7 +55,7 @@ namespace AssetStudio
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          virtual void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]") override;
          void initialize();
-         AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=3);
+         AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
          void load_database_and_build_assets();
          virtual void on_activate() override;
          virtual void on_deactivate() override;

@@ -231,21 +231,21 @@ void Screen::load_database_and_build_assets()
    std::string assets_folder = "/Users/markoates/Assets/";
    assets_bitmap_bin.set_full_path(assets_folder);
 
-   sprite_sheet_atlas = al_clone_bitmap(
-         assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
-      );
+   //sprite_sheet_atlas = al_clone_bitmap(
+         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      //);
    //AllegroFlare::FrameAnimation::SpriteSheet *sprite_sheet =
-   sprite_sheet =
-      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 2);
+   //sprite_sheet =
+      //new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 2);
    //al_destroy_bitmap(atlas);
 
    database.set_assets({
       new AssetStudio::Asset(
          asset_id++,
          "grotto",
-         "grotto_character",
+         "grotto character",
          new AllegroFlare::FrameAnimation::Animation(
-            sprite_sheet,
+            obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
             "grotto_character",
             {
                { 0, 0.2 },
@@ -258,14 +258,36 @@ void Screen::load_database_and_build_assets()
       new AssetStudio::Asset(
          asset_id++,
          "grotto",
-         "grotto_jump",
+         "grotto jump",
          new AllegroFlare::FrameAnimation::Animation(
-            sprite_sheet,
+            obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
             "grotto_jump",
             {
                { 4, 1.0 },
             },
             AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+         )
+      ),
+      new AssetStudio::Asset(
+         asset_id++,
+         "explosion_h",
+         "a blow up",
+         new AllegroFlare::FrameAnimation::Animation(
+            obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32, 2), // 
+            "explosion_h",
+            {
+               { 0, 0.1 },
+               { 1, 0.1 },
+               { 2, 0.1 },
+               { 3, 0.1 },
+               { 4, 0.1 },
+               { 5, 0.1 },
+               { 6, 0.1 },
+               { 7, 0.1 },
+               { 8, 0.1 },
+               { 9, 0.1 },
+            },
+            AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
          )
       )
 
@@ -317,6 +339,14 @@ void Screen::update()
    for (auto &asset : database.get_assets())
    {
       asset->animation->update();
+      if (asset->animation->get_playmode() == AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE)
+      {
+         if (asset->animation->get_finished())
+         {
+            asset->animation->reset();
+            asset->animation->start();
+         }
+      }
    }
    return;
 }
