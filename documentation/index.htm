@@ -54,12 +54,108 @@ table td
 <body>
 <h1>Table of Contents</h1>
 <ul>
+  <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameConfigurations/Main.q.yml">quintessence/AssetStudio/GameConfigurations/Main.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameProgressAndStateInfo.q.yml">quintessence/AssetStudio/GameProgressAndStateInfo.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Gameplay/Level.q.yml">quintessence/AssetStudio/Gameplay/Level.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Gameplay/Screen.q.yml">quintessence/AssetStudio/Gameplay/Screen.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">id</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">name</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">description</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">categories</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+<tr>
+  <td class="property">tags</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+<tr>
+  <td class="property">related_assset_group_id</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">from_pack</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">animation_book</td>
+  <td class="property">AllegroFlare::FrameAnimation::Book*</td>
+</tr>
+<tr>
+  <td class="property">animation</td>
+  <td class="property">AllegroFlare::FrameAnimation::Animation</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Book&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Book.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<p>This class contains no properties</p>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<p>This class contains no dependencies</p>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<p>This class contains no properties</p>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<p>This class contains no dependencies</p>  </div>
+</ul>
 <br><br><br>
 <br><br><br>
 <ul>
@@ -439,6 +535,12 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "AllegroFlare/FrameAnimation/Animation": [
+    "AssetStudio/Asset"
+  ],
+  "AllegroFlare/FrameAnimation/Book": [
+    "AssetStudio/Asset"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],

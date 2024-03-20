@@ -1,0 +1,50 @@
+properties:
+
+
+  - name: id
+    type: int
+    init_with: 0
+    exposed: true
+
+  - name: name
+    type: std::string
+    init_with: '"[unset-name]"'
+    exposed: true
+
+  - name: description
+    type: std::string
+    init_with: '"[unset-description]"'
+    exposed: true
+
+  - name: assets
+    type: std::vector<AssetStudio::Asset>
+    init_with: '{}'
+    exposed: true
+
+  - name: categories
+    type: std::vector<std::string>
+    init_with: ''
+    exposed: true
+
+  - name: tags
+    type: std::vector<std::string>
+    init_with: ''
+    exposed: true
+
+  - name: from_pack
+    type: std::string
+    init_with: '"[unset-description]"'
+    exposed: true
+
+
+dependencies:
+
+
+  - symbol: AssetStudio::Asset
+    headers: [ AssetStudio/Asset.hpp ]
+  - symbol: AllegroFlare::FrameAnimation::Animation
+    headers: [ AllegroFlare/FrameAnimation/Animation.hpp ]
+  - symbol: AllegroFlare::FrameAnimation::Book
+    headers: [ AllegroFlare/FrameAnimation/Book.hpp ]
+
+

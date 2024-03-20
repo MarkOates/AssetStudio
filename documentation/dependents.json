@@ -1,4 +1,10 @@
 {
+  "AllegroFlare/FrameAnimation/Animation": [
+    "AssetStudio/Asset"
+  ],
+  "AllegroFlare/FrameAnimation/Book": [
+    "AssetStudio/Asset"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],
