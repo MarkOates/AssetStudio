@@ -280,7 +280,6 @@ void Screen::update()
    // Run "update" on all animations
    for (auto &asset : database.get_assets())
    {
-      throw std::runtime_error("foasdofas");
       asset->animation->update();
    }
    return;
@@ -304,29 +303,9 @@ void Screen::render()
 
       placement.start_transform();
       asset->animation->draw();
-      //al_draw_bitmap(sprite_sheet_atlas, 20, 20, 0);
-      //al_draw_bitmap(asset->animation->get_sprite_sheet()->get_atlas(), 20, 20, 0);
       placement.restore_transform();
       placement.draw_box(al_color_name("dodgerblue"), false);
    }
-
-   placement.position.x = 1920/2;
-   placement.position.y = 1080/2;
-   placement.start_transform();
-   AllegroFlare::FrameAnimation::Animation *my_anim = new AllegroFlare::FrameAnimation::Animation(
-      sprite_sheet,
-      "grotto_character",
-      {
-         { 0, 0.2 },
-         { 1, 0.2 },
-         { 2, 0.2 },
-      },
-      AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
-   );
-   my_anim->initialize();
-   my_anim->draw();
-   placement.restore_transform();
-   delete my_anim;
 
 
    return;
@@ -355,6 +334,7 @@ void Screen::primary_update_func(double time_now, double delta_time)
       throw std::runtime_error("Screen::primary_update_func: error: guard \"initialized\" not met");
    }
    // Update stuff here (take into account delta_time)
+   update();
    return;
 }
 
