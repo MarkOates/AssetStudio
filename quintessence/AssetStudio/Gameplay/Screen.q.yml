@@ -176,6 +176,28 @@ methods:
       - al_is_primitives_addon_initialized
 
 
+  - name: build_n_frames
+    type: std::vector<AllegroFlare::FrameAnimation::Frame>
+    parameters:
+      - name: num_frames
+        type: uint32_t
+        default_argument: 1
+      - name: start_frame_num
+        type: uint32_t
+        default_argument: 0
+      - name: each_frame_duration
+        type: float
+        default_argument: 0.1f
+    guards: [ (num_frames > 1), (start_frame_num >= 0), (each_frame_duration >= 0.0001) ]
+    body: |
+      std::vector<AllegroFlare::FrameAnimation::Frame> result;
+      for (uint32_t i=0; i<num_frames; i++)
+      {
+         result.push_back({ start_frame_num + i, each_frame_duration });
+      }
+      return result;
+
+
   - name: obtain_sprite_sheet
     type: AllegroFlare::FrameAnimation::SpriteSheet*
     parameters:
@@ -257,20 +279,9 @@ methods:
             "explosion_h",
             "a blow up",
             new AllegroFlare::FrameAnimation::Animation(
-               obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32, 2), // 
+               obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32),
                "explosion_h",
-               {
-                  { 0, 0.1 },
-                  { 1, 0.1 },
-                  { 2, 0.1 },
-                  { 3, 0.1 },
-                  { 4, 0.1 },
-                  { 5, 0.1 },
-                  { 6, 0.1 },
-                  { 7, 0.1 },
-                  { 8, 0.1 },
-                  { 9, 0.1 },
-               },
+               build_n_frames(9),
                AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
             )
          )
@@ -535,5 +546,7 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::FrameAnimation::Frame
+    headers: [ AllegroFlare/FrameAnimation/Frame.hpp ]
 
 

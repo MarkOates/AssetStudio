@@ -4,6 +4,7 @@
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
+#include <AllegroFlare/FrameAnimation/Frame.hpp>
 #include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/GameEvent.hpp>
 #include <AllegroFlare/ModelBin.hpp>
@@ -14,7 +15,9 @@
 #include <AssetStudio/GameConfigurations/Main.hpp>
 #include <AssetStudio/Gameplay/Level.hpp>
 #include <allegro5/allegro.h>
+#include <cstdint>
 #include <string>
+#include <vector>
 
 
 namespace AssetStudio
@@ -55,6 +58,7 @@ namespace AssetStudio
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          virtual void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]") override;
          void initialize();
+         std::vector<AllegroFlare::FrameAnimation::Frame> build_n_frames(uint32_t num_frames=1, uint32_t start_frame_num=0, float each_frame_duration=0.1f);
          AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
          void load_database_and_build_assets();
          virtual void on_activate() override;

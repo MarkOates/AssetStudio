@@ -206,6 +206,37 @@ void Screen::initialize()
    return;
 }
 
+std::vector<AllegroFlare::FrameAnimation::Frame> Screen::build_n_frames(uint32_t num_frames, uint32_t start_frame_num, float each_frame_duration)
+{
+   if (!((num_frames > 1)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::build_n_frames]: error: guard \"(num_frames > 1)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::build_n_frames: error: guard \"(num_frames > 1)\" not met");
+   }
+   if (!((start_frame_num >= 0)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::build_n_frames: error: guard \"(start_frame_num >= 0)\" not met");
+   }
+   if (!((each_frame_duration >= 0.0001)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::build_n_frames: error: guard \"(each_frame_duration >= 0.0001)\" not met");
+   }
+   std::vector<AllegroFlare::FrameAnimation::Frame> result;
+   for (uint32_t i=0; i<num_frames; i++)
+   {
+      result.push_back({ start_frame_num + i, each_frame_duration });
+   }
+   return result;
+}
+
 AllegroFlare::FrameAnimation::SpriteSheet* Screen::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)
 {
    // TODO: Guard after assets_bitmap_bin is initialized
@@ -273,20 +304,9 @@ void Screen::load_database_and_build_assets()
          "explosion_h",
          "a blow up",
          new AllegroFlare::FrameAnimation::Animation(
-            obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32, 2), // 
+            obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32),
             "explosion_h",
-            {
-               { 0, 0.1 },
-               { 1, 0.1 },
-               { 2, 0.1 },
-               { 3, 0.1 },
-               { 4, 0.1 },
-               { 5, 0.1 },
-               { 6, 0.1 },
-               { 7, 0.1 },
-               { 8, 0.1 },
-               { 9, 0.1 },
-            },
+            build_n_frames(9),
             AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
          )
       )

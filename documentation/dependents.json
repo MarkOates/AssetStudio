@@ -136,5 +136,8 @@
   ],
   "ALLEGRO_BITMAP": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/FrameAnimation/Frame": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }
