@@ -9,6 +9,7 @@
 #include <AllegroFlare/Player.hpp>
 #include <AllegroFlare/Screens/Gameplay.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
+#include <AssetStudio/Database.hpp>
 #include <AssetStudio/GameConfigurations/Main.hpp>
 #include <AssetStudio/Gameplay/Level.hpp>
 #include <allegro5/allegro.h>
@@ -29,6 +30,7 @@ namespace AssetStudio
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         AssetStudio::Database database;
          AssetStudio::GameConfigurations::Main* game_configuration;
          std::string current_level_identifier;
          AssetStudio::Gameplay::Level* current_level;
@@ -49,6 +51,7 @@ namespace AssetStudio
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          virtual void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]") override;
          void initialize();
+         void load_database_and_build_assets();
          virtual void on_activate() override;
          virtual void on_deactivate() override;
          void update();

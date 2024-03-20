@@ -4,16 +4,31 @@ properties:
   - name: id
     type: int
     init_with: 0
+    constructor_arg: true
     exposed: true
 
   - name: name
     type: std::string
     init_with: '"[unset-name]"'
+    constructor_arg: true
     exposed: true
 
   - name: description
     type: std::string
     init_with: '"[unset-description]"'
+    constructor_arg: true
+    exposed: true
+
+  - name: animation_book
+    type: AllegroFlare::FrameAnimation::Book*
+    init_with: nullptr
+    constructor_arg: true
+    exposed: true
+
+  - name: animation
+    type: AllegroFlare::FrameAnimation::Animation
+    init_with: '{}'
+    constructor_arg: true
     exposed: true
 
   - name: categories
@@ -34,16 +49,6 @@ properties:
   - name: from_pack
     type: std::string
     init_with: '"[unset-description]"'
-    exposed: true
-
-  - name: animation_book
-    type: AllegroFlare::FrameAnimation::Book*
-    init_with: nullptr
-    exposed: true
-
-  - name: animation
-    type: AllegroFlare::FrameAnimation::Animation
-    init_with: ''
     exposed: true
 
 

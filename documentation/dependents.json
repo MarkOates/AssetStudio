@@ -1,9 +1,21 @@
 {
   "AllegroFlare/FrameAnimation/Animation": [
-    "AssetStudio/Asset"
+    "AssetStudio/Asset",
+    "AssetStudio/AssetGroup"
   ],
   "AllegroFlare/FrameAnimation/Book": [
-    "AssetStudio/Asset"
+    "AssetStudio/Asset",
+    "AssetStudio/AssetGroup"
+  ],
+  "AssetStudio/Asset": [
+    "AssetStudio/AssetGroup",
+    "AssetStudio/Database"
+  ],
+  "AssetStudio/AssetGroup": [
+    "AssetStudio/Database"
+  ],
+  "AssetStudio/Category": [
+    "AssetStudio/Database"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
@@ -111,6 +123,9 @@
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/GameConfigurations/Main": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/Database": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

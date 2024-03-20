@@ -29,6 +29,10 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: database
+    type: AssetStudio::Database
+    init_with: ''
+
   - name: game_configuration
     type: AssetStudio::GameConfigurations::Main*
     init_with: nullptr
@@ -150,10 +154,35 @@ methods:
       - model_bin
     body: |
       set_update_strategy(AllegroFlare::Screens::Base::UpdateStrategy::SEPARATE_UPDATE_AND_RENDER_FUNCS);
+
+      load_database_and_build_assets();
+
       initialized = true;
       return;
     body_dependency_symbols:
       - al_is_primitives_addon_initialized
+
+
+  - name: load_database_and_build_assets
+    body: |
+      int asset_id = 0;
+      //std::string assets_folder
+
+      //AllegroFlare::BitmapBin assets_bitmap_bin;
+      //assets_bitmap_bin.set_full_path("/Users/markoates/Assets/");
+
+      //ALLEGRO_BITMAP *atlas = al_clone_bitmap(
+            //"assets_bitmap_bin->auto_get("grotto_escape_pack/Base pack/graphics/player.png"
+         //));
+      //AllegroFlare::SpriteSheet *sprite_sheet = new AllegroFlare::SpriteSheet(atlas, 16, 16, 3);
+      //al_destroy_bitmap(atlas);
+
+      //database.set_assets(
+         //AssetStudio::Asset(asset_id++, "grotto", "grotto_character")
+      //);
+      return;
+    body_dependency_symbols:
+      - AllegroFlare::BitmapBin
 
 
   - name: on_activate
@@ -184,6 +213,7 @@ methods:
     body: |
       ALLEGRO_FONT *font = obtain_font();
       al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
+
       return;
 
 
@@ -350,4 +380,7 @@ dependencies:
     headers: [ AssetStudio/Gameplay/Level.hpp ]
   - symbol: AllegroFlare::GameEvent
     headers: [ AllegroFlare/GameEvent.hpp ]
+  - symbol: AssetStudio::Database
+    headers: [ AssetStudio/Database.hpp ]
+
 

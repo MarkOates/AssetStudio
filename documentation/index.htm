@@ -55,6 +55,7 @@ table td
 <h1>Table of Contents</h1>
 <ul>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameConfigurations/Main.q.yml">quintessence/AssetStudio/GameConfigurations/Main.q.yml</a></li>
@@ -84,6 +85,14 @@ table td
   <td class="property">std::string</td>
 </tr>
 <tr>
+  <td class="property">animation_book</td>
+  <td class="property">AllegroFlare::FrameAnimation::Book*</td>
+</tr>
+<tr>
+  <td class="property">animation</td>
+  <td class="property">AllegroFlare::FrameAnimation::Animation</td>
+</tr>
+<tr>
   <td class="property">categories</td>
   <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
@@ -99,13 +108,56 @@ table td
   <td class="property">from_pack</td>
   <td class="property">std::string</td>
 </tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
 <tr>
-  <td class="property">animation_book</td>
-  <td class="property">AllegroFlare::FrameAnimation::Book*</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="property">animation</td>
-  <td class="property">AllegroFlare::FrameAnimation::Animation</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Book&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Book.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">id</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">name</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">description</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">assets</td>
+  <td class="property">std::vector&lt;AssetStudio::Asset&gt;</td>
+</tr>
+<tr>
+  <td class="property">categories</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+<tr>
+  <td class="property">tags</td>
+  <td class="property">std::vector&lt;std::string&gt;</td>
+</tr>
+<tr>
+  <td class="property">from_pack</td>
+  <td class="property">std::string</td>
 </tr>
     </table>
 </div>    <h3>Methods</h3>
@@ -113,6 +165,9 @@ table td
     </table>
 </div>    <h3>Dependencies</h3>
 <div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Asset.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
 </tr>
@@ -146,15 +201,36 @@ table td
     <h3 id="quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</h3>
     <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
-<p>This class contains no properties</p>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
+<div class="property-box properties">     <table>
 <tr>
-  <td class="method">std::string</td>
-  <td class="method"><b>run</b>()</td>
+  <td class="property">assets</td>
+  <td class="property">std::vector&lt;AssetStudio::Asset&gt;</td>
+</tr>
+<tr>
+  <td class="property">asset_groups</td>
+  <td class="property">std::vector&lt;AssetStudio::AssetGroup&gt;</td>
+</tr>
+<tr>
+  <td class="property">categories</td>
+  <td class="property">std::vector&lt;AssetStudio::Category&gt;</td>
 </tr>
     </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+    </table>
 </div>    <h3>Dependencies</h3>
-<p>This class contains no dependencies</p>  </div>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Asset.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::AssetGroup&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/AssetGroup.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Category&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Category.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
 </ul>
 <br><br><br>
 <br><br><br>
@@ -391,6 +467,10 @@ table td
   <td class="property">AllegroFlare::ModelBin*</td>
 </tr>
 <tr>
+  <td class="property">database</td>
+  <td class="property">AssetStudio::Database</td>
+</tr>
+<tr>
   <td class="property">game_configuration</td>
   <td class="property">AssetStudio::GameConfigurations::Main*</td>
 </tr>
@@ -436,6 +516,10 @@ table td
 <tr>
   <td class="method">void</td>
   <td class="method"><b>initialize</b>()</td>
+</tr>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>load_database_and_build_assets</b>()</td>
 </tr>
 <tr>
   <td class="method">void</td>
@@ -529,6 +613,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::GameEvent&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/GameEvent.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Database&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Database.hpp&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -536,10 +623,22 @@ table td
 <pre>
 {
   "AllegroFlare/FrameAnimation/Animation": [
-    "AssetStudio/Asset"
+    "AssetStudio/Asset",
+    "AssetStudio/AssetGroup"
   ],
   "AllegroFlare/FrameAnimation/Book": [
-    "AssetStudio/Asset"
+    "AssetStudio/Asset",
+    "AssetStudio/AssetGroup"
+  ],
+  "AssetStudio/Asset": [
+    "AssetStudio/AssetGroup",
+    "AssetStudio/Database"
+  ],
+  "AssetStudio/AssetGroup": [
+    "AssetStudio/Database"
+  ],
+  "AssetStudio/Category": [
+    "AssetStudio/Database"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
@@ -647,6 +746,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/GameConfigurations/Main": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/Database": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

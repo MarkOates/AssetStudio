@@ -2,6 +2,7 @@
 
 #include <AssetStudio/Gameplay/Screen.hpp>
 
+#include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <AssetStudio/GameConfigurations/Main.hpp>
 #include <AssetStudio/Gameplay/Level.hpp>
@@ -23,6 +24,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , database()
    , game_configuration(game_configuration)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -192,7 +194,30 @@ void Screen::initialize()
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
    set_update_strategy(AllegroFlare::Screens::Base::UpdateStrategy::SEPARATE_UPDATE_AND_RENDER_FUNCS);
+
+   load_database_and_build_assets();
+
    initialized = true;
+   return;
+}
+
+void Screen::load_database_and_build_assets()
+{
+   int asset_id = 0;
+   //std::string assets_folder
+
+   //AllegroFlare::BitmapBin assets_bitmap_bin;
+   //assets_bitmap_bin.set_full_path("/Users/markoates/Assets/");
+
+   //ALLEGRO_BITMAP *atlas = al_clone_bitmap(
+         //"assets_bitmap_bin->auto_get("grotto_escape_pack/Base pack/graphics/player.png"
+      //));
+   //AllegroFlare::SpriteSheet *sprite_sheet = new AllegroFlare::SpriteSheet(atlas, 16, 16, 3);
+   //al_destroy_bitmap(atlas);
+
+   //database.set_assets(
+      //AssetStudio::Asset(asset_id++, "grotto", "grotto_character")
+   //);
    return;
 }
 
@@ -232,6 +257,7 @@ void Screen::render()
 {
    ALLEGRO_FONT *font = obtain_font();
    al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
+
    return;
 }
 
