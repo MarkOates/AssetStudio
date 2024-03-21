@@ -131,12 +131,21 @@ methods:
       AllegroFlare::CSVParser csv_parser;
       csv_parser.set_raw_csv_content(content);
       csv_parser.parse();
-      csv_parser.assemble_column_headers(3);
+      csv_parser.assemble_column_headers(2);
 
       // Load the parsed data to Level objects
       int first_physical_row = csv_parser.get_num_header_rows();
       for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
       {
+         std::string identifier =
+            validate_key_and_return(&extracted_row, "identifier");
+
+         AssetStudio::Asset *asset = new AssetStudio::Asset;
+
+         // TODO: Load the asset data here
+
+         levels.insert({ identifier, asset });
+         
          /*
          // Pull out the variables
          std::string identifier =

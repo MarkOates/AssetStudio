@@ -22,17 +22,17 @@ TEST(Robieo_CSVToLevelLoaderTest, load__will_not_blow_up)
 }
 
 
-/*
 TEST(Robieo_CSVToLevelLoaderTest, load__when_loading_from_the_source_data__will_create_the_expected_records)
 {
-   Robieo::CSVToLevelLoader loader;
+   AssetStudio::DatabaseCSVLoader loader;
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
 
-   EXPECT_EQ(true, loader.level_exists("02-level-4-11"));
+   EXPECT_EQ(true, loader.level_exists("grotto_walk"));
 }
 
 
+/*
 TEST(Robieo_CSVToLevelLoaderTest, load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
 {
    Robieo::CSVToLevelLoader loader;
