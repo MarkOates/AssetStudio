@@ -40,6 +40,10 @@
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
+  "AllegroFlare/FrameAnimation/SpriteSheet": [
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Gameplay/Screen"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],
@@ -146,9 +150,6 @@
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/Database": [
-    "AssetStudio/Gameplay/Screen"
-  ],
-  "AllegroFlare/FrameAnimation/SpriteSheet": [
     "AssetStudio/Gameplay/Screen"
   ],
   "al_color_name": [

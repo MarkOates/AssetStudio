@@ -3,6 +3,7 @@
 #include <AssetStudio/DatabaseCSVLoader.hpp>
 
 #include <AllegroFlare/CSVParser.hpp>
+#include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/UsefulPHP.hpp>
 #include <cstdlib>
@@ -54,6 +55,29 @@ std::string DatabaseCSVLoader::get_csv_full_path() const
    return csv_full_path;
 }
 
+
+AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)
+{
+   if (!(assets_bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::obtain_sprite_sheet: error: guard \"assets_bitmap_bin\" not met");
+   }
+   // TODO: Guard after assets_bitmap_bin is initialized
+
+   ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
+         assets_bitmap_bin->auto_get(filename)
+         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      );
+   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
+
+   al_destroy_bitmap(sprite_sheet_atlas);
+
+   return result_sprite_sheet;
+}
 
 std::map<std::string, AssetStudio::Asset*> DatabaseCSVLoader::get_levels()
 {
@@ -163,16 +187,31 @@ void DatabaseCSVLoader::load()
    int first_physical_row = csv_parser.get_num_header_rows();
    for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
    {
-      // TODO: Load the asset data here
+      // Extract the data here
       std::string identifier = validate_key_and_return(&extracted_row, "identifier");
       int id = toi(validate_key_and_return(&extracted_row, "id"));
       int cell_width = toi(validate_key_and_return(&extracted_row, "cell_width"));
       int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
+      // Build the animation
+      //AllegroFlare::FrameAnimation::Animation *animation =
+         //new AllegroFlare::FrameAnimation::Animation(
+            //obtain_sprite_sheet(image_filename),
+            //identifier,
+            //{
+               //{ 0, 0.2 },
+               //{ 1, 0.2 },
+               //{ 2, 0.2 },
+            //},
+            //AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+         //);
+
+      // Load the data into the asset
       AssetStudio::Asset *asset = new AssetStudio::Asset;
       asset->id = id;
       asset->identifier = identifier;
+      //asset->animation = animation;
 
       //asset->cell_width = cell_width;
       //asset->cell_height = cell_height;

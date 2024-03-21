@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/CSVParser.hpp>
+#include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AssetStudio/Asset.hpp>
 #include <map>
 #include <string>
@@ -17,6 +18,7 @@ namespace AssetStudio
       std::string csv_full_path;
       std::map<std::string, AssetStudio::Asset*> levels;
       bool loaded;
+      AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
 
    protected:
 

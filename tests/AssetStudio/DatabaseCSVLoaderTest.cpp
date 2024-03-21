@@ -6,7 +6,8 @@
 
 
 // TODO: Consider loading some test data csv, and then separately from that the production data set
-#define ASSETS_DB_CSV_FILENAME "/Users/markoates/Assets/assets_db.csv"
+#define ASSETS_FULL_PATH "/Users/markoates/Assets/"
+#define ASSETS_DB_CSV_FILENAME ASSETS_FULL_PATH "assets_db.csv"
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, can_be_created_without_blowing_up)
@@ -20,31 +21,47 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, can_be_created_without_blowing_up)
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
 {
+   //al_init();
+   //al_init_image_addon();
+
    AllegroFlare::BitmapBin assets_bitmap_bin;
+   assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
    AssetStudio::DatabaseCSVLoader loader;
    loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
    SUCCEED();
+
+   //al_uninstall_system();
 }
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data__will_create_the_expected_records)
 {
+   //al_init();
+   //al_init_image_addon();
+
    AllegroFlare::BitmapBin assets_bitmap_bin;
+   assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
    AssetStudio::DatabaseCSVLoader loader;
    loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
 
    EXPECT_EQ(true, loader.level_exists("grotto_walk"));
+
+   //al_uninstall_system();
 }
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest,
    load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
 {
+   //al_init();
+   //al_init_image_addon();
+
    AllegroFlare::BitmapBin assets_bitmap_bin;
+   assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
    AssetStudio::DatabaseCSVLoader loader;
    loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    //Robieo::CSVToLevelLoader loader;
@@ -77,17 +94,25 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
    EXPECT_EQ("robot-holly_jolly", actual_level.get_song_to_perform_identifier());
    EXPECT_EQ(15.0, actual_level.get_song_to_perform_duration_sec());
 */
+
+   //al_uninstall_system();
 }
 
 
 TEST(Robieo_CSVToLevelLoaderTest, load__on_production_csv__will_not_blow_up)
 {
+   //al_init();
+   //al_init_image_addon();
+
    AllegroFlare::BitmapBin assets_bitmap_bin;
+   assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
    AssetStudio::DatabaseCSVLoader loader;
    loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
    SUCCEED();
+
+   //al_uninstall_system();
 }
 
 
