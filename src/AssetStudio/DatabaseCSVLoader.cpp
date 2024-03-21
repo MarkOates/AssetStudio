@@ -94,6 +94,24 @@ float DatabaseCSVLoader::tof(std::string value)
    return std::stof(value.c_str());
 }
 
+std::pair<bool, uint32_t> DatabaseCSVLoader::str_to_playmode(std::string playmode_string)
+{
+   if (playmode_string == "once")
+   {
+      return { true, AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE };
+   }
+   else if (playmode_string == "loop")
+   {
+      return { true, AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_LOOP };
+   }
+   else if (playmode_string == "ping_pong_forward")
+   {
+      return { true, AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG };
+   }
+
+   return { false, 0 };
+}
+
 AssetStudio::Asset* DatabaseCSVLoader::find_level(std::string level_identifier)
 {
    if (!(loaded))
@@ -236,6 +254,7 @@ void DatabaseCSVLoader::load()
       int cell_width = toi(validate_key_and_return(&extracted_row, "cell_width"));
       int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
+      std::string playmode = validate_key_and_return(&extracted_row, "playmode");
 
       std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
       std::string frame_data__build_n_frames__num_frames =
@@ -293,13 +312,29 @@ void DatabaseCSVLoader::load()
          );
       }
 
+      std::pair<bool, uint32_t> playmode_parsed_data =
+            { true, AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE };
+
+      if (!playmode.empty())
+      {
+         std::pair<bool, uint32_t> playmode_parsed_data = str_to_playmode(playmode);
+      }
+
+      if (playmode_parsed_data.first == false)
+      {
+         AllegroFlare::Logger::throw_error(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "Unrecognized playmode \"" + playmode + "\" when loading row " + std::to_string(row_i) + "."
+         );
+      }
+
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
          new AllegroFlare::FrameAnimation::Animation(
             obtain_sprite_sheet(image_filename, cell_width, cell_height, 2),
             identifier,
             frame_data,
-            AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+            playmode_parsed_data.second
          );
 
       // Load the data into the asset

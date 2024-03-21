@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <map>
 #include <string>
+#include <utility>
 #include <vector>
 
 
@@ -38,6 +39,7 @@ namespace AssetStudio
       bool level_exists(std::string level_identifier="[unset-level_identifier]");
       static int toi(std::string value="[unset-value]");
       static float tof(std::string value="[unset-value]");
+      std::pair<bool, uint32_t> str_to_playmode(std::string playmode_string="[unset-playmode_string]");
       AssetStudio::Asset* find_level(std::string level_identifier="[unset-level_identifier]");
       static std::string validate_key_and_return(std::map<std::string, std::string>* extracted_row=nullptr, std::string key="[unset-key]");
       std::vector<AllegroFlare::FrameAnimation::Frame> build_n_frames(uint32_t num_frames=1, uint32_t start_frame_num=0, float each_frame_duration=0.08f);
