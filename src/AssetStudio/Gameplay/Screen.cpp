@@ -440,7 +440,7 @@ void Screen::render()
 
    float x = 300;
    float y = 200;
-   float spacing_x = 300;
+   float spacing_x = 260;
    int sprite_sheet_scale = 2;
    AllegroFlare::Placement2D asset_placement;
    AllegroFlare::Placement2D frame_placement;
@@ -485,8 +485,10 @@ void Screen::render()
          asset_placement.restore_transform();
 
          // Draw asset identifier
-         ALLEGRO_FONT *font = obtain_font();
+         ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
          al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 10, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
+
+         al_draw_rectangle(0, 0, asset_placement.size.x, asset_placement.size.y, ui_color, 1.0);
       }
       frame_placement.restore_transform();
 
@@ -613,6 +615,18 @@ ALLEGRO_FONT* Screen::obtain_font()
       throw std::runtime_error("Screen::obtain_font: error: guard \"font_bin\" not met");
    }
    return font_bin->auto_get("Inter-Regular.ttf -32");
+}
+
+ALLEGRO_FONT* Screen::obtain_font_for_asset_identifier()
+{
+   if (!(font_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::obtain_font_for_asset_identifier]: error: guard \"font_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::obtain_font_for_asset_identifier: error: guard \"font_bin\" not met");
+   }
+   return font_bin->auto_get("Inter-Regular.ttf -18");
 }
 
 

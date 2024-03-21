@@ -65,7 +65,7 @@ TEST_F(AssetStudio_Gameplay_ScreenTest, type__has_the_expected_value_matching_TY
 */
 
 TEST_F(AssetStudio_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
-   TIMED_INTERACTIVE__will_run_as_expected)
+   CAPTURE__TIMED_INTERACTIVE__will_run_as_expected)
 {
    TestGameConfiguration game_configuration;
    AssetStudio::Gameplay::Screen screen;
