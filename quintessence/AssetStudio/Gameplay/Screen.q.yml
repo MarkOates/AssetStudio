@@ -392,7 +392,7 @@ methods:
             {
                // Before resetting the animation, add some dealy so it is clear the animation playmode is not a loop
                float age_since_finished = time_now -  asset->animation->get_finished_at();
-               if (age_since_finished >= 0.8f)
+               if (age_since_finished >= 0.4f)
                {
                   // Reset the animation to replay
                   asset->animation->reset();
@@ -424,8 +424,8 @@ methods:
       ALLEGRO_COLOR ui_color_light = ALLEGRO_COLOR{0.7, 0.7, 0.745, 1.0};
       ALLEGRO_COLOR ui_color_dark = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.1};
 
-      float scale_x = 2.5f;
-      float scale_y = 2.5f;
+      float scale_x = 2.0f;
+      float scale_y = 2.0f;
 
       int column_num = 0;
       int row_num = 0;

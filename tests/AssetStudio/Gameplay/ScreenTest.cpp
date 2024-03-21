@@ -78,7 +78,7 @@ TEST_F(AssetStudio_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
 
    framework_register_and_activate_screen("screen", &screen);
 
-   framework_run_loop(2);
+   framework_run_loop(4);
 }
 
 
