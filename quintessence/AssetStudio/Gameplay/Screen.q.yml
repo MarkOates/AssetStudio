@@ -415,6 +415,8 @@ methods:
       int sprite_sheet_scale = 2;
       AllegroFlare::Placement2D placement;
       int asset_i = 0;
+      ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5};
+
       for (auto &asset_record : database.get_assets())
       {
          auto &asset = asset_record.second;
@@ -426,11 +428,15 @@ methods:
          placement.scale.y = 3.0f;
 
          placement.start_transform();
+
+         // Draw a frame rectangle indicating the dimensions of the asset
+         al_draw_rectangle(0, 0, placement.size.x, placement.size.y, ui_color, 2.0);
+
          if (asset->animation->get_finished())
          {
             // If the animation is "finished", show a little placeholder circle indicating that the animation has 
             // reached its end
-            al_draw_filled_circle(placement.size.x/2, placement.size.x/2, 6, ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5});
+            al_draw_filled_circle(placement.size.x/2, placement.size.y/2, 6, ui_color);
          }
          else
          {
