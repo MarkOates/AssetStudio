@@ -44,6 +44,9 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
    ASSERT_EQ(true, loader.level_exists("grotto_walk"));
 
    AssetStudio::Asset *actual_level = loader.find_level("grotto_walk");
+   ASSERT_NE(nullptr, actual_level);
+   EXPECT_EQ(1, actual_level->id);
+   EXPECT_EQ("grotto_walk", actual_level->identifier);
 /*
 
    EXPECT_EQ("3. Forest", actual_level.get_title());

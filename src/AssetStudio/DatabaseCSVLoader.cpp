@@ -152,8 +152,12 @@ void DatabaseCSVLoader::load()
 
       AssetStudio::Asset *asset = new AssetStudio::Asset;
       asset->id = id;
-      asset->name = identifier;
-      asset->name = image_filename;
+      asset->identifier = identifier;
+
+      //asset->cell_width = cell_width;
+      //asset->cell_height = cell_height;
+      // Build up the animation
+      //asset->name = image_filename;
       //asset->description = description;
 
       levels.insert({ identifier, asset });
