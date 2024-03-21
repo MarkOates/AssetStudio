@@ -409,6 +409,7 @@ void Screen::on_deactivate()
 
 void Screen::update()
 {
+   float time_now = al_get_time();
    // Run "update" on all animations
    for (auto &asset_record : database.get_assets())
    {
@@ -418,8 +419,14 @@ void Screen::update()
       {
          if (asset->animation->get_finished())
          {
-            asset->animation->reset();
-            asset->animation->start();
+            // Before resetting the animation, add some dealy so it is clear the animation playmode is not a loop
+            float age_since_finished = time_now -  asset->animation->get_finished_at();
+            if (age_since_finished >= 0.8f)
+            {
+               // Reset the animation to replay
+               asset->animation->reset();
+               asset->animation->start();
+            }
          }
       }
    }
@@ -448,7 +455,16 @@ void Screen::render()
       placement.scale.y = 3.0f;
 
       placement.start_transform();
-      asset->animation->draw();
+      if (asset->animation->get_finished())
+      {
+         // If the animation is "finished", show a little placeholder circle indicating that the animation has 
+         // reached its end
+         al_draw_filled_circle(placement.size.x/2, placement.size.x/2, 6, ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5});
+      }
+      else
+      {
+         asset->animation->draw();
+      }
       placement.restore_transform();
       //placement.draw_box(al_color_name("dodgerblue"), false);
 

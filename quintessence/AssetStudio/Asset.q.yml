@@ -13,6 +13,12 @@ properties:
     constructor_arg: true
     exposed: true
 
+  - name: type
+    type: std::string
+    init_with: '"[unset-type]"'
+    constructor_arg: true
+    exposed: true
+
   - name: description
     type: std::string
     init_with: '"[unset-description]"'

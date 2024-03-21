@@ -9,9 +9,10 @@ namespace AssetStudio
 {
 
 
-Asset::Asset(int id, std::string identifier, std::string description, AllegroFlare::FrameAnimation::Animation* animation)
+Asset::Asset(int id, std::string identifier, std::string type, std::string description, AllegroFlare::FrameAnimation::Animation* animation)
    : id(id)
    , identifier(identifier)
+   , type(type)
    , description(description)
    , animation(animation)
    , categories()
