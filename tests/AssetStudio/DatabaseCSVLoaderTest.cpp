@@ -21,8 +21,8 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, can_be_created_without_blowing_up)
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
 {
-   //al_init();
-   //al_init_image_addon();
+   al_init();
+   al_init_image_addon();
 
    AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
@@ -32,14 +32,15 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
    loader.load();
    SUCCEED();
 
-   //al_uninstall_system();
+   assets_bitmap_bin.clear();
+   al_uninstall_system();
 }
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data__will_create_the_expected_records)
 {
-   //al_init();
-   //al_init_image_addon();
+   al_init();
+   al_init_image_addon();
 
    AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
@@ -50,15 +51,16 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data_
 
    EXPECT_EQ(true, loader.level_exists("grotto_walk"));
 
-   //al_uninstall_system();
+   assets_bitmap_bin.clear();
+   al_uninstall_system();
 }
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest,
    load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
 {
-   //al_init();
-   //al_init_image_addon();
+   al_init();
+   al_init_image_addon();
 
    AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
@@ -74,6 +76,9 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
    ASSERT_NE(nullptr, actual_level);
    EXPECT_EQ(1, actual_level->id);
    EXPECT_EQ("grotto_walk", actual_level->identifier);
+
+   // Check the setup on the animation
+   ASSERT_NE(nullptr, actual_level->animation);
 /*
 
    EXPECT_EQ("3. Forest", actual_level.get_title());
@@ -95,14 +100,15 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
    EXPECT_EQ(15.0, actual_level.get_song_to_perform_duration_sec());
 */
 
-   //al_uninstall_system();
+   assets_bitmap_bin.clear();
+   al_uninstall_system();
 }
 
 
 TEST(Robieo_CSVToLevelLoaderTest, load__on_production_csv__will_not_blow_up)
 {
-   //al_init();
-   //al_init_image_addon();
+   al_init();
+   al_init_image_addon();
 
    AllegroFlare::BitmapBin assets_bitmap_bin;
    assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
@@ -112,7 +118,8 @@ TEST(Robieo_CSVToLevelLoaderTest, load__on_production_csv__will_not_blow_up)
    loader.load();
    SUCCEED();
 
-   //al_uninstall_system();
+   assets_bitmap_bin.clear();
+   al_uninstall_system();
 }
 
 

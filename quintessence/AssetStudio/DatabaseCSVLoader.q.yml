@@ -186,23 +186,23 @@ methods:
          std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
          // Build the animation
-         //AllegroFlare::FrameAnimation::Animation *animation =
-            //new AllegroFlare::FrameAnimation::Animation(
-               //obtain_sprite_sheet(image_filename),
-               //identifier,
-               //{
-                  //{ 0, 0.2 },
-                  //{ 1, 0.2 },
-                  //{ 2, 0.2 },
-               //},
-               //AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
-            //);
+         AllegroFlare::FrameAnimation::Animation *animation =
+            new AllegroFlare::FrameAnimation::Animation(
+               obtain_sprite_sheet(image_filename),
+               identifier,
+               {
+                  { 0, 0.2 },
+                  { 1, 0.2 },
+                  { 2, 0.2 },
+               },
+               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+            );
 
          // Load the data into the asset
          AssetStudio::Asset *asset = new AssetStudio::Asset;
          asset->id = id;
          asset->identifier = identifier;
-         //asset->animation = animation;
+         asset->animation = animation;
 
          //asset->cell_width = cell_width;
          //asset->cell_height = cell_height;
