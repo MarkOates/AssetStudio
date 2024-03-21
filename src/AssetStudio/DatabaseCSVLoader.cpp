@@ -56,29 +56,6 @@ std::string DatabaseCSVLoader::get_csv_full_path() const
 }
 
 
-AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)
-{
-   if (!(assets_bitmap_bin))
-   {
-      std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met.";
-      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::obtain_sprite_sheet: error: guard \"assets_bitmap_bin\" not met");
-   }
-   // TODO: Guard after assets_bitmap_bin is initialized
-
-   ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
-         assets_bitmap_bin->auto_get(filename)
-         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
-      );
-   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
-      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
-
-   al_destroy_bitmap(sprite_sheet_atlas);
-
-   return result_sprite_sheet;
-}
-
 std::map<std::string, AssetStudio::Asset*> DatabaseCSVLoader::get_levels()
 {
    if (!(loaded))
@@ -159,6 +136,29 @@ std::string DatabaseCSVLoader::validate_key_and_return(std::map<std::string, std
    return extracted_row->operator[](key);
 }
 
+AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)
+{
+   if (!(assets_bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::obtain_sprite_sheet: error: guard \"assets_bitmap_bin\" not met");
+   }
+   // TODO: Guard after assets_bitmap_bin is initialized
+
+   ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
+         assets_bitmap_bin->auto_get(filename)
+         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      );
+   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
+
+   al_destroy_bitmap(sprite_sheet_atlas);
+
+   return result_sprite_sheet;
+}
+
 void DatabaseCSVLoader::load()
 {
    if (!((!loaded)))
@@ -181,7 +181,7 @@ void DatabaseCSVLoader::load()
    AllegroFlare::CSVParser csv_parser;
    csv_parser.set_raw_csv_content(content);
    csv_parser.parse();
-   csv_parser.assemble_column_headers(2);
+   csv_parser.assemble_column_headers(3);
 
    // Load the parsed data to Level objects
    int first_physical_row = csv_parser.get_num_header_rows();
@@ -197,7 +197,7 @@ void DatabaseCSVLoader::load()
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
          new AllegroFlare::FrameAnimation::Animation(
-            obtain_sprite_sheet(image_filename),
+            obtain_sprite_sheet(image_filename, cell_width, cell_height, 2),
             identifier,
             {
                { 0, 0.2 },
