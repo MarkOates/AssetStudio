@@ -7,9 +7,9 @@ properties:
     constructor_arg: true
     exposed: true
 
-  - name: name
+  - name: identifier
     type: std::string
-    init_with: '"[unset-name]"'
+    init_with: '"[unset-identifier]"'
     constructor_arg: true
     exposed: true
 

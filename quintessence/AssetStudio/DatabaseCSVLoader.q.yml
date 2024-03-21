@@ -137,12 +137,18 @@ methods:
       int first_physical_row = csv_parser.get_num_header_rows();
       for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
       {
-         std::string identifier =
-            validate_key_and_return(&extracted_row, "identifier");
+         // TODO: Load the asset data here
+         std::string identifier = validate_key_and_return(&extracted_row, "identifier");
+         int id = toi(validate_key_and_return(&extracted_row, "id"));
+         int cell_width = toi(validate_key_and_return(&extracted_row, "cell_width"));
+         int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
+         std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
          AssetStudio::Asset *asset = new AssetStudio::Asset;
-
-         // TODO: Load the asset data here
+         asset->id = id;
+         asset->name = identifier;
+         asset->name = image_filename;
+         //asset->description = description;
 
          levels.insert({ identifier, asset });
          
