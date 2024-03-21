@@ -451,8 +451,8 @@ void Screen::render()
       auto &asset = asset_record.second;
       placement.position.x = x + spacing_x * asset_i;
       placement.position.y = y;
-      placement.size.x = 16 * sprite_sheet_scale;
-      placement.size.y = 16 * sprite_sheet_scale;
+      placement.size.x = asset->cell_width * sprite_sheet_scale;
+      placement.size.y = asset->cell_height * sprite_sheet_scale;
       placement.scale.x = 3.0f;
       placement.scale.y = 3.0f;
 
