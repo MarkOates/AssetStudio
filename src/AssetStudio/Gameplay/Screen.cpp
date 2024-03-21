@@ -268,7 +268,6 @@ std::string Screen::infer_asssets_folder_location()
       // Marks-MacBook-Pro.local      // Mark's primary laptop
    //};
    std::string hostname = system_info.get_hostname();
-   //throw std::runtime_error(hostname);
 
    if (hostname == "Marks-MacBook-Pro.local")
    {
@@ -276,23 +275,14 @@ std::string Screen::infer_asssets_folder_location()
    }
 
    return "/Users/markoates/Assets/";
-   //EXPECT_THAT(expected_possible_hostnames, testing::Contains(actual_hostname));
-   //return
 }
 
 void Screen::load_database_from_csv()
 {
    std::string assets_folder = infer_asssets_folder_location();
-   //std::string assets_folder = "/Users/markoates/Assets/";
-   //std::string assets_folder = "/Volumes/markoates/Assets/";
-
    std::string assets_csv_filename = "assets_db.csv";
    assets_bitmap_bin.set_full_path(assets_folder);
 
-   //AssetStudio::DatabaseCSVLoader
-
-   //AllegroFlare::BitmapBin assets_bitmap_bin;
-   //assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
    AssetStudio::DatabaseCSVLoader loader;
    loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(assets_folder + assets_csv_filename);
