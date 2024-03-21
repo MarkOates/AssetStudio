@@ -409,9 +409,13 @@ methods:
       ALLEGRO_FONT *font = obtain_font();
       //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
 
-      float x = 300;
+      float spacing_x = 300;
+      float spacing_y = 300;
+      int num_columns = 6;
+
+      float x = 1920 / 2 - (spacing_x * (num_columns - 1)) / 2;
       float y = 200;
-      float spacing_x = 260;
+
       int sprite_sheet_scale = 2;
       AllegroFlare::Placement2D asset_placement;
       AllegroFlare::Placement2D frame_placement;
@@ -419,13 +423,22 @@ methods:
       ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5};
       ALLEGRO_COLOR ui_color_light = ALLEGRO_COLOR{0.7, 0.7, 0.745, 1.0};
 
+      float scale_x = 2.0f;
+      float scale_y = 2.0f;
+
+      int column_num = 0;
+      int row_num = 0;
+
       for (auto &asset_record : database.get_assets())
       {
-         float xx = x + spacing_x * asset_i;
+         row_num = asset_i / num_columns;
+         column_num = asset_i % num_columns;
+         float xx = x + (spacing_x * column_num);
+         float yy = y + (spacing_y * row_num);
          frame_placement.position.x = xx;
-         frame_placement.position.y = y;
-         frame_placement.size.x = 32;
-         frame_placement.size.y = 32;
+         frame_placement.position.y = yy;
+         frame_placement.size.x = 256;
+         frame_placement.size.y = 256;
 
          frame_placement.start_transform();
          {
@@ -434,8 +447,8 @@ methods:
             asset_placement.position.y = frame_placement.size.y/2;
             asset_placement.size.x = asset->cell_width * sprite_sheet_scale;
             asset_placement.size.y = asset->cell_height * sprite_sheet_scale;
-            asset_placement.scale.x = 3.0f;
-            asset_placement.scale.y = 3.0f;
+            asset_placement.scale.x = scale_x;
+            asset_placement.scale.y = scale_x;
 
             asset_placement.start_transform();
 
@@ -459,8 +472,9 @@ methods:
             ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
             al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 10, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
 
-            al_draw_rectangle(0, 0, asset_placement.size.x, asset_placement.size.y, ui_color, 1.0);
+            //al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);
          }
+         al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);
          frame_placement.restore_transform();
 
 
