@@ -298,6 +298,7 @@ void Screen::load_database_and_build_assets()
       //new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, 16, 16, 2);
    //al_destroy_bitmap(atlas);
 
+   /*
    database.set_assets({
       {
          "grotto_character",
@@ -367,6 +368,7 @@ void Screen::load_database_and_build_assets()
 
 
    });
+   */
 
    // Initialize the animations
    for (auto &asset_record : database.get_assets())
@@ -442,8 +444,8 @@ void Screen::render()
       placement.position.y = y;
       placement.size.x = 16 * sprite_sheet_scale;
       placement.size.y = 16 * sprite_sheet_scale;
-      placement.scale.x = 4.0f;
-      placement.scale.y = 4.0f;
+      placement.scale.x = 3.0f;
+      placement.scale.y = 3.0f;
 
       placement.start_transform();
       asset->animation->draw();
