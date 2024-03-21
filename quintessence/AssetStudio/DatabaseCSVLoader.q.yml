@@ -9,6 +9,13 @@ parent_classes:
 properties:
 
 
+  - name: assets_bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: csv_full_path
     type: std::string
     init_with: '"[unset-csv_full_path]"'
@@ -123,7 +130,7 @@ methods:
 
 
   - name: load
-    guards: [ (!loaded) ]
+    guards: [ (!loaded), assets_bitmap_bin ]
     body: |
       // Obtain the content from the file and parse it to extractable data
       std::string content = AllegroFlare::php::file_get_contents(csv_full_path);
@@ -390,5 +397,7 @@ dependencies:
     headers: [ cstdlib ]
   - symbol: std::stof
     headers: [ string ]
+  - symbol: AllegroFlare::BitmapBin
+    headers: [ AllegroFlare/BitmapBin.hpp ]
 
 

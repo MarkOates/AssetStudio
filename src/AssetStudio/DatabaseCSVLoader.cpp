@@ -16,8 +16,9 @@ namespace AssetStudio
 {
 
 
-DatabaseCSVLoader::DatabaseCSVLoader()
+DatabaseCSVLoader::DatabaseCSVLoader(AllegroFlare::BitmapBin* assets_bitmap_bin)
    : AllegroFlare::CSVParser()
+   , assets_bitmap_bin(assets_bitmap_bin)
    , csv_full_path("[unset-csv_full_path]")
    , levels({})
    , loaded(false)
@@ -30,9 +31,21 @@ DatabaseCSVLoader::~DatabaseCSVLoader()
 }
 
 
+void DatabaseCSVLoader::set_assets_bitmap_bin(AllegroFlare::BitmapBin* assets_bitmap_bin)
+{
+   this->assets_bitmap_bin = assets_bitmap_bin;
+}
+
+
 void DatabaseCSVLoader::set_csv_full_path(std::string csv_full_path)
 {
    this->csv_full_path = csv_full_path;
+}
+
+
+AllegroFlare::BitmapBin* DatabaseCSVLoader::get_assets_bitmap_bin() const
+{
+   return assets_bitmap_bin;
 }
 
 
@@ -130,6 +143,13 @@ void DatabaseCSVLoader::load()
       error_message << "[DatabaseCSVLoader::load]: error: guard \"(!loaded)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("DatabaseCSVLoader::load: error: guard \"(!loaded)\" not met");
+   }
+   if (!(assets_bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::load]: error: guard \"assets_bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::load: error: guard \"assets_bitmap_bin\" not met");
    }
    // Obtain the content from the file and parse it to extractable data
    std::string content = AllegroFlare::php::file_get_contents(csv_full_path);

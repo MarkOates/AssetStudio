@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <AssetStudio/DatabaseCSVLoader.hpp>
+#include <AllegroFlare/BitmapBin.hpp>
 
 
 // TODO: Consider loading some test data csv, and then separately from that the production data set
@@ -14,9 +15,14 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, can_be_created_without_blowing_up)
 }
 
 
+// TODO: Add test on assets_bitmap_bin guard
+
+
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
 {
+   AllegroFlare::BitmapBin assets_bitmap_bin;
    AssetStudio::DatabaseCSVLoader loader;
+   loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
    SUCCEED();
@@ -25,7 +31,9 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
 
 TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data__will_create_the_expected_records)
 {
+   AllegroFlare::BitmapBin assets_bitmap_bin;
    AssetStudio::DatabaseCSVLoader loader;
+   loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
 
@@ -36,7 +44,9 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data_
 TEST(AssetStudio_DatabaseCSVLoaderTest,
    load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
 {
+   AllegroFlare::BitmapBin assets_bitmap_bin;
    AssetStudio::DatabaseCSVLoader loader;
+   loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    //Robieo::CSVToLevelLoader loader;
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
@@ -72,7 +82,9 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
 
 TEST(Robieo_CSVToLevelLoaderTest, load__on_production_csv__will_not_blow_up)
 {
+   AllegroFlare::BitmapBin assets_bitmap_bin;
    AssetStudio::DatabaseCSVLoader loader;
+   loader.set_assets_bitmap_bin(&assets_bitmap_bin);
    loader.set_csv_full_path(ASSETS_DB_CSV_FILENAME);
    loader.load();
    SUCCEED();

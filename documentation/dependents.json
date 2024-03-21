@@ -36,6 +36,10 @@
   "std/stof": [
     "AssetStudio/DatabaseCSVLoader"
   ],
+  "AllegroFlare/BitmapBin": [
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Gameplay/Screen"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],
@@ -115,9 +119,6 @@
     "AssetStudio/Gameplay/Screen"
   ],
   "ALLEGRO_EVENT": [
-    "AssetStudio/Gameplay/Screen"
-  ],
-  "AllegroFlare/BitmapBin": [
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/EventEmitter": [

@@ -256,6 +256,10 @@ table td
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
+  <td class="property">assets_bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
   <td class="property">csv_full_path</td>
   <td class="property">std::string</td>
 </tr>
@@ -321,6 +325,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stof&quot;, &quot;headers&quot;=&gt;[&quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -784,6 +791,10 @@ table td
   "std/stof": [
     "AssetStudio/DatabaseCSVLoader"
   ],
+  "AllegroFlare/BitmapBin": [
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Gameplay/Screen"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],
@@ -863,9 +874,6 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "ALLEGRO_EVENT": [
-    "AssetStudio/Gameplay/Screen"
-  ],
-  "AllegroFlare/BitmapBin": [
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/EventEmitter": [
