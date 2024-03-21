@@ -185,6 +185,14 @@ methods:
          int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
          std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
+         std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
+         int frame_data__build_n_frames__num_frames =
+            toi(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__num_frames"));
+         int frame_data__build_n_frames__start_from_frame =
+            toi(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__start_from_frame"));
+         int frame_data__build_n_frames__each_frame_duration =
+            tof(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__each_frame_duration"));
+
          // Build the animation
          AllegroFlare::FrameAnimation::Animation *animation =
             new AllegroFlare::FrameAnimation::Animation(
