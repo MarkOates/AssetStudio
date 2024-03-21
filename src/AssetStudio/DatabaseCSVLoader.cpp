@@ -159,6 +159,48 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_shee
    return result_sprite_sheet;
 }
 
+std::vector<AllegroFlare::FrameAnimation::Frame> DatabaseCSVLoader::build_n_frames(uint32_t num_frames, uint32_t start_frame_num, float each_frame_duration)
+{
+   if (!((num_frames > 1)))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames > 1)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(num_frames > 1)\" not met");
+   }
+   if (!((start_frame_num >= 0)))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(start_frame_num >= 0)\" not met");
+   }
+   if (!((each_frame_duration >= 0.0001)))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(each_frame_duration >= 0.0001)\" not met");
+   }
+   std::vector<AllegroFlare::FrameAnimation::Frame> result;
+   for (uint32_t i=0; i<num_frames; i++)
+   {
+      result.push_back({ start_frame_num + i, each_frame_duration });
+   }
+   return result;
+}
+
+std::vector<AllegroFlare::FrameAnimation::Frame> DatabaseCSVLoader::build_frames_from_hash(std::string frame_data_hash)
+{
+   AllegroFlare::Logger::throw_error(
+      "AssetStudio::DatabaseCSVLoader::build_frames_from_hash",
+      "This feature is not yet supported."
+   );
+
+   std::vector<AllegroFlare::FrameAnimation::Frame> result;
+   return result;
+}
+
 void DatabaseCSVLoader::load()
 {
    if (!((!loaded)))
@@ -185,6 +227,7 @@ void DatabaseCSVLoader::load()
 
    // Load the parsed data to Level objects
    int first_physical_row = csv_parser.get_num_header_rows();
+   int row_i = first_physical_row;
    for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
    {
       // Extract the data here
@@ -195,23 +238,67 @@ void DatabaseCSVLoader::load()
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
       std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
-      int frame_data__build_n_frames__num_frames =
-         toi(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__num_frames"));
-      int frame_data__build_n_frames__start_from_frame =
-         toi(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__start_from_frame"));
-      int frame_data__build_n_frames__each_frame_duration =
-         tof(validate_key_and_return(&extracted_row, "frame_data__build_n_frames__each_frame_duration"));
+      std::string frame_data__build_n_frames__num_frames =
+         validate_key_and_return(&extracted_row, "frame_data__build_n_frames__num_frames");
+      std::string frame_data__build_n_frames__start_from_frame =
+         validate_key_and_return(&extracted_row, "frame_data__build_n_frames__start_from_frame");
+      std::string frame_data__build_n_frames__each_frame_duration =
+         validate_key_and_return(&extracted_row, "frame_data__build_n_frames__each_frame_duration");
+
+      bool using_build_n_frames_frame_data = 
+         !(
+               frame_data__build_n_frames__num_frames.empty()
+            && frame_data__build_n_frames__start_from_frame.empty()
+            && frame_data__build_n_frames__each_frame_duration.empty()
+         );
+      bool using_in_hash_frame_data = !frame_data__in_hash.empty();
+
+      std::vector<AllegroFlare::FrameAnimation::Frame> frame_data;
+
+      if (using_build_n_frames_frame_data && using_in_hash_frame_data)
+      {
+         AllegroFlare::Logger::throw_error(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "When loading row " + std::to_string(row_i) + ", both \"build_n_frames\" and \"in_hash\" sections "
+               "contain data. Either one section or the other should be used, but not both."
+         );
+      }
+      else if (!using_build_n_frames_frame_data && !using_in_hash_frame_data)
+      {
+         // NOTE: Assuming this is a tileset
+         // TODO: Consider outputting an "info", "warning", or maybe guarding with a type==tileset or something.
+         //AllegroFlare::Logger::throw_error(
+            //"AssetStudio::DatabaseCSVLoader::load",
+            //"When loading row " + std::to_string(row_i) + ", both \"build_n_frames\" and \"in_hash\" sections are "
+               //"empty. Expecting some data there."
+         //);
+      }
+      else if (using_build_n_frames_frame_data)
+      {
+         frame_data = build_n_frames(
+               toi(frame_data__build_n_frames__num_frames), // TODO: Test this int
+               toi(frame_data__build_n_frames__start_from_frame), // TODO: Test this int
+               tof(frame_data__build_n_frames__each_frame_duration) // TODO: Test this float
+            );
+      }
+      else if (using_in_hash_frame_data)
+      {
+         frame_data = build_frames_from_hash(frame_data__in_hash);
+      }
+      else
+      {
+         AllegroFlare::Logger::throw_error(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "Weird error 2324jfgasodjifas."
+         );
+      }
 
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
          new AllegroFlare::FrameAnimation::Animation(
             obtain_sprite_sheet(image_filename, cell_width, cell_height, 2),
             identifier,
-            {
-               { 0, 0.2 },
-               { 1, 0.2 },
-               { 2, 0.2 },
-            },
+            frame_data,
             AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
          );
 
@@ -437,6 +524,7 @@ void DatabaseCSVLoader::load()
       levels.insert({ identifier, level });
 
       */
+      row_i++;
    }
 
    loaded = true;

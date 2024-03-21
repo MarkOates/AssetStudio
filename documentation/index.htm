@@ -303,6 +303,14 @@ table td
   <td class="private_method"><b>obtain_sprite_sheet</b>(std::string filename=&quot;[unset-filename]&quot;, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
 </tr>
 <tr>
+  <td class="method">std::vector&lt;AllegroFlare::FrameAnimation::Frame&gt;</td>
+  <td class="method"><b>build_n_frames</b>(uint32_t num_frames=1, uint32_t start_frame_num=0, float each_frame_duration=0.08f)</td>
+</tr>
+<tr>
+  <td class="method">std::vector&lt;AllegroFlare::FrameAnimation::Frame&gt;</td>
+  <td class="method"><b>build_frames_from_hash</b>(std::string frame_data_hash=&quot;[unset-frame_data_hash]&quot;)</td>
+</tr>
+<tr>
   <td class="method">void</td>
   <td class="method"><b>load</b>()</td>
 </tr>
@@ -335,6 +343,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteSheet&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteSheet.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Frame&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Frame.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -806,6 +817,10 @@ table td
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
+  "AllegroFlare/FrameAnimation/Frame": [
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Gameplay/Screen"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],
@@ -918,9 +933,6 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "ALLEGRO_BITMAP": [
-    "AssetStudio/Gameplay/Screen"
-  ],
-  "AllegroFlare/FrameAnimation/Frame": [
     "AssetStudio/Gameplay/Screen"
   ]
 }
