@@ -164,5 +164,8 @@
   ],
   "AssetStudio/DatabaseCSVLoader": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/SystemInfo": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }

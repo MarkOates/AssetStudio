@@ -4,6 +4,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
+#include <AllegroFlare/SystemInfo.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <AssetStudio/DatabaseCSVLoader.hpp>
 #include <AssetStudio/GameConfigurations/Main.hpp>
@@ -257,9 +258,34 @@ AllegroFlare::FrameAnimation::SpriteSheet* Screen::obtain_sprite_sheet(std::stri
    return result_sprite_sheet;
 }
 
+std::string Screen::infer_asssets_folder_location()
+{
+   AllegroFlare::SystemInfo system_info;
+   //std::vector<std::string> expected_possible_hostnames = {
+      //"DESKTOP-NC9M1BH",            // Mark's Windows Laptop
+      //"Marks-13-MacBook-Pro.local", // Mark's Mac Laptop used as desktop
+      //"Marks-Mac-mini.local",       // Mark's MacMini
+      // Marks-MacBook-Pro.local      // Mark's primary laptop
+   //};
+   std::string hostname = system_info.get_hostname();
+   //throw std::runtime_error(hostname);
+
+   if (hostname == "Marks-MacBook-Pro.local")
+   {
+      return "/Volumes/markoates/Assets/";
+   }
+
+   return "/Users/markoates/Assets/";
+   //EXPECT_THAT(expected_possible_hostnames, testing::Contains(actual_hostname));
+   //return
+}
+
 void Screen::load_database_from_csv()
 {
-   std::string assets_folder = "/Users/markoates/Assets/";
+   std::string assets_folder = infer_asssets_folder_location();
+   //std::string assets_folder = "/Users/markoates/Assets/";
+   //std::string assets_folder = "/Volumes/markoates/Assets/";
+
    std::string assets_csv_filename = "assets_db.csv";
    assets_bitmap_bin.set_full_path(assets_folder);
 

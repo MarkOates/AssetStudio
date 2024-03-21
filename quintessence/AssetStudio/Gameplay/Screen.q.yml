@@ -231,9 +231,37 @@ methods:
       return result_sprite_sheet;
 
 
+  - name: infer_asssets_folder_location
+    type: std::string
+    body: |
+      AllegroFlare::SystemInfo system_info;
+      //std::vector<std::string> expected_possible_hostnames = {
+         //"DESKTOP-NC9M1BH",            // Mark's Windows Laptop
+         //"Marks-13-MacBook-Pro.local", // Mark's Mac Laptop used as desktop
+         //"Marks-Mac-mini.local",       // Mark's MacMini
+         // Marks-MacBook-Pro.local      // Mark's primary laptop
+      //};
+      std::string hostname = system_info.get_hostname();
+      //throw std::runtime_error(hostname);
+
+      if (hostname == "Marks-MacBook-Pro.local")
+      {
+         return "/Volumes/markoates/Assets/";
+      }
+
+      return "/Users/markoates/Assets/";
+      //EXPECT_THAT(expected_possible_hostnames, testing::Contains(actual_hostname));
+      //return
+    body_dependency_symbols:
+       - AllegroFlare::SystemInfo
+
+
   - name: load_database_from_csv
     body: |
-      std::string assets_folder = "/Users/markoates/Assets/";
+      std::string assets_folder = infer_asssets_folder_location();
+      //std::string assets_folder = "/Users/markoates/Assets/";
+      //std::string assets_folder = "/Volumes/markoates/Assets/";
+
       std::string assets_csv_filename = "assets_db.csv";
       assets_bitmap_bin.set_full_path(assets_folder);
 
@@ -674,5 +702,7 @@ dependencies:
     headers: [ AllegroFlare/FrameAnimation/Frame.hpp ]
   - symbol: AssetStudio::DatabaseCSVLoader
     headers: [ AssetStudio/DatabaseCSVLoader.hpp ]
+  - symbol: AllegroFlare::SystemInfo
+    headers: [ AllegroFlare/SystemInfo.hpp ]
 
 

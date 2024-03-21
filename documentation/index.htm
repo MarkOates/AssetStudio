@@ -672,6 +672,10 @@ table td
   <td class="method"><b>obtain_sprite_sheet</b>(std::string filename=&quot;[unset-filename]&quot;, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
 </tr>
 <tr>
+  <td class="method">std::string</td>
+  <td class="method"><b>infer_asssets_folder_location</b>()</td>
+</tr>
+<tr>
   <td class="method">void</td>
   <td class="method"><b>load_database_from_csv</b>()</td>
 </tr>
@@ -792,6 +796,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::DatabaseCSVLoader&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/DatabaseCSVLoader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SystemInfo&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SystemInfo.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -963,6 +970,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/DatabaseCSVLoader": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/SystemInfo": [
     "AssetStudio/Gameplay/Screen"
   ]
 }
