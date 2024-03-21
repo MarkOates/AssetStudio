@@ -60,6 +60,7 @@ namespace AssetStudio
          void initialize();
          std::vector<AllegroFlare::FrameAnimation::Frame> build_n_frames(uint32_t num_frames=1, uint32_t start_frame_num=0, float each_frame_duration=0.08f);
          AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
+         void load_database_from_csv();
          void load_database_and_build_assets();
          virtual void on_activate() override;
          virtual void on_deactivate() override;

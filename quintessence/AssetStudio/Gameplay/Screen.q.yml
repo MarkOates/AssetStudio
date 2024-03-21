@@ -168,7 +168,7 @@ methods:
     body: |
       set_update_strategy(AllegroFlare::Screens::Base::UpdateStrategy::SEPARATE_UPDATE_AND_RENDER_FUNCS);
 
-      load_database_and_build_assets();
+      load_database_from_csv();
 
       initialized = true;
       return;
@@ -231,6 +231,35 @@ methods:
       return result_sprite_sheet;
 
 
+  - name: load_database_from_csv
+    body: |
+      std::string assets_folder = "/Users/markoates/Assets/";
+      std::string assets_csv_filename = "assets_db.csv";
+      assets_bitmap_bin.set_full_path(assets_folder);
+
+      //AssetStudio::DatabaseCSVLoader
+
+      //AllegroFlare::BitmapBin assets_bitmap_bin;
+      //assets_bitmap_bin.set_full_path(ASSETS_FULL_PATH);
+      AssetStudio::DatabaseCSVLoader loader;
+      loader.set_assets_bitmap_bin(&assets_bitmap_bin);
+      loader.set_csv_full_path(assets_folder + assets_csv_filename);
+      loader.load();
+
+      database.set_assets(loader.get_levels());
+
+      // Initialize the animations
+      for (auto &asset_record : database.get_assets())
+      {
+         auto &asset = asset_record.second;
+         asset->animation->initialize();
+      }
+
+      return;
+    body_dependency_symbols:
+      - AssetStudio::DatabaseCSVLoader
+
+
   - name: load_database_and_build_assets
     body: |
       int asset_id = 0;
@@ -246,66 +275,79 @@ methods:
       //al_destroy_bitmap(atlas);
 
       database.set_assets({
-         new AssetStudio::Asset(
-            asset_id++,
-            "grotto",
-            "grotto character",
-            new AllegroFlare::FrameAnimation::Animation(
-               obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
-               "grotto_character",
-               {
-                  { 0, 0.2 },
-                  { 1, 0.2 },
-                  { 2, 0.2 },
-               },
-               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
-            )
-         ),
-         new AssetStudio::Asset(
-            asset_id++,
-            "grotto",
-            "grotto jump",
-            new AllegroFlare::FrameAnimation::Animation(
-               obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
-               "grotto_jump",
-               {
-                  { 4, 1.0 },
-               },
-               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
-            )
-         ),
-         new AssetStudio::Asset(
-            asset_id++,
+         {
+            "grotto_character",
+            new AssetStudio::Asset(
+               asset_id++,
+               "grotto",
+               "grotto character",
+               new AllegroFlare::FrameAnimation::Animation(
+                  obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
+                  "grotto_character",
+                  {
+                     { 0, 0.2 },
+                     { 1, 0.2 },
+                     { 2, 0.2 },
+                  },
+                  AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+               )
+            ),
+         },
+         {
+            "grotto_jump",
+            new AssetStudio::Asset(
+               asset_id++,
+               "grotto",
+               "grotto jump",
+               new AllegroFlare::FrameAnimation::Animation(
+                  obtain_sprite_sheet("grotto_escape_pack/Base pack/graphics/player.png"), //sprite_sheet,
+                  "grotto_jump",
+                  {
+                     { 4, 1.0 },
+                  },
+                  AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_PING_PONG
+               )
+            ),
+         },
+         {
             "explosion_h",
-            "a blow up",
-            new AllegroFlare::FrameAnimation::Animation(
-               obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32),
+            new AssetStudio::Asset(
+               asset_id++,
                "explosion_h",
-               build_n_frames(9),
-               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
-            )
-         ),
-         new AssetStudio::Asset(
-            asset_id++,
-            "explosion_h",
-            "a blow up",
-            new AllegroFlare::FrameAnimation::Animation(
-               obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-e.png", 48, 48),
+               "a blow up",
+               new AllegroFlare::FrameAnimation::Animation(
+                  obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-h.png", 32, 32),
+                  "explosion_h",
+                  build_n_frames(9),
+                  AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
+               )
+            ),
+         },
+         {
+            "explosion_e",
+            new AssetStudio::Asset(
+               asset_id++,
                "explosion_h",
-               build_n_frames(9),
-               AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
+               "a blow up",
+               new AllegroFlare::FrameAnimation::Animation(
+                  obtain_sprite_sheet("Explosions Pack 7 files/Spritesheet/explosion-e.png", 48, 48),
+                  "explosion_h",
+                  build_n_frames(9),
+                  AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE
+               )
             )
-         )
+         },
 
-         //obtain_sprite_sheet
+            //obtain_sprite_sheet
          //Explosions Pack 7 files/Spritesheet/explosion-h.png
 
 
       });
 
       // Initialize the animations
-      for (auto &asset : database.get_assets())
+      for (auto &asset_record : database.get_assets())
       {
+         auto &asset = asset_record.second;
          asset->animation->initialize();
       }
 
@@ -337,8 +379,9 @@ methods:
   - name: update
     body: |
       // Run "update" on all animations
-      for (auto &asset : database.get_assets())
+      for (auto &asset_record : database.get_assets())
       {
+         auto &asset = asset_record.second;
          asset->animation->update();
          if (asset->animation->get_playmode() == AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE)
          {
@@ -363,8 +406,9 @@ methods:
       int sprite_sheet_scale = 2;
       AllegroFlare::Placement2D placement;
       int asset_i = 0;
-      for (auto &asset : database.get_assets())
+      for (auto &asset_record : database.get_assets())
       {
+         auto &asset = asset_record.second;
          placement.position.x = x + spacing_x * asset_i;
          placement.position.y = y;
          placement.size.x = 16 * sprite_sheet_scale;
@@ -559,5 +603,7 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::FrameAnimation::Frame
     headers: [ AllegroFlare/FrameAnimation/Frame.hpp ]
+  - symbol: AssetStudio::DatabaseCSVLoader
+    headers: [ AssetStudio/DatabaseCSVLoader.hpp ]
 
 

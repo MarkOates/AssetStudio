@@ -219,7 +219,7 @@ table td
 <div class="property-box properties">     <table>
 <tr>
   <td class="property">assets</td>
-  <td class="property">std::vector&lt;AssetStudio::Asset*&gt;</td>
+  <td class="property">std::map&lt;std::string, AssetStudio::Asset*&gt;</td>
 </tr>
 <tr>
   <td class="property">asset_groups</td>
@@ -657,6 +657,10 @@ table td
 </tr>
 <tr>
   <td class="method">void</td>
+  <td class="method"><b>load_database_from_csv</b>()</td>
+</tr>
+<tr>
+  <td class="method">void</td>
   <td class="method"><b>load_database_and_build_assets</b>()</td>
 </tr>
 <tr>
@@ -765,6 +769,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Frame&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Frame.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::DatabaseCSVLoader&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/DatabaseCSVLoader.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -933,6 +940,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "ALLEGRO_BITMAP": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/DatabaseCSVLoader": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

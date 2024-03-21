@@ -161,5 +161,8 @@
   ],
   "ALLEGRO_BITMAP": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "AssetStudio/DatabaseCSVLoader": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }

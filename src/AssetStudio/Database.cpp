@@ -22,7 +22,7 @@ Database::~Database()
 }
 
 
-void Database::set_assets(std::vector<AssetStudio::Asset*> assets)
+void Database::set_assets(std::map<std::string, AssetStudio::Asset*> assets)
 {
    this->assets = assets;
 }
@@ -40,7 +40,7 @@ void Database::set_categories(std::vector<AssetStudio::Category*> categories)
 }
 
 
-std::vector<AssetStudio::Asset*> Database::get_assets() const
+std::map<std::string, AssetStudio::Asset*> Database::get_assets() const
 {
    return assets;
 }

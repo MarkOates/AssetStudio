@@ -2,7 +2,7 @@ properties:
 
 
   - name: assets
-    type: std::vector<AssetStudio::Asset*>
+    type: std::map<std::string, AssetStudio::Asset*>
     init_with: ''
     getter: true
     setter: true
