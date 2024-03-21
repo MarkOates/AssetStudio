@@ -342,6 +342,8 @@ void DatabaseCSVLoader::load()
       asset->id = id;
       asset->identifier = identifier;
       asset->animation = animation;
+      asset->cell_width = cell_width;
+      asset->cell_height = cell_height;
 
       //asset->cell_width = cell_width;
       //asset->cell_height = cell_height;

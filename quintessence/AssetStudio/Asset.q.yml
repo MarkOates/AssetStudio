@@ -31,6 +31,18 @@ properties:
     constructor_arg: true
     exposed: true
 
+  - name: cell_width
+    type: int
+    init_with: 0
+    constructor_arg: true
+    exposed: true
+
+  - name: cell_height
+    type: int
+    init_with: 0
+    constructor_arg: true
+    exposed: true
+
   - name: categories
     type: std::vector<std::string>
     init_with: ''
