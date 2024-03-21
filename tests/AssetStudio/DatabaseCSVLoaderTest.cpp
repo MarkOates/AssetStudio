@@ -79,6 +79,7 @@ TEST(AssetStudio_DatabaseCSVLoaderTest,
 
    // Check the setup on the animation
    ASSERT_NE(nullptr, actual_level->animation);
+   EXPECT_EQ(3, actual_level->animation->get_frames().size());
 /*
 
    EXPECT_EQ("3. Forest", actual_level.get_title());
