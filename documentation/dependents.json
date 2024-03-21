@@ -9,13 +9,32 @@
   ],
   "AssetStudio/Asset": [
     "AssetStudio/AssetGroup",
-    "AssetStudio/Database"
+    "AssetStudio/Database",
+    "AssetStudio/DatabaseCSVLoader"
   ],
   "AssetStudio/AssetGroup": [
     "AssetStudio/Database"
   ],
   "AssetStudio/Category": [
     "AssetStudio/Database"
+  ],
+  "AllegroFlare/CSVParser": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "AllegroFlare/UsefulPHP": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "SurviveTheCity/CSVParser": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "AllegroFlare/Logger": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "std/atoi": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "std/stof": [
+    "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
