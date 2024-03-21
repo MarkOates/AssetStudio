@@ -410,7 +410,7 @@ methods:
       //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920/2, 1080/2 - 30, ALLEGRO_ALIGN_CENTER, "Hello");
 
       float spacing_x = 300;
-      float spacing_y = 300;
+      float spacing_y = 340;
       int num_columns = 6;
 
       float x = 1920 / 2 - (spacing_x * (num_columns - 1)) / 2;
@@ -422,9 +422,10 @@ methods:
       int asset_i = 0;
       ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5};
       ALLEGRO_COLOR ui_color_light = ALLEGRO_COLOR{0.7, 0.7, 0.745, 1.0};
+      ALLEGRO_COLOR ui_color_dark = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.1};
 
-      float scale_x = 2.0f;
-      float scale_y = 2.0f;
+      float scale_x = 2.5f;
+      float scale_y = 2.5f;
 
       int column_num = 0;
       int row_num = 0;
@@ -441,6 +442,7 @@ methods:
          frame_placement.size.y = 256;
 
          frame_placement.start_transform();
+         al_draw_filled_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color_dark);
          {
             auto &asset = asset_record.second;
             asset_placement.position.x = frame_placement.size.x/2;
@@ -451,6 +453,7 @@ methods:
             asset_placement.scale.y = scale_x;
 
             asset_placement.start_transform();
+            //al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);
 
             // Draw a frame rectangle indicating the dimensions of the asset
             al_draw_rectangle(0, 0, asset_placement.size.x, asset_placement.size.y, ui_color, 2.0);
@@ -470,7 +473,7 @@ methods:
 
             // Draw asset identifier
             ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
-            al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 10, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
+            al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 8, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
 
             //al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);
          }
