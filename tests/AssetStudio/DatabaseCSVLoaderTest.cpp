@@ -6,7 +6,8 @@
 
 
 // TODO: Consider loading some test data csv, and then separately from that the production data set
-#define ASSETS_FULL_PATH "/Users/markoates/Assets/"
+//#define ASSETS_FULL_PATH "/Users/markoates/Assets/"
+#define ASSETS_FULL_PATH "/Volumes/markoates/Assets/"
 #define ASSETS_DB_CSV_FILENAME ASSETS_FULL_PATH "assets_db.csv"
 
 

@@ -309,8 +309,13 @@ methods:
 
          if (!playmode.empty())
          {
-            std::pair<bool, uint32_t> playmode_parsed_data = str_to_playmode(playmode);
+            playmode_parsed_data = str_to_playmode(playmode);
          }
+         //else
+         //{
+            std::cout << "- identnfier: \"" << identifier << std::endl;
+            std::cout << "    playmode: \"" << playmode << "\" -> " << playmode_parsed_data.second << std::endl;
+         //}
 
          if (playmode_parsed_data.first == false)
          {
