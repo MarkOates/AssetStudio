@@ -413,37 +413,56 @@ methods:
       float y = 200;
       float spacing_x = 300;
       int sprite_sheet_scale = 2;
-      AllegroFlare::Placement2D placement;
+      AllegroFlare::Placement2D asset_placement;
+      AllegroFlare::Placement2D frame_placement;
       int asset_i = 0;
       ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5};
+      ALLEGRO_COLOR ui_color_light = ALLEGRO_COLOR{0.7, 0.7, 0.745, 1.0};
 
       for (auto &asset_record : database.get_assets())
       {
-         auto &asset = asset_record.second;
-         placement.position.x = x + spacing_x * asset_i;
-         placement.position.y = y;
-         placement.size.x = asset->cell_width * sprite_sheet_scale;
-         placement.size.y = asset->cell_height * sprite_sheet_scale;
-         placement.scale.x = 3.0f;
-         placement.scale.y = 3.0f;
+         float xx = x + spacing_x * asset_i;
+         frame_placement.position.x = xx;
+         frame_placement.position.y = y;
+         frame_placement.size.x = 32;
+         frame_placement.size.y = 32;
 
-         placement.start_transform();
-
-         // Draw a frame rectangle indicating the dimensions of the asset
-         al_draw_rectangle(0, 0, placement.size.x, placement.size.y, ui_color, 2.0);
-
-         if (asset->animation->get_finished())
+         frame_placement.start_transform();
          {
-            // If the animation is "finished", show a little placeholder circle indicating that the animation has 
-            // reached its end
-            al_draw_filled_circle(placement.size.x/2, placement.size.y/2, 6, ui_color);
+            auto &asset = asset_record.second;
+            asset_placement.position.x = frame_placement.size.x/2;
+            asset_placement.position.y = frame_placement.size.y/2;
+            asset_placement.size.x = asset->cell_width * sprite_sheet_scale;
+            asset_placement.size.y = asset->cell_height * sprite_sheet_scale;
+            asset_placement.scale.x = 3.0f;
+            asset_placement.scale.y = 3.0f;
+
+            asset_placement.start_transform();
+
+            // Draw a frame rectangle indicating the dimensions of the asset
+            al_draw_rectangle(0, 0, asset_placement.size.x, asset_placement.size.y, ui_color, 2.0);
+
+            if (asset->animation->get_finished())
+            {
+               // If the animation is "finished", show a little placeholder circle indicating that the animation has 
+               // reached its end
+               al_draw_filled_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color);
+            }
+            else
+            {
+               asset->animation->draw();
+            }
+
+            asset_placement.restore_transform();
+
+            // Draw asset identifier
+            ALLEGRO_FONT *font = obtain_font();
+            al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 10, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
          }
-         else
-         {
-            asset->animation->draw();
-         }
-         placement.restore_transform();
-         //placement.draw_box(al_color_name("dodgerblue"), false);
+         frame_placement.restore_transform();
+
+
+         //asset_placement.draw_box(al_color_name("dodgerblue"), false);
 
          asset_i++;
       }
