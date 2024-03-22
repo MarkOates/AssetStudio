@@ -33,7 +33,7 @@ else
 end if
 
 
-display alert "Download process is finished." message "Writing file." buttons {"OK"}
+-- display alert "Download process is finished." message "Writing file." buttons {"OK"}
 
 -- Write downloadCount to a text file
 set desktopPath to (path to desktop as text)
@@ -41,11 +41,12 @@ set filePath to desktopPath & "download_count.txt"
 set fileHandle to open for access file filePath with write permission
 set downloadCountString to downloadCount as text -- Coerce downloadCount to text
 write downloadCountString to fileHandle
-write downloadName to fileHandle
+display alert "A." message "Writing file." buttons {"OK"}
+-- write downloadName to fileHandle
+display alert "B." message "Writing file." buttons {"OK"}
 close access fileHandle
+display alert "C." message "Writing file." buttons {"OK"}
 
 
-display alert "Download process is finished." message "Press OK." buttons {"OK"}
-
-
+display alert "Download process is finished." message "Writing file." buttons {"OK"}
 
