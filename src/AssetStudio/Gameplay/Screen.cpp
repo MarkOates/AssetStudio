@@ -470,7 +470,13 @@ void Screen::render()
    AllegroFlare::Placement2D asset_placement;
    AllegroFlare::Placement2D frame_placement;
    int asset_i = 0;
-   ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{0.1, 0.1, 0.143, 0.5};
+   float ui_color_opacity = 0.5f;
+   ALLEGRO_COLOR ui_color = ALLEGRO_COLOR{
+         0.1f*ui_color_opacity,
+         0.1f*ui_color_opacity,
+         0.143f*ui_color_opacity,
+         0.5f*ui_color_opacity
+      };
    ALLEGRO_COLOR ui_color_light = ALLEGRO_COLOR{0.7, 0.7, 0.745, 1.0};
    ALLEGRO_COLOR ui_color_dark = ALLEGRO_COLOR{0.0, 0.0, 0.0, 0.1};
 
