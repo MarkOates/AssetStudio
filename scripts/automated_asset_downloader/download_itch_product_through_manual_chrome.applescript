@@ -98,7 +98,7 @@ on run argv
         tell application "Google Chrome"
             repeat with downloadNum from 0 to (downloadCount - 1)
               execute front window's active tab javascript "document.querySelectorAll('.uploads .upload .button')[" & downloadNum & "].click();"
-              delay 2
+              delay 3
             end repeat
         end tell
     else
@@ -148,6 +148,7 @@ on run argv
     set sourceFilePath to downloadsDirectory & downloadLogFilename
     set destinationFolderPath to finalDestinationDirectory & "/" & downloadLogFilename
     do shell script "mv " & quoted form of sourceFilePath & space & quoted form of destinationFolderPath
+    -- do shell script "echo '✅ Log file copied successfully.'"
 
     -- Move the downloaded files one by one to the destination folder
     set downloadAssetFilename to ""
@@ -156,6 +157,7 @@ on run argv
         set sourceFilePath to downloadsDirectory & downloadAssetFilename
         set destinationFolderPath to finalDestinationDirectory & "/" & downloadAssetFilename
         do shell script "mv " & quoted form of sourceFilePath & space & quoted form of destinationFolderPath
+        -- do shell script "echo '✅ \"" & sourceFilePath & "\" copied successfully to \"" & destinationFolderPath & "\".'"
     end repeat
 
 
@@ -163,7 +165,7 @@ on run argv
     -- Output a message, indicating that the downloading has finished
     -----------------------------------------------------------------
 
-    display alert "Download process is finished." message "Writing file." buttons {"OK"}
+    display alert "Download Process Finished." message "Check the output of the script to be sure the files downloaded successfully." buttons {"OK"}
 
 
 end run
