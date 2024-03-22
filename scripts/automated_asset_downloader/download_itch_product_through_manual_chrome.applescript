@@ -144,12 +144,19 @@ on run argv
     set downloadsDirectory to "/Users/markoates/Desktop/"
     -- finalDestinationDirectory created earlier in the script
 
-    -- Copy the download log file
-    set sourceFilePath to "/Users/markoates/Desktop/" & downloadLogFilename
+    -- Copy the download log file and move it to the destination folder
+    set sourceFilePath to downloadsDirectory & downloadLogFilename
     set destinationFolderPath to finalDestinationDirectory & "/" & downloadLogFilename
-
-    -- Move the file
     do shell script "mv " & quoted form of sourceFilePath & space & quoted form of destinationFolderPath
+
+    -- Move the downloaded files one by one to the destination folder
+    set downloadAssetFilename to ""
+    repeat with i from 1 to count of downloadNamesList
+        set downloadAssetFilename to "" & item i of downloadNamesList
+        set sourceFilePath to downloadsDirectory & downloadAssetFilename
+        set destinationFolderPath to finalDestinationDirectory & "/" & downloadAssetFilename
+        do shell script "mv " & quoted form of sourceFilePath & space & quoted form of destinationFolderPath
+    end repeat
 
 
 
