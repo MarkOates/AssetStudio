@@ -3,10 +3,12 @@
 # Prerequisites (may require sudo):
 # ruby -v
 # gem install httparty
-# sudo gem install nokogiri
+# gem install nokogiri
+# gem install pry #(? - didn't actually install at the time of this writing, was already installed)
 
 require "httparty"
 require "nokogiri"
+require "pry"
 
 
 # Obtain the file contents
@@ -29,13 +31,42 @@ puts "   - Number of characters: #{num_characters}"
 
 # Load the document
 
+def print_element_tree(element, level = 0)
+  class_names = element.attribute('class')&.value || ""
+  puts "  " * level + "#{element.name} - #{class_names}"
+  element.children.each do |child|
+    print_element_tree(child, level + 1)
+  end
+end
+
 document = Nokogiri::HTML(file_contents)
 num_elements = document.css('*').size
 puts "File contents parsed successfully."
 puts "   - Number of elements: #{num_elements}"
+# To view the document structure:
+#print_element_tree(document)
+
 
 # Parse the document
 
 # TODO: continue parsing individual elements
-html_products = document.css("div.purchase_game_widget")
+html_products = document.css("div.game_cell")
+# To view the structure of elements in "game_cell":
+#print_element_tree(document)
+
+
+# Load the document contents into a meaningful object
+
+AssetProduct = Struct.new(:name, :download_link, :author)
+asset_products = []
+
+html_products.each do |html_product|
+  # To inspect
+  #binding.pry
+  name = html_product.css(".game_title").children.first.children.first.to_s
+  download_link = html_product.css("a").first.attribute("href").value
+  puts "#{name} - #{download_link}"
+end
+
+
 
