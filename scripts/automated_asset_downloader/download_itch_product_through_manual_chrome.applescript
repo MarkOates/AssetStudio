@@ -8,6 +8,10 @@
 set urlArg to "https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH"
 
 
+
+-- Open the browser, and wait for it to finish loading
+------------------------------------------------------
+
 -- Open Chrome to a specific URL
 tell application "Google Chrome"
     activate
@@ -23,7 +27,12 @@ repeat
     delay 1
 end repeat
 
--- Count the number of buttons with the text "Download"
+
+
+-- Obtain info from the webpage about the actual download files
+---------------------------------------------------------------
+
+-- Count the number of buttons with the text "Download" and obtain that data
 tell application "Google Chrome"
     set downloadCount to execute front window's active tab javascript "document.querySelectorAll('.uploads .upload').length;"
 
@@ -45,27 +54,35 @@ tell application "Google Chrome"
     display alert "" & downloadCount & " downloads are available on this page." message "Press OK to start automated download (and please wait until finished)." & return & return & "Items to download:" & return & downloadNamesString buttons {"OK"}
 end tell
 
--- if downloadCount > 0 then
-    -- tell application "Google Chrome"
-        -- repeat with downloadNum from 0 to (downloadCount - 1)
-          -- execute front window's active tab javascript "document.querySelectorAll('.uploads .upload .button')[" & downloadNum & "].click();"
-          -- delay 2
-        -- end repeat
-    -- end tell
--- else
-    -- display dialog "No buttons with the text 'Download' found."
--- end if
+
+
+-- Download the actual files
+----------------------------
+
+-- Execute the actual downloading (by clicking the "Download" buttons)
+if downloadCount > 0 then
+    tell application "Google Chrome"
+        repeat with downloadNum from 0 to (downloadCount - 1)
+          execute front window's active tab javascript "document.querySelectorAll('.uploads .upload .button')[" & downloadNum & "].click();"
+          delay 2
+        end repeat
+    end tell
+else
+    display dialog "No buttons with the text 'Download' found."
+end if
 
 
 
--- Format the text file content
+-- Write a log file of the data obtained
+----------------------------------------
+
+-- Format the text log file content
 set fileContent to urlArg & linefeed
 set downloadCountString to downloadCount as text -- Coerce downloadCount to text
 set fileContent to fileContent & downloadCountString & linefeed
 repeat with i from 1 to count of downloadNamesList
     set fileContent to fileContent & item i of downloadNamesList & linefeed
 end repeat
-
 
 -- Write fileContent to a text file
 set desktopPath to (path to desktop as text)
@@ -85,5 +102,10 @@ write fileContent to fileHandle
 close access fileHandle
 
 
+
+-- Output a message, indicating that the downloading has finished
+-----------------------------------------------------------------
+
 display alert "Download process is finished." message "Writing file." buttons {"OK"}
+
 
