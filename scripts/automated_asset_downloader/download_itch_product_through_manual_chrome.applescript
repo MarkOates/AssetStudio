@@ -5,11 +5,14 @@
 -- Obtain the urlArg as the first command-line
 -- set urlArg to item 1 of argv
 
+set urlArg to "https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH"
+
+
 -- Open Chrome to a specific URL
 tell application "Google Chrome"
     activate
-    open location "https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH"
-    -- open location urlArg
+    -- open location "https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH"
+    open location urlArg
 end tell
 
 repeat
@@ -54,9 +57,19 @@ end tell
 -- end if
 
 
--- display alert "Download process is finished." message "Writing file." buttons {"OK"}
 
--- Write downloadCount to a text file
+-- Format the text file content
+set fileContent to urlArg & return
+set downloadCountString to downloadCount as text -- Coerce downloadCount to text
+set fileContent to fileContent & downloadCountString & return
+repeat with i from 1 to count of downloadNamesList
+    set fileContent to fileContent & item i of downloadNamesList & return
+end repeat
+
+
+-- display alert "Download process is finished, fileContent compiled." message "Writing file." buttons {"OK"}
+
+-- Write fileContent to a text file
 -- set desktopPath to (path to desktop as text)
 -- set filePath to desktopPath & "download_count.txt"
 -- set fileHandle to open for access file filePath with write permission
