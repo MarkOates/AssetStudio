@@ -628,8 +628,16 @@ table td
   <td class="property">AllegroFlare::FrameAnimation::SpriteSheet*</td>
 </tr>
 <tr>
+  <td class="property">list_first_row_number</td>
+  <td class="property">int</td>
+</tr>
+<tr>
   <td class="property">game_configuration</td>
   <td class="property">AssetStudio::GameConfigurations::Main*</td>
+</tr>
+<tr>
+  <td class="property">scrollarea_placement</td>
+  <td class="property">AllegroFlare::Placement2D</td>
 </tr>
 <tr>
   <td class="property">current_level_identifier</td>
@@ -811,6 +819,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SystemInfo&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SystemInfo.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement2D.hpp&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -985,6 +996,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/SystemInfo": [
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
   ]
 }

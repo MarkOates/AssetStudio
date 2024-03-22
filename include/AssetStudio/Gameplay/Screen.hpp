@@ -8,6 +8,7 @@
 #include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/GameEvent.hpp>
 #include <AllegroFlare/ModelBin.hpp>
+#include <AllegroFlare/Placement2D.hpp>
 #include <AllegroFlare/Player.hpp>
 #include <AllegroFlare/Screens/Gameplay.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
@@ -38,7 +39,9 @@ namespace AssetStudio
          AssetStudio::Database database;
          ALLEGRO_BITMAP* sprite_sheet_atlas;
          AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet;
+         int list_first_row_number;
          AssetStudio::GameConfigurations::Main* game_configuration;
+         AllegroFlare::Placement2D scrollarea_placement;
          std::string current_level_identifier;
          AssetStudio::Gameplay::Level* current_level;
          bool initialized;

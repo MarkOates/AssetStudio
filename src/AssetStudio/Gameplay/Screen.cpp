@@ -32,7 +32,9 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , database()
    , sprite_sheet_atlas(nullptr)
    , sprite_sheet(nullptr)
+   , list_first_row_number(0)
    , game_configuration(game_configuration)
+   , scrollarea_placement({})
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
    , initialized(false)
@@ -467,6 +469,7 @@ void Screen::render()
    float y = 200;
 
    int sprite_sheet_scale = 2;
+   AllegroFlare::Placement2D scrollarea_placement;
    AllegroFlare::Placement2D asset_placement;
    AllegroFlare::Placement2D frame_placement;
    int asset_i = 0;
@@ -485,6 +488,16 @@ void Screen::render()
 
    int column_num = 0;
    int row_num = 0;
+
+   // Build up the scrollarea_placement (TODO: Move this to an initialization)
+   // TODO: Add scrollarea user controls
+   scrollarea_placement.position.y--;
+   scrollarea_placement.size.x = 1920;
+   scrollarea_placement.size.y = 1080;
+   scrollarea_placement.align.x = 0;
+   scrollarea_placement.align.y = 0;
+
+   scrollarea_placement.start_transform();
 
    for (auto &asset_record : database.get_assets())
    {
@@ -585,6 +598,7 @@ void Screen::render()
 
       asset_i++;
    }
+   scrollarea_placement.restore_transform();
 
    return;
 }

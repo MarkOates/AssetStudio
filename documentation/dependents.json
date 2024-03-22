@@ -168,5 +168,8 @@
   ],
   "AllegroFlare/SystemInfo": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Placement2D": [
+    "AssetStudio/Gameplay/Screen"
   ]
 }
