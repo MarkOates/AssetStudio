@@ -1,3 +1,6 @@
+# Usage:
+# ruby /Users/markoates/Repos/AssetStudio/scripts/scraper/scrape_itch_purchases_page.rb
+
 # General technique take from: https://www.zenrows.com/blog/web-scraping-ruby#parse-html
 
 # Prerequisites (may require sudo):
