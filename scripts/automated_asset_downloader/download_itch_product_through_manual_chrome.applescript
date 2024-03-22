@@ -1,7 +1,7 @@
 -- Usage:
 -- From command-line:
 -- osascript /Users/markoates/Repos/AssetStudio/scripts/automated_asset_downloader/download_itch_product_through_manual_chrome.applescript 'https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH' 'ansimuz' 'gothicvania-bridge-art-pack'
-
+-- NOTE that commands are already generated for each pack and are listed on this sheet: https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=876270136
 
 
 on run argv
