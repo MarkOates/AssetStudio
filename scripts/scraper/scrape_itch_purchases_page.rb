@@ -82,8 +82,20 @@ end
 
 # Format our scraped data for something useful
 
+Author = Struct.new(:name, :author_handle)
+authors = Set.new
+
 asset_products.each do |asset_product|
   # TODO
-  puts "#{asset_product.name} • #{asset_product.author_name} • #{asset_product.download_link}"
+  puts "#{asset_product.name} • #{asset_product.author_name} (#{asset_product.author_handle}) • #{asset_product.download_link}"
+  authors << Author.new(asset_product.author_name, asset_product.author_handle)
 end
+
+# Show authors
+puts "= Authors ==========="
+authors.each do |author|
+  puts "#{author.name} • #{author.author_handle}"
+end
+
+
 
