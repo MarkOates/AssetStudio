@@ -57,16 +57,33 @@ html_products = document.css("div.game_cell")
 
 # Load the document contents into a meaningful object
 
-AssetProduct = Struct.new(:name, :download_link, :author)
+AssetProduct = Struct.new(:name, :download_link, :author_name, :author_handle, :asset_pack_url_slug)
 asset_products = []
 
 html_products.each do |html_product|
   # To inspect
   #binding.pry
+
+  # Extract the data from the document
   name = html_product.css(".game_title").children.first.children.first.to_s
   download_link = html_product.css("a").first.attribute("href").value
-  puts "#{name} - #{download_link}"
+  author_name = html_product.css(".game_author").children.first.children.to_s
+
+  # Parse out url data
+  match_data = download_link.match(%r{https://([^\.]+)\.itch\.io/([^/]+)/?})
+  author_handle = match_data[1];
+  asset_pack_url_slug = match_data[2];
+
+  # Add the asset to our final set of objects
+  asset_product = AssetProduct.new(name, download_link, author_name, author_handle, asset_pack_url_slug)
+  asset_products.push(asset_product)
 end
 
 
+# Format our scraped data for something useful
+
+asset_products.each do |asset_product|
+  # TODO
+  puts "#{asset_product.name} • #{asset_product.author_name} • #{asset_product.download_link}"
+end
 
