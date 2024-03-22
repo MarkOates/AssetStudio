@@ -85,6 +85,8 @@ end
 Author = Struct.new(:name, :author_handle)
 authors = Set.new
 
+# Show assets packs
+puts "= Asset Packs ==========="
 asset_products.each do |asset_product|
   # TODO
   puts "#{asset_product.name} • #{asset_product.author_name} (#{asset_product.author_handle}) • #{asset_product.download_link}"
@@ -96,6 +98,11 @@ puts "= Authors ==========="
 authors.each do |author|
   puts "#{author.name} • #{author.author_handle}"
 end
+
+# Show report
+puts "= Result ==========="
+puts "   - Number of asset packs: #{asset_products.size}"
+puts "   - Number of authors: #{authors.size}"
 
 
 
