@@ -498,16 +498,20 @@ methods:
             }
             else if (asset->bitmap)
             {
-               al_draw_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color, 2.0f);
+               //al_draw_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color, 2.0f);
+               al_draw_bitmap(asset->bitmap, 0, 0, 0);
+               //al_draw_bitmap(
+            }
+            else
+            {
                al_draw_text(
                      font,
                      ui_color_light,
                      asset_placement.size.x * 0.5f,
                      asset_placement.size.y * 0.5f,
                      ALLEGRO_ALIGN_CENTER,
-                     "not an animation"
+                     "preview not available"
                   );
-               //al_draw_bitmap(
             }
 
             asset_placement.restore_transform();
@@ -526,6 +530,16 @@ methods:
                   frame_placement.size.y + 8,
                   ALLEGRO_ALIGN_RIGHT,
                   asset->type.c_str()
+               );
+
+            // Draw dimensions
+            al_draw_textf(
+                  font,
+                  ui_color_light,
+                  frame_placement.size.x,
+                  frame_placement.size.y + 8 + 20,
+                  ALLEGRO_ALIGN_RIGHT,
+                  "%dx%d", asset->cell_width, asset->cell_height
                );
 
             //al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);

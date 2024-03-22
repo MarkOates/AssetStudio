@@ -396,10 +396,10 @@ void DatabaseCSVLoader::load()
             AssetStudio::Asset *icon_asset = new AssetStudio::Asset;
             icon_asset->id = id + i + 10000; // TODO: Figure out some way to create unique names and ids from icons
             icon_asset->identifier = icon_identifier;
-            //asset->animation = animation;
+            //icon_asset->animation = animation;
             icon_asset->bitmap = sprite_sheet->get_cell(i);
-            //asset->cell_width = cell_width;
-            //asset->cell_height = cell_height;
+            icon_asset->cell_width = cell_width;
+            icon_asset->cell_height = cell_height;
             icon_asset->type = "icon";
 
             levels.insert({ icon_asset->identifier, icon_asset });
