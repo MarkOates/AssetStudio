@@ -59,23 +59,30 @@ end tell
 
 
 -- Format the text file content
-set fileContent to urlArg & return
+set fileContent to urlArg & linefeed
 set downloadCountString to downloadCount as text -- Coerce downloadCount to text
-set fileContent to fileContent & downloadCountString & return
+set fileContent to fileContent & downloadCountString & linefeed
 repeat with i from 1 to count of downloadNamesList
-    set fileContent to fileContent & item i of downloadNamesList & return
+    set fileContent to fileContent & item i of downloadNamesList & linefeed
 end repeat
 
 
--- display alert "Download process is finished, fileContent compiled." message "Writing file." buttons {"OK"}
-
 -- Write fileContent to a text file
--- set desktopPath to (path to desktop as text)
--- set filePath to desktopPath & "download_count.txt"
--- set fileHandle to open for access file filePath with write permission
--- set downloadCountString to downloadCount as text -- Coerce downloadCount to text
--- write downloadCountString to fileHandle
--- close access fileHandle
+set desktopPath to (path to desktop as text)
+set filePath to desktopPath & "download_count.txt"
+
+-- If the file already exists, clear it before overwriting
+set fileExists to (do shell script "[ -f " & quoted form of POSIX path of filePath & " ] && echo 'true' || echo 'false'")
+if fileExists is "true" then
+    -- Clear existing content by setting end of file to 0
+    set fileHandle to open for access file filePath with write permission
+    set eof of fileHandle to 0
+    close access fileHandle
+end if
+
+set fileHandle to open for access file filePath with write permission
+write fileContent to fileHandle
+close access fileHandle
 
 
 display alert "Download process is finished." message "Writing file." buttons {"OK"}
