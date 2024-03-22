@@ -99,7 +99,7 @@ on run argv
 
     -- Write fileContent to a text file
     set desktopPath to (path to desktop as text)
-    set filePath to desktopPath & "download_count.txt"
+    set filePath to desktopPath & "download_log.txt"
 
     -- If the file already exists, clear it before overwriting
     set fileExists to (do shell script "[ -f " & quoted form of POSIX path of filePath & " ] && echo 'true' || echo 'false'")
