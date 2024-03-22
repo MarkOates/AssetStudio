@@ -428,6 +428,10 @@ void Screen::on_deactivate()
 void Screen::update()
 {
    float time_now = al_get_time();
+
+   // Do an auto-scroll on the scrollarea
+   scrollarea_placement.position.y -= 1.0f;
+
    // Run "update" on all animations
    for (auto &asset_record : database.get_assets())
    {
@@ -469,7 +473,6 @@ void Screen::render()
    float y = 200;
 
    int sprite_sheet_scale = 2;
-   AllegroFlare::Placement2D scrollarea_placement;
    AllegroFlare::Placement2D asset_placement;
    AllegroFlare::Placement2D frame_placement;
    int asset_i = 0;
@@ -491,7 +494,7 @@ void Screen::render()
 
    // Build up the scrollarea_placement (TODO: Move this to an initialization)
    // TODO: Add scrollarea user controls
-   scrollarea_placement.position.y--;
+   //scrollarea_placement.position.y--;
    scrollarea_placement.size.x = 1920;
    scrollarea_placement.size.y = 1080;
    scrollarea_placement.align.x = 0;
