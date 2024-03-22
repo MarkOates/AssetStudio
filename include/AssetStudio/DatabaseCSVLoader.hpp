@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <map>
 #include <string>
+#include <tuple>
 #include <utility>
 #include <vector>
 
@@ -21,6 +22,7 @@ namespace AssetStudio
       AllegroFlare::BitmapBin* assets_bitmap_bin;
       std::string csv_full_path;
       std::map<std::string, AssetStudio::Asset*> levels;
+      std::map<std::tuple<std::string, int, int, int>, AllegroFlare::FrameAnimation::SpriteSheet*> sprite_sheets;
       bool loaded;
       AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
 

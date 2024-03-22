@@ -22,6 +22,7 @@ DatabaseCSVLoader::DatabaseCSVLoader(AllegroFlare::BitmapBin* assets_bitmap_bin)
    , assets_bitmap_bin(assets_bitmap_bin)
    , csv_full_path("[unset-csv_full_path]")
    , levels({})
+   , sprite_sheets({})
    , loaded(false)
 {
 }
@@ -165,16 +166,35 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_shee
    }
    // TODO: Guard after assets_bitmap_bin is initialized
 
-   ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
-         assets_bitmap_bin->auto_get(filename)
-         //assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
-      );
-   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
-      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
+   //std::map<std::tuple<filename, int, int, int>, AllegroFlare::FrameAnimation::SpriteSheet*> cache;
+   std::tuple<std::string, int, int, int> sprite_sheet_key(filename, cell_width, cell_height, sprite_sheet_scale);
+   if (sprite_sheets.find(sprite_sheet_key) == sprite_sheets.end())
+   {
+      // Create sprite sheet
+      ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
+            assets_bitmap_bin->auto_get(filename)
+         );
+      AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+         new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
 
-   al_destroy_bitmap(sprite_sheet_atlas);
+      al_destroy_bitmap(sprite_sheet_atlas);
 
-   return result_sprite_sheet;
+      // Add the sprite sheet to the list of sprite sheets
+      sprite_sheets[sprite_sheet_key] = result_sprite_sheet;
+   }
+
+   return sprite_sheets[sprite_sheet_key];
+
+   //ALLEGRO_BITMAP* sprite_sheet_atlas = al_clone_bitmap(
+         //assets_bitmap_bin->auto_get(filename)
+         ////assets_bitmap_bin.auto_get("grotto_escape_pack/Base pack/graphics/player.png")
+      //);
+   //AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+      //new AllegroFlare::FrameAnimation::SpriteSheet(sprite_sheet_atlas, cell_width, cell_height, sprite_sheet_scale);
+
+   //al_destroy_bitmap(sprite_sheet_atlas);
+
+   //return result_sprite_sheet;
 }
 
 std::vector<AllegroFlare::FrameAnimation::Frame> DatabaseCSVLoader::build_n_frames(uint32_t num_frames, uint32_t start_frame_num, float each_frame_duration)
@@ -255,6 +275,7 @@ void DatabaseCSVLoader::load()
       int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
       std::string playmode = validate_key_and_return(&extracted_row, "playmode");
+      std::string type = validate_key_and_return(&extracted_row, "type");
 
       std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
       std::string frame_data__build_n_frames__num_frames =
@@ -333,10 +354,13 @@ void DatabaseCSVLoader::load()
          );
       }
 
+      AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet =
+         obtain_sprite_sheet(image_filename, cell_width, cell_height, 2);
+
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
          new AllegroFlare::FrameAnimation::Animation(
-            obtain_sprite_sheet(image_filename, cell_width, cell_height, 2),
+            sprite_sheet,
             identifier,
             frame_data,
             playmode_parsed_data.second
@@ -349,6 +373,7 @@ void DatabaseCSVLoader::load()
       asset->animation = animation;
       asset->cell_width = cell_width;
       asset->cell_height = cell_height;
+      asset->type = type;
 
       //asset->cell_width = cell_width;
       //asset->cell_height = cell_height;

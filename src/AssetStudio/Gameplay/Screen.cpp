@@ -477,6 +477,9 @@ void Screen::render()
 
    for (auto &asset_record : database.get_assets())
    {
+      auto &asset = asset_record.second;
+      if (asset->type == "tileset") continue; // Skip over tilesets
+
       row_num = asset_i / num_columns;
       column_num = asset_i % num_columns;
       float xx = x + (spacing_x * column_num);
@@ -489,7 +492,6 @@ void Screen::render()
       frame_placement.start_transform();
       al_draw_filled_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color_dark);
       {
-         auto &asset = asset_record.second;
          asset_placement.position.x = frame_placement.size.x/2;
          asset_placement.position.y = frame_placement.size.y/2;
          asset_placement.size.x = asset->cell_width * sprite_sheet_scale;
@@ -516,9 +518,21 @@ void Screen::render()
 
          asset_placement.restore_transform();
 
-         // Draw asset identifier
+         // Draw info about the asset
          ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
+
+         // Draw asset identifier
          al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 8, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
+
+         // Draw type
+         al_draw_text(
+               font,
+               ui_color_light,
+               frame_placement.size.x,
+               frame_placement.size.y + 8,
+               ALLEGRO_ALIGN_RIGHT,
+               asset->type.c_str()
+            );
 
          //al_draw_rectangle(0, 0, frame_placement.size.x, frame_placement.size.y, ui_color, 1.0);
       }
