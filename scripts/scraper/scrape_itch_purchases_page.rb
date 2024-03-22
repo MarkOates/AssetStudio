@@ -12,11 +12,13 @@
 require "httparty"
 require "nokogiri"
 require "pry"
+require "csv"
 
 
 # Obtain the file contents
 
 file_path = "/Users/markoates/Assets/purchases_list-Mar_22_2024-01.txt"
+csv_file_path = file_path + ".csv"
 File.exist?(file_path) || abort("File \"#{file_path}\" not found!")
 
 file_contents = File.read(file_path)
@@ -60,7 +62,7 @@ html_products = document.css("div.game_cell")
 
 # Load the document contents into a meaningful object
 
-AssetProduct = Struct.new(:name, :download_link, :author_name, :author_handle, :asset_pack_url_slug)
+AssetProduct = Struct.new(:name, :download_link, :author_name, :author_handle, :asset_pack_url_slug, :osascript_command)
 asset_products = []
 
 html_products.each do |html_product|
@@ -78,7 +80,14 @@ html_products.each do |html_product|
   asset_pack_url_slug = match_data[2];
 
   # Add the asset to our final set of objects
-  asset_product = AssetProduct.new(name, download_link, author_name, author_handle, asset_pack_url_slug)
+  asset_product = AssetProduct.new(
+      name,
+      download_link,
+      author_name,
+      author_handle,
+      asset_pack_url_slug,
+      "osascript /Users/markoates/Repos/AssetStudio/scripts/automated_asset_downloader/download_itch_product_through_manual_chrome.applescript '#{download_link}' '#{author_handle}' '#{asset_pack_url_slug}'"
+    )
   asset_products.push(asset_product)
 end
 
@@ -102,10 +111,25 @@ authors.each do |author|
   puts "#{author.name} • #{author.author_handle}"
 end
 
+
+# Build a CSV file to output
+
+CSV.open(csv_file_path, "w") do |csv|
+  # Write header row
+  csv << AssetProduct.members
+
+  # Write data rows
+  asset_products.each do |product|
+    csv << product.members.map { |attr| product[attr] }
+  end
+end
+
+
 # Show report
+
 puts "= Result ==========="
 puts "   - Number of asset packs: #{asset_products.size}"
 puts "   - Number of authors: #{authors.size}"
-
+puts "   - CSV file generated at: #{csv_file_path}"
 
 

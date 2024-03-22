@@ -1,6 +1,6 @@
 -- Usage:
 -- From command-line:
--- osascript /Users/markoates/Repos/AssetStudio/scripts/automated_asset_downloader/download_itch_product_through_manual_chrome.applescript 'https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH'
+-- osascript /Users/markoates/Repos/AssetStudio/scripts/automated_asset_downloader/download_itch_product_through_manual_chrome.applescript 'https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH' 'ansimuz' 'gothicvania-bridge-art-pack'
 
 
 
@@ -16,9 +16,30 @@ on run argv
         set end of argList to arg
     end repeat
 
+    -- Validate the number of args
+    if (count of argList) is not 3 then
+        display alert "Error" message "Invalid number of arguments. Please provide exactly 3 arguments." buttons {"OK"}
+        return
+    end if
+
     -- set urlArg to "https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH"
     set urlArg to item 1 of argList
 
+
+
+    -- Create a folder in "Assets/" with the name of the author (slug) and the name of the asset pack (slug)
+    --------------------------------------------------------------------------------------------------------
+
+    -- Define the base directory path
+    set baseDirectory to "/Users/markoates/Assets/"
+
+    -- Define the folder names
+    set folder1 to item 2 of argList
+    set folder2 to item 3 of argList
+    set finalDestinationDirectory to baseDirectory & folder1 & "/" & folder2
+
+    -- Create the folder
+    do shell script "mkdir -p " & quoted form of finalDestinationDirectory
 
 
 
@@ -99,7 +120,8 @@ on run argv
 
     -- Write fileContent to a text file
     set desktopPath to (path to desktop as text)
-    set filePath to desktopPath & "download_log.txt"
+    set downloadLogFilename to "download_log.txt"
+    set filePath to desktopPath & downloadLogFilename
 
     -- If the file already exists, clear it before overwriting
     set fileExists to (do shell script "[ -f " & quoted form of POSIX path of filePath & " ] && echo 'true' || echo 'false'")
@@ -113,6 +135,21 @@ on run argv
     set fileHandle to open for access file filePath with write permission
     write fileContent to fileHandle
     close access fileHandle
+
+
+
+    -- Copy the zip files and log file from "Desktop/" (where it is assumed the files have been downloaded) to the folder
+    ---------------------------------------------------------------------------------------------------------------------
+
+    set downloadsDirectory to "/Users/markoates/Desktop/"
+    -- finalDestinationDirectory created earlier in the script
+
+    -- Copy the download log file
+    set sourceFilePath to "/Users/markoates/Desktop/" & downloadLogFilename
+    set destinationFolderPath to finalDestinationDirectory & "/" & downloadLogFilename
+
+    -- Move the file
+    do shell script "mv " & quoted form of sourceFilePath & space & quoted form of destinationFolderPath
 
 
 
