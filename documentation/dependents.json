@@ -7,6 +7,10 @@
     "AssetStudio/Asset",
     "AssetStudio/AssetGroup"
   ],
+  "ALLEGRO_BITMAP": [
+    "AssetStudio/Asset",
+    "AssetStudio/Gameplay/Screen"
+  ],
   "AssetStudio/Asset": [
     "AssetStudio/AssetGroup",
     "AssetStudio/Database",
@@ -157,9 +161,6 @@
     "AssetStudio/Gameplay/Screen"
   ],
   "al_color_name": [
-    "AssetStudio/Gameplay/Screen"
-  ],
-  "ALLEGRO_BITMAP": [
     "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/DatabaseCSVLoader": [

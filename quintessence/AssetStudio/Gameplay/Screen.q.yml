@@ -270,7 +270,7 @@ methods:
       for (auto &asset_record : database.get_assets())
       {
          auto &asset = asset_record.second;
-         asset->animation->initialize();
+         if (asset->animation) asset->animation->initialize();
       }
 
       return;
@@ -368,7 +368,7 @@ methods:
       for (auto &asset_record : database.get_assets())
       {
          auto &asset = asset_record.second;
-         asset->animation->initialize();
+         if (asset->animation) asset->animation->initialize();
       }
 
       return;
@@ -403,18 +403,23 @@ methods:
       for (auto &asset_record : database.get_assets())
       {
          auto &asset = asset_record.second;
-         asset->animation->update();
-         if (asset->animation->get_playmode() == AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE)
+
+         // Update the animation (if present)
+         if (asset->animation)
          {
-            if (asset->animation->get_finished())
+            asset->animation->update();
+            if (asset->animation->get_playmode() == AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE)
             {
-               // Before resetting the animation, add some dealy so it is clear the animation playmode is not a loop
-               float age_since_finished = time_now -  asset->animation->get_finished_at();
-               if (age_since_finished >= 0.4f)
+               if (asset->animation->get_finished())
                {
-                  // Reset the animation to replay
-                  asset->animation->reset();
-                  asset->animation->start();
+                  // Before resetting the animation, add some dealy so it is clear the animation playmode is not a loop
+                  float age_since_finished = time_now -  asset->animation->get_finished_at();
+                  if (age_since_finished >= 0.4f)
+                  {
+                     // Reset the animation to replay
+                     asset->animation->reset();
+                     asset->animation->start();
+                  }
                }
             }
          }
@@ -478,15 +483,31 @@ methods:
             // Draw a frame rectangle indicating the dimensions of the asset
             al_draw_rectangle(0, 0, asset_placement.size.x, asset_placement.size.y, ui_color, 2.0);
 
-            if (asset->animation->get_finished())
+            if (asset->animation)
             {
-               // If the animation is "finished", show a little placeholder circle indicating that the animation has 
-               // reached its end
-               al_draw_filled_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color);
+               if (asset->animation->get_finished())
+               {
+                  // If the animation is "finished", show a little placeholder circle indicating that the animation has 
+                  // reached its end
+                  al_draw_filled_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color);
+               }
+               else
+               {
+                  asset->animation->draw();
+               }
             }
-            else
+            else if (asset->bitmap)
             {
-               asset->animation->draw();
+               al_draw_circle(asset_placement.size.x/2, asset_placement.size.y/2, 6, ui_color, 2.0f);
+               al_draw_text(
+                     font,
+                     ui_color_light,
+                     asset_placement.size.x * 0.5f,
+                     asset_placement.size.y * 0.5f,
+                     ALLEGRO_ALIGN_CENTER,
+                     "not an animation"
+                  );
+               //al_draw_bitmap(
             }
 
             asset_placement.restore_transform();

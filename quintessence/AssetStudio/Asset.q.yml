@@ -27,7 +27,7 @@ properties:
 
   - name: animation
     type: AllegroFlare::FrameAnimation::Animation*
-    init_with: '{}'
+    init_with: nullptr
     constructor_arg: true
     exposed: true
 
@@ -40,6 +40,12 @@ properties:
   - name: cell_height
     type: int
     init_with: 0
+    constructor_arg: true
+    exposed: true
+
+  - name: bitmap
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
     constructor_arg: true
     exposed: true
 
@@ -71,5 +77,7 @@ dependencies:
     headers: [ AllegroFlare/FrameAnimation/Animation.hpp ]
   - symbol: AllegroFlare::FrameAnimation::Book
     headers: [ AllegroFlare/FrameAnimation/Book.hpp ]
+  - symbol: ALLEGRO_BITMAP
+    headers: [ allegro5/allegro.h ]
 
 

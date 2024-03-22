@@ -9,7 +9,7 @@ namespace AssetStudio
 {
 
 
-Asset::Asset(int id, std::string identifier, std::string type, std::string description, AllegroFlare::FrameAnimation::Animation* animation, int cell_width, int cell_height)
+Asset::Asset(int id, std::string identifier, std::string type, std::string description, AllegroFlare::FrameAnimation::Animation* animation, int cell_width, int cell_height, ALLEGRO_BITMAP* bitmap)
    : id(id)
    , identifier(identifier)
    , type(type)
@@ -17,6 +17,7 @@ Asset::Asset(int id, std::string identifier, std::string type, std::string descr
    , animation(animation)
    , cell_width(cell_width)
    , cell_height(cell_height)
+   , bitmap(bitmap)
    , categories()
    , tags()
    , related_assset_group_id(0)

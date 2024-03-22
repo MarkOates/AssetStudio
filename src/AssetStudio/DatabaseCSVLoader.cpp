@@ -354,6 +354,8 @@ void DatabaseCSVLoader::load()
          );
       }
 
+
+      // Build the sprite sheet
       AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet =
          obtain_sprite_sheet(image_filename, cell_width, cell_height, 2);
 
@@ -375,13 +377,40 @@ void DatabaseCSVLoader::load()
       asset->cell_height = cell_height;
       asset->type = type;
 
-      //asset->cell_width = cell_width;
-      //asset->cell_height = cell_height;
-      // Build up the animation
-      //asset->name = image_filename;
-      //asset->description = description;
+      levels.insert({ asset->identifier, asset });
 
-      levels.insert({ identifier, asset });
+      // If it's an "icon_set", then also build unique assets for each icon
+      int icon_id = 1;
+      if (type == "icon_set")
+      {
+         std::cout << "Building \"icon_set\" for \"" << identifier << "\"" << std::endl;
+         //ALLEGRO_BITMAP *get_cell(int index);
+         //ALLEGRO_BITMAP *get_atlas();
+         //int get_num_sprites();
+
+         for (int i=0; i<sprite_sheet->get_num_sprites(); i++)
+         {
+            std::string icon_identifier = identifier + "-icon_" + std::to_string(icon_id);
+            // TODO: See if icon_identifier clashes
+
+            AssetStudio::Asset *icon_asset = new AssetStudio::Asset;
+            icon_asset->id = id + i + 10000; // TODO: Figure out some way to create unique names and ids from icons
+            icon_asset->identifier = icon_identifier;
+            //asset->animation = animation;
+            icon_asset->bitmap = sprite_sheet->get_cell(i);
+            //asset->cell_width = cell_width;
+            //asset->cell_height = cell_height;
+            icon_asset->type = "icon";
+
+            levels.insert({ icon_asset->identifier, icon_asset });
+
+            icon_id++;
+         }
+      }
+      
+      //ALLEGRO_BITMAP *get_cell(int index);
+      //ALLEGRO_BITMAP *get_atlas();
+      //int get_num_sprites();
       
       /*
       // Pull out the variables
