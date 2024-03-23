@@ -2,6 +2,7 @@
 -- From command-line:
 -- osascript /Users/markoates/Repos/AssetStudio/scripts/automated_asset_downloader/download_itch_product_through_manual_chrome.applescript 'https://ansimuz.itch.io/gothicvania-bridge-art-pack/download/bvgMYW8BM2vRsmje940VLTQO_47HNZJ7TDeTFbBH' 'ansimuz' 'gothicvania-bridge-art-pack'
 -- NOTE that commands are already generated for each pack and are listed on this sheet: https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=876270136
+-- NOTE that Chrome should be permitted to download "more than one file" from itch.io, otherwise you may get a pop-up in the middle of the script asking for permission to download multiple files.  In chrome, go to "chrome://settings/content/automaticDownloads" and under "Allowed to automatically download multiple files", Add an item with the value "[*.]itch.io".
 
 
 on run argv
