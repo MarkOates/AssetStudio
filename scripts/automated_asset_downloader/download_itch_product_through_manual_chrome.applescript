@@ -99,7 +99,7 @@ on run argv
         tell application "Google Chrome"
             repeat with downloadNum from 0 to (downloadCount - 1)
               execute front window's active tab javascript "document.querySelectorAll('.uploads .upload .button')[" & downloadNum & "].click();"
-              delay 3
+              delay 1
             end repeat
         end tell
     else
