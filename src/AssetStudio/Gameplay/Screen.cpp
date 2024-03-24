@@ -569,7 +569,14 @@ void Screen::render()
          ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
 
          // Draw asset identifier
-         al_draw_text(font, ui_color_light, 0, frame_placement.size.y + 8, ALLEGRO_ALIGN_LEFT, asset->identifier.c_str());
+         al_draw_text(
+               font,
+               ui_color_light,
+               0,
+               frame_placement.size.y + 8,
+               ALLEGRO_ALIGN_LEFT,
+               asset->intra_pack_identifier.c_str()
+            );
 
          // Draw type
          al_draw_text(
