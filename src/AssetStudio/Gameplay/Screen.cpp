@@ -430,7 +430,7 @@ void Screen::update()
    float time_now = al_get_time();
 
    // Do an auto-scroll on the scrollarea
-   scrollarea_placement.position.y -= 1.0f;
+   //scrollarea_placement.position.y -= 1.0f;
 
    // Run "update" on all animations
    for (auto &asset_record : database.get_assets())
@@ -662,6 +662,55 @@ void Screen::primary_render_func()
    }
    // Render stuff here
    render();
+   return;
+}
+
+void Screen::key_char_func(ALLEGRO_EVENT* ev)
+{
+   if (!(ev))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_char_func]: error: guard \"ev\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_char_func: error: guard \"ev\" not met");
+   }
+   switch (ev->keyboard.keycode)
+   {
+      case ALLEGRO_KEY_UP:
+         scrollarea_placement.position.y += 40.0f;
+         //universe.move_camera_up();
+      break;
+
+      case ALLEGRO_KEY_DOWN:
+         scrollarea_placement.position.y -= 40.0f;
+         //universe.move_camera_down();
+      break;
+
+      case ALLEGRO_KEY_RIGHT:
+         //universe.move_camera_right();
+      break;
+
+      case ALLEGRO_KEY_LEFT:
+         //universe.move_camera_left();
+      break;
+
+      //case ALLEGRO_KEY_S: {
+         //bool command_pressed = ev->keyboard.modifiers & ALLEGRO_KEYMOD_COMMAND;
+         //if (command_pressed)
+         //{
+            //universe.save_score_to_filename();
+            //handled = true;
+         //}
+      //} break;
+      //case ALLEGRO_KEY_L: {
+         //bool command_pressed = ev->keyboard.modifiers & ALLEGRO_KEYMOD_COMMAND;
+         //if (command_pressed)
+         //{
+            //universe.load_score_from_filename();
+            //handled = true;
+         //}
+      //} break;
+   }
    return;
 }
 

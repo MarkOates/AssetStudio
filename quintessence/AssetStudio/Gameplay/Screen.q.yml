@@ -409,7 +409,7 @@ methods:
       float time_now = al_get_time();
 
       // Do an auto-scroll on the scrollarea
-      scrollarea_placement.position.y -= 1.0f;
+      //scrollarea_placement.position.y -= 1.0f;
 
       // Run "update" on all animations
       for (auto &asset_record : database.get_assets())
@@ -642,6 +642,55 @@ methods:
     body: |
       // Render stuff here
       render();
+      return;
+
+
+  - name: key_char_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ ev ]
+    body: |
+      switch (ev->keyboard.keycode)
+      {
+         case ALLEGRO_KEY_UP:
+            scrollarea_placement.position.y += 40.0f;
+            //universe.move_camera_up();
+         break;
+
+         case ALLEGRO_KEY_DOWN:
+            scrollarea_placement.position.y -= 40.0f;
+            //universe.move_camera_down();
+         break;
+
+         case ALLEGRO_KEY_RIGHT:
+            //universe.move_camera_right();
+         break;
+
+         case ALLEGRO_KEY_LEFT:
+            //universe.move_camera_left();
+         break;
+
+         //case ALLEGRO_KEY_S: {
+            //bool command_pressed = ev->keyboard.modifiers & ALLEGRO_KEYMOD_COMMAND;
+            //if (command_pressed)
+            //{
+               //universe.save_score_to_filename();
+               //handled = true;
+            //}
+         //} break;
+         //case ALLEGRO_KEY_L: {
+            //bool command_pressed = ev->keyboard.modifiers & ALLEGRO_KEYMOD_COMMAND;
+            //if (command_pressed)
+            //{
+               //universe.load_score_from_filename();
+               //handled = true;
+            //}
+         //} break;
+      }
       return;
 
 

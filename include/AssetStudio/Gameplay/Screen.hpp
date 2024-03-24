@@ -73,6 +73,7 @@ namespace AssetStudio
          virtual void game_event_func(AllegroFlare::GameEvent* game_event=nullptr) override;
          virtual void primary_update_func(double time_now=0.0f, double delta_time=1.0f) override;
          virtual void primary_render_func() override;
+         virtual void key_char_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
