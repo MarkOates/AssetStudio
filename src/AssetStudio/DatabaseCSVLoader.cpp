@@ -320,7 +320,7 @@ void DatabaseCSVLoader::load()
       }
       else if (!image_filename.empty())
       {
-         std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+         full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
            //asset_pack_identifier + "/extracted/" + image_filename;
          //AllegroFlare::Logger::throw_error(
             //"AssetStudio::DatabaseCSVLoader::load",
@@ -329,6 +329,7 @@ void DatabaseCSVLoader::load()
       }
       else if (!images_list_raw.empty())
       {
+         // TODO: Handle this case:
          // TODO: Split
          std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
 
