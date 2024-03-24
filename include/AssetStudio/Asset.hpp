@@ -25,11 +25,13 @@ namespace AssetStudio
       int cell_width;
       int cell_height;
       ALLEGRO_BITMAP* bitmap;
+      std::string asset_pack_identifier;
+      std::string intra_pack_identifier;
       std::vector<std::string> categories;
       std::vector<std::string> tags;
       int related_assset_group_id;
       std::string from_pack;
-      Asset(int id=0, std::string identifier="[unset-identifier]", std::string type="[unset-type]", std::string description="[unset-description]", AllegroFlare::FrameAnimation::Animation* animation=nullptr, int cell_width=0, int cell_height=0, ALLEGRO_BITMAP* bitmap=nullptr);
+      Asset(int id=0, std::string identifier="[unset-identifier]", std::string type="[unset-type]", std::string description="[unset-description]", AllegroFlare::FrameAnimation::Animation* animation=nullptr, int cell_width=0, int cell_height=0, ALLEGRO_BITMAP* bitmap=nullptr, std::string asset_pack_identifier="[unset-asset_pack_identifier]", std::string intra_pack_identifier="[unset-intra_pack_identifier]");
       ~Asset();
 
    };

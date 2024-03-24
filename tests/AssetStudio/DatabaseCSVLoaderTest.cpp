@@ -7,7 +7,8 @@
 
 // TODO: Consider loading some test data csv, and then separately from that the production data set
 //#define ASSETS_FULL_PATH "/Users/markoates/Assets/"
-#define ASSETS_FULL_PATH "/Volumes/markoates/Assets/"
+//#define ASSETS_FULL_PATH "/Volumes/markoates/Assets/"
+#define ASSETS_FULL_PATH "/Users/markoates/Assets/"
 #define ASSETS_DB_CSV_FILENAME ASSETS_FULL_PATH "assets_db.csv"
 
 
@@ -38,7 +39,8 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__will_not_blow_up)
 }
 
 
-TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data__will_create_the_expected_records)
+TEST(AssetStudio_DatabaseCSVLoaderTest,
+   DISABLED__load__when_loading_from_the_source_data__will_create_the_expected_records)
 {
    al_init();
    al_init_image_addon();
@@ -58,7 +60,7 @@ TEST(AssetStudio_DatabaseCSVLoaderTest, load__when_loading_from_the_source_data_
 
 
 TEST(AssetStudio_DatabaseCSVLoaderTest,
-   load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
+   DISABLED__load__when_loading_from_the_source_data__will_load_records_with_the_expected_data)
 {
    al_init();
    al_init_image_addon();

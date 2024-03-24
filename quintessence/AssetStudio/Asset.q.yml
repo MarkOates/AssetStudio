@@ -49,6 +49,18 @@ properties:
     constructor_arg: true
     exposed: true
 
+  - name: asset_pack_identifier
+    type: std::string
+    init_with: '"[unset-asset_pack_identifier]"'
+    constructor_arg: true
+    exposed: true
+
+  - name: intra_pack_identifier
+    type: std::string
+    init_with: '"[unset-intra_pack_identifier]"'
+    constructor_arg: true
+    exposed: true
+
   - name: categories
     type: std::vector<std::string>
     init_with: ''

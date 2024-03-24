@@ -269,13 +269,33 @@ void DatabaseCSVLoader::load()
    for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
    {
       // Extract the data here
-      std::string identifier = validate_key_and_return(&extracted_row, "identifier");
+      //std::string identifier = validate_key_and_return(&extracted_row, "identifier");
       int id = toi(validate_key_and_return(&extracted_row, "id"));
       int cell_width = toi(validate_key_and_return(&extracted_row, "cell_width"));
       int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
-      std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
+      //std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
       std::string playmode = validate_key_and_return(&extracted_row, "playmode");
       std::string type = validate_key_and_return(&extracted_row, "type");
+
+      std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
+      std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
+      std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
+
+      std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+
+      std::string identifier = asset_pack_identifier + "/" + intra_pack_identifier;
+
+        //- name: asset_pack_identifier
+          //type: std::string
+          //init_with: '"[unset-asset_pack_identifier]"'
+          //constructor_arg: true
+          //exposed: true
+
+        //- name: intra_pack_identifier
+          //type: std::string
+          //init_with: '"[unset-intra_pack_identifier]"'
+          //constructor_arg: true
+          //exposed: true
 
       std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
       std::string frame_data__build_n_frames__num_frames =
@@ -342,7 +362,7 @@ void DatabaseCSVLoader::load()
       }
       //else
       //{
-         std::cout << "- identnfier: \"" << identifier << std::endl;
+         std::cout << "- identifier: \"" << identifier << "\"" << std::endl;
          std::cout << "    playmode: \"" << playmode << "\" -> " << playmode_parsed_data.second << std::endl;
       //}
 
@@ -357,7 +377,7 @@ void DatabaseCSVLoader::load()
 
       // Build the sprite sheet
       AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet =
-         obtain_sprite_sheet(image_filename, cell_width, cell_height, 2);
+         obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, 2);
 
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
@@ -375,6 +395,8 @@ void DatabaseCSVLoader::load()
       asset->animation = animation;
       asset->cell_width = cell_width;
       asset->cell_height = cell_height;
+      asset->asset_pack_identifier= asset_pack_identifier;
+      asset->intra_pack_identifier= intra_pack_identifier;
       asset->type = type;
 
       levels.insert({ asset->identifier, asset });
