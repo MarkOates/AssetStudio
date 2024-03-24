@@ -78,6 +78,7 @@ namespace AssetStudio
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
          ALLEGRO_FONT* obtain_font();
          ALLEGRO_FONT* obtain_font_for_asset_identifier();
+         ALLEGRO_FONT* obtain_small_font();
       };
    }
 }

@@ -567,6 +567,7 @@ void Screen::render()
 
          // Draw info about the asset
          ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
+         ALLEGRO_FONT *small_font = obtain_small_font();
 
          // Draw asset identifier
          al_draw_text(
@@ -578,9 +579,19 @@ void Screen::render()
                asset->intra_pack_identifier.c_str()
             );
 
-         // Draw type
+         // Draw asset pack identifier
          al_draw_text(
-               font,
+               small_font,
+               ui_color_light,
+               0,
+               frame_placement.size.y + 8 + 20,
+               ALLEGRO_ALIGN_LEFT,
+               asset->asset_pack_identifier.c_str()
+            );
+
+         // Draw asset type
+         al_draw_text(
+               small_font,
                ui_color_light,
                frame_placement.size.x,
                frame_placement.size.y + 8,
@@ -588,9 +599,9 @@ void Screen::render()
                asset->type.c_str()
             );
 
-         // Draw dimensions
+         // Draw asset dimensions
          al_draw_textf(
-               font,
+               small_font,
                ui_color_light,
                frame_placement.size.x,
                frame_placement.size.y + 8 + 20,
@@ -739,6 +750,18 @@ ALLEGRO_FONT* Screen::obtain_font_for_asset_identifier()
       throw std::runtime_error("Screen::obtain_font_for_asset_identifier: error: guard \"font_bin\" not met");
    }
    return font_bin->auto_get("Inter-Regular.ttf -18");
+}
+
+ALLEGRO_FONT* Screen::obtain_small_font()
+{
+   if (!(font_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::obtain_small_font]: error: guard \"font_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::obtain_small_font: error: guard \"font_bin\" not met");
+   }
+   return font_bin->auto_get("Inter-Regular.ttf -13");
 }
 
 

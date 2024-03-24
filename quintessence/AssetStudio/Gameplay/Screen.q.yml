@@ -546,6 +546,7 @@ methods:
 
             // Draw info about the asset
             ALLEGRO_FONT *font = obtain_font_for_asset_identifier();
+            ALLEGRO_FONT *small_font = obtain_small_font();
 
             // Draw asset identifier
             al_draw_text(
@@ -557,9 +558,19 @@ methods:
                   asset->intra_pack_identifier.c_str()
                );
 
-            // Draw type
+            // Draw asset pack identifier
             al_draw_text(
-                  font,
+                  small_font,
+                  ui_color_light,
+                  0,
+                  frame_placement.size.y + 8 + 20,
+                  ALLEGRO_ALIGN_LEFT,
+                  asset->asset_pack_identifier.c_str()
+               );
+
+            // Draw asset type
+            al_draw_text(
+                  small_font,
                   ui_color_light,
                   frame_placement.size.x,
                   frame_placement.size.y + 8,
@@ -567,9 +578,9 @@ methods:
                   asset->type.c_str()
                );
 
-            // Draw dimensions
+            // Draw asset dimensions
             al_draw_textf(
-                  font,
+                  small_font,
                   ui_color_light,
                   frame_placement.size.x,
                   frame_placement.size.y + 8 + 20,
@@ -730,6 +741,13 @@ methods:
     guards: [ font_bin ]
     body: |
       return font_bin->auto_get("Inter-Regular.ttf -18");
+
+
+  - name: obtain_small_font
+    type: ALLEGRO_FONT*
+    guards: [ font_bin ]
+    body: |
+      return font_bin->auto_get("Inter-Regular.ttf -13");
 
 
 dependencies:
