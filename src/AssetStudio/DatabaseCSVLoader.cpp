@@ -8,6 +8,7 @@
 #include <AllegroFlare/UsefulPHP.hpp>
 #include <cstdlib>
 #include <iostream>
+#include <set>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -266,10 +267,25 @@ void DatabaseCSVLoader::load()
    // Load the parsed data to Level objects
    int first_physical_row = csv_parser.get_num_header_rows();
    int row_i = first_physical_row;
+   std::set<std::string> hidden_assets;
    for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
    {
+      std::string status = validate_key_and_return(&extracted_row, "status");
+      std::string identifier = validate_key_and_return(&extracted_row, "identifier");
+
+      // Skip over "hidden" assets
+      if (status == "hidden")
+      {
+         // Store the hidden asset identifier to report at the end what assets are hidden for debugging
+         hidden_assets.insert(identifier);
+         continue;
+      }
+
       // Extract the data here
       //std::string identifier = validate_key_and_return(&extracted_row, "identifier");
+      //std::string status = validate_key_and_return(&extracted_row, "status");
+      std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
+      std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
       int id = toi(validate_key_and_return(&extracted_row, "id"));
       int cell_width = toi(validate_key_and_return(&extracted_row, "cell_width"));
       int cell_height = toi(validate_key_and_return(&extracted_row, "cell_height"));
@@ -277,13 +293,15 @@ void DatabaseCSVLoader::load()
       std::string playmode = validate_key_and_return(&extracted_row, "playmode");
       std::string type = validate_key_and_return(&extracted_row, "type");
 
-      std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
-      std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
+      //std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
+      //std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
 
       std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
 
-      std::string identifier = asset_pack_identifier + "/" + intra_pack_identifier;
+
+
+      //std::string identifier = asset_pack_identifier + "/" + intra_pack_identifier;
 
         //- name: asset_pack_identifier
           //type: std::string
