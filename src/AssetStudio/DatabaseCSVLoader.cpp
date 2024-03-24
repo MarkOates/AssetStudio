@@ -301,8 +301,50 @@ void DatabaseCSVLoader::load()
       //std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
       //std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
+      std::string images_list_raw = validate_key_and_return(&extracted_row, "images_list");
+      std::string full_path_to_image_file = "[unprocessed]";
 
-      std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+      if (image_filename.empty() && images_list_raw.empty())
+      {
+         AllegroFlare::Logger::throw_error(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "foofoo1"
+         );
+      }
+      else if (!image_filename.empty() && !images_list_raw.empty())
+      {
+         AllegroFlare::Logger::throw_error(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "foofoo2"
+         );
+      }
+      else if (!image_filename.empty())
+      {
+         std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+           //asset_pack_identifier + "/extracted/" + image_filename;
+         //AllegroFlare::Logger::throw_error(
+            //"AssetStudio::DatabaseCSVLoader::load",
+            //"foofoo2"
+         //);
+      }
+      else if (!images_list_raw.empty())
+      {
+         // TODO: Split
+         std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+
+         AllegroFlare::Logger::warn_from(
+            "AssetStudio::DatabaseCSVLoader::load",
+            "When processing asset \"" + identifier + "\", an \"images_list\" was supplied. This feature is "
+               "not yet implemented (you should add it in now, tho). For now, skipping this asset."
+         );
+         continue;
+           //asset_pack_identifier + "/extracted/" + image_filename;
+         //AllegroFlare::Logger::throw_error(
+            //"AssetStudio::DatabaseCSVLoader::load",
+            //"foofoo2"
+         //);
+      }
+      //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
 
 
 
