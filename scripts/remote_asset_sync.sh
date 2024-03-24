@@ -9,6 +9,6 @@ CSV_URL="https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLR
 
 
 curl -L "$CSV_URL" --output /Users/markoates/Assets/assets_db.csv
-curl -L "$CSV_URL" --output /Volumes/markoates/Assets/assets_db.csv
+# curl -L "$CSV_URL" --output /Volumes/markoates/Assets/assets_db.csv
 
 
