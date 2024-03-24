@@ -267,14 +267,15 @@ void DatabaseCSVLoader::load()
    // Load the parsed data to Level objects
    int first_physical_row = csv_parser.get_num_header_rows();
    int row_i = first_physical_row;
+   // TODO: Report hidden assets at end of loading process
    std::set<std::string> hidden_assets;
    for (std::map<std::string, std::string> &extracted_row : csv_parser.extract_all_rows())
    {
-      std::string status = validate_key_and_return(&extracted_row, "status");
+      std::string visibility = validate_key_and_return(&extracted_row, "visibility");
       std::string identifier = validate_key_and_return(&extracted_row, "identifier");
 
       // Skip over "hidden" assets
-      if (status == "hidden")
+      if (visibility == "hidden")
       {
          // Store the hidden asset identifier to report at the end what assets are hidden for debugging
          hidden_assets.insert(identifier);
