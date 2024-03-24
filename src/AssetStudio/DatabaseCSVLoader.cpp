@@ -292,6 +292,10 @@ void DatabaseCSVLoader::load()
       //std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
       std::string playmode = validate_key_and_return(&extracted_row, "playmode");
       std::string type = validate_key_and_return(&extracted_row, "type");
+      float align_x = toi(validate_key_and_return(&extracted_row, "align_x"));
+      float align_y = toi(validate_key_and_return(&extracted_row, "align_y"));
+      float anchor_x = toi(validate_key_and_return(&extracted_row, "anchor_x"));
+      float anchor_y = toi(validate_key_and_return(&extracted_row, "anchor_y"));
 
       //std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
       //std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
@@ -413,6 +417,10 @@ void DatabaseCSVLoader::load()
       asset->animation = animation;
       asset->cell_width = cell_width;
       asset->cell_height = cell_height;
+      asset->align_x = align_x;
+      asset->align_y = align_y;
+      asset->anchor_x = anchor_x;
+      asset->anchor_y = anchor_y;
       asset->asset_pack_identifier= asset_pack_identifier;
       asset->intra_pack_identifier= intra_pack_identifier;
       asset->type = type;

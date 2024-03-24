@@ -43,6 +43,30 @@ properties:
     constructor_arg: true
     exposed: true
 
+  - name: align_x
+    type: int
+    init_with: 0.0f
+    constructor_arg: true
+    exposed: true
+
+  - name: align_y
+    type: int
+    init_with: 0.0f
+    constructor_arg: true
+    exposed: true
+
+  - name: anchor_x
+    type: int
+    init_with: 0.0f
+    constructor_arg: true
+    exposed: true
+
+  - name: anchor_y
+    type: int
+    init_with: 0.0f
+    constructor_arg: true
+    exposed: true
+
   - name: bitmap
     type: ALLEGRO_BITMAP*
     init_with: nullptr
