@@ -1,0 +1,72 @@
+properties:
+
+
+  - name: type
+    type: std::string
+    init_with: AllegroFlare::FrameAnimation::AnimationBooks::Base::TYPE
+    constructor_arg: true
+    getter: true
+
+  - name: dictionary
+    type: std::map<std::string, AllegroFlare::FrameAnimation::Animation>
+    init_with: '{}'
+    getter_ref: true
+
+  - name: TYPE
+    type: char*
+    init_with: '(char*)"AllegroFlare/FrameAnimation/AnimationBooks/Base"'
+    static: true
+    constexpr: true
+
+
+methods:
+
+
+  - name: animation_exists
+    type: bool
+    parameters:
+      - name: name
+        type: std::string
+        default_argument: '"[unset-name]"'
+    body: |
+      return (dictionary.count(name) > 0);
+
+
+  - name: find_animation_by_name
+    type: AllegroFlare::FrameAnimation::Animation
+    parameters:
+      - name: name
+        type: std::string
+        default_argument: '"[unset-name]"'
+    body: |
+      if (dictionary.count(name) == 0)
+      {
+         AllegroFlare::Errors::throw_error(
+               "AllegroFlare::FrameAnimation::AnimationBooks::find_animation_by_name",
+               "No animation exists for name \"" + name + "\""
+            );
+      }
+      return dictionary[name];
+    body_dependency_symbols:
+      - AllegroFlare::Errors
+
+
+  - name: is_type
+    type: bool
+    parameters:
+      - name: possible_type
+        type: std::string
+        default_argument: '""'
+    body: |
+      return (possible_type == get_type());
+
+
+dependencies:
+
+
+  - symbol: AllegroFlare::Errors
+    headers: [ AllegroFlare/Errors.hpp ]
+  - symbol: AllegroFlare::FrameAnimation::Animation
+    headers: [ AllegroFlare/FrameAnimation/Animation.hpp ]
+
+
