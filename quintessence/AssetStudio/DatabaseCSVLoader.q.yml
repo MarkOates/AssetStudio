@@ -22,7 +22,7 @@ properties:
     getter: true
     setter: true
 
-  - name: levels
+  - name: assets
     type: std::map<std::string, AssetStudio::Asset*>
     init_with: '{}'
     getter: explicit
@@ -39,11 +39,11 @@ properties:
 methods:
 
 
-  - name: get_levels
+  - name: get_assets
     type: std::map<std::string, AssetStudio::Asset*>
     guards: [ loaded ]
     body: |
-      return levels;
+      return assets;
 
 
   - name: level_exists
@@ -54,7 +54,7 @@ methods:
         default_argument: '"[unset-level_identifier]"'
     guards: [ loaded ]
     body: |
-      return (levels.find(level_identifier) != levels.end());
+      return (assets.find(level_identifier) != assets.end());
 
 
   - name: toi
@@ -173,7 +173,7 @@ methods:
         default_argument: '"[unset-level_identifier]"'
     guards: [ loaded, level_exists(level_identifier) ]
     body: |
-      return levels[level_identifier];
+      return assets[level_identifier];
 
 
   - name: validate_key_and_return
@@ -594,7 +594,7 @@ methods:
          asset->intra_pack_identifier= intra_pack_identifier;
          asset->type = type;
 
-         levels.insert({ asset->identifier, asset });
+         assets.insert({ asset->identifier, asset });
 
          // If it's an "icon_set", then also build unique assets for each icon
          int icon_id = 1;
@@ -619,7 +619,7 @@ methods:
                icon_asset->cell_height = cell_height;
                icon_asset->type = "icon";
 
-               levels.insert({ icon_asset->identifier, icon_asset });
+               assets.insert({ icon_asset->identifier, icon_asset });
 
                icon_id++;
             }
@@ -834,7 +834,7 @@ methods:
          level.set_song_to_perform_identifier(song_to_perform_identifier);
          level.set_song_to_perform_duration_sec(song_to_perform_duration_sec);
 
-         levels.insert({ identifier, level });
+         assets.insert({ identifier, level });
 
          */
          row_i++;

@@ -21,7 +21,7 @@ namespace AssetStudio
    private:
       AllegroFlare::BitmapBin* assets_bitmap_bin;
       std::string csv_full_path;
-      std::map<std::string, AssetStudio::Asset*> levels;
+      std::map<std::string, AssetStudio::Asset*> assets;
       std::map<std::tuple<std::string, int, int, int>, AllegroFlare::FrameAnimation::SpriteSheet*> sprite_sheets;
       bool loaded;
       AllegroFlare::FrameAnimation::SpriteSheet* create_sprite_sheet_from_individual_images(std::vector<std::string> individual_frame_image_filenames={}, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
@@ -41,7 +41,7 @@ namespace AssetStudio
       void set_csv_full_path(std::string csv_full_path);
       AllegroFlare::BitmapBin* get_assets_bitmap_bin() const;
       std::string get_csv_full_path() const;
-      std::map<std::string, AssetStudio::Asset*> get_levels();
+      std::map<std::string, AssetStudio::Asset*> get_assets();
       bool level_exists(std::string level_identifier="[unset-level_identifier]");
       static int toi(std::string value="[unset-value]");
       static float tof(std::string value="[unset-value]");

@@ -24,7 +24,7 @@ DatabaseCSVLoader::DatabaseCSVLoader(AllegroFlare::BitmapBin* assets_bitmap_bin)
    : AllegroFlare::CSVParser()
    , assets_bitmap_bin(assets_bitmap_bin)
    , csv_full_path("[unset-csv_full_path]")
-   , levels({})
+   , assets({})
    , sprite_sheets({})
    , loaded(false)
 {
@@ -60,16 +60,16 @@ std::string DatabaseCSVLoader::get_csv_full_path() const
 }
 
 
-std::map<std::string, AssetStudio::Asset*> DatabaseCSVLoader::get_levels()
+std::map<std::string, AssetStudio::Asset*> DatabaseCSVLoader::get_assets()
 {
    if (!(loaded))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::get_levels]: error: guard \"loaded\" not met.";
+      error_message << "[DatabaseCSVLoader::get_assets]: error: guard \"loaded\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::get_levels: error: guard \"loaded\" not met");
+      throw std::runtime_error("DatabaseCSVLoader::get_assets: error: guard \"loaded\" not met");
    }
-   return levels;
+   return assets;
 }
 
 bool DatabaseCSVLoader::level_exists(std::string level_identifier)
@@ -81,7 +81,7 @@ bool DatabaseCSVLoader::level_exists(std::string level_identifier)
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("DatabaseCSVLoader::level_exists: error: guard \"loaded\" not met");
    }
-   return (levels.find(level_identifier) != levels.end());
+   return (assets.find(level_identifier) != assets.end());
 }
 
 int DatabaseCSVLoader::toi(std::string value)
@@ -174,7 +174,7 @@ AssetStudio::Asset* DatabaseCSVLoader::find_level(std::string level_identifier)
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("DatabaseCSVLoader::find_level: error: guard \"level_exists(level_identifier)\" not met");
    }
-   return levels[level_identifier];
+   return assets[level_identifier];
 }
 
 std::string DatabaseCSVLoader::validate_key_and_return(std::map<std::string, std::string>* extracted_row, std::string key)
@@ -586,7 +586,7 @@ void DatabaseCSVLoader::load()
       asset->intra_pack_identifier= intra_pack_identifier;
       asset->type = type;
 
-      levels.insert({ asset->identifier, asset });
+      assets.insert({ asset->identifier, asset });
 
       // If it's an "icon_set", then also build unique assets for each icon
       int icon_id = 1;
@@ -611,7 +611,7 @@ void DatabaseCSVLoader::load()
             icon_asset->cell_height = cell_height;
             icon_asset->type = "icon";
 
-            levels.insert({ icon_asset->identifier, icon_asset });
+            assets.insert({ icon_asset->identifier, icon_asset });
 
             icon_id++;
          }
@@ -826,7 +826,7 @@ void DatabaseCSVLoader::load()
       level.set_song_to_perform_identifier(song_to_perform_identifier);
       level.set_song_to_perform_duration_sec(song_to_perform_duration_sec);
 
-      levels.insert({ identifier, level });
+      assets.insert({ identifier, level });
 
       */
       row_i++;

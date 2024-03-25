@@ -54,6 +54,7 @@ table td
 <body>
 <h1>Table of Contents</h1>
 <ul>
+  <li><a href="#quintessence/AllegroFlare/FrameAnimation/AnimationBooks/Base.q.yml">quintessence/AllegroFlare/FrameAnimation/AnimationBooks/Base.q.yml</a></li>
   <li><a href="#quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</a></li>
@@ -67,6 +68,57 @@ table td
   <li><a href="#quintessence/AssetStudio/Gameplay/Screen.q.yml">quintessence/AssetStudio/Gameplay/Screen.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AllegroFlare/FrameAnimation/AnimationBooks/Base.q.yml">quintessence/AllegroFlare/FrameAnimation/AnimationBooks/Base.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">type</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">dictionary</td>
+  <td class="property">std::map&lt;std::string, AllegroFlare::FrameAnimation::Animation&gt;</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>add_animation</b>(std::string identifier=&quot;[unset-identifier]&quot;, AllegroFlare::FrameAnimation::Animation* animation=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>animation_exists</b>(std::string name=&quot;[unset-name]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">AllegroFlare::FrameAnimation::Animation</td>
+  <td class="method"><b>find_animation_by_name</b>(std::string name=&quot;[unset-name]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>is_type</b>(std::string possible_type=&quot;&quot;)</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
 <br><br><br>
 <br><br><br>
 <ul>
@@ -953,6 +1005,14 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "AllegroFlare/Errors": [
+    "AllegroFlare/FrameAnimation/AnimationBooks/Base"
+  ],
+  "AllegroFlare/FrameAnimation/Animation": [
+    "AllegroFlare/FrameAnimation/AnimationBooks/Base",
+    "AssetStudio/Asset",
+    "AssetStudio/AssetGroup"
+  ],
   "ALLEGRO_BITMAP": [
     "AllegroFlare/FrameAnimation/SpriteStripAssembler",
     "AssetStudio/Asset",
@@ -964,10 +1024,6 @@ table td
   ],
   "al_is_system_installed": [
     "AllegroFlare/FrameAnimation/SpriteStripAssembler"
-  ],
-  "AllegroFlare/FrameAnimation/Animation": [
-    "AssetStudio/Asset",
-    "AssetStudio/AssetGroup"
   ],
   "AllegroFlare/FrameAnimation/Book": [
     "AssetStudio/Asset",

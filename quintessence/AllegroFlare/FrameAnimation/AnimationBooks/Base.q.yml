@@ -22,6 +22,28 @@ properties:
 methods:
 
 
+  - name: add_animation
+    parameters:
+      - name: identifier
+        type: std::string
+        default_argument: '"[unset-identifier]"'
+      - name: animation
+        type: AllegroFlare::FrameAnimation::Animation*
+        default_argument: nullptr
+    guards: [ animation ]
+    body: |
+      if (animation_exists(identifier))
+      {
+         // TODO: Test this validation
+         AllegroFlare::Errors::throw_error(
+               "AllegroFlare::FrameAnimation::AnimationBooks::add_animation",
+               "An animation already exists with the name \"" + identifier + "\". An animation cannot overwritten."
+            );
+      }
+      dictionary[identifier] = *animation;
+      return;
+
+
   - name: animation_exists
     type: bool
     parameters:
