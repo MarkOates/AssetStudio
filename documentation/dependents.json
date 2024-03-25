@@ -1,11 +1,13 @@
 {
   "AllegroFlare/Errors": [
-    "AllegroFlare/FrameAnimation/AnimationBooks/Base"
+    "AllegroFlare/FrameAnimation/AnimationBooks/Base",
+    "AssetStudio/Database"
   ],
   "AllegroFlare/FrameAnimation/Animation": [
     "AllegroFlare/FrameAnimation/AnimationBooks/Base",
     "AssetStudio/Asset",
-    "AssetStudio/AssetGroup"
+    "AssetStudio/AssetGroup",
+    "AssetStudio/Database"
   ],
   "ALLEGRO_BITMAP": [
     "AllegroFlare/FrameAnimation/SpriteStripAssembler",

@@ -394,9 +394,27 @@ table td
     </table>
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>asset_exists</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">AssetStudio::Asset*</td>
+  <td class="method"><b>find_asset_by_identifier</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">AllegroFlare::FrameAnimation::Animation*</td>
+  <td class="method"><b>find_animation_by_identifier</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
+</tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Asset.hpp&quot;]}</td>
 </tr>
@@ -426,7 +444,7 @@ table td
   <td class="property">std::string</td>
 </tr>
 <tr>
-  <td class="property">levels</td>
+  <td class="property">assets</td>
   <td class="property">std::map&lt;std::string, AssetStudio::Asset*&gt;</td>
 </tr>
 <tr>
@@ -442,7 +460,7 @@ table td
 <div class="property-box methods">     <table>
 <tr>
   <td class="method">std::map&lt;std::string, AssetStudio::Asset*&gt;</td>
-  <td class="method"><b>get_levels</b>()</td>
+  <td class="method"><b>get_assets</b>()</td>
 </tr>
 <tr>
   <td class="method">bool</td>
@@ -1006,12 +1024,14 @@ table td
 <pre>
 {
   "AllegroFlare/Errors": [
-    "AllegroFlare/FrameAnimation/AnimationBooks/Base"
+    "AllegroFlare/FrameAnimation/AnimationBooks/Base",
+    "AssetStudio/Database"
   ],
   "AllegroFlare/FrameAnimation/Animation": [
     "AllegroFlare/FrameAnimation/AnimationBooks/Base",
     "AssetStudio/Asset",
-    "AssetStudio/AssetGroup"
+    "AssetStudio/AssetGroup",
+    "AssetStudio/Database"
   ],
   "ALLEGRO_BITMAP": [
     "AllegroFlare/FrameAnimation/SpriteStripAssembler",

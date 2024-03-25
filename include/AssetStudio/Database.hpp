@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/FrameAnimation/Animation.hpp>
 #include <AssetStudio/Asset.hpp>
 #include <AssetStudio/AssetGroup.hpp>
 #include <AssetStudio/Category.hpp>
@@ -31,6 +32,9 @@ namespace AssetStudio
       std::map<std::string, AssetStudio::Asset*> get_assets() const;
       std::vector<AssetStudio::AssetGroup*> get_asset_groups() const;
       std::vector<AssetStudio::Category*> get_categories() const;
+      bool asset_exists(std::string identifier="[unset-identifier]");
+      AssetStudio::Asset* find_asset_by_identifier(std::string identifier="[unset-identifier]");
+      AllegroFlare::FrameAnimation::Animation* find_animation_by_identifier(std::string identifier="[unset-identifier]");
    };
 }
 

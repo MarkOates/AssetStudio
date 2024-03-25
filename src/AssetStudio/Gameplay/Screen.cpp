@@ -289,7 +289,7 @@ void Screen::load_database_from_csv()
    loader.set_csv_full_path(assets_folder + assets_csv_filename);
    loader.load();
 
-   database.set_assets(loader.get_levels());
+   database.set_assets(loader.get_assets());
 
    // Initialize the animations
    for (auto &asset_record : database.get_assets())
