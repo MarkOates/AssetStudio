@@ -200,12 +200,12 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_shee
 
 std::vector<AllegroFlare::FrameAnimation::Frame> DatabaseCSVLoader::build_n_frames(uint32_t num_frames, uint32_t start_frame_num, float each_frame_duration)
 {
-   if (!((num_frames > 1)))
+   if (!((num_frames >= 1)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames > 1)\" not met.";
+      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames >= 1)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(num_frames > 1)\" not met");
+      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(num_frames >= 1)\" not met");
    }
    if (!((start_frame_num >= 0)))
    {
@@ -298,8 +298,6 @@ void DatabaseCSVLoader::load()
       float anchor_x = toi(validate_key_and_return(&extracted_row, "anchor_x"));
       float anchor_y = toi(validate_key_and_return(&extracted_row, "anchor_y"));
 
-      //std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
-      //std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
       std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
       std::string images_list_raw = validate_key_and_return(&extracted_row, "images_list");
       std::string full_path_to_image_file = "[unprocessed]";
@@ -308,24 +306,19 @@ void DatabaseCSVLoader::load()
       {
          AllegroFlare::Logger::throw_error(
             "AssetStudio::DatabaseCSVLoader::load",
-            "foofoo1"
+            "foofoo231"
          );
       }
       else if (!image_filename.empty() && !images_list_raw.empty())
       {
          AllegroFlare::Logger::throw_error(
             "AssetStudio::DatabaseCSVLoader::load",
-            "foofoo2"
+            "foofoo456"
          );
       }
       else if (!image_filename.empty())
       {
          full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-           //asset_pack_identifier + "/extracted/" + image_filename;
-         //AllegroFlare::Logger::throw_error(
-            //"AssetStudio::DatabaseCSVLoader::load",
-            //"foofoo2"
-         //);
       }
       else if (!images_list_raw.empty())
       {

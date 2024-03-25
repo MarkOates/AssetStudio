@@ -32,7 +32,6 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , database()
    , sprite_sheet_atlas(nullptr)
    , sprite_sheet(nullptr)
-   , list_first_row_number(0)
    , game_configuration(game_configuration)
    , scrollarea_placement({})
    , current_level_identifier("[unset-current_level]")
@@ -677,11 +676,13 @@ void Screen::key_char_func(ALLEGRO_EVENT* ev)
    switch (ev->keyboard.keycode)
    {
       case ALLEGRO_KEY_UP:
+      case ALLEGRO_KEY_PGUP:
          scrollarea_placement.position.y += 40.0f;
          //universe.move_camera_up();
       break;
 
       case ALLEGRO_KEY_DOWN:
+      case ALLEGRO_KEY_PGDN:
          scrollarea_placement.position.y -= 40.0f;
          //universe.move_camera_down();
       break;

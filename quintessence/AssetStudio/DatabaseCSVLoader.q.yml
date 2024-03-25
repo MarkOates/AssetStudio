@@ -221,7 +221,7 @@ methods:
       - name: each_frame_duration
         type: float
         default_argument: 0.08f
-    guards: [ (num_frames > 1), (start_frame_num >= 0), (each_frame_duration >= 0.0001) ]
+    guards: [ (num_frames >= 1), (start_frame_num >= 0), (each_frame_duration >= 0.0001) ]
     body: |
       std::vector<AllegroFlare::FrameAnimation::Frame> result;
       for (uint32_t i=0; i<num_frames; i++)
@@ -292,8 +292,6 @@ methods:
          float anchor_x = toi(validate_key_and_return(&extracted_row, "anchor_x"));
          float anchor_y = toi(validate_key_and_return(&extracted_row, "anchor_y"));
 
-         //std::string asset_pack_identifier = validate_key_and_return(&extracted_row, "asset_pack_identifier");
-         //std::string intra_pack_identifier = validate_key_and_return(&extracted_row, "intra_pack_identifier");
          std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
          std::string images_list_raw = validate_key_and_return(&extracted_row, "images_list");
          std::string full_path_to_image_file = "[unprocessed]";
@@ -302,24 +300,19 @@ methods:
          {
             AllegroFlare::Logger::throw_error(
                "AssetStudio::DatabaseCSVLoader::load",
-               "foofoo1"
+               "foofoo231"
             );
          }
          else if (!image_filename.empty() && !images_list_raw.empty())
          {
             AllegroFlare::Logger::throw_error(
                "AssetStudio::DatabaseCSVLoader::load",
-               "foofoo2"
+               "foofoo456"
             );
          }
          else if (!image_filename.empty())
          {
             full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-              //asset_pack_identifier + "/extracted/" + image_filename;
-            //AllegroFlare::Logger::throw_error(
-               //"AssetStudio::DatabaseCSVLoader::load",
-               //"foofoo2"
-            //);
          }
          else if (!images_list_raw.empty())
          {

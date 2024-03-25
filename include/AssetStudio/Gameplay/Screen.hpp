@@ -39,7 +39,6 @@ namespace AssetStudio
          AssetStudio::Database database;
          ALLEGRO_BITMAP* sprite_sheet_atlas;
          AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet;
-         int list_first_row_number;
          AssetStudio::GameConfigurations::Main* game_configuration;
          AllegroFlare::Placement2D scrollarea_placement;
          std::string current_level_identifier;

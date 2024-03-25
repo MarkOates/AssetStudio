@@ -46,10 +46,6 @@ properties:
     type: AllegroFlare::FrameAnimation::SpriteSheet*
     init_with: nullptr
 
-  - name: list_first_row_number
-    type: int
-    init_with: 0
-
   - name: game_configuration
     type: AssetStudio::GameConfigurations::Main*
     init_with: nullptr
@@ -657,11 +653,13 @@ methods:
       switch (ev->keyboard.keycode)
       {
          case ALLEGRO_KEY_UP:
+         case ALLEGRO_KEY_PGUP:
             scrollarea_placement.position.y += 40.0f;
             //universe.move_camera_up();
          break;
 
          case ALLEGRO_KEY_DOWN:
+         case ALLEGRO_KEY_PGDN:
             scrollarea_placement.position.y -= 40.0f;
             //universe.move_camera_down();
          break;
