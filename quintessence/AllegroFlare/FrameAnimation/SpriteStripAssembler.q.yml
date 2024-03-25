@@ -1,0 +1,82 @@
+properties:
+
+
+  - name: bitmaps
+    type: std::vector<ALLEGRO_BITMAP*>
+    init_with: '{}'
+    getter: true
+    setter: before_initialized
+
+  - name: sprite_strip
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    getter: explicit
+    setter: false
+
+  - name: assembled
+    type: bool
+
+
+methods:
+
+
+  - name: get_initialized
+    type: bool
+    body: |
+      return assembled;
+
+
+  - name: get_sprite_strip
+    type: ALLEGRO_BITMAP*
+    guards: [ assembled ]
+    body: |
+      return sprite_strip;
+
+
+  - name: assemble
+    guards: [ (!bitmaps.empty()) ]
+    body: |
+      // Validate all bitmaps are not nullptr
+      for (auto &bitmap : bitmaps)
+      {
+         if (bitmap == nullptr)
+         {
+            AllegroFlare::Logger::throw_error(
+               "AllegroFlare::FrameAnimation::SpriteStripAssembler::assemble"
+               "One of the bitmaps cannot be a nullptr."
+            );
+         }
+      }
+
+      // Validate all bitmaps have the same dimension (based on the inital images dimension)
+      int cell_width = al_get_bitmap_width(bitmaps[0]);
+      int cell_height = al_get_bitmap_height(bitmaps[0]);
+      // TODO: Validate dimensions here
+
+      // Create the bitmap
+      sprite_strip = al_create_bitmap(cell_width * bitmaps.size(), cell_height);
+
+      // Draw each bitmap onto the target
+      al_set_target_bitmap(sprite_strip);
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+      int i=0;
+      for (auto &bitmap : bitmaps)
+      {
+         al_draw_bitmap(bitmap, i * cell_width, 0, 0);
+      }
+      
+      assembled = true;
+      return;
+    body_dependency_symbols:
+      - AllegroFlare::Logger
+
+
+dependencies:
+
+
+  - symbol: ALLEGRO_BITMAP
+    headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Logger
+    headers: [ AllegroFlare/Logger.hpp ]
+
+
