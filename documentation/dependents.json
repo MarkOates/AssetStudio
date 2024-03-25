@@ -52,6 +52,9 @@
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
+  "std/find_if": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],

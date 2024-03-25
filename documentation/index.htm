@@ -342,6 +342,10 @@ table td
   <td class="method"><b>comma_separated_quoted_strings_to_vector_of_strings</b>(std::string comma_separated_quoted_strings=&quot;[unset-comma_separated_quoted_strings]&quot;)</td>
 </tr>
 <tr>
+  <td class="method">std::vector&lt;std::string&gt;</td>
+  <td class="method"><b>comma_separated_strings_to_vector_of_strings</b>(std::string comma_separated_strings=&quot;[unset-comma_separated_strings]&quot;)</td>
+</tr>
+<tr>
   <td class="method">std::pair&lt;bool, uint32_t&gt;</td>
   <td class="method"><b>str_to_playmode</b>(std::string playmode_string=&quot;[unset-playmode_string]&quot;)</td>
 </tr>
@@ -368,6 +372,18 @@ table td
 <tr>
   <td class="method">void</td>
   <td class="method"><b>load</b>()</td>
+</tr>
+<tr>
+  <td class="private_method">std::vector&lt;std::string&gt;</td>
+  <td class="private_method"><b>split</b>(std::string string=&quot;&quot;, char delimiter=&#39; &#39;)</td>
+</tr>
+<tr>
+  <td class="private_method">std::vector&lt;std::string&gt;</td>
+  <td class="private_method"><b>tokenize</b>(std::string str=&quot;&quot;, char delim=&#39;|&#39;)</td>
+</tr>
+<tr>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>trim</b>(std::string s=&quot;&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -401,6 +417,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Frame&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Frame.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::find_if&quot;, &quot;headers&quot;=&gt;[&quot;algorithm&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -912,6 +931,9 @@ table td
   "AllegroFlare/FrameAnimation/Frame": [
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
+  ],
+  "std/find_if": [
+    "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"

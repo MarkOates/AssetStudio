@@ -25,6 +25,9 @@ namespace AssetStudio
       std::map<std::tuple<std::string, int, int, int>, AllegroFlare::FrameAnimation::SpriteSheet*> sprite_sheets;
       bool loaded;
       AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
+      static std::vector<std::string> split(std::string string="", char delimiter=' ');
+      static std::vector<std::string> tokenize(std::string str="", char delim='|');
+      static std::string trim(std::string s="");
 
    protected:
 
@@ -42,6 +45,7 @@ namespace AssetStudio
       static int toi(std::string value="[unset-value]");
       static float tof(std::string value="[unset-value]");
       static std::vector<std::string> comma_separated_quoted_strings_to_vector_of_strings(std::string comma_separated_quoted_strings="[unset-comma_separated_quoted_strings]");
+      static std::vector<std::string> comma_separated_strings_to_vector_of_strings(std::string comma_separated_strings="[unset-comma_separated_strings]");
       std::pair<bool, uint32_t> str_to_playmode(std::string playmode_string="[unset-playmode_string]");
       AssetStudio::Asset* find_level(std::string level_identifier="[unset-level_identifier]");
       static std::string validate_key_and_return(std::map<std::string, std::string>* extracted_row=nullptr, std::string key="[unset-key]");

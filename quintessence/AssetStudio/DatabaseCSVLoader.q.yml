@@ -129,6 +129,18 @@ methods:
       return result;
 
 
+  - name: comma_separated_strings_to_vector_of_strings
+    type: std::vector<std::string>
+    static: true
+    parameters:
+      - name: comma_separated_strings
+        type: std::string
+        default_argument: '"[unset-comma_separated_strings]"'
+    body: |
+      // NOTE: Does not account for nested strings
+      return tokenize(comma_separated_strings, ',');
+
+
   - name: str_to_playmode
     type: std::pair<bool, uint32_t>
     parameters:
@@ -426,11 +438,12 @@ methods:
             // TODO: Handle this case:
             // TODO: Split
             //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-            std::vector<std::string> images_list = comma_separated_quoted_strings_to_vector_of_strings(images_list_raw);
+            std::vector<std::string> images_list = comma_separated_strings_to_vector_of_strings(images_list_raw);
 
-            std::cout << "*** images_list detected ***" << std::endl;
-            std::cout << "  - images_list.size(): " << images_list.size() << std::endl;
-            std::cout << "  - frame_data.size(): " << frame_data.size() << std::endl;
+            //std::cout << "*** images_list detected ***" << std::endl;
+            //std::cout << "  - images_list.size(): " << images_list.size() << std::endl;
+            //std::cout << "  - frame_data.size(): " << frame_data.size() << std::endl;
+            //std::cout << "  - images_list_raw: ###" << images_list_raw << "###" << std::endl;
 
             if (images_list.size() != frame_data.size())
             {
@@ -766,6 +779,61 @@ methods:
       - std::set
 
 
+  - name: split
+    type: std::vector<std::string>
+    private: true
+    static: true
+    parameters:
+      - name: string
+        type: std::string
+        default_argument: '""'
+      - name: delimiter
+        type: char
+        default_argument: "' '"
+    body: |
+      std::vector<std::string> elems;
+      auto result = std::back_inserter(elems);
+      std::stringstream ss(string);
+      std::string item;
+      while (std::getline(ss, item, delimiter)) { *(result++) = item; }
+      return elems;
+
+
+  - name: tokenize
+    private: true
+    static: true
+    type: std::vector<std::string>
+    parameters:
+      - name: str
+        type: std::string
+        default_argument: '""'
+      - name: delim
+        type: char
+        default_argument: "'|'"
+    body: |
+      std::vector<std::string> tokens = split(str, delim);
+      for (auto &token : tokens) token = trim(token);
+      return tokens;
+
+
+  - name: trim
+    type: std::string
+    private: true
+    static: true
+    parameters:
+      - name: s
+        type: std::string
+        default_argument: '""'
+    body: |
+      // ltrim
+      s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int c) {return !std::isspace(c);}));
+      // rtrim
+      s.erase(std::find_if(s.rbegin(), s.rend(), [](int c) {return !std::isspace(c);}).base(), s.end());
+      return s;
+    body_dependency_symbols:
+      - std::find_if
+
+
 dependencies:
 
 
@@ -789,5 +857,7 @@ dependencies:
     headers: [ AllegroFlare/FrameAnimation/SpriteSheet.hpp ]
   - symbol: AllegroFlare::FrameAnimation::Frame
     headers: [ AllegroFlare/FrameAnimation/Frame.hpp ]
+  - symbol: std::find_if
+    headers: [ algorithm ]
 
 

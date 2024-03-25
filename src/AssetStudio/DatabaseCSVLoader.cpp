@@ -6,6 +6,7 @@
 #include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/UsefulPHP.hpp>
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <set>
@@ -130,6 +131,12 @@ std::vector<std::string> DatabaseCSVLoader::comma_separated_quoted_strings_to_ve
    }
 
    return result;
+}
+
+std::vector<std::string> DatabaseCSVLoader::comma_separated_strings_to_vector_of_strings(std::string comma_separated_strings)
+{
+   // NOTE: Does not account for nested strings
+   return tokenize(comma_separated_strings, ',');
 }
 
 std::pair<bool, uint32_t> DatabaseCSVLoader::str_to_playmode(std::string playmode_string)
@@ -426,11 +433,12 @@ void DatabaseCSVLoader::load()
          // TODO: Handle this case:
          // TODO: Split
          //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-         std::vector<std::string> images_list = comma_separated_quoted_strings_to_vector_of_strings(images_list_raw);
+         std::vector<std::string> images_list = comma_separated_strings_to_vector_of_strings(images_list_raw);
 
-         std::cout << "*** images_list detected ***" << std::endl;
-         std::cout << "  - images_list.size(): " << images_list.size() << std::endl;
-         std::cout << "  - frame_data.size(): " << frame_data.size() << std::endl;
+         //std::cout << "*** images_list detected ***" << std::endl;
+         //std::cout << "  - images_list.size(): " << images_list.size() << std::endl;
+         //std::cout << "  - frame_data.size(): " << frame_data.size() << std::endl;
+         //std::cout << "  - images_list_raw: ###" << images_list_raw << "###" << std::endl;
 
          if (images_list.size() != frame_data.size())
          {
@@ -760,6 +768,32 @@ void DatabaseCSVLoader::load()
 
    loaded = true;
    return;
+}
+
+std::vector<std::string> DatabaseCSVLoader::split(std::string string, char delimiter)
+{
+   std::vector<std::string> elems;
+   auto result = std::back_inserter(elems);
+   std::stringstream ss(string);
+   std::string item;
+   while (std::getline(ss, item, delimiter)) { *(result++) = item; }
+   return elems;
+}
+
+std::vector<std::string> DatabaseCSVLoader::tokenize(std::string str, char delim)
+{
+   std::vector<std::string> tokens = split(str, delim);
+   for (auto &token : tokens) token = trim(token);
+   return tokens;
+}
+
+std::string DatabaseCSVLoader::trim(std::string s)
+{
+   // ltrim
+   s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int c) {return !std::isspace(c);}));
+   // rtrim
+   s.erase(std::find_if(s.rbegin(), s.rend(), [](int c) {return !std::isspace(c);}).base(), s.end());
+   return s;
 }
 
 
