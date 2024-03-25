@@ -20,7 +20,7 @@ SpriteStripAssembler::SpriteStripAssembler()
    , sprite_strip(nullptr)
    , cell_width(0)
    , cell_height(0)
-   , assembled("")
+   , assembled(false)
 {
 }
 

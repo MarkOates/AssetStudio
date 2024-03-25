@@ -27,6 +27,7 @@ properties:
 
   - name: assembled
     type: bool
+    init_with: false
 
 
 methods:
