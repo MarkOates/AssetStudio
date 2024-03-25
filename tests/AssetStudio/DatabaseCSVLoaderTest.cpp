@@ -132,6 +132,7 @@ TEST(Robieo_CSVToLevelLoaderTest,
 {
    std::vector<std::pair<std::string, std::vector<std::string>>> test_data = {
       { "\"foo\", \"bar\", \"baz\"", { "foo", "bar", "baz" } },
+      { "\"foo, and comma\", \"should work\", \"as, expected\"", { "foo, and comma", "should work", "as, expected" } },
    };
 
    for (auto &test_datum : test_data)

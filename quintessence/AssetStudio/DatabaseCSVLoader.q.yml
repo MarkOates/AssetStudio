@@ -336,61 +336,10 @@ methods:
 
          std::string image_filename = validate_key_and_return(&extracted_row, "image_filename");
          std::string images_list_raw = validate_key_and_return(&extracted_row, "images_list");
-         std::string full_path_to_image_file = "[unprocessed]";
-
-         if (image_filename.empty() && images_list_raw.empty())
-         {
-            AllegroFlare::Logger::throw_error(
-               "AssetStudio::DatabaseCSVLoader::load",
-               "foofoo231"
-            );
-         }
-         else if (!image_filename.empty() && !images_list_raw.empty())
-         {
-            AllegroFlare::Logger::throw_error(
-               "AssetStudio::DatabaseCSVLoader::load",
-               "foofoo456"
-            );
-         }
-         else if (!image_filename.empty())
-         {
-            full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-         }
-         else if (!images_list_raw.empty())
-         {
-            // TODO: Handle this case:
-            // TODO: Split
-            std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
-
-            AllegroFlare::Logger::warn_from(
-               "AssetStudio::DatabaseCSVLoader::load",
-               "When processing asset \"" + identifier + "\", an \"images_list\" was supplied. This feature is "
-                  "not yet implemented (you should add it in now, tho). For now, skipping this asset."
-            );
-            continue;
-              //asset_pack_identifier + "/extracted/" + image_filename;
-            //AllegroFlare::Logger::throw_error(
-               //"AssetStudio::DatabaseCSVLoader::load",
-               //"foofoo2"
-            //);
-         }
-         //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
 
 
 
-         //std::string identifier = asset_pack_identifier + "/" + intra_pack_identifier;
-
-           //- name: asset_pack_identifier
-             //type: std::string
-             //init_with: '"[unset-asset_pack_identifier]"'
-             //constructor_arg: true
-             //exposed: true
-
-           //- name: intra_pack_identifier
-             //type: std::string
-             //init_with: '"[unset-intra_pack_identifier]"'
-             //constructor_arg: true
-             //exposed: true
+         // Load the frame data
 
          std::string frame_data__in_hash = validate_key_and_return(&extracted_row, "frame_data__in_hash");
          std::string frame_data__build_n_frames__num_frames =
@@ -447,6 +396,71 @@ methods:
                "Weird error 2324jfgasodjifas."
             );
          }
+
+
+
+         // Load the image (or images) data
+
+         std::string full_path_to_image_file = "[unprocessed]";
+
+         if (image_filename.empty() && images_list_raw.empty())
+         {
+            AllegroFlare::Logger::throw_error(
+               "AssetStudio::DatabaseCSVLoader::load",
+               "foofoo231"
+            );
+         }
+         else if (!image_filename.empty() && !images_list_raw.empty())
+         {
+            AllegroFlare::Logger::throw_error(
+               "AssetStudio::DatabaseCSVLoader::load",
+               "foofoo456"
+            );
+         }
+         else if (!image_filename.empty())
+         {
+            full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+         }
+         else if (!images_list_raw.empty())
+         {
+            // TODO: Handle this case:
+            // TODO: Split
+            //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+            std::vector<std::string> images_list = comma_separated_quoted_strings_to_vector_of_strings(images_list_raw);
+
+            std::cout << "*** images_list detected ***" << std::endl;
+            std::cout << "  - images_list.size(): " << images_list.size() << std::endl;
+            std::cout << "  - frame_data.size(): " << frame_data.size() << std::endl;
+
+            if (images_list.size() != frame_data.size())
+            {
+               AllegroFlare::Logger::throw_error(
+                  "AssetStudio::DatabaseCSVLoader::load",
+                  "When processing asset \"" + identifier + "\", the number of images in "
+                     "the \"images_list\" (" + std::to_string(images_list.size()) + ") was not the same as the "
+                     "\"frame_data\"'s \"num_frames\" "
+                     "(" + std::to_string(frame_data.size()) + ")"
+               );
+            }
+
+            AllegroFlare::Logger::warn_from(
+               "AssetStudio::DatabaseCSVLoader::load",
+               "When processing asset \"" + identifier + "\", an \"images_list\" was supplied. This feature is "
+                  "not yet implemented (you should add it in now, tho). For now, skipping this asset."
+            );
+
+            continue;
+              //asset_pack_identifier + "/extracted/" + image_filename;
+            //AllegroFlare::Logger::throw_error(
+               //"AssetStudio::DatabaseCSVLoader::load",
+               //"foofoo2"
+            //);
+         }
+         //std::string full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+
+
+
+         // Parse the "playmode"
 
          std::pair<bool, uint32_t> playmode_parsed_data =
                { true, AllegroFlare::FrameAnimation::Animation::PLAYMODE_FORWARD_ONCE };
