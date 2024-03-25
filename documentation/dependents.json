@@ -60,6 +60,9 @@
   "std/find_if": [
     "AssetStudio/DatabaseCSVLoader"
   ],
+  "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
   ],

@@ -4,6 +4,7 @@
 
 #include <AllegroFlare/CSVParser.hpp>
 #include <AllegroFlare/FrameAnimation/SpriteSheet.hpp>
+#include <AllegroFlare/FrameAnimation/SpriteStripAssembler.hpp>
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/UsefulPHP.hpp>
 #include <algorithm>
@@ -197,6 +198,50 @@ std::string DatabaseCSVLoader::validate_key_and_return(std::map<std::string, std
       );
    }
    return extracted_row->operator[](key);
+}
+
+AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::create_sprite_sheet_from_individual_images(std::vector<std::string> individual_frame_image_filenames, int cell_width, int cell_height, int sprite_sheet_scale)
+{
+   if (!(assets_bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"assets_bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::create_sprite_sheet_from_individual_images: error: guard \"assets_bitmap_bin\" not met");
+   }
+   if (!((!individual_frame_image_filenames.empty())))
+   {
+      std::stringstream error_message;
+      error_message << "[DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"(!individual_frame_image_filenames.empty())\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("DatabaseCSVLoader::create_sprite_sheet_from_individual_images: error: guard \"(!individual_frame_image_filenames.empty())\" not met");
+   }
+   std::vector<ALLEGRO_BITMAP*> bitmaps;
+   for (auto &individual_frame_image_filename : individual_frame_image_filenames)
+   {
+      bitmaps.push_back(assets_bitmap_bin->auto_get(individual_frame_image_filename));
+   }
+
+   AllegroFlare::FrameAnimation::SpriteStripAssembler sprite_strip_assembler;
+   sprite_strip_assembler.set_bitmaps(bitmaps);
+   sprite_strip_assembler.assemble();
+   ALLEGRO_BITMAP* sprite_strip = sprite_strip_assembler.get_sprite_strip();
+
+   // Given the newly assembled sprite_strip (aka atlas), build the sprite_sheet
+   AllegroFlare::FrameAnimation::SpriteSheet *result_sprite_sheet =
+      new AllegroFlare::FrameAnimation::SpriteSheet(sprite_strip, cell_width, cell_height, sprite_sheet_scale);
+
+   // Cleanup
+   al_destroy_bitmap(sprite_strip);
+   // Cleanup the individual frame images in the bin here
+   for (auto &individual_frame_image_filename : individual_frame_image_filenames)
+   {
+      // TODO: This could wierdly clobber, consider checking all the image frames do *not* already exist in the
+      // bin at the beginning of the method before continuing.
+      assets_bitmap_bin->destroy(individual_frame_image_filename);
+   }
+
+   return result_sprite_sheet;
 }
 
 AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_sheet(std::string filename, int cell_width, int cell_height, int sprite_sheet_scale)

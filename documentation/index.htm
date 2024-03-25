@@ -426,6 +426,10 @@ table td
 </tr>
 <tr>
   <td class="private_method">AllegroFlare::FrameAnimation::SpriteSheet*</td>
+  <td class="private_method"><b>create_sprite_sheet_from_individual_images</b>(std::vector&lt;std::string&gt; individual_frame_image_filenames={}, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
+</tr>
+<tr>
+  <td class="private_method">AllegroFlare::FrameAnimation::SpriteSheet*</td>
   <td class="private_method"><b>obtain_sprite_sheet</b>(std::string filename=&quot;[unset-filename]&quot;, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
 </tr>
 <tr>
@@ -487,6 +491,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::find_if&quot;, &quot;headers&quot;=&gt;[&quot;algorithm&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteStripAssembler&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteStripAssembler.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -1005,6 +1012,9 @@ table td
     "AssetStudio/Gameplay/Screen"
   ],
   "std/find_if": [
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/GameConfigurations/Complete": [

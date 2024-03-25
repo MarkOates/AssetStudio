@@ -24,6 +24,7 @@ namespace AssetStudio
       std::map<std::string, AssetStudio::Asset*> levels;
       std::map<std::tuple<std::string, int, int, int>, AllegroFlare::FrameAnimation::SpriteSheet*> sprite_sheets;
       bool loaded;
+      AllegroFlare::FrameAnimation::SpriteSheet* create_sprite_sheet_from_individual_images(std::vector<std::string> individual_frame_image_filenames={}, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
       AllegroFlare::FrameAnimation::SpriteSheet* obtain_sprite_sheet(std::string filename="[unset-filename]", int cell_width=16, int cell_height=16, int sprite_sheet_scale=2);
       static std::vector<std::string> split(std::string string="", char delimiter=' ');
       static std::vector<std::string> tokenize(std::string str="", char delim='|');

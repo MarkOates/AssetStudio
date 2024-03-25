@@ -126,6 +126,7 @@ void SpriteStripAssembler::assemble()
    {
       if (al_get_bitmap_width(bitmap) != cell_width)
       {
+         // TODO: Test this validation
          AllegroFlare::Logger::throw_error(
             "AllegroFlare::FrameAnimation::SpriteStripAssembler::assemble"
             "All bitmaps must be the same size. There is at least one image that is not the same width."
@@ -133,6 +134,7 @@ void SpriteStripAssembler::assemble()
       }
       if (al_get_bitmap_height(bitmap) != cell_height)
       {
+         // TODO: Test this validation
          AllegroFlare::Logger::throw_error(
             "AllegroFlare::FrameAnimation::SpriteStripAssembler::assemble"
             "All bitmaps must be the same size. There is at least one image that is not the same height."
