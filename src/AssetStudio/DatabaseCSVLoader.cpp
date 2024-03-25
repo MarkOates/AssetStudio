@@ -458,6 +458,7 @@ void DatabaseCSVLoader::load()
       std::string full_path_to_image_file = "[unprocessed]";
       AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet = nullptr;
       bool using_single_image_file = false;
+      int sprite_sheet_scale = 2;
 
       if (image_filename.empty() && images_list_raw.empty())
       {
@@ -477,7 +478,7 @@ void DatabaseCSVLoader::load()
       {
          full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
 
-         sprite_sheet = obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, 2);
+         sprite_sheet = obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, sprite_sheet_scale);
          using_single_image_file = true;
       }
       else if (!images_list_raw.empty())
@@ -519,7 +520,7 @@ void DatabaseCSVLoader::load()
                images_list,
                cell_width,
                cell_height,
-               2
+               sprite_sheet_scale
             );
          using_single_image_file = false;
          //continue;
