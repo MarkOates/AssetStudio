@@ -1,4 +1,16 @@
 {
+  "ALLEGRO_BITMAP": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
+    "AssetStudio/Asset",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Logger": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "al_is_system_installed": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler"
+  ],
   "AllegroFlare/FrameAnimation/Animation": [
     "AssetStudio/Asset",
     "AssetStudio/AssetGroup"
@@ -6,10 +18,6 @@
   "AllegroFlare/FrameAnimation/Book": [
     "AssetStudio/Asset",
     "AssetStudio/AssetGroup"
-  ],
-  "ALLEGRO_BITMAP": [
-    "AssetStudio/Asset",
-    "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/Asset": [
     "AssetStudio/AssetGroup",
@@ -29,9 +37,6 @@
     "AssetStudio/DatabaseCSVLoader"
   ],
   "SurviveTheCity/CSVParser": [
-    "AssetStudio/DatabaseCSVLoader"
-  ],
-  "AllegroFlare/Logger": [
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/atoi": [

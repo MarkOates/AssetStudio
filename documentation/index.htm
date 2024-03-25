@@ -54,6 +54,7 @@ table td
 <body>
 <h1>Table of Contents</h1>
 <ul>
+  <li><a href="#quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</a></li>
@@ -66,6 +67,72 @@ table td
   <li><a href="#quintessence/AssetStudio/Gameplay/Screen.q.yml">quintessence/AssetStudio/Gameplay/Screen.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">bitmaps</td>
+  <td class="property">std::vector&lt;ALLEGRO_BITMAP*&gt;</td>
+</tr>
+<tr>
+  <td class="property">sprite_strip</td>
+  <td class="property">ALLEGRO_BITMAP*</td>
+</tr>
+<tr>
+  <td class="property">cell_width</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">cell_height</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">assembled</td>
+  <td class="property">bool</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>get_initialized</b>()</td>
+</tr>
+<tr>
+  <td class="method">ALLEGRO_BITMAP*</td>
+  <td class="method"><b>get_sprite_strip</b>()</td>
+</tr>
+<tr>
+  <td class="method">int</td>
+  <td class="method"><b>get_cell_width</b>()</td>
+</tr>
+<tr>
+  <td class="method">int</td>
+  <td class="method"><b>get_cell_height</b>()</td>
+</tr>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>assemble</b>()</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Logger&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Logger.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
 <br><br><br>
 <br><br><br>
 <ul>
@@ -879,6 +946,18 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "ALLEGRO_BITMAP": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
+    "AssetStudio/Asset",
+    "AssetStudio/Gameplay/Screen"
+  ],
+  "AllegroFlare/Logger": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
+    "AssetStudio/DatabaseCSVLoader"
+  ],
+  "al_is_system_installed": [
+    "AllegroFlare/FrameAnimation/SpriteStripAssembler"
+  ],
   "AllegroFlare/FrameAnimation/Animation": [
     "AssetStudio/Asset",
     "AssetStudio/AssetGroup"
@@ -886,10 +965,6 @@ table td
   "AllegroFlare/FrameAnimation/Book": [
     "AssetStudio/Asset",
     "AssetStudio/AssetGroup"
-  ],
-  "ALLEGRO_BITMAP": [
-    "AssetStudio/Asset",
-    "AssetStudio/Gameplay/Screen"
   ],
   "AssetStudio/Asset": [
     "AssetStudio/AssetGroup",
@@ -909,9 +984,6 @@ table td
     "AssetStudio/DatabaseCSVLoader"
   ],
   "SurviveTheCity/CSVParser": [
-    "AssetStudio/DatabaseCSVLoader"
-  ],
-  "AllegroFlare/Logger": [
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/atoi": [

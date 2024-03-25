@@ -14,6 +14,8 @@ namespace AllegroFlare
       private:
          std::vector<ALLEGRO_BITMAP*> bitmaps;
          ALLEGRO_BITMAP* sprite_strip;
+         int cell_width;
+         int cell_height;
          bool assembled;
 
       protected:
@@ -27,6 +29,8 @@ namespace AllegroFlare
          std::vector<ALLEGRO_BITMAP*> get_bitmaps() const;
          bool get_initialized();
          ALLEGRO_BITMAP* get_sprite_strip();
+         int get_cell_width();
+         int get_cell_height();
          void assemble();
       };
    }
