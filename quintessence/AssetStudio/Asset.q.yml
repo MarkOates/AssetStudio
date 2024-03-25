@@ -95,16 +95,6 @@ properties:
     init_with: ''
     exposed: true
 
-  - name: related_assset_group_id
-    type: int
-    init_with: 0
-    exposed: true
-
-  - name: from_pack
-    type: std::string
-    init_with: '"[unset-description]"'
-    exposed: true
-
 
 dependencies:
 

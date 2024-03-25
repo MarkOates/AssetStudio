@@ -30,12 +30,6 @@
     "AssetStudio/Database",
     "AssetStudio/DatabaseCSVLoader"
   ],
-  "AssetStudio/AssetGroup": [
-    "AssetStudio/Database"
-  ],
-  "AssetStudio/Category": [
-    "AssetStudio/Database"
-  ],
   "AllegroFlare/CSVParser": [
     "AssetStudio/DatabaseCSVLoader"
   ],

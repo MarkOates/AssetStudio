@@ -26,8 +26,6 @@ Asset::Asset(int id, std::string identifier, std::string type, std::string descr
    , intra_pack_identifier(intra_pack_identifier)
    , categories()
    , tags()
-   , related_assset_group_id(0)
-   , from_pack("[unset-description]")
 {
 }
 

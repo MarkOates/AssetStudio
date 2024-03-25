@@ -3,11 +3,8 @@
 
 #include <AllegroFlare/FrameAnimation/Animation.hpp>
 #include <AssetStudio/Asset.hpp>
-#include <AssetStudio/AssetGroup.hpp>
-#include <AssetStudio/Category.hpp>
 #include <map>
 #include <string>
-#include <vector>
 
 
 namespace AssetStudio
@@ -16,8 +13,6 @@ namespace AssetStudio
    {
    private:
       std::map<std::string, AssetStudio::Asset*> assets;
-      std::vector<AssetStudio::AssetGroup*> asset_groups;
-      std::vector<AssetStudio::Category*> categories;
 
    protected:
 
@@ -27,11 +22,7 @@ namespace AssetStudio
       ~Database();
 
       void set_assets(std::map<std::string, AssetStudio::Asset*> assets);
-      void set_asset_groups(std::vector<AssetStudio::AssetGroup*> asset_groups);
-      void set_categories(std::vector<AssetStudio::Category*> categories);
       std::map<std::string, AssetStudio::Asset*> get_assets() const;
-      std::vector<AssetStudio::AssetGroup*> get_asset_groups() const;
-      std::vector<AssetStudio::Category*> get_categories() const;
       bool asset_exists(std::string identifier="[unset-identifier]");
       AssetStudio::Asset* find_asset_by_identifier(std::string identifier="[unset-identifier]");
       AllegroFlare::FrameAnimation::Animation* find_animation_by_identifier(std::string identifier="[unset-identifier]");

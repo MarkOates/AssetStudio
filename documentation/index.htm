@@ -58,7 +58,6 @@ table td
   <li><a href="#quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/AssetGroup.q.yml">quintessence/AssetStudio/AssetGroup.q.yml</a></li>
-  <li><a href="#quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Category.q.yml">quintessence/AssetStudio/Category.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
@@ -257,14 +256,6 @@ table td
   <td class="property">tags</td>
   <td class="property">std::vector&lt;std::string&gt;</td>
 </tr>
-<tr>
-  <td class="property">related_assset_group_id</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">from_pack</td>
-  <td class="property">std::string</td>
-</tr>
     </table>
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
@@ -341,23 +332,6 @@ table td
 <br><br><br>
 <ul>
   <div class="component">
-    <h3 id="quintessence/AssetStudio/Bundle.q.yml">quintessence/AssetStudio/Bundle.q.yml</h3>
-    <p>(This component does not include supplementary documentation)</p>
-    <h3>Properties</h3>
-<p>This class contains no properties</p>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
-<tr>
-  <td class="method">std::string</td>
-  <td class="method"><b>run</b>()</td>
-</tr>
-    </table>
-</div>    <h3>Dependencies</h3>
-<p>This class contains no dependencies</p>  </div>
-</ul>
-<br><br><br>
-<br><br><br>
-<ul>
-  <div class="component">
     <h3 id="quintessence/AssetStudio/Category.q.yml">quintessence/AssetStudio/Category.q.yml</h3>
     <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
@@ -383,14 +357,6 @@ table td
   <td class="property">assets</td>
   <td class="property">std::map&lt;std::string, AssetStudio::Asset*&gt;</td>
 </tr>
-<tr>
-  <td class="property">asset_groups</td>
-  <td class="property">std::vector&lt;AssetStudio::AssetGroup*&gt;</td>
-</tr>
-<tr>
-  <td class="property">categories</td>
-  <td class="property">std::vector&lt;AssetStudio::Category*&gt;</td>
-</tr>
     </table>
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
@@ -410,19 +376,13 @@ table td
 </div>    <h3>Dependencies</h3>
 <div class="property-box dependencies">     <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
-</tr>
-<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Asset.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::AssetGroup&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/AssetGroup.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Category&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Category.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -1053,12 +1013,6 @@ table td
     "AssetStudio/AssetGroup",
     "AssetStudio/Database",
     "AssetStudio/DatabaseCSVLoader"
-  ],
-  "AssetStudio/AssetGroup": [
-    "AssetStudio/Database"
-  ],
-  "AssetStudio/Category": [
-    "AssetStudio/Database"
   ],
   "AllegroFlare/CSVParser": [
     "AssetStudio/DatabaseCSVLoader"
