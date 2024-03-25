@@ -34,6 +34,16 @@ TEST(AllegroFlare_FrameAnimation_SpriteStripAssemblerTest, assemble__will_build_
    sprite_strip_assembler.assemble();
    ALLEGRO_BITMAP* result_sprite_strip = sprite_strip_assembler.get_sprite_strip();
 
+   // Save the bitmap (for now)
+   // TODO: Test the pixels on the result bitmap
+   // TODO: Programatically generate the save filename
+   // TODO: Consider doing a render test
+   al_save_bitmap(
+      "tmp/test_snapshots/AllegroFlare_FrameAnimation_SpriteStripAssemblerTest__"
+         "assemble__will_build_the_expected_sprite_strip.png",
+      result_sprite_strip
+   );
+
    // Cleanup
    for (auto &bitmap : bitmaps) al_destroy_bitmap(bitmap);
    al_destroy_bitmap(result_sprite_strip);

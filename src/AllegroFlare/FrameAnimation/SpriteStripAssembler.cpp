@@ -107,8 +107,6 @@ void SpriteStripAssembler::assemble()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("SpriteStripAssembler::assemble: error: guard \"(!bitmaps.empty())\" not met");
    }
-   int i=0;
-
    // Validate all bitmaps are not nullptr
    for (auto &bitmap : bitmaps)
    {
@@ -124,7 +122,6 @@ void SpriteStripAssembler::assemble()
    // Validate all bitmaps have the same dimension (based on the inital images dimension)
    cell_width = al_get_bitmap_width(bitmaps[0]);
    cell_height = al_get_bitmap_height(bitmaps[0]);
-   i = 0;
    for (auto &bitmap : bitmaps)
    {
       if (al_get_bitmap_width(bitmap) != cell_width)
@@ -153,10 +150,11 @@ void SpriteStripAssembler::assemble()
    // Draw each bitmap onto the target
    al_set_target_bitmap(sprite_strip);
    al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-   i = 0;
+   int i=0;
    for (auto &bitmap : bitmaps)
    {
       al_draw_bitmap(bitmap, i * cell_width, 0, 0);
+      i++;
    }
    al_restore_state(&previous_bitmap_state);
 

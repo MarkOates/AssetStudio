@@ -63,8 +63,6 @@ methods:
   - name: assemble
     guards: [ al_is_system_installed(), (!assembled), (!bitmaps.empty()) ]
     body: |
-      int i=0;
-
       // Validate all bitmaps are not nullptr
       for (auto &bitmap : bitmaps)
       {
@@ -80,7 +78,6 @@ methods:
       // Validate all bitmaps have the same dimension (based on the inital images dimension)
       cell_width = al_get_bitmap_width(bitmaps[0]);
       cell_height = al_get_bitmap_height(bitmaps[0]);
-      i = 0;
       for (auto &bitmap : bitmaps)
       {
          if (al_get_bitmap_width(bitmap) != cell_width)
@@ -109,10 +106,11 @@ methods:
       // Draw each bitmap onto the target
       al_set_target_bitmap(sprite_strip);
       al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-      i = 0;
+      int i=0;
       for (auto &bitmap : bitmaps)
       {
          al_draw_bitmap(bitmap, i * cell_width, 0, 0);
+         i++;
       }
       al_restore_state(&previous_bitmap_state);
       
