@@ -127,3 +127,21 @@ TEST(Robieo_CSVToLevelLoaderTest, load__on_production_csv__will_not_blow_up)
 }
 
 
+TEST(Robieo_CSVToLevelLoaderTest,
+   comma_separated_quoted_strings_to_vector_of_strings__will_split_a_string_as_expected)
+{
+   std::vector<std::pair<std::string, std::vector<std::string>>> test_data = {
+      { "\"foo\", \"bar\", \"baz\"", { "foo", "bar", "baz" } },
+   };
+
+   for (auto &test_datum : test_data)
+   {
+      std::string input_string = test_datum.first;
+      std::vector<std::string> expected_parsed_data = test_datum.second;
+      std::vector<std::string> actual_parsed_data =
+         AssetStudio::DatabaseCSVLoader::comma_separated_quoted_strings_to_vector_of_strings(input_string);
+      EXPECT_EQ(expected_parsed_data, actual_parsed_data) << input_string;
+   }
+}
+
+

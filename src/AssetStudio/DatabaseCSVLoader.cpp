@@ -96,6 +96,42 @@ float DatabaseCSVLoader::tof(std::string value)
    return std::stof(value.c_str());
 }
 
+std::vector<std::string> DatabaseCSVLoader::comma_separated_quoted_strings_to_vector_of_strings(std::string comma_separated_quoted_strings)
+{
+   std::vector<std::string> result;
+   std::stringstream ss(comma_separated_quoted_strings);
+   std::string current_element;
+   bool in_quotes = false;
+
+   // Parse the CSV list character by character
+   for (char ch : comma_separated_quoted_strings)
+   {
+      if (ch == '"')
+      {
+         // Toggle quotes state
+         in_quotes = !in_quotes;
+      }
+      else if (ch == ',' && !in_quotes)
+      {
+         // Found a comma outside quotes, push the current element
+         result.push_back(current_element);
+         current_element.clear(); // Reset for the next element
+      }
+      else if (in_quotes)
+      {
+         current_element += ch;
+      }
+   }
+
+   // Push the last element if it's not empty
+   if (!current_element.empty())
+   {
+      result.push_back(current_element);
+   }
+
+   return result;
+}
+
 std::pair<bool, uint32_t> DatabaseCSVLoader::str_to_playmode(std::string playmode_string)
 {
    if (playmode_string == "once")

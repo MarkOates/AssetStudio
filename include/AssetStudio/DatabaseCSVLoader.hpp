@@ -41,6 +41,7 @@ namespace AssetStudio
       bool level_exists(std::string level_identifier="[unset-level_identifier]");
       static int toi(std::string value="[unset-value]");
       static float tof(std::string value="[unset-value]");
+      static std::vector<std::string> comma_separated_quoted_strings_to_vector_of_strings(std::string comma_separated_quoted_strings="[unset-comma_separated_quoted_strings]");
       std::pair<bool, uint32_t> str_to_playmode(std::string playmode_string="[unset-playmode_string]");
       AssetStudio::Asset* find_level(std::string level_identifier="[unset-level_identifier]");
       static std::string validate_key_and_return(std::map<std::string, std::string>* extracted_row=nullptr, std::string key="[unset-key]");
