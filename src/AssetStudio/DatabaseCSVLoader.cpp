@@ -216,6 +216,8 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::create_sprite_shee
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("DatabaseCSVLoader::create_sprite_sheet_from_individual_images: error: guard \"(!individual_frame_image_filenames.empty())\" not met");
    }
+   // TODO: Consider caching the created result_sprite_sheet;
+
    std::vector<ALLEGRO_BITMAP*> bitmaps;
    for (auto &individual_frame_image_filename : individual_frame_image_filenames)
    {
@@ -454,6 +456,8 @@ void DatabaseCSVLoader::load()
       // Load the image (or images) data
 
       std::string full_path_to_image_file = "[unprocessed]";
+      AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet = nullptr;
+      bool using_single_image_file = false;
 
       if (image_filename.empty() && images_list_raw.empty())
       {
@@ -472,6 +476,9 @@ void DatabaseCSVLoader::load()
       else if (!image_filename.empty())
       {
          full_path_to_image_file = asset_pack_identifier + "/extracted/" + image_filename;
+
+         sprite_sheet = obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, 2);
+         using_single_image_file = true;
       }
       else if (!images_list_raw.empty())
       {
@@ -496,13 +503,26 @@ void DatabaseCSVLoader::load()
             );
          }
 
-         AllegroFlare::Logger::warn_from(
-            "AssetStudio::DatabaseCSVLoader::load",
-            "When processing asset \"" + identifier + "\", an \"images_list\" was supplied. This feature is "
-               "not yet implemented (you should add it in now, tho). For now, skipping this asset."
-         );
+         //AllegroFlare::Logger::warn_from(
+            //"AssetStudio::DatabaseCSVLoader::load",
+            //"When processing asset \"" + identifier + "\", an \"images_list\" was supplied. This feature is "
+               //"not yet implemented (you should add it in now, tho). For now, skipping this asset."
+         //);
 
-         continue;
+         // Build the extended path_to_image_file
+         for (auto &image_list_item : images_list)
+         {
+            image_list_item = asset_pack_identifier + "/extracted/" + image_list_item;
+         }
+
+         sprite_sheet = create_sprite_sheet_from_individual_images(
+               images_list,
+               cell_width,
+               cell_height,
+               2
+            );
+         using_single_image_file = false;
+         //continue;
            //asset_pack_identifier + "/extracted/" + image_filename;
          //AllegroFlare::Logger::throw_error(
             //"AssetStudio::DatabaseCSVLoader::load",
@@ -538,8 +558,8 @@ void DatabaseCSVLoader::load()
 
 
       // Build the sprite sheet
-      AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet =
-         obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, 2);
+      //AllegroFlare::FrameAnimation::SpriteSheet* sprite_sheet =
+         //obtain_sprite_sheet(full_path_to_image_file, cell_width, cell_height, 2);
 
       // Build the animation
       AllegroFlare::FrameAnimation::Animation *animation =
