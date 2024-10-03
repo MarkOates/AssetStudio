@@ -1,81 +1,56 @@
 {
   "AllegroFlare/FrameAnimation/Animation": [
-    "AllegroFlare/AssetStudio/Asset",
-    "AllegroFlare/AssetStudio/Database",
     "AssetStudio/Asset",
     "AssetStudio/Database"
   ],
   "AllegroFlare/FrameAnimation/Book": [
-    "AllegroFlare/AssetStudio/Asset",
     "AssetStudio/Asset"
   ],
   "ALLEGRO_BITMAP": [
-    "AllegroFlare/AssetStudio/Asset",
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
     "AssetStudio/Asset",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/Errors": [
-    "AllegroFlare/AssetStudio/Database",
     "AssetStudio/Database"
   ],
-  "AllegroFlare/AssetStudio/Asset": [
-    "AllegroFlare/AssetStudio/Database",
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader"
+  "AssetStudio/Asset": [
+    "AssetStudio/Database",
+    "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/CSVParser": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/UsefulPHP": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "SurviveTheCity/CSVParser": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/Logger": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/atoi": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/stof": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/BitmapBin": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/FrameAnimation/SpriteSheet": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/FrameAnimation/Frame": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "std/find_if": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
-    "AssetStudio/DatabaseCSVLoader"
-  ],
-  "al_is_system_installed": [
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler"
-  ],
-  "AssetStudio/Asset": [
-    "AssetStudio/Database",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/GameConfigurations/Complete": [

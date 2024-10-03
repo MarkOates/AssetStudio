@@ -54,10 +54,6 @@ table td
 <body>
 <h1>Table of Contents</h1>
 <ul>
-  <li><a href="#quintessence/AllegroFlare/AssetStudio/Asset.q.yml">quintessence/AllegroFlare/AssetStudio/Asset.q.yml</a></li>
-  <li><a href="#quintessence/AllegroFlare/AssetStudio/Database.q.yml">quintessence/AllegroFlare/AssetStudio/Database.q.yml</a></li>
-  <li><a href="#quintessence/AllegroFlare/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AllegroFlare/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
-  <li><a href="#quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
@@ -67,345 +63,6 @@ table td
   <li><a href="#quintessence/AssetStudio/Gameplay/Screen.q.yml">quintessence/AssetStudio/Gameplay/Screen.q.yml</a></li>
 </ul>
 <h1>Components</h1>
-<br><br><br>
-<br><br><br>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/AllegroFlare/AssetStudio/Asset.q.yml">quintessence/AllegroFlare/AssetStudio/Asset.q.yml</h3>
-    <p>(This component does not include supplementary documentation)</p>
-    <h3>Properties</h3>
-<div class="property-box properties">     <table>
-<tr>
-  <td class="property">id</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">identifier</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">type</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">description</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">animation</td>
-  <td class="property">AllegroFlare::FrameAnimation::Animation*</td>
-</tr>
-<tr>
-  <td class="property">cell_width</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">cell_height</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">align_x</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">align_y</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">anchor_x</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">anchor_y</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">bitmap</td>
-  <td class="property">ALLEGRO_BITMAP*</td>
-</tr>
-<tr>
-  <td class="property">asset_pack_identifier</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">intra_pack_identifier</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">categories</td>
-  <td class="property">std::vector&lt;std::string&gt;</td>
-</tr>
-<tr>
-  <td class="property">tags</td>
-  <td class="property">std::vector&lt;std::string&gt;</td>
-</tr>
-    </table>
-</div>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
-    </table>
-</div>    <h3>Dependencies</h3>
-<div class="property-box dependencies">     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Book&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Book.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-    </table>
-</div>  </div>
-</ul>
-<br><br><br>
-<br><br><br>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/AllegroFlare/AssetStudio/Database.q.yml">quintessence/AllegroFlare/AssetStudio/Database.q.yml</h3>
-    <p>(This component does not include supplementary documentation)</p>
-    <h3>Properties</h3>
-<div class="property-box properties">     <table>
-<tr>
-  <td class="property">assets</td>
-  <td class="property">std::map&lt;std::string, AllegroFlare::AssetStudio::Asset*&gt;</td>
-</tr>
-    </table>
-</div>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
-<tr>
-  <td class="method">bool</td>
-  <td class="method"><b>asset_exists</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">AllegroFlare::AssetStudio::Asset*</td>
-  <td class="method"><b>find_asset_by_identifier</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">AllegroFlare::FrameAnimation::Animation*</td>
-  <td class="method"><b>find_animation_by_identifier</b>(std::string identifier=&quot;[unset-identifier]&quot;)</td>
-</tr>
-    </table>
-</div>    <h3>Dependencies</h3>
-<div class="property-box dependencies">     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Animation&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Animation.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/AssetStudio/Asset.hpp&quot;]}</td>
-</tr>
-    </table>
-</div>  </div>
-</ul>
-<br><br><br>
-<br><br><br>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/AllegroFlare/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AllegroFlare/AssetStudio/DatabaseCSVLoader.q.yml</h3>
-    <p>(This component does not include supplementary documentation)</p>
-    <h3>Properties</h3>
-<div class="property-box properties">     <table>
-<tr>
-  <td class="property">assets_bitmap_bin</td>
-  <td class="property">AllegroFlare::BitmapBin*</td>
-</tr>
-<tr>
-  <td class="property">csv_full_path</td>
-  <td class="property">std::string</td>
-</tr>
-<tr>
-  <td class="property">assets</td>
-  <td class="property">std::map&lt;std::string, AllegroFlare::AssetStudio::Asset*&gt;</td>
-</tr>
-<tr>
-  <td class="property">sprite_sheets</td>
-  <td class="property">std::map&lt;std::tuple&lt;std::string, int, int, int&gt;, AllegroFlare::FrameAnimation::SpriteSheet*&gt;</td>
-</tr>
-<tr>
-  <td class="property">loaded</td>
-  <td class="property">bool</td>
-</tr>
-    </table>
-</div>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
-<tr>
-  <td class="method">std::map&lt;std::string, AllegroFlare::AssetStudio::Asset*&gt;</td>
-  <td class="method"><b>get_assets</b>()</td>
-</tr>
-<tr>
-  <td class="method">bool</td>
-  <td class="method"><b>level_exists</b>(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">int</td>
-  <td class="method"><b>toi</b>(std::string value=&quot;[unset-value]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">float</td>
-  <td class="method"><b>tof</b>(std::string value=&quot;[unset-value]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">std::vector&lt;std::string&gt;</td>
-  <td class="method"><b>comma_separated_quoted_strings_to_vector_of_strings</b>(std::string comma_separated_quoted_strings=&quot;[unset-comma_separated_quoted_strings]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">std::vector&lt;std::string&gt;</td>
-  <td class="method"><b>comma_separated_strings_to_vector_of_strings</b>(std::string comma_separated_strings=&quot;[unset-comma_separated_strings]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">std::pair&lt;bool, uint32_t&gt;</td>
-  <td class="method"><b>str_to_playmode</b>(std::string playmode_string=&quot;[unset-playmode_string]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">AllegroFlare::AssetStudio::Asset*</td>
-  <td class="method"><b>find_level</b>(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">std::string</td>
-  <td class="method"><b>validate_key_and_return</b>(std::map&lt;std::string, std::string&gt;* extracted_row=nullptr, std::string key=&quot;[unset-key]&quot;)</td>
-</tr>
-<tr>
-  <td class="private_method">AllegroFlare::FrameAnimation::SpriteSheet*</td>
-  <td class="private_method"><b>create_sprite_sheet_from_individual_images</b>(std::vector&lt;std::string&gt; individual_frame_image_filenames={}, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
-</tr>
-<tr>
-  <td class="private_method">AllegroFlare::FrameAnimation::SpriteSheet*</td>
-  <td class="private_method"><b>obtain_sprite_sheet</b>(std::string filename=&quot;[unset-filename]&quot;, int cell_width=16, int cell_height=16, int sprite_sheet_scale=2)</td>
-</tr>
-<tr>
-  <td class="method">std::vector&lt;AllegroFlare::FrameAnimation::Frame&gt;</td>
-  <td class="method"><b>build_n_frames</b>(uint32_t num_frames=1, uint32_t start_frame_num=0, float each_frame_duration=0.08f)</td>
-</tr>
-<tr>
-  <td class="method">std::vector&lt;AllegroFlare::FrameAnimation::Frame&gt;</td>
-  <td class="method"><b>build_frames_from_hash</b>(std::string frame_data_hash=&quot;[unset-frame_data_hash]&quot;)</td>
-</tr>
-<tr>
-  <td class="method">void</td>
-  <td class="method"><b>load</b>()</td>
-</tr>
-<tr>
-  <td class="private_method">std::vector&lt;std::string&gt;</td>
-  <td class="private_method"><b>split</b>(std::string string=&quot;&quot;, char delimiter=&#39; &#39;)</td>
-</tr>
-<tr>
-  <td class="private_method">std::vector&lt;std::string&gt;</td>
-  <td class="private_method"><b>tokenize</b>(std::string str=&quot;&quot;, char delim=&#39;|&#39;)</td>
-</tr>
-<tr>
-  <td class="private_method">std::string</td>
-  <td class="private_method"><b>trim</b>(std::string s=&quot;&quot;)</td>
-</tr>
-    </table>
-</div>    <h3>Dependencies</h3>
-<div class="property-box dependencies">     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::CSVParser&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/CSVParser.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::UsefulPHP&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/UsefulPHP.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;SurviveTheCity::CSVParser&quot;, &quot;headers&quot;=&gt;[&quot;SurviveTheCity/CSVParser.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::AssetStudio::Asset&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/AssetStudio/Asset.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Logger&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Logger.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::atoi&quot;, &quot;headers&quot;=&gt;[&quot;cstdlib&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stof&quot;, &quot;headers&quot;=&gt;[&quot;string&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteSheet&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteSheet.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::Frame&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/Frame.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::find_if&quot;, &quot;headers&quot;=&gt;[&quot;algorithm&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteStripAssembler&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteStripAssembler.hpp&quot;]}</td>
-</tr>
-    </table>
-</div>  </div>
-</ul>
-<br><br><br>
-<br><br><br>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml">quintessence/AllegroFlare/FrameAnimation/SpriteStripAssembler.q.yml</h3>
-    <p>(This component does not include supplementary documentation)</p>
-    <h3>Properties</h3>
-<div class="property-box properties">     <table>
-<tr>
-  <td class="property">bitmaps</td>
-  <td class="property">std::vector&lt;ALLEGRO_BITMAP*&gt;</td>
-</tr>
-<tr>
-  <td class="property">sprite_strip</td>
-  <td class="property">ALLEGRO_BITMAP*</td>
-</tr>
-<tr>
-  <td class="property">cell_width</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">cell_height</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">assembled</td>
-  <td class="property">bool</td>
-</tr>
-    </table>
-</div>    <h3>Methods</h3>
-<div class="property-box methods">     <table>
-<tr>
-  <td class="method">bool</td>
-  <td class="method"><b>get_initialized</b>()</td>
-</tr>
-<tr>
-  <td class="method">ALLEGRO_BITMAP*</td>
-  <td class="method"><b>get_sprite_strip</b>()</td>
-</tr>
-<tr>
-  <td class="method">int</td>
-  <td class="method"><b>get_cell_width</b>()</td>
-</tr>
-<tr>
-  <td class="method">int</td>
-  <td class="method"><b>get_cell_height</b>()</td>
-</tr>
-<tr>
-  <td class="method">void</td>
-  <td class="method"><b>assemble</b>()</td>
-</tr>
-    </table>
-</div>    <h3>Dependencies</h3>
-<div class="property-box dependencies">     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Logger&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Logger.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-    </table>
-</div>  </div>
-</ul>
 <br><br><br>
 <br><br><br>
 <ul>
@@ -973,7 +630,7 @@ table td
   <td class="method"><b>set_model_bin</b>(AllegroFlare::ModelBin* model_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">void</td>
+  <td class="method">bool</td>
   <td class="method"><b>load_level_by_identifier</b>(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
 </tr>
 <tr>
@@ -1135,82 +792,57 @@ table td
 <pre>
 {
   "AllegroFlare/FrameAnimation/Animation": [
-    "AllegroFlare/AssetStudio/Asset",
-    "AllegroFlare/AssetStudio/Database",
     "AssetStudio/Asset",
     "AssetStudio/Database"
   ],
   "AllegroFlare/FrameAnimation/Book": [
-    "AllegroFlare/AssetStudio/Asset",
     "AssetStudio/Asset"
   ],
   "ALLEGRO_BITMAP": [
-    "AllegroFlare/AssetStudio/Asset",
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
     "AssetStudio/Asset",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/Errors": [
-    "AllegroFlare/AssetStudio/Database",
     "AssetStudio/Database"
   ],
-  "AllegroFlare/AssetStudio/Asset": [
-    "AllegroFlare/AssetStudio/Database",
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader"
+  "AssetStudio/Asset": [
+    "AssetStudio/Database",
+    "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/CSVParser": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/UsefulPHP": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "SurviveTheCity/CSVParser": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/Logger": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/atoi": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "std/stof": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/BitmapBin": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/FrameAnimation/SpriteSheet": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "AllegroFlare/FrameAnimation/Frame": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader",
     "AssetStudio/Gameplay/Screen"
   ],
   "std/find_if": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
-    "AllegroFlare/AssetStudio/DatabaseCSVLoader",
-    "AssetStudio/DatabaseCSVLoader"
-  ],
-  "al_is_system_installed": [
-    "AllegroFlare/FrameAnimation/SpriteStripAssembler"
-  ],
-  "AssetStudio/Asset": [
-    "AssetStudio/Database",
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
