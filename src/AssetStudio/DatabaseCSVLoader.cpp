@@ -65,9 +65,9 @@ std::map<std::string, AssetStudio::Asset*> DatabaseCSVLoader::get_assets()
    if (!(loaded))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::get_assets]: error: guard \"loaded\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::get_assets]: error: guard \"loaded\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::get_assets: error: guard \"loaded\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::get_assets]: error: guard \"loaded\" not met");
    }
    return assets;
 }
@@ -77,9 +77,9 @@ bool DatabaseCSVLoader::level_exists(std::string level_identifier)
    if (!(loaded))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::level_exists]: error: guard \"loaded\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::level_exists]: error: guard \"loaded\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::level_exists: error: guard \"loaded\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::level_exists]: error: guard \"loaded\" not met");
    }
    return (assets.find(level_identifier) != assets.end());
 }
@@ -163,16 +163,16 @@ AssetStudio::Asset* DatabaseCSVLoader::find_level(std::string level_identifier)
    if (!(loaded))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::find_level]: error: guard \"loaded\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::find_level]: error: guard \"loaded\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::find_level: error: guard \"loaded\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::find_level]: error: guard \"loaded\" not met");
    }
    if (!(level_exists(level_identifier)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::find_level]: error: guard \"level_exists(level_identifier)\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::find_level]: error: guard \"level_exists(level_identifier)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::find_level: error: guard \"level_exists(level_identifier)\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::find_level]: error: guard \"level_exists(level_identifier)\" not met");
    }
    return assets[level_identifier];
 }
@@ -205,16 +205,16 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::create_sprite_shee
    if (!(assets_bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"assets_bitmap_bin\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"assets_bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::create_sprite_sheet_from_individual_images: error: guard \"assets_bitmap_bin\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"assets_bitmap_bin\" not met");
    }
    if (!((!individual_frame_image_filenames.empty())))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"(!individual_frame_image_filenames.empty())\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"(!individual_frame_image_filenames.empty())\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::create_sprite_sheet_from_individual_images: error: guard \"(!individual_frame_image_filenames.empty())\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::create_sprite_sheet_from_individual_images]: error: guard \"(!individual_frame_image_filenames.empty())\" not met");
    }
    // TODO: Consider caching the created result_sprite_sheet;
 
@@ -251,9 +251,9 @@ AllegroFlare::FrameAnimation::SpriteSheet* DatabaseCSVLoader::obtain_sprite_shee
    if (!(assets_bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::obtain_sprite_sheet: error: guard \"assets_bitmap_bin\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::obtain_sprite_sheet]: error: guard \"assets_bitmap_bin\" not met");
    }
    // TODO: Guard after assets_bitmap_bin is initialized
 
@@ -293,23 +293,23 @@ std::vector<AllegroFlare::FrameAnimation::Frame> DatabaseCSVLoader::build_n_fram
    if (!((num_frames >= 1)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames >= 1)\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames >= 1)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(num_frames >= 1)\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(num_frames >= 1)\" not met");
    }
    if (!((start_frame_num >= 0)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(start_frame_num >= 0)\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met");
    }
    if (!((each_frame_duration >= 0.0001)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::build_n_frames: error: guard \"(each_frame_duration >= 0.0001)\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met");
    }
    std::vector<AllegroFlare::FrameAnimation::Frame> result;
    for (uint32_t i=0; i<num_frames; i++)
@@ -335,16 +335,16 @@ void DatabaseCSVLoader::load()
    if (!((!loaded)))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::load]: error: guard \"(!loaded)\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::load]: error: guard \"(!loaded)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::load: error: guard \"(!loaded)\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::load]: error: guard \"(!loaded)\" not met");
    }
    if (!(assets_bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[DatabaseCSVLoader::load]: error: guard \"assets_bitmap_bin\" not met.";
+      error_message << "[AssetStudio::DatabaseCSVLoader::load]: error: guard \"assets_bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("DatabaseCSVLoader::load: error: guard \"assets_bitmap_bin\" not met");
+      throw std::runtime_error("[AssetStudio::DatabaseCSVLoader::load]: error: guard \"assets_bitmap_bin\" not met");
    }
    // Obtain the content from the file and parse it to extractable data
    std::string content = AllegroFlare::php::file_get_contents(csv_full_path);

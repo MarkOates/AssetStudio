@@ -125,6 +125,7 @@ methods:
 
 
   - name: load_level_by_identifier
+    type: bool
     virtual: true
     override: true
     parameters:
@@ -153,7 +154,7 @@ methods:
          current_level_identifier = level_identifier;
          current_level = static_cast<AssetStudio::Gameplay::Level*>(loaded_level);
       }
-      return;
+      return true;
     body_dependency_symbols:
      - AssetStudio::GameConfigurations::Main
      - AssetStudio::Gameplay::Level

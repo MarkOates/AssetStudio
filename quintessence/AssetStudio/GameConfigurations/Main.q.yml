@@ -304,14 +304,14 @@ methods:
       AssetStudio::Gameplay::Level *result = new AssetStudio::Gameplay::Level();
 
       std::map<std::string, std::function<void()>> items_map = {
-         { "", [result](){
+         { "", [](){
             AllegroFlare::Logger::warn_from(
                "AssetStudio::GameConfigurations::Main::load_level_by_identifier",
                "Loading a completely blank empty level."
             );
             // TODO: Add warning: loading an empty level
          }},
-         { "forest_village_1", [result](){
+         { "forest_village_1", [](){
             //result->set_background_image_identifier("maps/forest-village-1.png");
          }},
          //{ "forest_village_2", [result](){

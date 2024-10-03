@@ -44,9 +44,9 @@ AllegroFlare::Screens::Gameplay* Main::create_primary_gameplay_screen(AllegroFla
    if (!(runner))
    {
       std::stringstream error_message;
-      error_message << "[Main::create_primary_gameplay_screen]: error: guard \"runner\" not met.";
+      error_message << "[AssetStudio::GameConfigurations::Main::create_primary_gameplay_screen]: error: guard \"runner\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Main::create_primary_gameplay_screen: error: guard \"runner\" not met");
+      throw std::runtime_error("[AssetStudio::GameConfigurations::Main::create_primary_gameplay_screen]: error: guard \"runner\" not met");
    }
    // TODO: Find some way to remove the Runners::Complete dependency, consider injecting
    // the bin dependencies individually into this method
@@ -129,9 +129,9 @@ void Main::load_audio_controller(AllegroFlare::AudioController* audio_controller
    if (!(audio_controller))
    {
       std::stringstream error_message;
-      error_message << "[Main::load_audio_controller]: error: guard \"audio_controller\" not met.";
+      error_message << "[AssetStudio::GameConfigurations::Main::load_audio_controller]: error: guard \"audio_controller\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Main::load_audio_controller: error: guard \"audio_controller\" not met");
+      throw std::runtime_error("[AssetStudio::GameConfigurations::Main::load_audio_controller]: error: guard \"audio_controller\" not met");
    }
    // An example of how to load a sound effect track:
    audio_controller->set_and_load_sound_effect_elements({
@@ -157,9 +157,9 @@ void Main::load_last_played_session_or_start_new(AllegroFlare::GameSession* game
    if (!(game_session))
    {
       std::stringstream error_message;
-      error_message << "[Main::load_last_played_session_or_start_new]: error: guard \"game_session\" not met.";
+      error_message << "[AssetStudio::GameConfigurations::Main::load_last_played_session_or_start_new]: error: guard \"game_session\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Main::load_last_played_session_or_start_new: error: guard \"game_session\" not met");
+      throw std::runtime_error("[AssetStudio::GameConfigurations::Main::load_last_played_session_or_start_new]: error: guard \"game_session\" not met");
    }
    // TODO: This method
    //AllegroFlare::GameProgressAndStateInfos::Base *game_progress_and_state_info =
@@ -172,9 +172,9 @@ void Main::setup_new_game_progress_and_state_info(AllegroFlare::GameSession* gam
    if (!(game_session))
    {
       std::stringstream error_message;
-      error_message << "[Main::setup_new_game_progress_and_state_info]: error: guard \"game_session\" not met.";
+      error_message << "[AssetStudio::GameConfigurations::Main::setup_new_game_progress_and_state_info]: error: guard \"game_session\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Main::setup_new_game_progress_and_state_info: error: guard \"game_session\" not met");
+      throw std::runtime_error("[AssetStudio::GameConfigurations::Main::setup_new_game_progress_and_state_info]: error: guard \"game_session\" not met");
    }
    // TODO: This method
    //AllegroFlare::Logger::throw_error(
@@ -262,14 +262,14 @@ AllegroFlare::Levels::Base* Main::load_level_by_identifier(std::string identifie
    AssetStudio::Gameplay::Level *result = new AssetStudio::Gameplay::Level();
 
    std::map<std::string, std::function<void()>> items_map = {
-      { "", [result](){
+      { "", [](){
          AllegroFlare::Logger::warn_from(
             "AssetStudio::GameConfigurations::Main::load_level_by_identifier",
             "Loading a completely blank empty level."
          );
          // TODO: Add warning: loading an empty level
       }},
-      { "forest_village_1", [result](){
+      { "forest_village_1", [](){
          //result->set_background_image_identifier("maps/forest-village-1.png");
       }},
       //{ "forest_village_2", [result](){

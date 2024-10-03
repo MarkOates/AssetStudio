@@ -63,9 +63,9 @@ void Screen::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_event_emitter: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met");
    }
    this->event_emitter = event_emitter;
    return;
@@ -76,9 +76,9 @@ void Screen::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_bitmap_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met");
    }
    this->bitmap_bin = bitmap_bin;
    return;
@@ -89,9 +89,9 @@ void Screen::set_font_bin(AllegroFlare::FontBin* font_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_font_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met");
    }
    this->font_bin = font_bin;
    return;
@@ -102,23 +102,23 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_model_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met");
    }
    this->model_bin = model_bin;
    return;
    return;
 }
 
-void Screen::load_level_by_identifier(std::string level_identifier)
+bool Screen::load_level_by_identifier(std::string level_identifier)
 {
    if (!(game_configuration))
    {
       std::stringstream error_message;
-      error_message << "[Screen::load_level_by_identifier]: error: guard \"game_configuration\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::load_level_by_identifier]: error: guard \"game_configuration\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::load_level_by_identifier: error: guard \"game_configuration\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::load_level_by_identifier]: error: guard \"game_configuration\" not met");
    }
    // Destroy the current level
    if (current_level)
@@ -140,7 +140,7 @@ void Screen::load_level_by_identifier(std::string level_identifier)
       current_level_identifier = level_identifier;
       current_level = static_cast<AssetStudio::Gameplay::Level*>(loaded_level);
    }
-   return;
+   return true;
 }
 
 void Screen::initialize()
@@ -148,58 +148,58 @@ void Screen::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(al_is_system_installed()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_system_installed()\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met");
    }
    if (!(al_is_primitives_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_primitives_addon_initialized()\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met");
    }
    if (!(al_is_font_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_font_addon_initialized()\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"event_emitter\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met");
    }
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"font_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"model_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met");
    }
    set_update_strategy(AllegroFlare::Screens::Base::UpdateStrategy::SEPARATE_UPDATE_AND_RENDER_FUNCS);
 
@@ -214,23 +214,23 @@ std::vector<AllegroFlare::FrameAnimation::Frame> Screen::build_n_frames(uint32_t
    if (!((num_frames > 1)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::build_n_frames]: error: guard \"(num_frames > 1)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(num_frames > 1)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::build_n_frames: error: guard \"(num_frames > 1)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(num_frames > 1)\" not met");
    }
    if (!((start_frame_num >= 0)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::build_n_frames: error: guard \"(start_frame_num >= 0)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(start_frame_num >= 0)\" not met");
    }
    if (!((each_frame_duration >= 0.0001)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::build_n_frames: error: guard \"(each_frame_duration >= 0.0001)\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::build_n_frames]: error: guard \"(each_frame_duration >= 0.0001)\" not met");
    }
    std::vector<AllegroFlare::FrameAnimation::Frame> result;
    for (uint32_t i=0; i<num_frames; i++)
@@ -402,9 +402,9 @@ void Screen::on_activate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_activate]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met");
    }
    //emit_event_to_update_input_hints_bar();
    //emit_show_and_size_input_hints_bar_event();
@@ -416,9 +416,9 @@ void Screen::on_deactivate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_deactivate]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_deactivate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met");
    }
    //emit_hide_and_restore_size_input_hints_bar_event();
    return;
@@ -628,9 +628,9 @@ void Screen::game_event_func(AllegroFlare::GameEvent* game_event)
    if (!(game_event))
    {
       std::stringstream error_message;
-      error_message << "[Screen::game_event_func]: error: guard \"game_event\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::game_event_func]: error: guard \"game_event\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::game_event_func: error: guard \"game_event\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::game_event_func]: error: guard \"game_event\" not met");
    }
    // game_configuration->handle_game_event(game_event);
    return;
@@ -641,9 +641,9 @@ void Screen::primary_update_func(double time_now, double delta_time)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::primary_update_func]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::primary_update_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::primary_update_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::primary_update_func]: error: guard \"initialized\" not met");
    }
    // Update stuff here (take into account delta_time)
    update();
@@ -655,9 +655,9 @@ void Screen::primary_render_func()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::primary_render_func]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::primary_render_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::primary_render_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::primary_render_func]: error: guard \"initialized\" not met");
    }
    // Render stuff here
    render();
@@ -669,9 +669,9 @@ void Screen::key_char_func(ALLEGRO_EVENT* ev)
    if (!(ev))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_char_func]: error: guard \"ev\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::key_char_func]: error: guard \"ev\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_char_func: error: guard \"ev\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::key_char_func]: error: guard \"ev\" not met");
    }
    switch (ev->keyboard.keycode)
    {
@@ -720,9 +720,9 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_up_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    return;
@@ -733,9 +733,9 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    using namespace AllegroFlare;
@@ -770,9 +770,9 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_axis_change_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    return;
@@ -783,9 +783,9 @@ ALLEGRO_FONT* Screen::obtain_font()
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::obtain_font]: error: guard \"font_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::obtain_font]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::obtain_font: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::obtain_font]: error: guard \"font_bin\" not met");
    }
    return font_bin->auto_get("Inter-Regular.ttf -32");
 }
@@ -795,9 +795,9 @@ ALLEGRO_FONT* Screen::obtain_font_for_asset_identifier()
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::obtain_font_for_asset_identifier]: error: guard \"font_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::obtain_font_for_asset_identifier]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::obtain_font_for_asset_identifier: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::obtain_font_for_asset_identifier]: error: guard \"font_bin\" not met");
    }
    return font_bin->auto_get("Inter-Regular.ttf -18");
 }
@@ -807,9 +807,9 @@ ALLEGRO_FONT* Screen::obtain_small_font()
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::obtain_small_font]: error: guard \"font_bin\" not met.";
+      error_message << "[AssetStudio::Gameplay::Screen::obtain_small_font]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::obtain_small_font: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[AssetStudio::Gameplay::Screen::obtain_small_font]: error: guard \"font_bin\" not met");
    }
    return font_bin->auto_get("Inter-Regular.ttf -13");
 }
