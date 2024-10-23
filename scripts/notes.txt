@@ -1,0 +1,8 @@
+# List folders by size
+
+du -sh ./* | grep '^ *[0-9]' | sort -h
+
+
+# Count number of files recursively
+
+find . -type f | wc -l
