@@ -3,13 +3,13 @@
 
 #include <AssetStudio/Palette.hpp>
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
+#include <AllegroFlare/Testing/WithInteractionFixture.hpp>
 #include <allegro5/allegro_color.h>
 
 
 
-class AssetStudio_PaletteTestWithAllegroRenderingFixture
-   : public AllegroFlare::Testing::WithAllegroRenderingFixture
-{};
+class AssetStudio_PaletteTestWithAllegroRenderingFixture : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
+class AssetStudio_PaletteWithInteractionFixture : public AllegroFlare::Testing::WithInteractionFixture {};
 
 
 TEST(AssetStudio_PaletteTest, can_be_created_without_blowing_up)
@@ -72,6 +72,92 @@ TEST_F(AssetStudio_PaletteTestWithAllegroRenderingFixture, CAPTURE__build__build
    // Flip
    al_flip_display();
    al_rest(2);
+}
+
+
+TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with_the_expected_context)
+{
+   ALLEGRO_COLOR clear_color = al_color_html("#777777");
+
+   // Remove ALLEGRO_MAG_LINEAR flag (so zooming does not blur)
+   al_set_new_bitmap_flags(al_get_new_bitmap_flags() & ~ALLEGRO_MAG_LINEAR);
+
+   AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
+   //std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
+   std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
+   ALLEGRO_BITMAP *bitmap = bitmap_bin[bitmap_identifier];
+
+   AssetStudio::Palette palette = AssetStudio::Palette::build(bitmap);
+
+   AllegroFlare::Placement2D bitmap_placement;
+   bitmap_placement.position.x = 1920/3*2;
+   bitmap_placement.position.y = 1080/2;
+   bitmap_placement.size.x = al_get_bitmap_width(bitmap);
+   bitmap_placement.size.y = al_get_bitmap_height(bitmap);
+   bitmap_placement.align.x = 0.5;
+   bitmap_placement.align.y = 0.5;
+   bitmap_placement.scale.x = 1;
+   bitmap_placement.scale.y = 1;
+
+   AllegroFlare::Placement2D palette_placement;
+   palette_placement.position.x = 1920/5;
+   palette_placement.position.y = 1080/2;
+   palette_placement.size.x = 120;
+   palette_placement.size.y = 100;
+   palette_placement.align.x = 0.5;
+   palette_placement.align.y = 0.5;
+   palette_placement.scale.x = 1;
+   palette_placement.scale.y = 1;
+
+
+   while(interactive_test_wait_for_event())
+   {
+      ALLEGRO_EVENT &current_event = *interactive_test_get_current_event();
+
+      switch(current_event.type)
+      {
+         case ALLEGRO_EVENT_TIMER:
+         {
+            clear_with_color(clear_color);
+
+            // Draw the image
+            bitmap_placement.start_transform();
+            al_draw_bitmap(bitmap, 0, 0, 0);
+            bitmap_placement.restore_transform();
+
+            // Draw the palette
+            palette_placement.start_transform();
+            palette.draw();
+            palette_placement.restore_transform();
+
+            interactive_test_render_status();
+            al_flip_display();
+         }
+         break;
+
+         //// For example:
+         //case ALLEGRO_FLARE_EVENT_PLAY_SOUND_EFFECT:
+         //{
+            //std::cout << "[AllegroFlare_Elements_MultiListTestWithAllegroRenderingFixture]: INFO: "
+                      //<< "Play sound effect event was emitted. "
+                      //<< std::endl;
+         //}
+         //break;
+
+         //// For example:
+         //case ALLEGRO_EVENT_KEY_DOWN:
+         //{
+            //bool shift = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
+            //switch(current_event.keyboard.keycode)
+            //{
+               //case ALLEGRO_KEY_ENTER:
+                  //// Do something
+               //break;
+            //}
+         //}
+         //break;
+      }
+   }
 }
 
 
