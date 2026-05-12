@@ -4,6 +4,7 @@
 
 #include <AssetStudio/Color.hpp>
 #include <AssetStudio/Comparison/ALLEGRO_COLOR.hpp>
+#include <algorithm>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -66,6 +67,9 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
    {
       result.colors.push_back(AssetStudio::Color::build(raw_color.first));
    }
+
+   // Sort by luminance
+   std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
 
    al_unlock_bitmap(bitmap);
 

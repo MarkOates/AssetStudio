@@ -67,11 +67,15 @@ methods:
          result.colors.push_back(AssetStudio::Color::build(raw_color.first));
       }
 
+      // Sort by luminance
+      std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
+
       al_unlock_bitmap(bitmap);
 
       return result;
     body_dependency_symbols:
       - AssetStudio::Comparison::ALLEGRO_COLOR
+      - std::sort
 
 
   - name: draw
@@ -125,6 +129,7 @@ methods:
       return true;
     body_dependency_symbols:
       - AssetStudio::Color
+      - std::sort
 
 
 dependencies:
@@ -144,5 +149,7 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: AssetStudio::Color
     headers: [ AssetStudio/Color.hpp ]
+  - symbol: std::sort
+    headers: [ algorithm ]
 
 

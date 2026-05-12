@@ -196,5 +196,8 @@
   ],
   "al_draw_filled_rectangle": [
     "AssetStudio/Palette"
+  ],
+  "std/sort": [
+    "AssetStudio/Palette"
   ]
 }
