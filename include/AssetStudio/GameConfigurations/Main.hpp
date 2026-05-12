@@ -43,7 +43,7 @@ namespace AssetStudio
          virtual std::vector<std::pair<std::string, std::string>> build_title_screen_menu_options() override;
          virtual void load_audio_controller(AllegroFlare::AudioController* audio_controller=nullptr) override;
          virtual void load_last_played_session_or_start_new(AllegroFlare::GameSession* game_session=nullptr) override;
-         virtual void setup_new_game_progress_and_state_info(AllegroFlare::GameSession* game_session=nullptr) override;
+         void setup_new_game_progress_and_state_info(AllegroFlare::GameSession* game_session=nullptr);
          virtual std::vector<AllegroFlare::LoadASavedGame::SaveSlots::Base*> build_save_slots_for_load_a_saved_game_screen() override;
          virtual void handle_game_event(AllegroFlare::GameEvent* game_event=nullptr) override;
          virtual std::vector<std::pair<std::string, std::string>> build_level_list_for_level_select_screen_by_identifier(std::string identifier="[unset-identifier]") override;

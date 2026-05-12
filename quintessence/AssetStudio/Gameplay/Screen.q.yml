@@ -31,8 +31,8 @@ properties:
 
   - name: assets_bitmap_bin
     type: AllegroFlare::BitmapBin
-    init_with: '{}'
-    constructor_arg: true
+    init_with: ''
+    xconstructor_arg: true
 
   - name: database
     type: AssetStudio::Database

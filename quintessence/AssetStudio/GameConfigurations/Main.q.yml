@@ -173,8 +173,8 @@ methods:
 
 
   - name: setup_new_game_progress_and_state_info
-    virtual: true
-    override: true
+    xvirtual: true
+    xoverride: true
     parameters:
       - name: game_session
         type: AllegroFlare::GameSession*

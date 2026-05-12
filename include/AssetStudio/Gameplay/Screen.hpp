@@ -49,7 +49,7 @@ namespace AssetStudio
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AllegroFlare::BitmapBin assets_bitmap_bin={}, AssetStudio::GameConfigurations::Main* game_configuration=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AssetStudio::GameConfigurations::Main* game_configuration=nullptr);
          virtual ~Screen();
 
          void set_game_configuration(AssetStudio::GameConfigurations::Main* game_configuration);

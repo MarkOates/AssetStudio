@@ -22,13 +22,13 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::BitmapBin assets_bitmap_bin, AssetStudio::GameConfigurations::Main* game_configuration)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AssetStudio::GameConfigurations::Main* game_configuration)
    : AllegroFlare::Screens::Gameplay()
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
-   , assets_bitmap_bin(assets_bitmap_bin)
+   , assets_bitmap_bin()
    , database()
    , sprite_sheet_atlas(nullptr)
    , sprite_sheet(nullptr)
