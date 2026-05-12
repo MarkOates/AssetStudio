@@ -1,0 +1,103 @@
+properties:
+
+
+  - name: al_color
+    type: ALLEGRO_COLOR
+    init_with: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
+    exposed: true
+
+  - name: luminance
+    type: float
+    init_with: 0.0f
+    exposed: true
+
+  - name: hue
+    type: float
+    init_with: 0.0f
+    exposed: true
+
+  - name: saturation
+    type: float
+    init_with: 0.0f
+    exposed: true
+
+  - name: lightness
+    type: float
+    init_with: 0.0f
+    exposed: true
+
+  - name: chroma
+    type: float
+    init_with: 0.0f
+    exposed: true
+
+
+methods:
+
+
+  - name: build
+    parameters:
+      - name: al_color
+        type: ALLEGRO_COLOR
+        default_argument: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
+    body: |
+      this->al_color = al_color;
+      luminance = calculate_luminance(al_color);
+      std::tie(hue, saturation, lightness) = calculate_hue_saturation_lightness(al_color);
+      chroma = calculate_chroma(al_color);
+      return;
+
+
+  - name: calculate_luminance
+    static: true
+    type: float
+    parameters:
+      - name: al_color
+        type: ALLEGRO_COLOR
+        default_argument: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
+    body: |
+      return 0.299 * al_color.r
+           + 0.587 * al_color.g
+           + 0.114 * al_color.b;
+
+
+  - name: calculate_hue_saturation_lightness
+    static: true
+    type: std::tuple<float, float, float>
+    parameters:
+      - name: al_color
+        type: ALLEGRO_COLOR
+        default_argument: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
+    body: |
+      float h, s, l;
+      al_color_rgb_to_hsl(al_color.r, al_color.g, al_color.b, &h, &s, &l);
+      return {h, s, l};
+    body_dependency_symbols:
+      - al_color_rgb_to_hsl
+
+
+  - name: calculate_chroma
+    static: true
+    type: float
+    parameters:
+      - name: al_color
+        type: ALLEGRO_COLOR
+        default_argument: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
+    body: |
+      float max_val = std::max({al_color.r, al_color.g, al_color.b});
+      float min_val = std::min({al_color.r, al_color.g, al_color.b});
+      return max_val - min_val;
+    body_dependency_symbols:
+      - std::min
+      - std::max
+
+
+dependencies:
+
+
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_color_rgb_to_hsl
+    headers: [ allegro5/allegro_color.h ]
+
+
