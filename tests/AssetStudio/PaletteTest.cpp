@@ -109,6 +109,12 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    palette_placement.scale.x = 1;
    palette_placement.scale.y = 1;
 
+   //
+   // UI
+   //
+
+   AllegroFlare::Vec2D mouse_position = { 1020./2, 1080./2 };
+
 
    while(interactive_test_wait_for_event())
    {
@@ -130,6 +136,9 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             palette.draw();
             palette_placement.restore_transform();
 
+            // Draw the UI
+            draw_crosshair(mouse_position.x, mouse_position.y);
+
             interactive_test_render_status();
             al_flip_display();
          }
@@ -143,6 +152,15 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
                       //<< std::endl;
          //}
          //break;
+
+         case ALLEGRO_EVENT_MOUSE_AXES:
+         {
+            int x = current_event.mouse.x;
+            int y = current_event.mouse.y;
+
+            mouse_position.x = x;
+            mouse_position.y = y;
+         }
 
          //// For example:
          //case ALLEGRO_EVENT_KEY_DOWN:
