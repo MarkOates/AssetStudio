@@ -11,6 +11,17 @@
     "AssetStudio/Gameplay/Screen",
     "AssetStudio/Palette"
   ],
+  "ALLEGRO_COLOR": [
+    "AssetStudio/Color",
+    "AssetStudio/Palette"
+  ],
+  "al_color_rgb_to_hsl": [
+    "AssetStudio/Color"
+  ],
+  "AssetStudio/Color": [
+    "AssetStudio/Color",
+    "AssetStudio/Palette"
+  ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
   ],
@@ -173,9 +184,6 @@
   ],
   "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
-  ],
-  "ALLEGRO_COLOR": [
-    "AssetStudio/Palette"
   ],
   "AssetStudio/Palette": [
     "AssetStudio/Palette"

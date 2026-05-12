@@ -55,6 +55,7 @@ table td
 <h1>Table of Contents</h1>
 <ul>
   <li><a href="#quintessence/AssetStudio/Asset.q.yml">quintessence/AssetStudio/Asset.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/Color.q.yml">quintessence/AssetStudio/Color.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameConfigurations/Main.q.yml">quintessence/AssetStudio/GameConfigurations/Main.q.yml</a></li>
@@ -150,6 +151,76 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Color.q.yml">quintessence/AssetStudio/Color.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">id</td>
+  <td class="property">uint32_t</td>
+</tr>
+<tr>
+  <td class="property">al_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+<tr>
+  <td class="property">luminance</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">hue</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">saturation</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">lightness</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">chroma</td>
+  <td class="property">float</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">AssetStudio::Color</td>
+  <td class="method"><b>build</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
+</tr>
+<tr>
+  <td class="method">float</td>
+  <td class="method"><b>calculate_luminance</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
+</tr>
+<tr>
+  <td class="method">std::tuple&lt;float, float, float&gt;</td>
+  <td class="method"><b>calculate_hue_saturation_lightness</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
+</tr>
+<tr>
+  <td class="method">float</td>
+  <td class="method"><b>calculate_chroma</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_rgb_to_hsl&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Color&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Color.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -798,12 +869,20 @@ table td
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
-  <td class="property">colors</td>
+  <td class="property">raw_colors</td>
   <td class="property">std::map&lt;ALLEGRO_COLOR, int&gt;</td>
+</tr>
+<tr>
+  <td class="property">colors</td>
+  <td class="property">std::vector&lt;AssetStudio::Color&gt;</td>
 </tr>
 <tr>
   <td class="property">tags</td>
   <td class="property">AssetStudio::Palette::PropertyTags</td>
+</tr>
+<tr>
+  <td class="property">dummy_color</td>
+  <td class="property">AssetStudio::Color</td>
 </tr>
     </table>
 </div>    <h3>Methods</h3>
@@ -815,6 +894,10 @@ table td
 <tr>
   <td class="method">void</td>
   <td class="method"><b>draw</b>()</td>
+</tr>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>sort_by_luminance</b>(AssetStudio::Color&amp; color_a=dummy_color, AssetStudio::Color&amp; color_b=dummy_color)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -837,6 +920,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Color&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Color.hpp&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -853,6 +939,17 @@ table td
   "ALLEGRO_BITMAP": [
     "AssetStudio/Asset",
     "AssetStudio/Gameplay/Screen",
+    "AssetStudio/Palette"
+  ],
+  "ALLEGRO_COLOR": [
+    "AssetStudio/Color",
+    "AssetStudio/Palette"
+  ],
+  "al_color_rgb_to_hsl": [
+    "AssetStudio/Color"
+  ],
+  "AssetStudio/Color": [
+    "AssetStudio/Color",
     "AssetStudio/Palette"
   ],
   "AllegroFlare/Errors": [
@@ -1017,9 +1114,6 @@ table td
   ],
   "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
-  ],
-  "ALLEGRO_COLOR": [
-    "AssetStudio/Palette"
   ],
   "AssetStudio/Palette": [
     "AssetStudio/Palette"

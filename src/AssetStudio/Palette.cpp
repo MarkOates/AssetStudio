@@ -2,6 +2,7 @@
 
 #include <AssetStudio/Palette.hpp>
 
+#include <AssetStudio/Color.hpp>
 #include <AssetStudio/Comparison/ALLEGRO_COLOR.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
@@ -13,8 +14,12 @@ namespace AssetStudio
 {
 
 
+AssetStudio::Color Palette::dummy_color = AssetStudio::Color::build(ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0});
+
+
 Palette::Palette()
-   : colors()
+   : raw_colors()
+   , colors()
    , tags(PropertyTags::UNDEF)
 {
 }
@@ -53,8 +58,13 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
       for (int x=0; x<width; x++)
       {
          pixel = al_get_pixel(bitmap, x, y);
-         result.colors[pixel]++;
+         result.raw_colors[pixel]++;
       }
+   }
+
+   for (auto &raw_color : result.raw_colors)
+   {
+      result.colors.push_back(AssetStudio::Color::build(raw_color.first));
    }
 
    al_unlock_bitmap(bitmap);
@@ -89,7 +99,7 @@ void Palette::draw()
       int x2 = x1 + box_w;
       int y2 = y1 + box_h;
 
-      al_draw_filled_rectangle(x1, y1, x2, y2, color.first);
+      al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
 
       column++;
       if (column > columns)
@@ -99,6 +109,12 @@ void Palette::draw()
       }
    }
    return;
+}
+
+bool Palette::sort_by_luminance(AssetStudio::Color& color_a, AssetStudio::Color& color_b)
+{
+   // TODO
+   return true;
 }
 
 

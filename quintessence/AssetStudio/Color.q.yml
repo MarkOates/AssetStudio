@@ -1,6 +1,11 @@
 properties:
 
 
+  - name: id
+    type: uint32_t
+    init_with: 0
+    exposed: true
+
   - name: al_color
     type: ALLEGRO_COLOR
     init_with: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
@@ -36,16 +41,19 @@ methods:
 
 
   - name: build
+    static: true
+    type: AssetStudio::Color
     parameters:
       - name: al_color
         type: ALLEGRO_COLOR
         default_argument: ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0}
     body: |
-      this->al_color = al_color;
-      luminance = calculate_luminance(al_color);
-      std::tie(hue, saturation, lightness) = calculate_hue_saturation_lightness(al_color);
-      chroma = calculate_chroma(al_color);
-      return;
+      AssetStudio::Color result;
+      result.al_color = al_color;
+      result.luminance = calculate_luminance(al_color);
+      std::tie(result.hue, result.saturation, result.lightness) = calculate_hue_saturation_lightness(al_color);
+      result.chroma = calculate_chroma(al_color);
+      return result;
 
 
   - name: calculate_luminance
@@ -99,5 +107,7 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_rgb_to_hsl
     headers: [ allegro5/allegro_color.h ]
+  - symbol: AssetStudio::Color
+    headers: [ AssetStudio/Color.hpp ]
 
 

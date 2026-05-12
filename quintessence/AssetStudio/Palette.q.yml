@@ -1,13 +1,22 @@
 properties:
 
 
-  - name: colors
+  - name: raw_colors
     type: std::map<ALLEGRO_COLOR, int> 
+    init_with: ''
+
+  - name: colors
+    type: std::vector<AssetStudio::Color> 
     init_with: ''
 
   - name: tags
     type: AssetStudio::Palette::PropertyTags
     init_with: PropertyTags::UNDEF
+
+  - name: dummy_color
+    type: AssetStudio::Color
+    init_with: AssetStudio::Color::build(ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})
+    static: true
 
 
 enums:
@@ -17,6 +26,12 @@ enums:
     enumerators:
       - UNDEF
       - HAS_ALPHA
+
+
+  - class: ColorSorting
+    enumerators:
+      - UNDEF
+      - LUMINANCE
 
 
 methods:
@@ -43,8 +58,13 @@ methods:
          for (int x=0; x<width; x++)
          {
             pixel = al_get_pixel(bitmap, x, y);
-            result.colors[pixel]++;
+            result.raw_colors[pixel]++;
          }
+      }
+
+      for (auto &raw_color : result.raw_colors)
+      {
+         result.colors.push_back(AssetStudio::Color::build(raw_color.first));
       }
 
       al_unlock_bitmap(bitmap);
@@ -76,7 +96,7 @@ methods:
          int x2 = x1 + box_w;
          int y2 = y1 + box_h;
 
-         al_draw_filled_rectangle(x1, y1, x2, y2, color.first);
+         al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
 
          column++;
          if (column > columns)
@@ -88,6 +108,23 @@ methods:
       return;
     body_dependency_symbols:
       - al_draw_filled_rectangle
+
+
+  - name: sort_by_luminance
+    static: true
+    type: bool
+    parameters:
+      - name: color_a
+        type: AssetStudio::Color&
+        default_argument: dummy_color
+      - name: color_b
+        type: AssetStudio::Color&
+        default_argument: dummy_color
+    body: |
+      // TODO
+      return true;
+    body_dependency_symbols:
+      - AssetStudio::Color
 
 
 dependencies:
@@ -105,5 +142,7 @@ dependencies:
     headers: [ AssetStudio/Comparison/ALLEGRO_COLOR.hpp ]
   - symbol: al_draw_filled_rectangle
     headers: [ allegro5/allegro_primitives.h ]
+  - symbol: AssetStudio::Color
+    headers: [ AssetStudio/Color.hpp ]
 
 

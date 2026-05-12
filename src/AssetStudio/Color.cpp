@@ -11,7 +11,8 @@ namespace AssetStudio
 
 
 Color::Color()
-   : al_color(ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})
+   : id(0)
+   , al_color(ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})
    , luminance(0.0f)
    , hue(0.0f)
    , saturation(0.0f)
@@ -26,13 +27,14 @@ Color::~Color()
 }
 
 
-void Color::build(ALLEGRO_COLOR al_color)
+AssetStudio::Color Color::build(ALLEGRO_COLOR al_color)
 {
-   this->al_color = al_color;
-   luminance = calculate_luminance(al_color);
-   std::tie(hue, saturation, lightness) = calculate_hue_saturation_lightness(al_color);
-   chroma = calculate_chroma(al_color);
-   return;
+   AssetStudio::Color result;
+   result.al_color = al_color;
+   result.luminance = calculate_luminance(al_color);
+   std::tie(result.hue, result.saturation, result.lightness) = calculate_hue_saturation_lightness(al_color);
+   result.chroma = calculate_chroma(al_color);
+   return result;
 }
 
 float Color::calculate_luminance(ALLEGRO_COLOR al_color)
