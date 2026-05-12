@@ -22,6 +22,12 @@
     "AssetStudio/Color",
     "AssetStudio/Palette"
   ],
+  "al_color_hsl_to_rgb": [
+    "AssetStudio/Color"
+  ],
+  "std/fmod": [
+    "AssetStudio/Color"
+  ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
   ],
@@ -141,7 +147,8 @@
     "AssetStudio/GameProgressAndStateInfo"
   ],
   "ALLEGRO_FONT": [
-    "AssetStudio/Gameplay/Screen"
+    "AssetStudio/Gameplay/Screen",
+    "AssetStudio/Palette"
   ],
   "ALLEGRO_EVENT": [
     "AssetStudio/Gameplay/Screen"
@@ -201,6 +208,9 @@
     "AssetStudio/Palette"
   ],
   "AssetStudio/Palette/Sorting": [
+    "AssetStudio/Palette"
+  ],
+  "al_draw_text": [
     "AssetStudio/Palette"
   ]
 }

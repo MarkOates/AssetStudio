@@ -79,6 +79,7 @@ TEST_F(AssetStudio_PaletteTestWithAllegroRenderingFixture, CAPTURE__build__build
 TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with_the_expected_context)
 {
    ALLEGRO_COLOR clear_color = al_color_html("#777777");
+   ALLEGRO_FONT *font = get_small_font();
 
    // Remove ALLEGRO_MAG_LINEAR flag (so zooming does not blur)
    al_set_new_bitmap_flags(al_get_new_bitmap_flags() & ~ALLEGRO_MAG_LINEAR);
@@ -104,11 +105,11 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    palette_placement.position.x = 1920/5;
    palette_placement.position.y = 1080/2;
    palette_placement.size.x = 120;
-   palette_placement.size.y = 100;
+   palette_placement.size.y = 300;
    palette_placement.align.x = 0.5;
    palette_placement.align.y = 0.5;
-   palette_placement.scale.x = 1;
-   palette_placement.scale.y = 1;
+   palette_placement.scale.x = 2;
+   palette_placement.scale.y = 2;
 
    struct PickInfo
    {
@@ -116,6 +117,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
       ALLEGRO_COLOR color;
       int x = 0;
       int y = 0;
+      uint32_t palette_index = 0; 
    };
 
    std::function<PickInfo(ALLEGRO_BITMAP*, AllegroFlare::Placement2D&, float, float)> pick_color =
@@ -142,6 +144,11 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
          return result;
       };
+
+   std::function<uint32_t(AssetStudio::Palette&, ALLEGRO_COLOR)> find_color_index =
+     [](AssetStudio::Palette &palette, ALLEGRO_COLOR color){
+        return palette.find_index_by_color(color);
+     };
 
    //
    // UI
@@ -177,16 +184,22 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
             // Draw the palette
             palette_placement.start_transform();
-            palette.draw();
+            palette.draw(picked_color.palette_index);
             palette_placement.restore_transform();
 
             // Draw the UI
             draw_crosshair(mouse_position.x, mouse_position.y);
             draw_crosshair_blue(mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
          
-            if (mouse_over_color.valid) al_draw_filled_rectangle(20, 20, 60, 60, mouse_over_color.color);
-            if (picked_color.valid) al_draw_filled_rectangle(20, 20+100, 80, 80+100, picked_color.color);
-
+            if (mouse_over_color.valid)
+            {
+               al_draw_filled_rectangle(20, 20, 60, 60, mouse_over_color.color);
+            }
+            if (picked_color.valid)
+            {
+               al_draw_filled_rectangle(20, 20+100, 80, 80+100, picked_color.color);
+               al_draw_textf(font, ALLEGRO_COLOR{1, 1, 1, 1}, 20, 20+100, 0, "%d", picked_color.palette_index);
+            }
 
             //
             // Finish Drawing
@@ -218,6 +231,8 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             // Refresh the "picked color"
             mouse_over_color =
                pick_color(bitmap, bitmap_placement, mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
+
+            mouse_over_color.palette_index = find_color_index(palette, mouse_over_color.color);
          } break;
 
          case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN: {

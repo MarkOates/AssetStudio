@@ -1,0 +1,20 @@
+properties:
+
+
+  - name: multiplier
+    type: float
+    init_with: 1.0f
+
+  - name: hue_rotation
+    type: float
+    init_with: 1.0f
+
+
+methods:
+
+
+  - name: process
+    body: |
+      return;
+
+

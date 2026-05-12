@@ -199,6 +199,18 @@ table td
   <td class="method"><b>build</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
 </tr>
 <tr>
+  <td class="method">void</td>
+  <td class="method"><b>multiply_rgb</b>(float multiplier=1.0f)</td>
+</tr>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>multiply_saturation</b>(float multiplier=1.0f)</td>
+</tr>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>rotate_hue</b>(float unit_offset=0.0f)</td>
+</tr>
+<tr>
   <td class="method">float</td>
   <td class="method"><b>calculate_luminance</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
 </tr>
@@ -221,6 +233,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Color&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Color.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_hsl_to_rgb&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::fmod&quot;, &quot;headers&quot;=&gt;[&quot;cmath&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -897,7 +915,11 @@ table td
 </tr>
 <tr>
   <td class="method">void</td>
-  <td class="method"><b>draw</b>()</td>
+  <td class="method"><b>draw</b>(uint32_t picked_id=0)</td>
+</tr>
+<tr>
+  <td class="method">uint32_t</td>
+  <td class="method"><b>find_index_by_color</b>(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0})</td>
 </tr>
 <tr>
   <td class="method">bool</td>
@@ -933,6 +955,12 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Palette::Sorting&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Palette.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_text&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
@@ -961,6 +989,12 @@ table td
   "AssetStudio/Color": [
     "AssetStudio/Color",
     "AssetStudio/Palette"
+  ],
+  "al_color_hsl_to_rgb": [
+    "AssetStudio/Color"
+  ],
+  "std/fmod": [
+    "AssetStudio/Color"
   ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
@@ -1081,7 +1115,8 @@ table td
     "AssetStudio/GameProgressAndStateInfo"
   ],
   "ALLEGRO_FONT": [
-    "AssetStudio/Gameplay/Screen"
+    "AssetStudio/Gameplay/Screen",
+    "AssetStudio/Palette"
   ],
   "ALLEGRO_EVENT": [
     "AssetStudio/Gameplay/Screen"
@@ -1141,6 +1176,9 @@ table td
     "AssetStudio/Palette"
   ],
   "AssetStudio/Palette/Sorting": [
+    "AssetStudio/Palette"
+  ],
+  "al_draw_text": [
     "AssetStudio/Palette"
   ]
 }

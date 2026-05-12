@@ -4,6 +4,7 @@
 #include <AssetStudio/Color.hpp>
 #include <AssetStudio/Palette.hpp>
 #include <allegro5/allegro.h>
+#include <cstdint>
 #include <map>
 #include <vector>
 
@@ -37,7 +38,8 @@ namespace AssetStudio
       ~Palette();
 
       static AssetStudio::Palette build(ALLEGRO_BITMAP* bitmap=nullptr);
-      void draw();
+      void draw(uint32_t picked_id=0);
+      uint32_t find_index_by_color(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0});
       static bool sort_by_luminance(AssetStudio::Color& a=dummy_color, AssetStudio::Color& b=dummy_color);
    };
 }

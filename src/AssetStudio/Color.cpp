@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <allegro5/allegro_color.h>
+#include <cmath>
 
 
 namespace AssetStudio
@@ -35,6 +36,50 @@ AssetStudio::Color Color::build(ALLEGRO_COLOR al_color)
    std::tie(result.hue, result.saturation, result.lightness) = calculate_hue_saturation_lightness(al_color);
    result.chroma = calculate_chroma(al_color);
    return result;
+}
+
+void Color::multiply_rgb(float multiplier)
+{
+   *this = build(ALLEGRO_COLOR{
+      al_color.r * multiplier,
+      al_color.g * multiplier,
+      al_color.b * multiplier,
+      al_color.a
+   });
+   return;
+}
+
+void Color::multiply_saturation(float multiplier)
+{
+   // Calculate and clamp new saturation (0.0 - 1.0)
+   float new_sat = this->saturation * multiplier;
+   if (new_sat < 0.0f) new_sat = 0.0f;
+   if (new_sat > 1.0f) new_sat = 1.0f;
+
+   // Convert HSL back to ALLEGRO_COLOR
+   ALLEGRO_COLOR new_al_color;
+   al_color_hsl_to_rgb(this->hue, new_sat, this->lightness, 
+                       &new_al_color.r, &new_al_color.g, &new_al_color.b);
+   new_al_color.a = this->al_color.a;
+
+   // Rebuild the object
+   *this = build(new_al_color);
+}
+
+void Color::rotate_hue(float unit_offset)
+{
+   // Calculate new hue (0.0 - 360.0)
+   float new_hue = std::fmod(this->hue + (unit_offset * 360.0f), 360.0f);
+   if (new_hue < 0.0f) new_hue += 360.0f;
+
+   // Convert HSL back to ALLEGRO_COLOR
+   ALLEGRO_COLOR new_al_color;
+   al_color_hsl_to_rgb(new_hue, this->saturation, this->lightness, 
+                       &new_al_color.r, &new_al_color.g, &new_al_color.b);
+   new_al_color.a = this->al_color.a;
+
+   // Rebuild the object
+   *this = build(new_al_color);
 }
 
 float Color::calculate_luminance(ALLEGRO_COLOR al_color)

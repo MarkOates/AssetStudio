@@ -5,6 +5,7 @@
 #include <AssetStudio/Color.hpp>
 #include <AssetStudio/Comparison/ALLEGRO_COLOR.hpp>
 #include <algorithm>
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -81,7 +82,7 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
    return result;
 }
 
-void Palette::draw()
+void Palette::draw(uint32_t picked_id)
 {
    if (!(al_is_primitives_addon_initialized()))
    {
@@ -90,6 +91,13 @@ void Palette::draw()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("[AssetStudio::Palette::draw]: error: guard \"al_is_primitives_addon_initialized()\" not met");
    }
+   // TODO: guard for al_draw_text
+
+   float o = 0.5;
+   ALLEGRO_COLOR frame_color_a{o, o, o, o};
+   ALLEGRO_COLOR frame_color_b{0, 0, 0, o};
+   ALLEGRO_COLOR text_color{1, 1, 1, 1};
+
    int x = 0;
    int y = 0;
    int columns = 6;
@@ -109,6 +117,12 @@ void Palette::draw()
       int y2 = y1 + box_h;
 
       al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
+      //if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
+      if (picked_id != 0 && color.id == picked_id)
+      {
+         al_draw_rectangle(x1-1, y1-1, x2+1, y2+1, frame_color_a, 1.0);
+         al_draw_rectangle(x1-2, y1-2, x2+2, y2+2, frame_color_b, 1.0);
+      }
 
       column++;
       if (column > columns)
@@ -118,6 +132,12 @@ void Palette::draw()
       }
    }
    return;
+}
+
+uint32_t Palette::find_index_by_color(ALLEGRO_COLOR al_color)
+{
+   for (auto &color : colors) if (color.al_color == al_color) return color.id;
+   return 0;
 }
 
 bool Palette::sort_by_luminance(AssetStudio::Color& a, AssetStudio::Color& b)

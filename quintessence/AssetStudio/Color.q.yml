@@ -56,6 +56,71 @@ methods:
       return result;
 
 
+  - name: multiply_rgb
+    parameters:
+      - name: multiplier
+        type: float
+        default_argument: 1.0f
+    body: |
+      *this = build(ALLEGRO_COLOR{
+         al_color.r * multiplier,
+         al_color.g * multiplier,
+         al_color.b * multiplier,
+         al_color.a
+      });
+      return;
+
+
+  - name: multiply_saturation
+    type: void
+    author: Gemini
+    parameters:
+      - name: multiplier
+        type: float
+        default_argument: 1.0f
+    body: |
+      // Calculate and clamp new saturation (0.0 - 1.0)
+      float new_sat = this->saturation * multiplier;
+      if (new_sat < 0.0f) new_sat = 0.0f;
+      if (new_sat > 1.0f) new_sat = 1.0f;
+
+      // Convert HSL back to ALLEGRO_COLOR
+      ALLEGRO_COLOR new_al_color;
+      al_color_hsl_to_rgb(this->hue, new_sat, this->lightness, 
+                          &new_al_color.r, &new_al_color.g, &new_al_color.b);
+      new_al_color.a = this->al_color.a;
+
+      // Rebuild the object
+      *this = build(new_al_color);
+    body_dependency_symbols:
+      - al_color_hsl_to_rgb
+
+
+  - name: rotate_hue
+    type: void
+    author: Gemini
+    parameters:
+      - name: unit_offset
+        type: float
+        default_argument: 0.0f
+    body: |
+      // Calculate new hue (0.0 - 360.0)
+      float new_hue = std::fmod(this->hue + (unit_offset * 360.0f), 360.0f);
+      if (new_hue < 0.0f) new_hue += 360.0f;
+
+      // Convert HSL back to ALLEGRO_COLOR
+      ALLEGRO_COLOR new_al_color;
+      al_color_hsl_to_rgb(new_hue, this->saturation, this->lightness, 
+                          &new_al_color.r, &new_al_color.g, &new_al_color.b);
+      new_al_color.a = this->al_color.a;
+
+      // Rebuild the object
+      *this = build(new_al_color);
+    body_dependency_symbols:
+      - al_color_hsl_to_rgb
+      - std::fmod
+
+
   - name: calculate_luminance
     static: true
     type: float
@@ -109,5 +174,9 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: AssetStudio::Color
     headers: [ AssetStudio/Color.hpp ]
+  - symbol: al_color_hsl_to_rgb
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: std::fmod
+    headers: [ cmath ]
 
 
