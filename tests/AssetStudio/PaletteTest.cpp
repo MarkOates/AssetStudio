@@ -5,6 +5,7 @@
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <AllegroFlare/Testing/WithInteractionFixture.hpp>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
 
 
 
@@ -109,12 +110,47 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    palette_placement.scale.x = 1;
    palette_placement.scale.y = 1;
 
+   struct PickInfo
+   {
+      bool valid = false;
+      ALLEGRO_COLOR color;
+      int x = 0;
+      int y = 0;
+   };
+
+   std::function<PickInfo(ALLEGRO_BITMAP*, AllegroFlare::Placement2D&, float, float)> pick_color =
+      [](ALLEGRO_BITMAP *bitmap, AllegroFlare::Placement2D &placement, float xx, float yy){
+         PickInfo result;
+
+         int bitmap_width = al_get_bitmap_width(bitmap);
+         int bitmap_height = al_get_bitmap_height(bitmap);
+         placement.transform_coordinates(&xx, &yy);
+         int x = (int)xx;
+         int y = (int)yy;
+
+         result.x = x;
+         result.y = y;
+
+         if (x < 0 || y < 0 || x >= bitmap_width || y >= bitmap_height)
+         {
+            result.valid = false;
+            return result;
+         }
+
+         result.valid = true;
+         result.color = al_get_pixel(bitmap, x, y);
+
+         return result;
+      };
+
    //
    // UI
    //
 
    AllegroFlare::Vec2D mouse_position = { 1020./2, 1080./2 };
-
+   AllegroFlare::Vec2D mouse_position_on_bitmap = {};
+   PickInfo mouse_over_color, picked_color;
+  
 
    while(interactive_test_wait_for_event())
    {
@@ -122,8 +158,16 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
       switch(current_event.type)
       {
-         case ALLEGRO_EVENT_TIMER:
-         {
+         case ALLEGRO_EVENT_TIMER: {
+            //
+            // Update
+
+            //mouse_position_on_bitmap = mouse_position;
+            //bitmap_placement.transform_coordinates(&mouse_position_on_bitmap.x, &mouse_position_on_bitmap.y);
+
+            //
+            // Draw
+            //
             clear_with_color(clear_color);
 
             // Draw the image
@@ -138,11 +182,18 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
             // Draw the UI
             draw_crosshair(mouse_position.x, mouse_position.y);
+            draw_crosshair_blue(mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
+         
+            if (mouse_over_color.valid) al_draw_filled_rectangle(20, 20, 60, 60, mouse_over_color.color);
+            if (picked_color.valid) al_draw_filled_rectangle(20, 20+100, 80, 80+100, picked_color.color);
 
+
+            //
+            // Finish Drawing
+            //
             interactive_test_render_status();
             al_flip_display();
-         }
-         break;
+         } break;
 
          //// For example:
          //case ALLEGRO_FLARE_EVENT_PLAY_SOUND_EFFECT:
@@ -153,14 +204,25 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
          //}
          //break;
 
-         case ALLEGRO_EVENT_MOUSE_AXES:
-         {
+         case ALLEGRO_EVENT_MOUSE_AXES: {
             int x = current_event.mouse.x;
             int y = current_event.mouse.y;
 
             mouse_position.x = x;
             mouse_position.y = y;
-         }
+
+            // Update the mouse position, and the position on the bitmap
+            mouse_position_on_bitmap = mouse_position;
+            bitmap_placement.transform_coordinates(&mouse_position_on_bitmap.x, &mouse_position_on_bitmap.y);
+
+            // Refresh the "picked color"
+            mouse_over_color =
+               pick_color(bitmap, bitmap_placement, mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
+         } break;
+
+         case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN: {
+            if (mouse_over_color.valid) picked_color = mouse_over_color;
+         } break;
 
          //// For example:
          //case ALLEGRO_EVENT_KEY_DOWN:
