@@ -26,7 +26,8 @@ TEST_F(AssetStudio_PaletteTestWithAllegroRenderingFixture, CAPTURE__build__build
    al_set_new_bitmap_flags(al_get_new_bitmap_flags() & ~ALLEGRO_MAG_LINEAR);
 
    AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
-   std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
+   //std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
+   std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
    ALLEGRO_BITMAP *bitmap = bitmap_bin[bitmap_identifier];
 
    AssetStudio::Palette palette = AssetStudio::Palette::build(bitmap);
@@ -35,21 +36,21 @@ TEST_F(AssetStudio_PaletteTestWithAllegroRenderingFixture, CAPTURE__build__build
    bitmap_placement.position.x = 1920/3*2;
    bitmap_placement.position.y = 1080/2;
    bitmap_placement.size.x = al_get_bitmap_width(bitmap);
-   bitmap_placement.size.y = al_get_bitmap_width(bitmap);
+   bitmap_placement.size.y = al_get_bitmap_height(bitmap);
    bitmap_placement.align.x = 0.5;
    bitmap_placement.align.y = 0.5;
-   bitmap_placement.scale.x = 8;
-   bitmap_placement.scale.y = 8;
+   bitmap_placement.scale.x = 1;
+   bitmap_placement.scale.y = 1;
 
    AllegroFlare::Placement2D palette_placement;
-   palette_placement.position.x = 1920/3;
+   palette_placement.position.x = 1920/5;
    palette_placement.position.y = 1080/2;
    palette_placement.size.x = 120;
    palette_placement.size.y = 100;
    palette_placement.align.x = 0.5;
    palette_placement.align.y = 0.5;
-   palette_placement.scale.x = 2;
-   palette_placement.scale.y = 2;
+   palette_placement.scale.x = 1;
+   palette_placement.scale.y = 1;
 
    //
    // Render

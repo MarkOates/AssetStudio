@@ -21,6 +21,7 @@ AssetStudio::Color Palette::dummy_color = AssetStudio::Color::build(ALLEGRO_COLO
 Palette::Palette()
    : raw_colors()
    , colors()
+   , sorting(Sorting::UNDEF)
    , tags(PropertyTags::UNDEF)
 {
 }
@@ -68,10 +69,11 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
       result.colors.push_back(AssetStudio::Color::build(raw_color.first));
    }
 
+   al_unlock_bitmap(bitmap);
+
    // Sort by luminance
    std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
-
-   al_unlock_bitmap(bitmap);
+   result.sorting = Sorting::LUMINANCE;
 
    return result;
 }
@@ -115,10 +117,11 @@ void Palette::draw()
    return;
 }
 
-bool Palette::sort_by_luminance(AssetStudio::Color& color_a, AssetStudio::Color& color_b)
+bool Palette::sort_by_luminance(AssetStudio::Color& a, AssetStudio::Color& b)
 {
-   // TODO
-   return true;
+   if (a.luminance != b.luminance) return a.luminance > b.luminance;
+   return std::tie(a.al_color.r, a.al_color.g, a.al_color.b, a.al_color.a)
+      > std::tie(b.al_color.r, b.al_color.g, b.al_color.b, b.al_color.a);
 }
 
 

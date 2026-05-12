@@ -877,6 +877,10 @@ table td
   <td class="property">std::vector&lt;AssetStudio::Color&gt;</td>
 </tr>
 <tr>
+  <td class="property">sorting</td>
+  <td class="property">AssetStudio::Palette::Sorting</td>
+</tr>
+<tr>
   <td class="property">tags</td>
   <td class="property">AssetStudio::Palette::PropertyTags</td>
 </tr>
@@ -897,7 +901,7 @@ table td
 </tr>
 <tr>
   <td class="method">bool</td>
-  <td class="method"><b>sort_by_luminance</b>(AssetStudio::Color&amp; color_a=dummy_color, AssetStudio::Color&amp; color_b=dummy_color)</td>
+  <td class="method"><b>sort_by_luminance</b>(AssetStudio::Color&amp; a=dummy_color, AssetStudio::Color&amp; b=dummy_color)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -925,6 +929,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::sort&quot;, &quot;headers&quot;=&gt;[&quot;algorithm&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Palette::Sorting&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Palette.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -1131,6 +1138,9 @@ table td
     "AssetStudio/Palette"
   ],
   "std/sort": [
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/Palette/Sorting": [
     "AssetStudio/Palette"
   ]
 }

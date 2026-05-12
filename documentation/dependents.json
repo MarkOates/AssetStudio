@@ -199,5 +199,8 @@
   ],
   "std/sort": [
     "AssetStudio/Palette"
+  ],
+  "AssetStudio/Palette/Sorting": [
+    "AssetStudio/Palette"
   ]
 }

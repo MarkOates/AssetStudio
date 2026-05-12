@@ -9,6 +9,10 @@ properties:
     type: std::vector<AssetStudio::Color> 
     init_with: ''
 
+  - name: sorting
+    type: AssetStudio::Palette::Sorting
+    init_with: Sorting::UNDEF
+
   - name: tags
     type: AssetStudio::Palette::PropertyTags
     init_with: PropertyTags::UNDEF
@@ -28,7 +32,7 @@ enums:
       - HAS_ALPHA
 
 
-  - class: ColorSorting
+  - class: Sorting
     enumerators:
       - UNDEF
       - LUMINANCE
@@ -67,10 +71,11 @@ methods:
          result.colors.push_back(AssetStudio::Color::build(raw_color.first));
       }
 
+      al_unlock_bitmap(bitmap);
+
       // Sort by luminance
       std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
-
-      al_unlock_bitmap(bitmap);
+      result.sorting = Sorting::LUMINANCE;
 
       return result;
     body_dependency_symbols:
@@ -118,18 +123,18 @@ methods:
     static: true
     type: bool
     parameters:
-      - name: color_a
+      - name: a
         type: AssetStudio::Color&
         default_argument: dummy_color
-      - name: color_b
+      - name: b
         type: AssetStudio::Color&
         default_argument: dummy_color
     body: |
-      // TODO
-      return true;
+      if (a.luminance != b.luminance) return a.luminance > b.luminance;
+      return std::tie(a.al_color.r, a.al_color.g, a.al_color.b, a.al_color.a)
+         > std::tie(b.al_color.r, b.al_color.g, b.al_color.b, b.al_color.a);
     body_dependency_symbols:
       - AssetStudio::Color
-      - std::sort
 
 
 dependencies:
@@ -151,5 +156,7 @@ dependencies:
     headers: [ AssetStudio/Color.hpp ]
   - symbol: std::sort
     headers: [ algorithm ]
+  - symbol: AssetStudio::Palette::Sorting
+    headers: [ AssetStudio/Palette.hpp ]
 
 
