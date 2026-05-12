@@ -64,9 +64,12 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
       }
    }
 
+   uint32_t id = 1;
    for (auto &raw_color : result.raw_colors)
    {
       result.colors.push_back(AssetStudio::Color::build(raw_color.first));
+      result.colors.back().id = id;
+      id++;
    }
 
    al_unlock_bitmap(bitmap);
