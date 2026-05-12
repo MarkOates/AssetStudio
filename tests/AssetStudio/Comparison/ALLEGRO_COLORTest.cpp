@@ -1,0 +1,98 @@
+
+#include <gtest/gtest.h>
+
+#include <AssetStudio/Comparison/ALLEGRO_COLOR.hpp>
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest, PrintTo__with_an_ALLEGRO_COLOR__will_output_as_expected)
+{
+   std::stringstream ss;
+   ALLEGRO_COLOR color = ALLEGRO_COLOR{0.2, 0.3, 0.4, 0.5};
+
+   PrintTo(color, &ss);
+
+   std::string expected_output = "ALLEGRO_COLOR{0.2, 0.3, 0.4, 0.5}";
+   std::string actual_output = ss.str();
+   EXPECT_EQ(expected_output, actual_output);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   equality_operator__works_with_google_test_EXPECT_statement)
+{
+   ALLEGRO_COLOR vec{1, 1, 1, 1};
+   ALLEGRO_COLOR other_vec{1, 1, 1, 1};
+
+   EXPECT_EQ(vec, other_vec);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   inequality_operator__works_with_google_test_EXPECT_statement)
+{
+   ALLEGRO_COLOR vec{0, 1, 1, 1};
+   ALLEGRO_COLOR other_vec{1, 1, 1, 1};
+
+   EXPECT_NE(vec, other_vec);
+}
+
+
+
+// Gemini:
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   less_than_operator__returns_true_when_r_is_less)
+{
+   ALLEGRO_COLOR a{0.1, 0.5, 0.5, 0.5};
+   ALLEGRO_COLOR b{0.2, 0.0, 0.0, 0.0};
+
+   EXPECT_TRUE(a < b);
+   EXPECT_FALSE(b < a);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   less_than_operator__falls_back_to_g_when_r_is_equal)
+{
+   ALLEGRO_COLOR a{0.5, 0.1, 0.5, 0.5};
+   ALLEGRO_COLOR b{0.5, 0.2, 0.0, 0.0};
+
+   EXPECT_TRUE(a < b);
+   EXPECT_FALSE(b < a);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   less_than_operator__falls_back_to_b_when_r_and_g_are_equal)
+{
+   ALLEGRO_COLOR a{0.5, 0.5, 0.1, 0.5};
+   ALLEGRO_COLOR b{0.5, 0.5, 0.2, 0.0};
+
+   EXPECT_TRUE(a < b);
+   EXPECT_FALSE(b < a);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   less_than_operator__falls_back_to_a_when_rgb_are_equal)
+{
+   ALLEGRO_COLOR a{0.5, 0.5, 0.5, 0.1};
+   ALLEGRO_COLOR b{0.5, 0.5, 0.5, 0.2};
+
+   EXPECT_TRUE(a < b);
+   EXPECT_FALSE(b < a);
+}
+
+
+TEST(AssetStudio_Comparison_ALLEGRO_COLORTest,
+   less_than_operator__returns_false_when_all_components_are_equal)
+{
+   ALLEGRO_COLOR a{0.5, 0.5, 0.5, 0.5};
+   ALLEGRO_COLOR b{0.5, 0.5, 0.5, 0.5};
+
+   EXPECT_FALSE(a < b);
+   EXPECT_FALSE(b < a);
+}
+
+

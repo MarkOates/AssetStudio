@@ -8,7 +8,8 @@
   ],
   "ALLEGRO_BITMAP": [
     "AssetStudio/Asset",
-    "AssetStudio/Gameplay/Screen"
+    "AssetStudio/Gameplay/Screen",
+    "AssetStudio/Palette"
   ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
@@ -172,5 +173,20 @@
   ],
   "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "ALLEGRO_COLOR": [
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/Palette": [
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/Palette/PropertyTags": [
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/Comparison/ALLEGRO_COLOR": [
+    "AssetStudio/Palette"
+  ],
+  "al_draw_filled_rectangle": [
+    "AssetStudio/Palette"
   ]
 }
