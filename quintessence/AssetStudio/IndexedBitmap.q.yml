@@ -1,0 +1,26 @@
+properties:
+
+
+  - name: width
+    type: uint32_t
+    init_with: 0
+    exposed: true
+
+  - name: height
+    type: uint32_t
+    init_with: 0
+    exposed: true
+
+  - name: pixels
+    type: std::vector<uint16_t>
+    init_with: ''
+    exposed: true
+
+
+dependencies:
+
+
+  - symbol: uint16_t
+    headers: [ cstdint ]
+
+

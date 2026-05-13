@@ -915,6 +915,10 @@ table td
   <td class="method"><b>build</b>(ALLEGRO_BITMAP* bitmap=nullptr)</td>
 </tr>
 <tr>
+  <td class="method">std::pair&lt;AssetStudio::Palette, AssetStudio::IndexedBitmap&gt;</td>
+  <td class="method"><b>build_indexted_bitmap_and_palette</b>(ALLEGRO_BITMAP* bitmap=nullptr)</td>
+</tr>
+<tr>
   <td class="method">void</td>
   <td class="method"><b>draw</b>(uint32_t picked_id=0)</td>
 </tr>
@@ -976,6 +980,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;tsl::ordered_map&quot;, &quot;headers&quot;=&gt;[&quot;lib/tsl/ordered_map.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::IndexedBitmap&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/IndexedBitmap.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -1225,6 +1232,9 @@ table td
     "AssetStudio/Palette"
   ],
   "tsl/ordered_map": [
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/IndexedBitmap": [
     "AssetStudio/Palette"
   ]
 }

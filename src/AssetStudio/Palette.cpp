@@ -75,10 +75,79 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
 
    al_unlock_bitmap(bitmap);
 
-   // Sort by luminance
-   //result.sort_by_id();
+   // NOTE: Palette is implicitly ordered by reverse-luminance (from the Comparison/ALLEGRO_COLOR header). You might
+   // consider ordering differently.
 
    return result;
+}
+
+std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> Palette::build_indexted_bitmap_and_palette(ALLEGRO_BITMAP* bitmap)
+{
+   if (!(bitmap))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"bitmap\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"bitmap\" not met");
+   }
+   if (!(al_get_current_display()))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met");
+   }
+   std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> result_;
+   AssetStudio::Palette &result = result_.first;
+   AssetStudio::IndexedBitmap &result_bitmap = result_.second;
+
+   int width = al_get_bitmap_width(bitmap);
+   int height = al_get_bitmap_height(bitmap);
+   result_bitmap.width = width;
+   result_bitmap.height = height;
+   result_bitmap.pixels.resize(width * height);
+
+   std::map<ALLEGRO_COLOR, uint16_t> color_to_index;
+   uint16_t next_id = 0;
+
+   al_lock_bitmap(bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
+
+   for (int y = 0; y < height; y++)
+   {
+      for (int x = 0; x < width; x++)
+      {
+         ALLEGRO_COLOR pixel = al_get_pixel(bitmap, x, y);
+         
+         //  Check if color exists in our temporary map
+         auto it = color_to_index.find(pixel);
+         if (it == color_to_index.end())
+         {
+             // New color
+             // Assign to the next available ID
+             color_to_index[pixel] = next_id;
+             result_bitmap.pixels[x + y * width] = next_id;
+             
+             // Also store it in your palette result
+             AssetStudio::Color new_color = AssetStudio::Color::build(pixel);
+             new_color.id = next_id;
+             result.colors.push_back(new_color);
+             
+             next_id++;
+         }
+         else
+         {
+             // Existing color
+             // Use a known ID we already assigned
+             result_bitmap.pixels[x + y * width] = it->second;
+         }
+         
+         // Maintain initial list
+         result.raw_colors[pixel]++;
+      }
+   }
+
+   al_unlock_bitmap(bitmap);
+   return result_;
 }
 
 void Palette::draw(uint32_t picked_id)

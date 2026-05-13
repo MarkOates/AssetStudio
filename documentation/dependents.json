@@ -215,5 +215,8 @@
   ],
   "tsl/ordered_map": [
     "AssetStudio/Palette"
+  ],
+  "AssetStudio/IndexedBitmap": [
+    "AssetStudio/Palette"
   ]
 }
