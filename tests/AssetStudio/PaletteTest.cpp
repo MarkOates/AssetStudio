@@ -88,6 +88,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    //std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
    std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
    ALLEGRO_BITMAP *bitmap = bitmap_bin[bitmap_identifier];
+   ALLEGRO_BITMAP *paletted_bitmap_result = nullptr;
 
    std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> indexed_bitmap_and_palette =
       AssetStudio::Palette::build_indexed_bitmap_and_palette(bitmap);
@@ -96,13 +97,23 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
    AllegroFlare::Placement2D bitmap_placement;
    bitmap_placement.position.x = 1920/3*2;
-   bitmap_placement.position.y = 1080/2;
+   bitmap_placement.position.y = 1080/8*2;
    bitmap_placement.size.x = al_get_bitmap_width(bitmap);
    bitmap_placement.size.y = al_get_bitmap_height(bitmap);
    bitmap_placement.align.x = 0.5;
    bitmap_placement.align.y = 0.5;
    bitmap_placement.scale.x = 1;
    bitmap_placement.scale.y = 1;
+
+   AllegroFlare::Placement2D bitmap2_placement;
+   bitmap2_placement.position.x = 1920/3*2;
+   bitmap2_placement.position.y = 1080/8*6;
+   bitmap2_placement.size.x = al_get_bitmap_width(bitmap);
+   bitmap2_placement.size.y = al_get_bitmap_height(bitmap);
+   bitmap2_placement.align.x = 0.5;
+   bitmap2_placement.align.y = 0.5;
+   bitmap2_placement.scale.x = 1;
+   bitmap2_placement.scale.y = 1;
 
    AllegroFlare::Placement2D palette_placement;
    palette_placement.position.x = 1920/5;
@@ -180,10 +191,18 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             //
             clear_with_color(clear_color);
 
-            // Draw the image
+            // Draw the image (bitmap1)
             bitmap_placement.start_transform();
             al_draw_bitmap(bitmap, 0, 0, 0);
             bitmap_placement.restore_transform();
+
+            // Draw the image (bitmap2)
+            if (paletted_bitmap_result)
+            {
+               bitmap2_placement.start_transform();
+               al_draw_bitmap(paletted_bitmap_result, 0, 0, 0);
+               bitmap2_placement.restore_transform();
+            }
 
             // Draw the palette
             palette_placement.start_transform();
@@ -239,12 +258,25 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
          } break;
 
          case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN: {
-            if (mouse_over_color.valid) picked_color = mouse_over_color;
+            if (mouse_over_color.valid)
+            {
+               picked_color = mouse_over_color;
+
+               // Build (or rebuild) the result bitmap
+               if (paletted_bitmap_result)
+               {
+                  al_destroy_bitmap(paletted_bitmap_result);
+                  paletted_bitmap_result = nullptr;
+               }
+
+               paletted_bitmap_result = AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette(
+                  &indexed_bitmap,
+                  &palette
+               );
+            }
          } break;
 
-         //// For example:
-         //case ALLEGRO_EVENT_KEY_DOWN:
-         //{
+         case ALLEGRO_EVENT_KEY_DOWN: {
             //bool shift = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
             //switch(current_event.keyboard.keycode)
             //{
@@ -252,9 +284,27 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
                   //// Do something
                //break;
             //}
-         //}
-         //break;
+
+            // Build (or rebuild) the result bitmap
+            if (paletted_bitmap_result)
+            {
+               al_destroy_bitmap(paletted_bitmap_result);
+               paletted_bitmap_result = nullptr;
+            }
+
+            paletted_bitmap_result = AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette(
+               &indexed_bitmap,
+               &palette
+            );
+         } break;
       }
+   }
+
+   // Cleanup
+   if (paletted_bitmap_result)
+   {
+      al_destroy_bitmap(paletted_bitmap_result);
+      paletted_bitmap_result = nullptr;
    }
 }
 

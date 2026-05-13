@@ -2,6 +2,7 @@
 
 #include <AssetStudio/Palette.hpp>
 
+#include <AllegroFlare/Logger.hpp>
 #include <AssetStudio/Color.hpp>
 #include <AssetStudio/Comparison/ALLEGRO_COLOR.hpp>
 #include <algorithm>
@@ -108,7 +109,7 @@ std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> Palette::build_index
    result_bitmap.pixels.resize(width * height);
 
    std::map<ALLEGRO_COLOR, uint16_t> color_to_index;
-   uint16_t next_id = 0;
+   uint16_t next_id = 1; // NOTE: 0 is an error
 
    al_lock_bitmap(bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
 
@@ -144,8 +145,63 @@ std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> Palette::build_index
       }
    }
 
+   result_bitmap.expected_palette_size = result.colors.size();
+
    al_unlock_bitmap(bitmap);
    return result_;
+}
+
+ALLEGRO_BITMAP* Palette::create_bitmap_from_indexed_bitmap_and_palette(AssetStudio::IndexedBitmap* indexed_bitmap_, AssetStudio::Palette* palette_)
+{
+   if (!(indexed_bitmap_))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"indexed_bitmap_\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"indexed_bitmap_\" not met");
+   }
+   if (!(palette_))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"palette_\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"palette_\" not met");
+   }
+   if (!((indexed_bitmap_->expected_palette_size == palette_->colors.size())))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"(indexed_bitmap_->expected_palette_size == palette_->colors.size())\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette]: error: guard \"(indexed_bitmap_->expected_palette_size == palette_->colors.size())\" not met");
+   }
+   ALLEGRO_STATE previous_state;
+   al_store_state(&previous_state, ALLEGRO_STATE_BITMAP | ALLEGRO_STATE_TARGET_BITMAP);
+   auto &indexed_bitmap = *indexed_bitmap_;
+   auto &palette = *palette_;
+
+   int width = indexed_bitmap.width;
+   int height = indexed_bitmap.height;
+
+   ALLEGRO_BITMAP* result = al_create_bitmap(indexed_bitmap.width, indexed_bitmap.height);
+   al_set_target_bitmap(result);
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+
+   al_lock_bitmap(result, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_WRITEONLY);
+
+   for (int y=0; y<height; y++)
+   {
+      for (int x=0; x<width; x++)
+      {
+         uint16_t index = indexed_bitmap.pixels[x + y * width];
+         ALLEGRO_COLOR c = palette.find_color_by_index(index);
+         al_put_pixel(x, y, c);
+      }
+   }
+
+   al_unlock_bitmap(result);
+
+   al_restore_state(&previous_state);
+   return result;
 }
 
 void Palette::draw(uint32_t picked_id)
@@ -206,6 +262,23 @@ uint32_t Palette::find_index_by_color(ALLEGRO_COLOR al_color)
 {
    for (auto &color : colors) if (color.al_color == al_color) return color.id;
    return 0;
+}
+
+ALLEGRO_COLOR Palette::find_color_by_index(uint32_t index)
+{
+   if (!((index > 0)))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::find_color_by_index]: error: guard \"(index > 0)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::find_color_by_index]: error: guard \"(index > 0)\" not met");
+   }
+   for (auto &color : colors) if (color.id == index) return color.al_color;
+   AllegroFlare::Logger::throw_error(
+      THIS_CLASS_AND_METHOD_NAME,
+      "No color exists in the palette with an id of \"" + std::to_string(index) + "\"."
+   );
+   return ALLEGRO_COLOR{0, 0, 0, 0};
 }
 
 void Palette::sort_by_luminance()

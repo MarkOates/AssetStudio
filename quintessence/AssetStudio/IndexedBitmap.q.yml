@@ -16,6 +16,11 @@ properties:
     init_with: ''
     exposed: true
 
+  - name: expected_palette_size
+    type: uint16_t
+    init_with: 0
+    exposed: true
+
 
 dependencies:
 

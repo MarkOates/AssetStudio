@@ -13,6 +13,7 @@ IndexedBitmap::IndexedBitmap()
    : width(0)
    , height(0)
    , pixels()
+   , expected_palette_size(0)
 {
 }
 

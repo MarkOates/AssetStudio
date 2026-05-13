@@ -45,7 +45,8 @@
     "AssetStudio/DatabaseCSVLoader"
   ],
   "AllegroFlare/Logger": [
-    "AssetStudio/DatabaseCSVLoader"
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Palette"
   ],
   "std/atoi": [
     "AssetStudio/DatabaseCSVLoader"
