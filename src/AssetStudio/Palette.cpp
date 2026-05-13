@@ -81,7 +81,7 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
    return result;
 }
 
-std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> Palette::build_indexed_bitmap_and_palette(ALLEGRO_BITMAP* bitmap)
+std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> Palette::build_indexed_bitmap_and_palette(ALLEGRO_BITMAP* bitmap)
 {
    if (!(bitmap))
    {
@@ -97,9 +97,9 @@ std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> Palette::build_index
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("[AssetStudio::Palette::build_indexed_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met");
    }
-   std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> result_;
-   AssetStudio::Palette &result = result_.first;
-   AssetStudio::IndexedBitmap &result_bitmap = result_.second;
+   std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> result_;
+   AssetStudio::Palette &result = result_.second;
+   AssetStudio::IndexedBitmap &result_bitmap = result_.first;
 
    int width = al_get_bitmap_width(bitmap);
    int height = al_get_bitmap_height(bitmap);

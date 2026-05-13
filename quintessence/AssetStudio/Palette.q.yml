@@ -88,16 +88,16 @@ methods:
 
   - name: build_indexed_bitmap_and_palette
     static: true
-    type: std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap>
+    type: std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette>
     parameters:
       - name: bitmap
         type: ALLEGRO_BITMAP*
         default_argument: nullptr
     guards: [ bitmap, al_get_current_display() ]
     body: |
-      std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> result_;
-      AssetStudio::Palette &result = result_.first;
-      AssetStudio::IndexedBitmap &result_bitmap = result_.second;
+      std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> result_;
+      AssetStudio::Palette &result = result_.second;
+      AssetStudio::IndexedBitmap &result_bitmap = result_.first;
 
       int width = al_get_bitmap_width(bitmap);
       int height = al_get_bitmap_height(bitmap);
