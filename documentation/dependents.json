@@ -212,5 +212,8 @@
   ],
   "al_draw_text": [
     "AssetStudio/Palette"
+  ],
+  "tsl/ordered_map": [
+    "AssetStudio/Palette"
   ]
 }

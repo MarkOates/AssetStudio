@@ -22,6 +22,7 @@ namespace AssetStudio
       enum class Sorting
       {
          UNDEF = 0,
+         ID,
          LUMINANCE,
       };
       std::map<ALLEGRO_COLOR, int> raw_colors;
@@ -40,7 +41,10 @@ namespace AssetStudio
       static AssetStudio::Palette build(ALLEGRO_BITMAP* bitmap=nullptr);
       void draw(uint32_t picked_id=0);
       uint32_t find_index_by_color(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0});
-      static bool sort_by_luminance(AssetStudio::Color& a=dummy_color, AssetStudio::Color& b=dummy_color);
+      void sort_by_luminance();
+      void sort_by_id();
+      static bool compare_by_luminance(AssetStudio::Color& a=dummy_color, AssetStudio::Color& b=dummy_color);
+      static bool compare_by_id(AssetStudio::Color& a=dummy_color, AssetStudio::Color& b=dummy_color);
    };
 }
 

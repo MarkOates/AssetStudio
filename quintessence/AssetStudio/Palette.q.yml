@@ -35,6 +35,7 @@ enums:
   - class: Sorting
     enumerators:
       - UNDEF
+      - ID
       - LUMINANCE
 
 
@@ -77,8 +78,7 @@ methods:
       al_unlock_bitmap(bitmap);
 
       // Sort by luminance
-      std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
-      result.sorting = Sorting::LUMINANCE;
+      //result.sort_by_id();
 
       return result;
     body_dependency_symbols:
@@ -154,6 +154,24 @@ methods:
 
 
   - name: sort_by_luminance
+    body: |
+      std::sort(colors.begin(), colors.end(), compare_by_luminance);
+      sorting = Sorting::LUMINANCE;
+      return;
+    body_dependency_symbols:
+      - std::sort
+
+
+  - name: sort_by_id
+    body: |
+      std::sort(colors.begin(), colors.end(), compare_by_id);
+      sorting = Sorting::ID;
+      return;
+    body_dependency_symbols:
+      - std::sort
+
+
+  - name: compare_by_luminance
     static: true
     type: bool
     parameters:
@@ -167,6 +185,23 @@ methods:
       if (a.luminance != b.luminance) return a.luminance > b.luminance;
       return std::tie(a.al_color.r, a.al_color.g, a.al_color.b, a.al_color.a)
          > std::tie(b.al_color.r, b.al_color.g, b.al_color.b, b.al_color.a);
+    body_dependency_symbols:
+      - AssetStudio::Color
+
+
+  - name: compare_by_id
+    static: true
+    type: bool
+    parameters:
+      - name: a
+        type: AssetStudio::Color&
+        default_argument: dummy_color
+      - name: b
+        type: AssetStudio::Color&
+        default_argument: dummy_color
+    body: |
+      // id should always be unique. If not, there's a problem.
+      return a.id > b.id;
     body_dependency_symbols:
       - AssetStudio::Color
 
@@ -196,5 +231,7 @@ dependencies:
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_draw_text
     headers: [ allegro5/allegro.h ]
+  - symbol: tsl::ordered_map
+    headers: [ lib/tsl/ordered_map.h ]
 
 

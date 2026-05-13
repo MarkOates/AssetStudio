@@ -76,8 +76,7 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
    al_unlock_bitmap(bitmap);
 
    // Sort by luminance
-   std::sort(result.colors.begin(), result.colors.end(), sort_by_luminance); // DEVELOPMENT
-   result.sorting = Sorting::LUMINANCE;
+   //result.sort_by_id();
 
    return result;
 }
@@ -140,11 +139,31 @@ uint32_t Palette::find_index_by_color(ALLEGRO_COLOR al_color)
    return 0;
 }
 
-bool Palette::sort_by_luminance(AssetStudio::Color& a, AssetStudio::Color& b)
+void Palette::sort_by_luminance()
+{
+   std::sort(colors.begin(), colors.end(), compare_by_luminance);
+   sorting = Sorting::LUMINANCE;
+   return;
+}
+
+void Palette::sort_by_id()
+{
+   std::sort(colors.begin(), colors.end(), compare_by_id);
+   sorting = Sorting::ID;
+   return;
+}
+
+bool Palette::compare_by_luminance(AssetStudio::Color& a, AssetStudio::Color& b)
 {
    if (a.luminance != b.luminance) return a.luminance > b.luminance;
    return std::tie(a.al_color.r, a.al_color.g, a.al_color.b, a.al_color.a)
       > std::tie(b.al_color.r, b.al_color.g, b.al_color.b, b.al_color.a);
+}
+
+bool Palette::compare_by_id(AssetStudio::Color& a, AssetStudio::Color& b)
+{
+   // id should always be unique. If not, there's a problem.
+   return a.id > b.id;
 }
 
 
