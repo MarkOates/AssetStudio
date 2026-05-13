@@ -192,6 +192,9 @@
   "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
   ],
+  "uint16_t": [
+    "AssetStudio/IndexedBitmap"
+  ],
   "AssetStudio/Palette": [
     "AssetStudio/Palette"
   ],

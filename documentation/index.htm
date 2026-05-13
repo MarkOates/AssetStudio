@@ -62,6 +62,7 @@ table td
   <li><a href="#quintessence/AssetStudio/GameProgressAndStateInfo.q.yml">quintessence/AssetStudio/GameProgressAndStateInfo.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Gameplay/Level.q.yml">quintessence/AssetStudio/Gameplay/Level.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Gameplay/Screen.q.yml">quintessence/AssetStudio/Gameplay/Screen.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/IndexedBitmap.q.yml">quintessence/AssetStudio/IndexedBitmap.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Palette.q.yml">quintessence/AssetStudio/Palette.q.yml</a></li>
   <li><a href="#quintessence/Assets/ColorTransform.q.yml">quintessence/Assets/ColorTransform.q.yml</a></li>
 </ul>
@@ -883,6 +884,38 @@ table td
 <br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/AssetStudio/IndexedBitmap.q.yml">quintessence/AssetStudio/IndexedBitmap.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">width</td>
+  <td class="property">uint32_t</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">uint32_t</td>
+</tr>
+<tr>
+  <td class="property">pixels</td>
+  <td class="property">std::vector&lt;uint16_t&gt;</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;uint16_t&quot;, &quot;headers&quot;=&gt;[&quot;cstdint&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
     <h3 id="quintessence/AssetStudio/Palette.q.yml">quintessence/AssetStudio/Palette.q.yml</h3>
     <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
@@ -916,7 +949,7 @@ table td
 </tr>
 <tr>
   <td class="method">std::pair&lt;AssetStudio::Palette, AssetStudio::IndexedBitmap&gt;</td>
-  <td class="method"><b>build_indexted_bitmap_and_palette</b>(ALLEGRO_BITMAP* bitmap=nullptr)</td>
+  <td class="method"><b>build_indexed_bitmap_and_palette</b>(ALLEGRO_BITMAP* bitmap=nullptr)</td>
 </tr>
 <tr>
   <td class="method">void</td>
@@ -1209,6 +1242,9 @@ table td
   ],
   "AllegroFlare/Placement2D": [
     "AssetStudio/Gameplay/Screen"
+  ],
+  "uint16_t": [
+    "AssetStudio/IndexedBitmap"
   ],
   "AssetStudio/Palette": [
     "AssetStudio/Palette"

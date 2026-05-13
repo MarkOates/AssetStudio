@@ -81,21 +81,21 @@ AssetStudio::Palette Palette::build(ALLEGRO_BITMAP* bitmap)
    return result;
 }
 
-std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> Palette::build_indexted_bitmap_and_palette(ALLEGRO_BITMAP* bitmap)
+std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> Palette::build_indexed_bitmap_and_palette(ALLEGRO_BITMAP* bitmap)
 {
    if (!(bitmap))
    {
       std::stringstream error_message;
-      error_message << "[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"bitmap\" not met.";
+      error_message << "[AssetStudio::Palette::build_indexed_bitmap_and_palette]: error: guard \"bitmap\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"bitmap\" not met");
+      throw std::runtime_error("[AssetStudio::Palette::build_indexed_bitmap_and_palette]: error: guard \"bitmap\" not met");
    }
    if (!(al_get_current_display()))
    {
       std::stringstream error_message;
-      error_message << "[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met.";
+      error_message << "[AssetStudio::Palette::build_indexed_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("[AssetStudio::Palette::build_indexted_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met");
+      throw std::runtime_error("[AssetStudio::Palette::build_indexed_bitmap_and_palette]: error: guard \"al_get_current_display()\" not met");
    }
    std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap> result_;
    AssetStudio::Palette &result = result_.first;

@@ -86,7 +86,7 @@ methods:
       - std::sort
 
 
-  - name: build_indexted_bitmap_and_palette
+  - name: build_indexed_bitmap_and_palette
     static: true
     type: std::pair<AssetStudio::Palette, AssetStudio::IndexedBitmap>
     parameters:
