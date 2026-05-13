@@ -123,11 +123,10 @@ std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> Palette::build_index
          if (it == color_to_index.end())
          {
              // New color
-             // Assign to the next available ID
              color_to_index[pixel] = next_id;
              result_bitmap.pixels[x + y * width] = next_id;
              
-             // Also store it in your palette result
+             // Store in palette result
              AssetStudio::Color new_color = AssetStudio::Color::build(pixel);
              new_color.id = next_id;
              result.colors.push_back(new_color);
@@ -137,7 +136,6 @@ std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> Palette::build_index
          else
          {
              // Existing color
-             // Use a known ID we already assigned
              result_bitmap.pixels[x + y * width] = it->second;
          }
          
@@ -161,6 +159,7 @@ void Palette::draw(uint32_t picked_id)
    }
    // TODO: guard for al_draw_text
 
+   float frame_stroke_thickness = 2.0f;
    float o = 0.5;
    ALLEGRO_COLOR frame_color_a{o, o, o, o};
    ALLEGRO_COLOR frame_color_b{0, 0, 0, o};
@@ -188,8 +187,9 @@ void Palette::draw(uint32_t picked_id)
       //if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
       if (picked_id != 0 && color.id == picked_id)
       {
-         al_draw_rectangle(x1-1, y1-1, x2+1, y2+1, frame_color_a, 1.0);
-         al_draw_rectangle(x1-2, y1-2, x2+2, y2+2, frame_color_b, 1.0);
+         float s = frame_stroke_thickness;
+         al_draw_rectangle(x1-s*0, y1-s*0, x2+s*0, y2+s*0, frame_color_a, s);
+         al_draw_rectangle(x1-s*1, y1-s*1, x2+s*1, y2+s*1, frame_color_b, s);
       }
 
       column++;

@@ -89,7 +89,10 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
    ALLEGRO_BITMAP *bitmap = bitmap_bin[bitmap_identifier];
 
-   AssetStudio::Palette palette = AssetStudio::Palette::build(bitmap);
+   std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> indexed_bitmap_and_palette =
+      AssetStudio::Palette::build_indexed_bitmap_and_palette(bitmap);
+   auto &indexed_bitmap = indexed_bitmap_and_palette.first;
+   auto &palette = indexed_bitmap_and_palette.second;
 
    AllegroFlare::Placement2D bitmap_placement;
    bitmap_placement.position.x = 1920/3*2;
