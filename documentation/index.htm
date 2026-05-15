@@ -62,6 +62,7 @@ table td
   <li><a href="#quintessence/AssetStudio/ColorStudio.q.yml">quintessence/AssetStudio/ColorStudio.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/Filesystem.q.yml">quintessence/AssetStudio/Filesystem.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameConfigurations/Main.q.yml">quintessence/AssetStudio/GameConfigurations/Main.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/GameProgressAndStateInfo.q.yml">quintessence/AssetStudio/GameProgressAndStateInfo.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Gameplay/Level.q.yml">quintessence/AssetStudio/Gameplay/Level.q.yml</a></li>
@@ -187,7 +188,11 @@ table td
 <div class="property-box methods">     <table>
 <tr>
   <td class="method">void</td>
-  <td class="method"><b>load_from_json_file</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
+  <td class="method"><b>save_json_file</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
+</tr>
+<tr>
+  <td class="method">void</td>
+  <td class="method"><b>load_json_file</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -206,6 +211,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::php::file_get_contents&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/UsefulPHP.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;nlohmann::json&quot;, &quot;headers&quot;=&gt;[&quot;lib/nlohmann/json.hpp&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -549,6 +557,44 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FrameAnimation::SpriteStripAssembler&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FrameAnimation/SpriteStripAssembler.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/Filesystem.q.yml">quintessence/AssetStudio/Filesystem.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">DEFAULT_ARGUMENT_FILE_PATH</td>
+  <td class="property">const char*</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>exists_as_file</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
+</tr>
+<tr>
+  <td class="method">bool</td>
+  <td class="method"><b>exists_as_directory</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
+</tr>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::filesystem::exists&quot;, &quot;headers&quot;=&gt;[&quot;filesystem&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::filesystem::is_regular_file&quot;, &quot;headers&quot;=&gt;[&quot;filesystem&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::filesystem::is_directory&quot;, &quot;headers&quot;=&gt;[&quot;filesystem&quot;]}</td>
 </tr>
     </table>
 </div>  </div>
@@ -1244,6 +1290,9 @@ table td
   "AllegroFlare/php/file_get_contents": [
     "AssetStudio/AssetColorProfile"
   ],
+  "nlohmann/json": [
+    "AssetStudio/AssetColorProfile"
+  ],
   "ALLEGRO_COLOR": [
     "AssetStudio/Color",
     "AssetStudio/Palette"
@@ -1303,6 +1352,15 @@ table td
   ],
   "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
     "AssetStudio/DatabaseCSVLoader"
+  ],
+  "std/filesystem/exists": [
+    "AssetStudio/Filesystem"
+  ],
+  "std/filesystem/is_regular_file": [
+    "AssetStudio/Filesystem"
+  ],
+  "std/filesystem/is_directory": [
+    "AssetStudio/Filesystem"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"

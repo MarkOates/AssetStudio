@@ -4,10 +4,14 @@ properties:
   - name: bitmap_filename
     type: std::string
     init_with: '"[unset-filename]"'
+    getter: true
+    setter: true
 
   - name: color_groups
     type: std::vector<AssetStudio::ColorGroup>
     init_with: ''
+    getter: true
+    setter: true
 
   - name: DEFAULT_ARGUMENT_FILE_PATH
     type: const char*
@@ -19,7 +23,35 @@ properties:
 methods:
 
 
-  - name: load_from_json_file
+  - name: save_json_file
+    parameters:
+      - name: file_path
+        type: std::string
+        default_argument: DEFAULT_ARGUMENT_FILE_PATH
+    guards: [ file_path != DEFAULT_ARGUMENT_FILE_PATH ]
+    body: |
+      if (AssetStudio::Filesystem::exists_as_directory(file_path))
+      {
+         AllegroFlare::Logger::throw_error(
+            THIS_CLASS_AND_METHOD_NAME,
+            "Cannot save the json file named \"" + file_path + "\". The location already exists as a folder."
+         );
+      }
+
+      nlohmann::json j;
+      j["color_groups"] = color_groups;
+      j["bitmap_filename"] = bitmap_filename;
+
+      std::string contents = j.dump(3);
+
+      AllegroFlare::php::file_put_contents(file_path, contents);
+
+      return;
+    body_dependency_symbols:
+      - nlohmann::json
+
+
+  - name: load_json_file
     parameters:
       - name: file_path
         type: std::string
@@ -72,5 +104,7 @@ dependencies:
     headers: [ AssetStudio/JSONLoaders/AssetStudio/ColorGroup.hpp ]
   - symbol: AllegroFlare::php::file_get_contents
     headers: [ AllegroFlare/UsefulPHP.hpp ]
+  - symbol: nlohmann::json
+    headers: [ lib/nlohmann/json.hpp ]
 
 

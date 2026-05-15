@@ -28,6 +28,9 @@
   "AllegroFlare/php/file_get_contents": [
     "AssetStudio/AssetColorProfile"
   ],
+  "nlohmann/json": [
+    "AssetStudio/AssetColorProfile"
+  ],
   "ALLEGRO_COLOR": [
     "AssetStudio/Color",
     "AssetStudio/Palette"
@@ -87,6 +90,15 @@
   ],
   "AllegroFlare/FrameAnimation/SpriteStripAssembler": [
     "AssetStudio/DatabaseCSVLoader"
+  ],
+  "std/filesystem/exists": [
+    "AssetStudio/Filesystem"
+  ],
+  "std/filesystem/is_regular_file": [
+    "AssetStudio/Filesystem"
+  ],
+  "std/filesystem/is_directory": [
+    "AssetStudio/Filesystem"
   ],
   "AllegroFlare/GameConfigurations/Complete": [
     "AssetStudio/GameConfigurations/Main"
