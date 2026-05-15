@@ -206,7 +206,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
             // Draw the palette
             palette_placement.start_transform();
-            palette.draw(picked_color.palette_index);
+            palette.draw(picked_color.palette_index, font);
             palette_placement.restore_transform();
 
             // Draw the UI
@@ -262,7 +262,64 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             {
                picked_color = mouse_over_color;
 
+               /*
+               if (paletted_bitmap_result)
+               {
+                  al_destroy_bitmap(paletted_bitmap_result);
+                  paletted_bitmap_result = nullptr;
+               }
+
+               paletted_bitmap_result = AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette(
+                  &indexed_bitmap,
+                  &palette
+               );
+               */
+
+               /*
                // Build (or rebuild) the result bitmap
+               if (paletted_bitmap_result)
+               {
+                  al_destroy_bitmap(paletted_bitmap_result);
+                  paletted_bitmap_result = nullptr;
+               }
+
+
+               paletted_bitmap_result = AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette(
+                  &indexed_bitmap,
+                  &palette
+               );
+               */
+            }
+         } break;
+
+         case ALLEGRO_EVENT_KEY_DOWN: {
+            bool shift = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
+            bool option = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT;
+            bool command = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_COMMAND;
+
+            bool palette_modified = false;
+
+            if (shift && option && command)
+            {
+               switch(current_event.keyboard.keycode)
+               {
+                  case ALLEGRO_KEY_1: { // Dial 1, counter-clockwise
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     color.rotate_hue(-1./64);
+                     palette_modified = true;
+                  } break;
+                  case ALLEGRO_KEY_2: { // Dial 1, clockwise
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     color.rotate_hue(1./64);
+                     palette_modified = true;
+                  } break;
+               }
+            }
+
+            if (palette_modified)
+            {
                if (paletted_bitmap_result)
                {
                   al_destroy_bitmap(paletted_bitmap_result);
@@ -274,28 +331,6 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
                   &palette
                );
             }
-         } break;
-
-         case ALLEGRO_EVENT_KEY_DOWN: {
-            //bool shift = current_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
-            //switch(current_event.keyboard.keycode)
-            //{
-               //case ALLEGRO_KEY_ENTER:
-                  //// Do something
-               //break;
-            //}
-
-            // Build (or rebuild) the result bitmap
-            if (paletted_bitmap_result)
-            {
-               al_destroy_bitmap(paletted_bitmap_result);
-               paletted_bitmap_result = nullptr;
-            }
-
-            paletted_bitmap_result = AssetStudio::Palette::create_bitmap_from_indexed_bitmap_and_palette(
-               &indexed_bitmap,
-               &palette
-            );
          } break;
       }
    }

@@ -5,6 +5,7 @@
 #include <AssetStudio/IndexedBitmap.hpp>
 #include <AssetStudio/Palette.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 #include <cstdint>
 #include <map>
 #include <utility>
@@ -43,9 +44,10 @@ namespace AssetStudio
       static AssetStudio::Palette build(ALLEGRO_BITMAP* bitmap=nullptr);
       static std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> build_indexed_bitmap_and_palette(ALLEGRO_BITMAP* bitmap=nullptr);
       static ALLEGRO_BITMAP* create_bitmap_from_indexed_bitmap_and_palette(AssetStudio::IndexedBitmap* indexed_bitmap_=nullptr, AssetStudio::Palette* palette_=nullptr);
-      void draw(uint32_t picked_id=0);
+      void draw(uint32_t picked_id=0, ALLEGRO_FONT* font=nullptr);
       uint32_t find_index_by_color(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0});
-      ALLEGRO_COLOR find_color_by_index(uint32_t index=0);
+      ALLEGRO_COLOR find_al_color_by_index(uint32_t index=0);
+      AssetStudio::Color* find_color_by_index(uint32_t index=0);
       void sort_by_luminance();
       void sort_by_id();
       static bool compare_by_luminance(AssetStudio::Color& a=dummy_color, AssetStudio::Color& b=dummy_color);

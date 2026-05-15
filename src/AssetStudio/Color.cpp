@@ -40,17 +40,21 @@ AssetStudio::Color Color::build(ALLEGRO_COLOR al_color)
 
 void Color::multiply_rgb(float multiplier)
 {
+   uint32_t previous_id = id;
    *this = build(ALLEGRO_COLOR{
       al_color.r * multiplier,
       al_color.g * multiplier,
       al_color.b * multiplier,
       al_color.a
    });
+   id = previous_id;
    return;
 }
 
 void Color::multiply_saturation(float multiplier)
 {
+   uint32_t previous_id = id;
+
    // Calculate and clamp new saturation (0.0 - 1.0)
    float new_sat = this->saturation * multiplier;
    if (new_sat < 0.0f) new_sat = 0.0f;
@@ -64,10 +68,12 @@ void Color::multiply_saturation(float multiplier)
 
    // Rebuild the object
    *this = build(new_al_color);
+   id = previous_id;
 }
 
 void Color::rotate_hue(float unit_offset)
 {
+   uint32_t previous_id = id;
    // Calculate new hue (0.0 - 360.0)
    float new_hue = std::fmod(this->hue + (unit_offset * 360.0f), 360.0f);
    if (new_hue < 0.0f) new_hue += 360.0f;
@@ -80,6 +86,7 @@ void Color::rotate_hue(float unit_offset)
 
    // Rebuild the object
    *this = build(new_al_color);
+   id = previous_id;
 }
 
 float Color::calculate_luminance(ALLEGRO_COLOR al_color)

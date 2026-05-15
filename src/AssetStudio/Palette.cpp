@@ -193,7 +193,7 @@ ALLEGRO_BITMAP* Palette::create_bitmap_from_indexed_bitmap_and_palette(AssetStud
       for (int x=0; x<width; x++)
       {
          uint16_t index = indexed_bitmap.pixels[x + y * width];
-         ALLEGRO_COLOR c = palette.find_color_by_index(index);
+         ALLEGRO_COLOR c = palette.find_al_color_by_index(index);
          al_put_pixel(x, y, c);
       }
    }
@@ -204,7 +204,7 @@ ALLEGRO_BITMAP* Palette::create_bitmap_from_indexed_bitmap_and_palette(AssetStud
    return result;
 }
 
-void Palette::draw(uint32_t picked_id)
+void Palette::draw(uint32_t picked_id, ALLEGRO_FONT* font)
 {
    if (!(al_is_primitives_addon_initialized()))
    {
@@ -240,7 +240,7 @@ void Palette::draw(uint32_t picked_id)
       int y2 = y1 + box_h;
 
       al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
-      //if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
+      if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
       if (picked_id != 0 && color.id == picked_id)
       {
          float s = frame_stroke_thickness;
@@ -264,7 +264,24 @@ uint32_t Palette::find_index_by_color(ALLEGRO_COLOR al_color)
    return 0;
 }
 
-ALLEGRO_COLOR Palette::find_color_by_index(uint32_t index)
+ALLEGRO_COLOR Palette::find_al_color_by_index(uint32_t index)
+{
+   if (!((index > 0)))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::find_al_color_by_index]: error: guard \"(index > 0)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::find_al_color_by_index]: error: guard \"(index > 0)\" not met");
+   }
+   for (auto &color : colors) if (color.id == index) return color.al_color;
+   AllegroFlare::Logger::throw_error(
+      THIS_CLASS_AND_METHOD_NAME,
+      "No color exists in the palette with an id of \"" + std::to_string(index) + "\"."
+   );
+   return ALLEGRO_COLOR{0, 0, 0, 0};
+}
+
+AssetStudio::Color* Palette::find_color_by_index(uint32_t index)
 {
    if (!((index > 0)))
    {
@@ -273,12 +290,12 @@ ALLEGRO_COLOR Palette::find_color_by_index(uint32_t index)
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("[AssetStudio::Palette::find_color_by_index]: error: guard \"(index > 0)\" not met");
    }
-   for (auto &color : colors) if (color.id == index) return color.al_color;
+   for (auto &color : colors) if (color.id == index) return &color;
    AllegroFlare::Logger::throw_error(
       THIS_CLASS_AND_METHOD_NAME,
       "No color exists in the palette with an id of \"" + std::to_string(index) + "\"."
    );
-   return ALLEGRO_COLOR{0, 0, 0, 0};
+   return nullptr;
 }
 
 void Palette::sort_by_luminance()

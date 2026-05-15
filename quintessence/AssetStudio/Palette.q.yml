@@ -185,7 +185,7 @@ methods:
          for (int x=0; x<width; x++)
          {
             uint16_t index = indexed_bitmap.pixels[x + y * width];
-            ALLEGRO_COLOR c = palette.find_color_by_index(index);
+            ALLEGRO_COLOR c = palette.find_al_color_by_index(index);
             al_put_pixel(x, y, c);
          }
       }
@@ -201,6 +201,9 @@ methods:
       - name: picked_id
         type: uint32_t
         default_argument: 0
+      - name: font
+        type: ALLEGRO_FONT*
+        default_argument: nullptr
     guards:
       - al_is_primitives_addon_initialized()
     body: |
@@ -231,7 +234,7 @@ methods:
          int y2 = y1 + box_h;
 
          al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
-         //if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
+         if (font) al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
          if (picked_id != 0 && color.id == picked_id)
          {
             float s = frame_stroke_thickness;
@@ -261,11 +264,9 @@ methods:
     body: |
       for (auto &color : colors) if (color.al_color == al_color) return color.id;
       return 0;
-    body_dependency_symbols:
-      - AssetStudio::Color
 
 
-  - name: find_color_by_index
+  - name: find_al_color_by_index
     type: ALLEGRO_COLOR
     parameters:
       - name: index
@@ -280,7 +281,24 @@ methods:
       );
       return ALLEGRO_COLOR{0, 0, 0, 0};
     body_dependency_symbols:
-      - AssetStudio::Color
+      - AllegroFlare::Logger
+
+
+  - name: find_color_by_index
+    type: AssetStudio::Color*
+    parameters:
+      - name: index
+        type: uint32_t
+        default_argument: 0
+    guards: [ (index > 0) ]
+    body: |
+      for (auto &color : colors) if (color.id == index) return &color;
+      AllegroFlare::Logger::throw_error(
+         THIS_CLASS_AND_METHOD_NAME,
+         "No color exists in the palette with an id of \"" + std::to_string(index) + "\"."
+      );
+      return nullptr;
+    body_dependency_symbols:
       - AllegroFlare::Logger
 
 
