@@ -134,6 +134,30 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
       uint32_t palette_index = 0; 
    };
 
+   std::map<uint32_t, std::set<uint32_t>> color_groups = {
+      { 1, {} },
+      { 2, {} },
+      { 3, {} },
+      { 4, {} },
+      { 5, {} },
+      { 6, {} },
+      { 7, {} },
+      { 8, {} },
+      { 9, {} },
+   };
+
+   std::function<void(uint32_t, uint32_t)> add_or_remove_color_in_group =
+      [&color_groups](uint32_t color_id, uint32_t group_id) {
+         // the easiest way to get or create the group set.
+         auto& group_set = color_groups[group_id];
+
+         if (group_set.erase(color_id) == 0)
+         {
+             // If erase returned 0, it wasn't there. So add it.
+             group_set.insert(color_id);
+         }
+      };
+
    std::function<PickInfo(ALLEGRO_BITMAP*, AllegroFlare::Placement2D&, float, float)> pick_color =
       [](ALLEGRO_BITMAP *bitmap, AllegroFlare::Placement2D &placement, float xx, float yy){
          PickInfo result;
@@ -332,6 +356,32 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
                      auto &color = *palette.find_color_by_index(picked_color.palette_index);
                      color.rotate_hue(1./64);
                      palette_modified = true;
+                  } break;
+               }
+            }
+            else
+            {
+               switch(current_event.keyboard.keycode)
+               {
+                  case ALLEGRO_KEY_1: {
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     add_or_remove_color_in_group(picked_color.palette_index, 1);
+                  } break;
+                  case ALLEGRO_KEY_2: {
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     add_or_remove_color_in_group(picked_color.palette_index, 2);
+                  } break;
+                  case ALLEGRO_KEY_3: {
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     add_or_remove_color_in_group(picked_color.palette_index, 3);
+                  } break;
+                  case ALLEGRO_KEY_4: {
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     add_or_remove_color_in_group(picked_color.palette_index, 4);
                   } break;
                }
             }
