@@ -1,0 +1,19 @@
+properties:
+
+
+  - name: hue_rotation
+    type: float
+    init_with: 0.0
+    exposed: true
+
+  - name: saturation_multiplier
+    type: float
+    init_with: 1.0
+    exposed: true
+
+  - name: rgb_multiplier
+    type: float
+    init_with: 1.0
+    exposed: true
+
+

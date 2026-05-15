@@ -6,6 +6,7 @@
 #include <AllegroFlare/Testing/WithInteractionFixture.hpp>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
+#include <AssetStudio/ColorFilters/General.hpp>
 
 
 
@@ -125,6 +126,16 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    palette_placement.scale.x = 4;
    palette_placement.scale.y = 4;
 
+   AllegroFlare::Placement2D group_placement;
+   group_placement.position.x = 1920/5;
+   group_placement.position.y = 1080-100;
+   group_placement.size.x = 120;
+   group_placement.size.y = 30;
+   group_placement.align.x = 0.5;
+   group_placement.align.y = 1.0;
+   group_placement.scale.x = 4;
+   group_placement.scale.y = 4;
+
    struct PickInfo
    {
       bool valid = false;
@@ -134,7 +145,13 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
       uint32_t palette_index = 0; 
    };
 
-   std::map<uint32_t, std::set<uint32_t>> color_groups = {
+   struct ColorGroup
+   {
+      std::set<uint32_t> color_ids;
+      AssetStudio::ColorFilters::General filter;
+   };
+
+   std::map<uint32_t, ColorGroup> color_groups = {
       { 1, {} },
       { 2, {} },
       { 3, {} },
@@ -148,15 +165,22 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
    std::function<void(uint32_t, uint32_t)> add_or_remove_color_in_group =
       [&color_groups](uint32_t color_id, uint32_t group_id) {
-         // the easiest way to get or create the group set.
-         auto& group_set = color_groups[group_id];
-
-         if (group_set.erase(color_id) == 0)
-         {
-             // If erase returned 0, it wasn't there. So add it.
-             group_set.insert(color_id);
-         }
+         ColorGroup &group = color_groups[group_id];
+         if (group.color_ids.erase(color_id) == 0) group.color_ids.insert(color_id);
       };
+
+
+   std::function<void(uint32_t, uint32_t)> add_color_to_group = 
+      [&color_groups](uint32_t color_id, uint32_t group_id) {
+         color_groups[group_id].color_ids.insert(color_id);
+      };
+
+
+   std::function<void(uint32_t, uint32_t)> remove_color_from_group = 
+      [&color_groups](uint32_t color_id, uint32_t group_id) {
+         if (auto it = color_groups.find(group_id); it != color_groups.end()) it->second.color_ids.erase(color_id);
+      };
+
 
    std::function<PickInfo(ALLEGRO_BITMAP*, AllegroFlare::Placement2D&, float, float)> pick_color =
       [](ALLEGRO_BITMAP *bitmap, AllegroFlare::Placement2D &placement, float xx, float yy){
@@ -195,6 +219,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    AllegroFlare::Vec2D mouse_position = { 1020./2, 1080./2 };
    AllegroFlare::Vec2D mouse_position_on_bitmap = {};
    PickInfo mouse_over_color, picked_color;
+   uint32_t current_color_group = 1;
   
 
    while(interactive_test_wait_for_event())
@@ -247,6 +272,16 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
                al_draw_filled_rectangle(20, 20+100, 80, 80+100, picked_color.color);
                al_draw_textf(font, ALLEGRO_COLOR{1, 1, 1, 1}, 20, 20+100, 0, "%d", picked_color.palette_index);
             }
+
+            // Draw the current color group
+            //al_draw_textf(font, ALLEGRO_COLOR{1, 1, 1, 1}, 20, 1080-180, 0, "current color group: %d", current_color_group);
+
+            group_placement.start_transform();
+            al_draw_textf(font, ALLEGRO_COLOR{1, 1, 1, 1}, 0, 12, 0, "current color group: %d", current_color_group);
+            palette.draw_subset(color_groups[current_color_group].color_ids, font);
+            group_placement.restore_transform();
+
+            
 
             //
             // Finish Drawing
@@ -363,25 +398,33 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             {
                switch(current_event.keyboard.keycode)
                {
-                  case ALLEGRO_KEY_1: {
-                     if (!picked_color.valid) break;
-                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
-                     add_or_remove_color_in_group(picked_color.palette_index, 1);
+                  case ALLEGRO_KEY_PAD_PLUS: {
+                     bitmap_placement.scale.x += 1;
+                     bitmap_placement.scale.y += 1;
                   } break;
-                  case ALLEGRO_KEY_2: {
-                     if (!picked_color.valid) break;
-                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
-                     add_or_remove_color_in_group(picked_color.palette_index, 2);
+                  case ALLEGRO_KEY_PAD_MINUS: {
+                     bitmap_placement.scale.x -= 1;
+                     bitmap_placement.scale.y -= 1;
                   } break;
-                  case ALLEGRO_KEY_3: {
-                     if (!picked_color.valid) break;
-                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
-                     add_or_remove_color_in_group(picked_color.palette_index, 3);
+                  
+                  case ALLEGRO_KEY_N: {
+                     current_color_group++;
+                     if (current_color_group >= 9) current_color_group = 9;
                   } break;
-                  case ALLEGRO_KEY_4: {
+                  case ALLEGRO_KEY_P: {
+                     if (current_color_group == 1) break;;
+                     current_color_group--;
+                  } break;
+
+                  case ALLEGRO_KEY_A: {
                      if (!picked_color.valid) break;
                      auto &color = *palette.find_color_by_index(picked_color.palette_index);
-                     add_or_remove_color_in_group(picked_color.palette_index, 4);
+                     add_color_to_group(picked_color.palette_index, current_color_group);
+                  } break;
+                  case ALLEGRO_KEY_R: {
+                     if (!picked_color.valid) break;
+                     auto &color = *palette.find_color_by_index(picked_color.palette_index);
+                     remove_color_from_group(picked_color.palette_index, current_color_group);
                   } break;
                }
             }

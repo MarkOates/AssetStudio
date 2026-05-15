@@ -9,6 +9,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
+#include <set>
 #include <sstream>
 #include <stdexcept>
 
@@ -256,6 +257,58 @@ void Palette::draw(uint32_t picked_id, ALLEGRO_FONT* font)
       }
    }
    return;
+}
+
+void Palette::draw_subset(std::set<uint32_t> color_ids, ALLEGRO_FONT* font)
+{
+   if (!(al_is_primitives_addon_initialized()))
+   {
+      std::stringstream error_message;
+      error_message << "[AssetStudio::Palette::draw_subset]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("[AssetStudio::Palette::draw_subset]: error: guard \"al_is_primitives_addon_initialized()\" not met");
+   }
+   // TODO: guard for al_draw_text if font is provided
+
+   float o = 0.5;
+   ALLEGRO_COLOR text_color{1, 1, 1, 1};
+
+   int x = 0;
+   int y = 0;
+   int columns = 99;
+   int spacing_x = 20;
+   int spacing_y = 20;
+   int box_w = 18;
+   int box_h = 18;
+
+   int column = 0;
+   int row = 0;
+
+   for (auto &color : colors)
+   {
+      // Only render the color if it exists in the provided subset
+      if (color_ids.find(color.id) == color_ids.end()) continue;
+
+      int x1 = x + spacing_x * column;
+      int y1 = y + spacing_y * row;
+      int x2 = x1 + box_w;
+      int y2 = y1 + box_h;
+
+      al_draw_filled_rectangle(x1, y1, x2, y2, color.al_color);
+
+      if (font)
+      {
+         al_draw_textf(font, text_color, x1, y1, 0, "%d", color.id);
+      }
+
+      // Layout increment only happens for items actually drawn
+      column++;
+      if (column > columns)
+      {
+         column = 0;
+         row++;
+      }
+   }
 }
 
 uint32_t Palette::find_index_by_color(ALLEGRO_COLOR al_color)

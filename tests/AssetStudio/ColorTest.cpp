@@ -10,3 +10,10 @@ TEST(AssetStudio_ColorTest, can_be_created_without_blowing_up)
 }
 
 
+//rgb_multiplier
+
+//saturation_multiplier
+
+//hue_rotation
+
+

@@ -8,6 +8,7 @@
 #include <allegro5/allegro_font.h>
 #include <cstdint>
 #include <map>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -45,6 +46,7 @@ namespace AssetStudio
       static std::pair<AssetStudio::IndexedBitmap, AssetStudio::Palette> build_indexed_bitmap_and_palette(ALLEGRO_BITMAP* bitmap=nullptr);
       static ALLEGRO_BITMAP* create_bitmap_from_indexed_bitmap_and_palette(AssetStudio::IndexedBitmap* indexed_bitmap_=nullptr, AssetStudio::Palette* palette_=nullptr);
       void draw(uint32_t picked_id=0, ALLEGRO_FONT* font=nullptr);
+      void draw_subset(std::set<uint32_t> color_ids={}, ALLEGRO_FONT* font=nullptr);
       uint32_t find_index_by_color(ALLEGRO_COLOR al_color=ALLEGRO_COLOR{0.5, 0.5, 0.5, 1.0});
       ALLEGRO_COLOR find_al_color_by_index(uint32_t index=0);
       AssetStudio::Color* find_color_by_index(uint32_t index=0);
