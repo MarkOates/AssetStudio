@@ -85,8 +85,8 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    al_set_new_bitmap_flags(al_get_new_bitmap_flags() & ~ALLEGRO_MAG_LINEAR);
 
    AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
-   //std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
-   std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
+   std::string bitmap_identifier = "sprite_strip_images/robo-soldier3.png";
+   //std::string bitmap_identifier = "storyboard-1-01-1165x500.png";
    ALLEGRO_BITMAP *bitmap = bitmap_bin[bitmap_identifier];
    ALLEGRO_BITMAP *paletted_bitmap_result = nullptr;
 
@@ -102,8 +102,8 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    bitmap_placement.size.y = al_get_bitmap_height(bitmap);
    bitmap_placement.align.x = 0.5;
    bitmap_placement.align.y = 0.5;
-   bitmap_placement.scale.x = 1;
-   bitmap_placement.scale.y = 1;
+   bitmap_placement.scale.x = 8;
+   bitmap_placement.scale.y = 8;
 
    AllegroFlare::Placement2D bitmap2_placement;
    bitmap2_placement.position.x = 1920/3*2;
@@ -112,18 +112,18 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
    bitmap2_placement.size.y = al_get_bitmap_height(bitmap);
    bitmap2_placement.align.x = 0.5;
    bitmap2_placement.align.y = 0.5;
-   bitmap2_placement.scale.x = 1;
-   bitmap2_placement.scale.y = 1;
+   bitmap2_placement.scale.x = 8;
+   bitmap2_placement.scale.y = 8;
 
    AllegroFlare::Placement2D palette_placement;
    palette_placement.position.x = 1920/5;
    palette_placement.position.y = 1080/2;
    palette_placement.size.x = 120;
-   palette_placement.size.y = 300;
+   palette_placement.size.y = 200;
    palette_placement.align.x = 0.5;
    palette_placement.align.y = 0.5;
-   palette_placement.scale.x = 2;
-   palette_placement.scale.y = 2;
+   palette_placement.scale.x = 4;
+   palette_placement.scale.y = 4;
 
    struct PickInfo
    {
@@ -194,6 +194,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
             // Draw the image (bitmap1)
             bitmap_placement.start_transform();
             al_draw_bitmap(bitmap, 0, 0, 0);
+            //draw_crosshair_blue(mouse_position_on_bitmap.x, mouse_position_on_bitmap.y); // DEVELOPMENT
             bitmap_placement.restore_transform();
 
             // Draw the image (bitmap2)
@@ -211,7 +212,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
             // Draw the UI
             draw_crosshair(mouse_position.x, mouse_position.y);
-            draw_crosshair_blue(mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
+            //draw_crosshair_blue(mouse_position_on_bitmap.x, mouse_position_on_bitmap.y);
          
             if (mouse_over_color.valid)
             {
@@ -240,6 +241,22 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
          //break;
 
          case ALLEGRO_EVENT_MOUSE_AXES: {
+            mouse_position.x = current_event.mouse.x;
+            mouse_position.y = current_event.mouse.y;
+
+            // 1. Calculate local position for debugging/UI purposes
+            mouse_position_on_bitmap = mouse_position;
+            bitmap_placement.transform_coordinates(&mouse_position_on_bitmap.x, &mouse_position_on_bitmap.y);
+
+            // 2. Pass the RAW mouse position to pick_color 
+            // (because pick_color handles the transformation internally)
+            mouse_over_color = pick_color(bitmap, bitmap_placement, mouse_position.x, mouse_position.y);
+
+            mouse_over_color.palette_index = find_color_index(palette, mouse_over_color.color);
+         } break;
+
+         /*
+         case ALLEGRO_EVENT_MOUSE_AXES: {
             int x = current_event.mouse.x;
             int y = current_event.mouse.y;
 
@@ -256,6 +273,7 @@ TEST_F(AssetStudio_PaletteWithInteractionFixture, FOCUS__CAPTURE__will_work_with
 
             mouse_over_color.palette_index = find_color_index(palette, mouse_over_color.color);
          } break;
+         */
 
          case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN: {
             if (mouse_over_color.valid)
