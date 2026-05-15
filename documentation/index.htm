@@ -58,6 +58,7 @@ table td
   <li><a href="#quintessence/AssetStudio/AssetColorProfile.q.yml">quintessence/AssetStudio/AssetColorProfile.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Color.q.yml">quintessence/AssetStudio/Color.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/ColorFilters/General.q.yml">quintessence/AssetStudio/ColorFilters/General.q.yml</a></li>
+  <li><a href="#quintessence/AssetStudio/ColorGroup.q.yml">quintessence/AssetStudio/ColorGroup.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/ColorStudio.q.yml">quintessence/AssetStudio/ColorStudio.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/Database.q.yml">quintessence/AssetStudio/Database.q.yml</a></li>
   <li><a href="#quintessence/AssetStudio/DatabaseCSVLoader.q.yml">quintessence/AssetStudio/DatabaseCSVLoader.q.yml</a></li>
@@ -170,19 +171,44 @@ table td
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
-  <td class="property">json_filename</td>
+  <td class="property">bitmap_filename</td>
   <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">color_groups</td>
+  <td class="property">std::vector&lt;AssetStudio::ColorGroup&gt;</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_ARGUMENT_FILE_PATH</td>
+  <td class="property">const char*</td>
 </tr>
     </table>
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">std::string</td>
-  <td class="method"><b>run</b>()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_from_json_file</b>(std::string file_path=DEFAULT_ARGUMENT_FILE_PATH)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
-<p>This class contains no dependencies</p>  </div>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::ColorGroup&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/ColorGroup.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::Filesystem&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/Filesystem.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Logger&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Logger.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::JSONLoaders::AssetStudio::ColorGroup&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/JSONLoaders/AssetStudio/ColorGroup.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::php::file_get_contents&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/UsefulPHP.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
 </ul>
 <br><br><br>
 <br><br><br>
@@ -298,6 +324,34 @@ table td
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
+</ul>
+<br><br><br>
+<br><br><br>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/AssetStudio/ColorGroup.q.yml">quintessence/AssetStudio/ColorGroup.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
+    <h3>Properties</h3>
+<div class="property-box properties">     <table>
+<tr>
+  <td class="property">color_ids</td>
+  <td class="property">std::set&lt;uint32_t&gt;</td>
+</tr>
+<tr>
+  <td class="property">general_filter</td>
+  <td class="property">AssetStudio::ColorFilters::General</td>
+</tr>
+    </table>
+</div>    <h3>Methods</h3>
+<div class="property-box methods">     <table>
+    </table>
+</div>    <h3>Dependencies</h3>
+<div class="property-box dependencies">     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AssetStudio::ColorFilters::General&quot;, &quot;headers&quot;=&gt;[&quot;AssetStudio/ColorFilters/General.hpp&quot;]}</td>
+</tr>
+    </table>
+</div>  </div>
 </ul>
 <br><br><br>
 <br><br><br>
@@ -1173,6 +1227,23 @@ table td
     "AssetStudio/Gameplay/Screen",
     "AssetStudio/Palette"
   ],
+  "AssetStudio/ColorGroup": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AssetStudio/Filesystem": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AllegroFlare/Logger": [
+    "AssetStudio/AssetColorProfile",
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/JSONLoaders/AssetStudio/ColorGroup": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AllegroFlare/php/file_get_contents": [
+    "AssetStudio/AssetColorProfile"
+  ],
   "ALLEGRO_COLOR": [
     "AssetStudio/Color",
     "AssetStudio/Palette"
@@ -1190,6 +1261,9 @@ table td
   "std/fmod": [
     "AssetStudio/Color"
   ],
+  "AssetStudio/ColorFilters/General": [
+    "AssetStudio/ColorGroup"
+  ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
   ],
@@ -1205,10 +1279,6 @@ table td
   ],
   "SurviveTheCity/CSVParser": [
     "AssetStudio/DatabaseCSVLoader"
-  ],
-  "AllegroFlare/Logger": [
-    "AssetStudio/DatabaseCSVLoader",
-    "AssetStudio/Palette"
   ],
   "std/atoi": [
     "AssetStudio/DatabaseCSVLoader"

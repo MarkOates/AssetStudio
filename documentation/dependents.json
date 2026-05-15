@@ -11,6 +11,23 @@
     "AssetStudio/Gameplay/Screen",
     "AssetStudio/Palette"
   ],
+  "AssetStudio/ColorGroup": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AssetStudio/Filesystem": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AllegroFlare/Logger": [
+    "AssetStudio/AssetColorProfile",
+    "AssetStudio/DatabaseCSVLoader",
+    "AssetStudio/Palette"
+  ],
+  "AssetStudio/JSONLoaders/AssetStudio/ColorGroup": [
+    "AssetStudio/AssetColorProfile"
+  ],
+  "AllegroFlare/php/file_get_contents": [
+    "AssetStudio/AssetColorProfile"
+  ],
   "ALLEGRO_COLOR": [
     "AssetStudio/Color",
     "AssetStudio/Palette"
@@ -28,6 +45,9 @@
   "std/fmod": [
     "AssetStudio/Color"
   ],
+  "AssetStudio/ColorFilters/General": [
+    "AssetStudio/ColorGroup"
+  ],
   "AllegroFlare/Errors": [
     "AssetStudio/Database"
   ],
@@ -43,10 +63,6 @@
   ],
   "SurviveTheCity/CSVParser": [
     "AssetStudio/DatabaseCSVLoader"
-  ],
-  "AllegroFlare/Logger": [
-    "AssetStudio/DatabaseCSVLoader",
-    "AssetStudio/Palette"
   ],
   "std/atoi": [
     "AssetStudio/DatabaseCSVLoader"

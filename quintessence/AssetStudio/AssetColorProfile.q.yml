@@ -1,17 +1,76 @@
 properties:
 
 
-  - name: json_filename
+  - name: bitmap_filename
     type: std::string
     init_with: '"[unset-filename]"'
+
+  - name: color_groups
+    type: std::vector<AssetStudio::ColorGroup>
+    init_with: ''
+
+  - name: DEFAULT_ARGUMENT_FILE_PATH
+    type: const char*
+    init_with: '"[unset-file_path]"'
+    static: true
+    constexpr: true
 
 
 methods:
 
 
-  - name: run
-    type: std::string
+  - name: load_from_json_file
+    parameters:
+      - name: file_path
+        type: std::string
+        default_argument: DEFAULT_ARGUMENT_FILE_PATH
+    guards: [ file_path != DEFAULT_ARGUMENT_FILE_PATH ]
     body: |
-      return "Hello World!";
+      if (!AssetStudio::Filesystem::exists_as_file(file_path))
+      {
+         AllegroFlare::Logger::throw_missing_file_error(
+            THIS_CLASS_AND_METHOD_NAME,
+            file_path
+         );
+      }
+
+      std::string file_content = AllegroFlare::php::file_get_contents(file_path);
+      nlohmann::json j;
+
+      try
+      {
+         j = nlohmann::json::parse(file_content);
+      }
+      catch (std::exception &e)
+      {
+         AllegroFlare::Logger::throw_missing_file_error(
+            THIS_CLASS_AND_METHOD_NAME,
+            "Exception caught when trying to load \"" + file_path + "\": " + e.what()
+         );
+      }
+
+         //color_groups = nlohmann::json::parse(file_content);
+
+      return;
+    body_dependency_symbols:
+      - AssetStudio::Filesystem
+      - AllegroFlare::Logger
+      - AssetStudio::JSONLoaders::AssetStudio::ColorGroup
+      - AllegroFlare::php::file_get_contents
+
+
+dependencies:
+
+
+  - symbol: AssetStudio::ColorGroup
+    headers: [ AssetStudio/ColorGroup.hpp ]
+  - symbol: AssetStudio::Filesystem
+    headers: [ AssetStudio/Filesystem.hpp ]
+  - symbol: AllegroFlare::Logger
+    headers: [ AllegroFlare/Logger.hpp ]
+  - symbol: AssetStudio::JSONLoaders::AssetStudio::ColorGroup
+    headers: [ AssetStudio/JSONLoaders/AssetStudio/ColorGroup.hpp ]
+  - symbol: AllegroFlare::php::file_get_contents
+    headers: [ AllegroFlare/UsefulPHP.hpp ]
 
 

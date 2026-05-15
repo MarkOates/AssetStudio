@@ -16,6 +16,12 @@ bool operator==(const General& object, const General& other_object)
 }
 
 
+bool operator!=(const General& object, const General& other_object)
+{
+   return !operator==(object, other_object);
+}
+
+
 void PrintTo(const General& object, ::std::ostream* os)
 {
    *os << "AssetStudio::ColorFilters::General("

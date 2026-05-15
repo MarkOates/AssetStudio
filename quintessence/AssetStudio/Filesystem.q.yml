@@ -1,0 +1,54 @@
+properties:
+
+
+  - name: DEFAULT_ARGUMENT_FILE_PATH
+    type: const char*
+    init_with: '"[unset-file_path]"'
+    static: true
+    constexpr: true
+
+
+methods:
+
+
+  - name: exists_as_file
+    type: bool
+    static: true
+    parameters:
+      - name: file_path
+        type: std::string
+        default_argument: DEFAULT_ARGUMENT_FILE_PATH
+    guards: [ file_path != DEFAULT_ARGUMENT_FILE_PATH ]
+    body: |
+      return std::filesystem::exists(file_path) && std::filesystem::is_regular_file(file_path);
+    body_dependency_symbols:
+      - std::filesystem::exists
+      - std::filesystem::is_regular_file
+
+
+  - name: exists_as_directory
+    type: bool
+    static: true
+    parameters:
+      - name: file_path
+        type: std::string
+        default_argument: DEFAULT_ARGUMENT_FILE_PATH
+    guards: [ file_path != DEFAULT_ARGUMENT_FILE_PATH ]
+    body: |
+      return std::filesystem::exists(file_path) && std::filesystem::is_directory(file_path);
+    body_dependency_symbols:
+      - std::filesystem::exists
+      - std::filesystem::is_directory
+
+
+dependencies:
+
+
+  - symbol: std::filesystem::exists
+    headers: [ filesystem ]
+  - symbol: std::filesystem::is_regular_file
+    headers: [ filesystem ]
+  - symbol: std::filesystem::is_directory
+    headers: [ filesystem ]
+
+

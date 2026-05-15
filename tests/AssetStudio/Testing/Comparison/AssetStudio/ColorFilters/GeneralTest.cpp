@@ -29,3 +29,15 @@ TEST(AssetStudio_Testing_Comparison_AssetStudio_ColorFilters_GeneralTest,
 }
 
 
+TEST(AssetStudio_Testing_Comparison_AssetStudio_ColorFilters_GeneralTest,
+   inequality_operator__works_with_google_test_EXPECT_statement)
+{
+   AssetStudio::ColorFilters::General object;
+   AssetStudio::ColorFilters::General other_object;
+
+   object.hue_rotation = 128.0f;
+
+   EXPECT_NE(object, other_object);
+}
+
+

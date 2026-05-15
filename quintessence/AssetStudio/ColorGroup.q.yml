@@ -1,0 +1,21 @@
+properties:
+
+
+  - name: color_ids
+    type: std::set<uint32_t>
+    init_with: ''
+    exposed: true
+
+  - name: general_filter
+    type: AssetStudio::ColorFilters::General
+    init_with: ''
+    exposed: true
+
+
+dependencies:
+
+
+  - symbol: AssetStudio::ColorFilters::General
+    headers: [ AssetStudio/ColorFilters/General.hpp ]
+
+
