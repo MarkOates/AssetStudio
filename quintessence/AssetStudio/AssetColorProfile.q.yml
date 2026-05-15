@@ -1,0 +1,17 @@
+properties:
+
+
+  - name: json_filename
+    type: std::string
+    init_with: '"[unset-filename]"'
+
+
+methods:
+
+
+  - name: run
+    type: std::string
+    body: |
+      return "Hello World!";
+
+
