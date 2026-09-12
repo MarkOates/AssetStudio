@@ -29,13 +29,13 @@
                 const asset = data.assets.find(a => a.identifier === assetId);
                 
                 if (asset) {
-                    const pack = data.asset_packs[asset.asset_pack_id] || {};
+                    const pack = data.asset_packs[asset.asset_pack_identifier] || {};
                     const provider = pack.provider || 'Unknown';
                     const container = document.getElementById('asset-details');
                     
                     let imagesHtml = '';
-                    if (asset.FileMapping && asset.FileMapping.source_files) {
-                        imagesHtml = asset.FileMapping.source_files.map(f => `<img src="${f}" alt="Asset Image" class="detail-img" onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c; width:150px; display:inline-flex; margin-right:10px; margin-bottom:10px;\\'>File Not Found</div>';">`).join('');
+                    if (asset.resource && asset.resource.source_files) {
+                        imagesHtml = asset.resource.source_files.map(f => `<img src="${f}" alt="Asset Image" class="detail-img" onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c; width:150px; display:inline-flex; margin-right:10px; margin-bottom:10px;\\'>File Not Found</div>';">`).join('');
                     }
 
                     const sheetUrl = `https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=646986983&range=A${asset.sheet_row_number}`;

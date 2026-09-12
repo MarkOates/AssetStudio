@@ -115,57 +115,58 @@ function renderAssetGrid(assets, container, showAnimations = true) {
     let visibleAssets = assets; 
 
     visibleAssets.forEach(asset => {
-        const pack = GLOBAL_DATA.asset_packs[asset.asset_pack_id];
+        const pack = GLOBAL_DATA.asset_packs[asset.asset_pack_identifier];
         const providerName = pack ? pack.provider : 'Unknown';
         
         const card = document.createElement('div');
         card.className = 'card';
         
-        let imgHtml = '<div class="placeholder">Missing Mapping</div>';
-        if (asset.FileMapping && asset.FileMapping.source_files && asset.FileMapping.source_files.length > 0) {
-            const src = asset.FileMapping.source_files[0];
+        let imagesHtml = '<div class="placeholder">Missing Mapping</div>';
+        let typeIcon = '<i class="fa-solid fa-file"></i>';
+        if (asset.type === 'animation') typeIcon = '<i class="fa-solid fa-film" title="Animation"></i>';
+        else if (asset.type === 'sprite_sheet') typeIcon = '<i class="fa-solid fa-border-all" title="Sprite Sheet"></i>';
+        else if (asset.type === 'image') typeIcon = '<i class="fa-solid fa-image" title="Image"></i>';
+        else if (asset.type === 'audio' || asset.type === 'sfx' || asset.type === 'music') typeIcon = '<i class="fa-solid fa-music" title="Audio"></i>';
+        
+        if (asset.resource && asset.resource.source_files && asset.resource.source_files.length > 0) {
+            const src = asset.resource.source_files[0];
             const anim = asset.animation_profile;
             const isMissingHandler = `onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c;\\'>File Not Found</div>';"`;
 
             if (anim && anim.num_frames > 1) {
-                if (asset.FileMapping.is_from_sprite_sheet && asset.FileMapping.cell_dimensions) {
-                    const w = asset.FileMapping.cell_dimensions.width;
-                    const h = asset.FileMapping.cell_dimensions.height;
+                if (asset.resource.type === 'sprite_sheet_slice' && asset.resource.cell_dimensions) {
+                    const w = asset.resource.cell_dimensions.width;
+                    const h = asset.resource.cell_dimensions.height;
                     const innerHtml = `<div class="anim-container" 
                                     data-type="spritesheet" 
                                     data-frames-count="${anim.num_frames}" 
-                                    data-duration="${anim.frame_duration}"
+                                    data-duration="${anim.base_frame_duration}"
                                     data-cell-width="${w}"
                                     style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-repeat: no-repeat; image-rendering: pixelated; transform: scale(2); transform-origin: center;"></div>`;
                     
-                    imgHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a; overflow:hidden;">${innerHtml}</div>`;
-                } else if (!asset.FileMapping.is_from_sprite_sheet && asset.FileMapping.source_files.length > 1) {
-                    const framesStr = JSON.stringify(asset.FileMapping.source_files).replace(/"/g, '&quot;');
-                    imgHtml = `<div class="anim-container" 
+                    imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a; overflow:hidden;">${innerHtml}</div>`;
+                } else if (asset.resource.type === 'multi_file' && asset.resource.source_files.length > 1) {
+                    const framesStr = JSON.stringify(asset.resource.source_files).replace(/"/g, '&quot;');
+                    imagesHtml = `<div class="anim-container" 
                                     data-type="multifile" 
                                     data-frames-count="${anim.num_frames}" 
-                                    data-duration="${anim.frame_duration}"
+                                    data-duration="${anim.base_frame_duration}"
                                     data-frames="${framesStr}"
                                     style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;">
                                     <img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}>
                                </div>`;
                 } else {
-                     imgHtml = `<img src="${src}" alt="${asset.name}" ${isMissingHandler}>`;
+                     imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;"><img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}></div>`;
                 }
             } else {
-                imgHtml = `<img src="${src}" alt="${asset.name}" ${isMissingHandler}>`;
+                imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;"><img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}></div>`;
             }
         }
 
         const assetUrl = `asset.html?id=${encodeURIComponent(asset.identifier)}`;
 
-        let typeIcon = '<i class="fa-solid fa-file"></i>';
-        if (asset.type === 'animation') typeIcon = '<i class="fa-solid fa-film"></i>';
-        else if (asset.type === 'sprite_sheet' || asset.type === 'spritesheet' || asset.type === 'image') typeIcon = '<i class="fa-solid fa-image"></i>';
-        else if (asset.type === 'audio') typeIcon = '<i class="fa-solid fa-music"></i>';
-
         card.innerHTML = `
-            <a href="${assetUrl}" style="display:block;">${imgHtml}</a>
+            <a href="${assetUrl}" style="display:block;">${imagesHtml}</a>
             <div class="card-body" style="padding: 0.75rem 1rem;">
                 <div style="font-size: 0.85rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     <a href="${assetUrl}" style="color: #999999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#cccccc'" onmouseout="this.style.color='#999999'">${asset.name}</a>

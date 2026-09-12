@@ -170,27 +170,61 @@ def main():
                     else:
                         tracked_logical_files.add(physical_src)
                         
+                # Construct the Entity
                 asset = {
                     "identifier": identifier,
                     "name": intra_pack_id,
-                    "asset_pack_id": asset_pack_id,
+                    "asset_pack_identifier": asset_pack_id,
                     "type": asset_type,
                     "visibility": visibility,
                     "sheet_row_number": i,
-                    "animation_profile": {
-                        "playmode": playmode,
-                        "num_frames": num_frames,
-                        "frame_duration": frame_duration
-                    },
-                    "FileMapping": {
+                    
+                    # 1. Resource Component (replaces FileMapping)
+                    "resource": {
+                        "type": "sprite_sheet_slice" if is_from_sprite_sheet else ("multi_file" if num_frames > 1 else "static_file"),
                         "source_files": source_files,
-                        "is_from_sprite_sheet": is_from_sprite_sheet,
                         "cell_dimensions": {
                             "width": cell_width,
                             "height": cell_height
                         } if is_from_sprite_sheet else None
+                    },
+                    
+                    # 2. Theme Profile (Stub for AI)
+                    "theme_profile": {
+                        "description": "",
+                        "tags": [],
+                        "style": ""
+                    },
+                    
+                    # 3. Color Profile (Stub for AI)
+                    "color_profile": {
+                        "color_space": "",
+                        "palette": [],
+                        "is_exact_palette": False,
+                        "palette_swappable": False
                     }
                 }
+                
+                # 4. Animation Profile (Only attach if it moves)
+                if num_frames > 1 or asset_type == 'animation':
+                    asset["animation_profile"] = {
+                        "playmode": playmode,
+                        "num_frames": num_frames,
+                        "base_frame_duration": frame_duration,
+                        "variable_durations": []
+                    }
+                
+                # 5. Audio Profile (Only attach if it's audio)
+                if asset_type in ['audio', 'music', 'sfx']:
+                    asset["audio_profile"] = {
+                        "category": "music" if asset_type == 'music' else "sfx",
+                        "format": "wav",
+                        "sample_rate": 44100,
+                        "length_seconds": 0.0,
+                        "is_seamless_loop": playmode == 'loop',
+                        "bpm": 0 # Defaulting to 0 for SFX to avoid conditional JSON shape
+                    }
+                    
                 assets.append(asset)
 
     # 3. Final Sweep: UncataloguedFiles (Discover B errors)
