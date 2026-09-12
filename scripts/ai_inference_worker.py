@@ -119,7 +119,7 @@ def main():
 Given an image and its file path, you must analyze it using the following Formalized Heuristic Rules:
 
 **Formalized Rules for Asset Inference:**
-* **Rule 1: Strip Suffix Matching** - If the filename matches `_strip<N>`, it is a `sprite_sheet_slice` with exactly `<N>` frames.
+* **Rule 1: Strip Suffix Matching** - If the filename matches `_strip<N>`, it is a `animation_frames` with exactly `<N>` frames.
 * **Rule 2: Embedded Resolution** - If the filename states a resolution like `16x16px`, these are likely the cell or tile dimensions.
 * **Rule 3: Action Signatures** - Action verbs like `idle`, `walk`, `run`, `attack`, `jump`, `death` indicate character/entity animations.
 * **Rule 4: Multi-File Sequences** - Filenames ending in sequential numbers (e.g., `frame0000`) denote a `multi_file` animation.

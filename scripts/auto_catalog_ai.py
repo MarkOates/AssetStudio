@@ -58,20 +58,24 @@ def main():
     errors = data.get('errors', [])
     uncat_files = [e['context']['file'] for e in errors if e['type'] == 'UncataloguedFile']
     
-    # We want to process 10 files. Let's just grab the first 10.
-    batch = uncat_files[:10]
-    print(f"Found {len(uncat_files)} uncatalogued files. Processing {len(batch)}...")
-    
     proposals = []
     if os.path.exists(PROPOSALS_PATH):
         with open(PROPOSALS_PATH, 'r', encoding='utf-8') as f:
             proposals = json.load(f)
+            
+    proposed_paths = set(p['resource']['source_files'][0].replace('/Assets/', '') for p in proposals if p.get('resource') and p['resource'].get('source_files'))
+    
+    uncat_files = [f for f in uncat_files if f not in proposed_paths]
+    
+    # Process 500 new files
+    batch = uncat_files[:500]
+    print(f"Found {len(uncat_files)} uncatalogued files. Processing {len(batch)}...")
     
     system_instruction = """You are an expert game asset cataloger and data engineer.
 Given an image and its file path, analyze it using the Formalized Heuristic Rules to generate a catalog override.
 
 **Formalized Rules for Asset Inference:**
-* **Rule 1: Strip Suffix Matching** - If the filename matches `_strip<N>`, it is a `sprite_sheet_slice` with exactly `<N>` frames.
+    * **Rule 1: Strip Suffix Matching** - If the filename matches `_strip<N>`, it is `animation_frames` with exactly `<N>` frames.
 * **Rule 2: Embedded Resolution** - If the filename states a resolution like `16x16px`, these are likely the cell or tile dimensions.
 * **Rule 3: Action Signatures** - Action verbs like `idle`, `walk`, `run`, `attack`, `jump`, `death` indicate character/entity animations.
 * **Rule 4: Multi-File Sequences** - Filenames ending in sequential numbers denote a `multi_file` animation. You must flag `is_subframe: true` because it is part of a sequence.
@@ -82,15 +86,38 @@ Given an image and its file path, analyze it using the Formalized Heuristic Rule
 * **Rule 9: Mockups & Previews** - Files containing `mockup`, `preview`, `sample` are valid `preview` assets and must be cataloged.
 * **Rule 10: Variant Tagging** - Suffixes like `_shadow`, `_outline`, `100%`, `_c1` are variant modifiers that belong in tags.
 * **Rule 11: Alternative Reasoning** - If you cannot find a specific rule that fits perfectly, state your own logical reasoning here.
+* **Rule 12: Icons & Small Graphics** - If the asset is a very small standalone graphic (like 16x16 or 32x32) representing an item, weapon, material, or UI element, you must flag `is_icon: true`.
+* **Rule 13: Visual Grid Deduction** - You MUST visually analyze sprite sheets. Do not just rely on the filename. Count the columns and rows to deduce exact pixel dimensions. If a single sheet contains MULTIPLE distinct animations on different rows, you MUST return a separate proposal for each animation sequence.
 
 You MUST output ONLY valid JSON matching this exact schema:
 {
   "catalog_proposal": {
-    "name": "a unique concise name for the asset, usually derived from filename",
-    "type": "sprite_sheet_slice | multi_file | static_image | preview",
+    "type": "animation_frames | multi_file | static_image | preview | sprite_sheet | sprite_sheet_cell",
     "num_frames": 1,
     "cell_dimensions": {"width": null, "height": null},
-    "is_subframe": false
+    "is_subframe": false,
+    "is_icon": false,
+    "inferred_grid": {
+      "columns": 1,
+      "rows": 1,
+      "cell_width": 128,
+      "cell_height": 128,
+      "contains_multiple_animations": false,
+      "inferred_animations": [
+        {
+          "name": "idle",
+          "row": 0,
+          "start_frame": 0,
+          "frame_count": 7,
+          "inference_reasoning": [
+            {
+              "rule": "Visual Deduction",
+              "rationale": "Row 0 clearly shows a character standing still."
+            }
+          ]
+        }
+      ]
+    } // Set to null if the asset is a static image or a single subframe
   },
   "theme_profile": {
     "description": "A short, vivid description of the asset.",
@@ -110,7 +137,10 @@ DO NOT wrap the response in markdown blocks like ```json. Just return the raw JS
     model = genai.GenerativeModel(
         model_name="gemini-flash-latest",
         system_instruction=system_instruction,
-        generation_config={"response_mime_type": "application/json"}
+        generation_config={
+            "response_mime_type": "application/json",
+            "temperature": 0.0
+        }
     )
     
     for idx, rel_path in enumerate(batch):
@@ -131,7 +161,7 @@ DO NOT wrap the response in markdown blocks like ```json. Just return the raw JS
             except Exception as e:
                 print(f"Error loading image: {e}")
                 
-        prompt = f"Analyze this uncatalogued game asset. Its file path is '{rel_path}'."
+        prompt = f"Analyze this uncatalogued game asset visually. The image is {img.width}x{img.height} pixels. Its file path is '{rel_path}'." if img else f"Analyze this uncatalogued game asset. Its file path is '{rel_path}'."
         
         try:
             if img:
@@ -141,48 +171,68 @@ DO NOT wrap the response in markdown blocks like ```json. Just return the raw JS
                 
             result_data = json.loads(response.text)
             
-            # Construct the full asset override structure
             parts = rel_path.split('/')
             vendor = parts[0]
             pack = parts[1]
             proposed = result_data["catalog_proposal"]
-            name = proposed["name"]
+            
+            # Enforce null inferred_grid for static images and subframes to prevent engine bloat
+            if proposed.get("type") in ["static_image", "preview"] or proposed.get("is_subframe"):
+                proposed["inferred_grid"] = None
+            
+            # DETERMINISTIC IDENTIFIER & NAME FROM FILEPATH
+            # e.g. "rafaelmatos/epic-rpg-world/characters/skeleton.png"
+            filename_with_ext = os.path.basename(rel_path)
+            deterministic_name = os.path.splitext(filename_with_ext)[0]
+            
+            # Create a 100% unique identifier by retaining the full path AND extension (sanitizing the dot)
+            safe_rel_path = rel_path.replace('.', '_')
+            deterministic_id = f"synthetic/{safe_rel_path}"
             
             asset_dict = {
-                "identifier": f"synthetic/{vendor}/{pack}/{name}",
-                "name": name,
+                "identifier": deterministic_id,
+                "name": deterministic_name,
                 "asset_pack_identifier": f"{vendor}/{pack}",
                 "type": proposed["type"],
                 "is_subframe": proposed.get("is_subframe", False),
+                "is_icon": proposed.get("is_icon", False),
                 "visibility": "public",
                 "sheet_row_number": None,
                 "resource": {
                     "type": proposed["type"],
                     "source_files": [f"/Assets/{rel_path}"],
                     "cell_dimensions": proposed.get("cell_dimensions"),
+                    "inferred_grid": proposed.get("inferred_grid"),
                     "hash": get_file_hash(physical_path)
                 },
                 "theme_profile": result_data.get("theme_profile", {}),
+                "inference_reasoning": result_data.get("inference_reasoning", []),
                 "color_profile": color_profile if color_profile else {
                     "color_space": "",
                     "palette": [],
-                    "is_exact_palette": False,
-                    "palette_swappable": False
+                    "dominant_colors": [],
+                    "transparent": False
+                },
+                "ai_audit": {
+                    "pass1_model": "gemini-flash-latest",
+                    "pass1_timestamp": __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()
                 }
             }
-            
-            # Optionally inject inference reasoning into theme_profile for debugging
-            asset_dict["theme_profile"]["inference_reasoning"] = result_data.get("inference_reasoning", [])
+            if proposed.get("num_frames") and proposed["num_frames"] > 1:
+                asset_dict["animation_profile"] = {
+                    "num_frames": proposed["num_frames"],
+                    "base_frame_duration": 0.1,
+                    "loop_type": "forward"
+                }
             
             proposals.append(asset_dict)
+            print(f"-> Success! Synthesized asset: {asset_dict['identifier']}")
             
             with open(PROPOSALS_PATH, 'w', encoding='utf-8') as f:
                 json.dump(proposals, f, indent=2)
-                
-            print(f"-> Success! Synthesized asset: {asset_dict['identifier']}")
             
         except Exception as e:
-            print(f"-> Error during API call or parsing: {e}")
+            print(f"-> Error parsing API response: {e}")
             
         time.sleep(2)
         

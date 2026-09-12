@@ -28,6 +28,9 @@
                     <input type="checkbox" id="show-animations-toggle" checked> play animations
                 </label>
                 <label class="toggle-btn">
+                    <input type="checkbox" id="show-icons-toggle"> show icons
+                </label>
+                <label class="toggle-btn">
                     <input type="checkbox" id="show-subframes-toggle"> show subframes
                 </label>
                 <label class="toggle-btn">
@@ -59,6 +62,9 @@
                     if (!document.getElementById('show-subframes-toggle').checked) {
                         filtered = filtered.filter(a => !a.is_subframe);
                     }
+                    if (!document.getElementById('show-icons-toggle').checked) {
+                        filtered = filtered.filter(a => !a.is_icon);
+                    }
                     if (currentSearchQuery) {
                         filtered = filtered.filter(a => a.name.toLowerCase().includes(currentSearchQuery) || (a.theme_profile && a.theme_profile.tags.some(t => t.toLowerCase().includes(currentSearchQuery))));
                     }
@@ -74,6 +80,7 @@
                 
                 document.getElementById('show-hidden-toggle').addEventListener('change', updateGrid);
                 document.getElementById('show-subframes-toggle').addEventListener('change', updateGrid);
+                document.getElementById('show-icons-toggle').addEventListener('change', updateGrid);
                 
                 document.getElementById('show-animations-toggle').addEventListener('change', (e) => {
                     showAnimations = e.target.checked;

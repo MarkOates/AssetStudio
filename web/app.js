@@ -55,9 +55,23 @@ function generateTableRows(obj, prefix = '') {
         if (obj[key] && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
             html += generateTableRows(obj[key], prefix + key + '.');
         } else {
-            let val = Array.isArray(obj[key]) ? obj[key].join('<br>') : obj[key];
+            let isComplex = false;
+            let val = Array.isArray(obj[key]) 
+                ? obj[key].map(item => {
+                    if (typeof item === 'object') {
+                        isComplex = true;
+                        return JSON.stringify(item, null, 2);
+                    }
+                    return item;
+                }).join('<br><br>') 
+                : obj[key];
             if (val === null || val === undefined) val = 'null';
-            html += `<tr><td class="key-col">${prefix}${key}</td><td class="val-col">${val}</td></tr>`;
+            
+            if (isComplex) {
+                html += `<tr><td class="key-col">${prefix}${key}</td><td class="val-col"><pre style="margin:0; white-space:pre-wrap; font-family:monospace; font-size: 0.85em;">${val}</pre></td></tr>`;
+            } else {
+                html += `<tr><td class="key-col">${prefix}${key}</td><td class="val-col">${val}</td></tr>`;
+            }
         }
     }
     return html;
@@ -74,10 +88,12 @@ function renderAnimations(showAnimations) {
     document.querySelectorAll('.anim-container').forEach(el => {
         const type = el.dataset.type;
         const numFrames = parseInt(el.dataset.framesCount);
+        const sx = parseInt(el.dataset.startX) || 0;
+        const sy = parseInt(el.dataset.startY) || 0;
         
         if (!showAnimations) {
             if (type === 'spritesheet') {
-                el.style.backgroundPosition = '0px 0px';
+                el.style.backgroundPosition = `-${sx}px -${sy}px`;
             } else if (type === 'multifile') {
                 const frames = JSON.parse(el.dataset.frames);
                 el.querySelector('img').src = frames[0];
@@ -93,7 +109,8 @@ function renderAnimations(showAnimations) {
             const cellWidth = parseInt(el.dataset.cellWidth);
             const timer = setInterval(() => {
                 currentFrame = (currentFrame + 1) % numFrames;
-                el.style.backgroundPosition = `-${currentFrame * cellWidth}px 0px`;
+                const newX = sx + (currentFrame * cellWidth);
+                el.style.backgroundPosition = `-${newX}px -${sy}px`;
             }, intervalMs);
             animationTimers.push(timer);
         } else if (type === 'multifile') {
@@ -116,18 +133,24 @@ function generateAssetPreviewHtml(asset, boxHeight = 180) {
         const isMissingHandler = `onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c;\\'>File Not Found</div>';"`;
 
         if (anim && anim.num_frames > 1) {
-            if (asset.resource.type === 'sprite_sheet_slice' && asset.resource.cell_dimensions) {
+            if (asset.resource.type === 'animation_frames' && asset.resource.cell_dimensions) {
                 const w = asset.resource.cell_dimensions.width;
                 const h = asset.resource.cell_dimensions.height;
                 // Dynamically scale sprite to fit box height, capped at 12x
                 const scale = Math.min(12, Math.max(1, Math.floor((boxHeight - 20) / h)));
+                
+                const startOffset = asset.resource.start_offset || { x: 0, y: 0 };
+                const sx = startOffset.x || 0;
+                const sy = startOffset.y || 0;
                 
                 const innerHtml = `<div class="anim-container" 
                                 data-type="spritesheet" 
                                 data-frames-count="${anim.num_frames}" 
                                 data-duration="${anim.base_frame_duration}"
                                 data-cell-width="${w}"
-                                style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-repeat: no-repeat; image-rendering: pixelated; transform: scale(${scale}); transform-origin: center;"></div>`;
+                                data-start-x="${sx}"
+                                data-start-y="${sy}"
+                                style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-position: -${sx}px -${sy}px; background-repeat: no-repeat; image-rendering: pixelated; transform: scale(${scale}); transform-origin: center;"></div>`;
                 
                 imagesHtml = `<div style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; overflow:hidden;">${innerHtml}</div>`;
             } else if (asset.resource.type === 'multi_file' && asset.resource.source_files.length > 1) {
