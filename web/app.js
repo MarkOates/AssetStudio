@@ -107,7 +107,7 @@ function renderAnimations(showAnimations) {
         }
     });
 }
-function generateAssetPreviewHtml(asset) {
+function generateAssetPreviewHtml(asset, boxHeight = 180) {
     let imagesHtml = '<div class="placeholder">Missing Mapping</div>';
     
     if (asset.resource && asset.resource.source_files && asset.resource.source_files.length > 0) {
@@ -119,14 +119,17 @@ function generateAssetPreviewHtml(asset) {
             if (asset.resource.type === 'sprite_sheet_slice' && asset.resource.cell_dimensions) {
                 const w = asset.resource.cell_dimensions.width;
                 const h = asset.resource.cell_dimensions.height;
+                // Dynamically scale sprite to fit box height, capped at 12x
+                const scale = Math.min(12, Math.max(1, Math.floor((boxHeight - 20) / h)));
+                
                 const innerHtml = `<div class="anim-container" 
                                 data-type="spritesheet" 
                                 data-frames-count="${anim.num_frames}" 
                                 data-duration="${anim.base_frame_duration}"
                                 data-cell-width="${w}"
-                                style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-repeat: no-repeat; image-rendering: pixelated; transform: scale(2); transform-origin: center;"></div>`;
+                                style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-repeat: no-repeat; image-rendering: pixelated; transform: scale(${scale}); transform-origin: center;"></div>`;
                 
-                imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a; overflow:hidden;">${innerHtml}</div>`;
+                imagesHtml = `<div style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; overflow:hidden;">${innerHtml}</div>`;
             } else if (asset.resource.type === 'multi_file' && asset.resource.source_files.length > 1) {
                 const framesStr = JSON.stringify(asset.resource.source_files).replace(/"/g, '&quot;');
                 imagesHtml = `<div class="anim-container" 
@@ -134,14 +137,14 @@ function generateAssetPreviewHtml(asset) {
                                 data-frames-count="${anim.num_frames}" 
                                 data-duration="${anim.base_frame_duration}"
                                 data-frames="${framesStr}"
-                                style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;">
-                                <img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}>
+                                style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; padding: 10px; box-sizing: border-box;">
+                                <img src="${src}" alt="${asset.name}" style="width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated;" ${isMissingHandler}>
                            </div>`;
             } else {
-                 imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;"><img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}></div>`;
+                 imagesHtml = `<div style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; padding: 10px; box-sizing: border-box;"><img src="${src}" alt="${asset.name}" style="width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated;" ${isMissingHandler}></div>`;
             }
         } else {
-            imagesHtml = `<div style="height: 180px; display: flex; align-items: center; justify-content: center; background: #161616; border-bottom: 1px solid #3a3a3a;"><img src="${src}" alt="${asset.name}" style="max-height: 100%; max-width: 100%; object-fit: contain;" ${isMissingHandler}></div>`;
+            imagesHtml = `<div style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; padding: 10px; box-sizing: border-box;"><img src="${src}" alt="${asset.name}" style="width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated;" ${isMissingHandler}></div>`;
         }
     }
     return imagesHtml;
@@ -171,7 +174,7 @@ function renderAssetGrid(assets, container, showAnimations = true) {
         const assetUrl = `asset.html?id=${encodeURIComponent(asset.identifier)}`;
 
         card.innerHTML = `
-            <a href="${assetUrl}" style="display:block;">${imagesHtml}</a>
+            <a href="${assetUrl}" style="display:block; text-decoration: none;">${imagesHtml}</a>
             <div class="card-body" style="padding: 0.75rem 1rem;">
                 <div style="font-size: 0.85rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     <a href="${assetUrl}" style="color: #999999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#cccccc'" onmouseout="this.style.color='#999999'">${asset.name}</a>

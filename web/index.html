@@ -9,17 +9,20 @@
 <body>
     <header>
         <h1>Asset Viewer</h1>
-        <nav>
-            <a href="index.html">All Assets</a>
-            <a href="vendor.html">Vendors</a>
-            <a href="audit.html">Audit Dashboard</a>
+        
+        <input type="text" id="search-input" placeholder="Search for assets">
+        
+        <nav style="display: flex; align-items: center;">
+            <a href="index.html">Assets</a>
+            <a href="vendor.html">Artists</a>
+            <a href="audit.html">Audit</a>
             <a href="https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM" target="_blank">Sheet</a>
             <button onclick="syncData()" id="sync-btn" class="nav-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
         </nav>
     </header>
     <main>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-            <h2 style="margin-bottom: 0;">All Assets</h2>
+            <h2 style="margin-bottom: 0;">Assets</h2>
             <div style="display: flex; gap: 1rem;">
                 <label class="toggle-btn">
                     <input type="checkbox" id="show-animations-toggle" checked> play animations
@@ -34,21 +37,41 @@
     <script src="app.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            let showAnimations = document.getElementById('show-animations-toggle').checked;
+            let currentSearchQuery = '';
+            
+            // Global keyboard listener for '/'
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+                    e.preventDefault();
+                    document.getElementById('search-input').focus();
+                }
+            });
+            
             loadData().then(data => {
                 const grid = document.getElementById('asset-grid');
-                const toggleHidden = document.getElementById('show-hidden-toggle');
-                const toggleAnim = document.getElementById('show-animations-toggle');
                 
                 function updateGrid() {
-                    const showHidden = toggleHidden.checked;
-                    const showAnim = toggleAnim.checked;
-                    const filtered = data.assets.filter(a => showHidden || a.visibility !== 'hidden');
-                    renderAssetGrid(filtered, grid, showAnim);
+                    let filtered = document.getElementById('show-hidden-toggle').checked ? data.assets : data.assets.filter(a => a.visibility !== 'hidden');
+                    if (currentSearchQuery) {
+                        filtered = filtered.filter(a => a.name.toLowerCase().includes(currentSearchQuery) || (a.theme_profile && a.theme_profile.tags.some(t => t.toLowerCase().includes(currentSearchQuery))));
+                    }
+                    renderAssetGrid(filtered, grid, showAnimations);
                 }
+
+                updateGrid();
                 
-                toggleHidden.addEventListener('change', updateGrid);
-                toggleAnim.addEventListener('change', () => renderAnimations(toggleAnim.checked));
-                updateGrid(); // Initial render
+                document.getElementById('search-input').addEventListener('input', (e) => {
+                    currentSearchQuery = e.target.value.toLowerCase();
+                    updateGrid();
+                });
+                
+                document.getElementById('show-hidden-toggle').addEventListener('change', updateGrid);
+                
+                document.getElementById('show-animations-toggle').addEventListener('change', (e) => {
+                    showAnimations = e.target.checked;
+                    updateGrid();
+                });
             });
         });
     </script>

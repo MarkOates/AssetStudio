@@ -10,9 +10,9 @@
     <header>
         <h1>Asset Viewer</h1>
         <nav>
-            <a href="index.html">All Assets</a>
-            <a href="vendor.html">Vendors</a>
-            <a href="audit.html">Audit Dashboard</a>
+            <a href="index.html">Assets</a>
+            <a href="vendor.html">Artists</a>
+            <a href="audit.html">Audit</a>
             <a href="https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM" target="_blank">Sheet</a>
             <button onclick="syncData()" id="sync-btn" class="nav-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
         </nav>
@@ -33,8 +33,6 @@
                     const provider = pack.provider || 'Unknown';
                     const container = document.getElementById('asset-details');
                     
-                    const previewHtml = generateAssetPreviewHtml(asset);
-
                     const sheetUrl = `https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=646986983&range=A${asset.sheet_row_number}`;
                     
                     container.innerHTML = `
@@ -43,15 +41,21 @@
                             <a href="${sheetUrl}" target="_blank" class="nav-btn" style="text-decoration: none; padding: 6px 12px; border: 1px solid #3a3a3a; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; margin: 0;"><i class="fa-solid fa-pen-to-square"></i> Edit Row ${asset.sheet_row_number}</a>
                         </div>
                         
-                        <div style="margin-bottom: 2rem; border-radius: 5px; overflow: hidden; border: 1px solid #3a3a3a; background: #252525;">
-                            ${previewHtml}
+                        <div style="display: flex; gap: 2rem; margin-bottom: 2rem; align-items: stretch;">
+                            <!-- Left Column: Large Preview -->
+                            <div style="flex: 0 0 350px; border-radius: 5px; overflow: hidden; border: 1px solid #3a3a3a; background: #161616; display: flex; align-items: center; justify-content: center; height: 300px;">
+                                ${generateAssetPreviewHtml(asset, 300)}
+                            </div>
+                            
+                            <!-- Right Column: Metadata -->
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.85rem; font-size: 1.05rem;">
+                                <div><strong style="color: #aaaaaa; display: inline-block; width: 120px;">Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(provider)}" style="color: #eeeeee; text-decoration: none;">${provider}</a></div>
+                                <div><strong style="color: #aaaaaa; display: inline-block; width: 120px;">Pack:</strong> <span style="color: #eeeeee;">${pack.pack_name || 'Unknown'}</span></div>
+                                <div><strong style="color: #aaaaaa; display: inline-block; width: 120px;">Type:</strong> <span style="color: #eeeeee;">${asset.type}</span></div>
+                                <div><strong style="color: #aaaaaa; display: inline-block; width: 120px;">Source URL:</strong> <a href="${pack.source_url}" target="_blank" style="color: #3498db; text-decoration: none;">${pack.source_url || 'N/A'}</a></div>
+                                <div><strong style="color: #aaaaaa; display: inline-block; width: 120px;">Sync Status:</strong> ${pack.sync_status === 'synced' ? '<span style="color: #2ecc71;">Synced</span>' : `<span style="color: #e74c3c;">${pack.sync_status}</span>`}</div>
+                            </div>
                         </div>
-                        
-                        <p><strong>Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(provider)}">${provider}</a></p>
-                        <p><strong>Pack:</strong> ${pack.pack_name || 'Unknown'}</p>
-                        <p><strong>Type:</strong> ${asset.type}</p>
-                        <p><strong>Source URL:</strong> <a href="${pack.source_url}" target="_blank" style="color: #3498db;">${pack.source_url || 'N/A'}</a></p>
-                        <p><strong>Sync Status:</strong> ${pack.sync_status === 'synced' ? '<span style="color: #2ecc71;">Synced</span>' : `<span style="color: #e74c3c;">${pack.sync_status}</span>`}</p>
                         
                         <h3 style="margin-top: 2rem;">Raw Data:</h3>
                         <table class="data-table">
