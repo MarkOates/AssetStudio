@@ -46,7 +46,11 @@
                         <div class="file-list">${imagesHtml}</div>
                         
                         <h3>Raw Data:</h3>
-                        <pre>${JSON.stringify(asset, null, 2)}</pre>
+                        <table class="data-table">
+                            <tbody>
+                                ${generateTableRows(asset)}
+                            </tbody>
+                        </table>
                     `;
                 } else {
                     document.getElementById('asset-details').textContent = "Asset not found.";

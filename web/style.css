@@ -160,3 +160,87 @@ pre {
     border-color: #555555;
     color: #ffffff;
 }
+
+/* Custom Toggle Button */
+.toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    color: #cccccc;
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    background: #2d2d2d;
+    border-color: #555555;
+    color: #ffffff;
+}
+
+/* Hide the default checkbox */
+.toggle-btn input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid #555555;
+    border-radius: 3px;
+    background: #1e1e1e;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    margin: 0;
+}
+
+/* Checked state */
+.toggle-btn input[type="checkbox"]:checked {
+    background: #0a84ff; /* macOS blue for dark mode */
+    border-color: #0a84ff;
+}
+
+/* Checkmark icon */
+.toggle-btn input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Data Table for Asset details */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #3a3a3a;
+}
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+.data-table .key-col {
+    color: #aaaaaa;
+    width: 30%;
+    border-right: 1px solid #3a3a3a;
+    font-family: monospace;
+}
+.data-table .val-col {
+    color: #eeeeee;
+}

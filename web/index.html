@@ -14,13 +14,38 @@
         </nav>
     </header>
     <main>
-        <h2>All Assets</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="margin-bottom: 0;">All Assets</h2>
+            <div style="display: flex; gap: 1rem;">
+                <label class="toggle-btn">
+                    <input type="checkbox" id="show-animations-toggle" checked> play animations
+                </label>
+                <label class="toggle-btn">
+                    <input type="checkbox" id="show-hidden-toggle"> show hidden
+                </label>
+            </div>
+        </div>
         <div id="asset-grid" class="grid"></div>
     </main>
     <script src="app.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            loadData().then(data => renderAssetGrid(data.assets, document.getElementById('asset-grid')));
+            loadData().then(data => {
+                const grid = document.getElementById('asset-grid');
+                const toggleHidden = document.getElementById('show-hidden-toggle');
+                const toggleAnim = document.getElementById('show-animations-toggle');
+                
+                function updateGrid() {
+                    const showHidden = toggleHidden.checked;
+                    const showAnim = toggleAnim.checked;
+                    const filtered = data.assets.filter(a => showHidden || a.visibility !== 'hidden');
+                    renderAssetGrid(filtered, grid, showAnim);
+                }
+                
+                toggleHidden.addEventListener('change', updateGrid);
+                toggleAnim.addEventListener('change', () => renderAnimations(toggleAnim.checked));
+                updateGrid(); // Initial render
+            });
         });
     </script>
 </body>
