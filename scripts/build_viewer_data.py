@@ -1,10 +1,30 @@
 import os
-import csv
 import json
+import csv
+import hashlib
 
-ASSETS_DIR = "/Users/markoates/Assets"
-CSV_PATH = os.path.join(ASSETS_DIR, "assets_db.csv")
-OUTPUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../web/viewer_data.json")
+ASSETS_DIR = '/Users/markoates/Assets'
+CSV_PATH = os.path.join(ASSETS_DIR, 'assets_db.csv')
+OUTPUT_PATH = os.path.join(os.path.dirname(__file__), '../web/viewer_data.json')
+CACHE_PATH = os.path.join(os.path.dirname(__file__), 'ai_cache.json')
+
+def load_ai_cache():
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+def get_file_hash(filepath):
+    if not os.path.exists(filepath):
+        return None
+    sha256 = hashlib.sha256()
+    with open(filepath, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            sha256.update(chunk)
+    return sha256.hexdigest()
 
 # --- CUSTOM EXCEPTIONS ---
 class AssetException(Exception): pass
@@ -57,6 +77,8 @@ def get_actual_files(extracted_dir):
     return actual_files, abs_files
 
 def main():
+    ai_cache = load_ai_cache()
+    
     providers = {}
     asset_packs = {}
     assets = []
@@ -162,6 +184,7 @@ def main():
                         is_from_sprite_sheet = True
                 
                 # Check MissingFile and track logical files
+                primary_physical_file = None
                 for src in source_files:
                     # Map the virtual URL to physical path for checking
                     physical_src = os.path.join(ASSETS_DIR, src[len("/Assets/"):])
@@ -169,6 +192,16 @@ def main():
                         log_error("MissingFile", "CSV expects a file but it is missing on disk.", {"identifier": identifier, "file": src, "row": i})
                     else:
                         tracked_logical_files.add(physical_src)
+                        if primary_physical_file is None:
+                            primary_physical_file = physical_src
+
+                # Compute Hash & Check Cache
+                file_hash = None
+                cached_data = None
+                if primary_physical_file:
+                    file_hash = get_file_hash(primary_physical_file)
+                    if file_hash in ai_cache:
+                        cached_data = ai_cache[file_hash]
                         
                 # Construct the Entity
                 asset = {
@@ -186,24 +219,38 @@ def main():
                         "cell_dimensions": {
                             "width": cell_width,
                             "height": cell_height
-                        } if is_from_sprite_sheet else None
+                        } if is_from_sprite_sheet else None,
+                        "hash": file_hash
                     },
                     
-                    # 2. Theme Profile (Stub for AI)
-                    "theme_profile": {
+                    # 2. Theme Profile (Hydrated via Cache)
+                    "theme_profile": cached_data.get("theme_profile", {
+                        "description": "",
+                        "tags": [],
+                        "style": ""
+                    }) if cached_data else {
                         "description": "",
                         "tags": [],
                         "style": ""
                     },
                     
-                    # 3. Color Profile (Stub for AI)
-                    "color_profile": {
+                    # 3. Color Profile (Hydrated via Cache)
+                    "color_profile": cached_data.get("color_profile", {
+                        "color_space": "",
+                        "palette": [],
+                        "is_exact_palette": False,
+                        "palette_swappable": False
+                    }) if cached_data else {
                         "color_space": "",
                         "palette": [],
                         "is_exact_palette": False,
                         "palette_swappable": False
                     }
                 }
+                
+                # Flag for background AI worker if missing from cache
+                if file_hash and not cached_data:
+                    asset["needs_ai_inference"] = True
                 
                 # 4. Animation Profile (Only attach if it moves)
                 if num_frames > 1 or asset_type == 'animation':

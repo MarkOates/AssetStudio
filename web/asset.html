@@ -33,10 +33,7 @@
                     const provider = pack.provider || 'Unknown';
                     const container = document.getElementById('asset-details');
                     
-                    let imagesHtml = '';
-                    if (asset.resource && asset.resource.source_files) {
-                        imagesHtml = asset.resource.source_files.map(f => `<img src="${f}" alt="Asset Image" class="detail-img" onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c; width:150px; display:inline-flex; margin-right:10px; margin-bottom:10px;\\'>File Not Found</div>';">`).join('');
-                    }
+                    const previewHtml = generateAssetPreviewHtml(asset);
 
                     const sheetUrl = `https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=646986983&range=A${asset.sheet_row_number}`;
                     
@@ -45,22 +42,27 @@
                             <h2 style="margin: 0;">${asset.name}</h2>
                             <a href="${sheetUrl}" target="_blank" class="nav-btn" style="text-decoration: none; padding: 6px 12px; border: 1px solid #3a3a3a; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; margin: 0;"><i class="fa-solid fa-pen-to-square"></i> Edit Row ${asset.sheet_row_number}</a>
                         </div>
+                        
+                        <div style="margin-bottom: 2rem; border-radius: 5px; overflow: hidden; border: 1px solid #3a3a3a; background: #252525;">
+                            ${previewHtml}
+                        </div>
+                        
                         <p><strong>Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(provider)}">${provider}</a></p>
                         <p><strong>Pack:</strong> ${pack.pack_name || 'Unknown'}</p>
                         <p><strong>Type:</strong> ${asset.type}</p>
                         <p><strong>Source URL:</strong> <a href="${pack.source_url}" target="_blank" style="color: #3498db;">${pack.source_url || 'N/A'}</a></p>
                         <p><strong>Sync Status:</strong> ${pack.sync_status === 'synced' ? '<span style="color: #2ecc71;">Synced</span>' : `<span style="color: #e74c3c;">${pack.sync_status}</span>`}</p>
                         
-                        <h3>Files:</h3>
-                        <div class="file-list">${imagesHtml}</div>
-                        
-                        <h3>Raw Data:</h3>
+                        <h3 style="margin-top: 2rem;">Raw Data:</h3>
                         <table class="data-table">
                             <tbody>
                                 ${generateTableRows(asset)}
                             </tbody>
                         </table>
                     `;
+                    
+                    // Spin up the animation loop for this page using the global app.js helper
+                    renderAnimations(true);
                 } else {
                     document.getElementById('asset-details').textContent = "Asset not found.";
                 }

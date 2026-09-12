@@ -1,0 +1,15 @@
+{
+  "164bbcc529729b892c4646d1d77248d455dfe69cdcb79639c922613f4ad0ba75": {
+    "theme_profile": {
+      "description": "(CACHE HIT) A beautifully animated 2D pixel-art cat happily walking.",
+      "tags": ["cat", "pet", "animal", "walk", "cute", "pixel_art"],
+      "style": "pixel_art"
+    },
+    "color_profile": {
+      "color_space": "16-bit",
+      "palette": ["#FFaa00", "#000000", "#FFFFFF"],
+      "is_exact_palette": false,
+      "palette_swappable": true
+    }
+  }
+}
