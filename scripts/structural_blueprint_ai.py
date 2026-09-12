@@ -51,7 +51,7 @@ You MUST output ONLY valid JSON matching this exact schema:
   "parent_assets": [
     {
       "name": "derived_parent_name (e.g. fx1_splash)",
-      "type": "multi_file | animation_frames | static_file | sprite_sheet | sprite_sheet_cell",
+      "type": "multi_file_animation | animation_frames | static_file | sprite_sheet | sprite_sheet_cell | tileset | sound_effect | music | pixel_font | ttf_font | 3d_model | text",
       "source_files": ["array of exact file paths that belong to this asset"],
       "num_frames": 1,
       "cell_dimensions": {"width": null, "height": null},

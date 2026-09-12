@@ -214,7 +214,7 @@ def main():
                     
                     # 1. Resource Component (replaces FileMapping)
                     "resource": {
-                        "type": "animation_frames" if is_from_sprite_sheet else ("multi_file" if num_frames > 1 else "static_file"),
+                        "type": "animation_frames" if is_from_sprite_sheet else ("multi_file_animation" if num_frames > 1 else "static_file"),
                         "source_files": source_files,
                         "cell_dimensions": {
                             "width": cell_width,

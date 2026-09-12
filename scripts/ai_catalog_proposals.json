@@ -1470,5 +1470,3906 @@
       "pass1_model": "gemini-flash-latest",
       "pass1_timestamp": "2026-09-12T17:28:06.624790+00:00"
     }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/potions/potion_17_png",
+    "name": "potion_17",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/potions/potion_17.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "09410157751cd2b0cfa71428b3dd1dd825a72c2797ac4e634aa1e52e70747021"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art round potion flask filled with a glowing pink and purple magical elixir, sealed with a small cork stopper.",
+      "tags": [
+        "potion",
+        "flask",
+        "elixir",
+        "magic",
+        "item",
+        "icon",
+        "rpg",
+        "consumable",
+        "alchemy"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "vibrant pink",
+        "deep purple",
+        "warm brown",
+        "soft highlight white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a standalone 16x16 graphic representing an inventory item (potion) located inside an RPG icon pack."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder path explicitly mentions '16x16', which matches the actual pixel dimensions of the image."
+      }
+    ],
+    "color_profile": {
+      "color_space": "9-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#a63a82",
+        "#ff5983",
+        "#ffffff",
+        "#ffbca6",
+        "#bb7547",
+        "#8cb2ff",
+        "#71413b"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:01.365344+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/armors/armor_188_png",
+    "name": "armor_188",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/armors/armor_188.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "2a0ac524c449b40fc10932fde9ee289d952a08a104f17d82c72966ef3b87c12b"
+    },
+    "theme_profile": {
+      "description": "A dark purple fantasy chestplate icon detailed with glowing pale pink gems or nodes.",
+      "tags": [
+        "armor",
+        "chestplate",
+        "cuirass",
+        "equipment",
+        "dark armor",
+        "purple",
+        "rpg icon",
+        "16x16"
+      ],
+      "style": "Pixel Art RPG Icon",
+      "color_descriptors": [
+        "dark purple",
+        "black",
+        "lavender",
+        "soft pink"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone graphic depicting an armor chestpiece item from an RPG icon pack, qualifying it as an icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The file path specifies '16x16', which directly aligns with the image's dimensions of 16x16 pixels."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#5c5563",
+        "#311b41",
+        "#473250",
+        "#817094",
+        "#b592a3"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:06.883232+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Small_Cliff_Sand/SmallCliff_Sand_7_png",
+    "name": "SmallCliff_Sand_7",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "animation_frames",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Small_Cliff_Sand/SmallCliff_Sand_7.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": {
+        "columns": 6,
+        "rows": 1,
+        "cell_width": 16,
+        "cell_height": 16,
+        "contains_multiple_animations": false,
+        "inferred_animations": [
+          {
+            "name": "water_edge_idle",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 6,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "The 96x16 image divides evenly into 6 contiguous 16x16 frames depicting a looping shoreline foam and water animation against a cliff face."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "039932dbbe45bbc58f87cbf2d12c533998f154dd1593a2f0188277ee28517dab"
+    },
+    "theme_profile": {
+      "description": "A 6-frame animated pixel art tile strip featuring ocean or river foam and water washing against a dark cliff and sand bank.",
+      "tags": [
+        "pixel art",
+        "water",
+        "shoreline",
+        "foam",
+        "cliff",
+        "sand",
+        "animated tile",
+        "grasslands",
+        "environment",
+        "16x16"
+      ],
+      "style": "16-bit retro fantasy pixel art",
+      "color_descriptors": [
+        "bright cyan",
+        "frothy white",
+        "deep brown",
+        "warm sand"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "The image dimensions (96x16) and visual layout reveal 6 horizontal 16x16 cells showing sequential frames of a water shore tile animation."
+      },
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "Path components 'Small_Cliff_Sand' and 'Animation' confirm this is an animated environmental terrain tile."
+      }
+    ],
+    "color_profile": {
+      "color_space": "13-color exact",
+      "palette": [
+        "#00000000",
+        "#502629",
+        "#360f1a",
+        "#743d37",
+        "#1e00003c",
+        "#d59d49",
+        "#c6813d",
+        "#23cfa1",
+        "#14ad82",
+        "#e1af5a",
+        "#5ef6cb",
+        "#9b492f",
+        "#9b5b45"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:14.656133+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 6,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/underwear/underpants_046_png",
+    "name": "underpants_046",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/underwear/underpants_046.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "e624014edcc6ef8684091e5053caad58ab157b5724db9bd9e721362c60ea97f6"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art inventory icon depicting a pair of muted sage green underpants or briefs.",
+      "tags": [
+        "icon",
+        "underwear",
+        "underpants",
+        "briefs",
+        "clothing",
+        "apparel",
+        "inventory",
+        "rpg item",
+        "modern rpg",
+        "16x16",
+        "pixel art"
+      ],
+      "style": "Modern RPG 16-bit pixel art",
+      "color_descriptors": [
+        "muted sage green",
+        "pale khaki",
+        "dark charcoal outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder name 'Pixeltiers_16x16_Modern_RPG_Update_3' specifies that the asset dimensions are 16x16 pixels."
+      },
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The asset originates from an RPG icon set directory ('pixeltiers-modern-rpg-icon-set'), identifying it as an inventory/UI item."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone pixel art graphic representing an equipment/clothing item, classifying it as an icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "5-color exact",
+      "palette": [
+        "#00000000",
+        "#a6ac90",
+        "#151515",
+        "#847e6c",
+        "#423934"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:20.549624+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/grenades/grenade_001_png",
+    "name": "grenade_001",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/grenades/grenade_001.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "1e7a6766ffe268516f78d4d04493590d0979213e7d617a21859c962fcf1dae52"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon of a modern tactical cylindrical grenade or canister with a dark metallic casing and a glowing mint green band.",
+      "tags": [
+        "grenade",
+        "canister",
+        "smoke grenade",
+        "tactical",
+        "modern",
+        "rpg icon",
+        "item",
+        "military",
+        "inventory"
+      ],
+      "style": "Pixel Art RPG Icon",
+      "color_descriptors": [
+        "dark slate gray",
+        "charcoal black",
+        "mint green",
+        "cyan glow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset has dimensions of 16x16 and is part of a modern RPG icon set representing an item/grenade for an inventory system, warranting is_icon: true."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The directory path 'Pixeltiers_16x16_Modern_RPG_Update_3' specifies the exact 16x16 resolution corresponding to this single static icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#1a2637",
+        "#333941",
+        "#405054",
+        "#24523b",
+        "#5daf8d",
+        "#547b71",
+        "#6d758d",
+        "#608070",
+        "#b3b9d1",
+        "#a6fcdb"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:26.100239+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-props-mansion-pack-1/extracted/Super Pixel Props - Mansion Pack 1/PNG/candelabra_gold_on/frame0003_png",
+    "name": "frame0003",
+    "asset_pack_identifier": "untiedgames/super-pixel-props-mansion-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-props-mansion-pack-1/extracted/Super Pixel Props - Mansion Pack 1/PNG/candelabra_gold_on/frame0003.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "e5e54f129904bbca6f9faa599f1aa48b6132bd7a6c6f05d96d54735dc055c5f9"
+    },
+    "theme_profile": {
+      "description": "A four-candle golden candelabra with burning, flickering flames, designed as a decorative mansion prop.",
+      "tags": [
+        "candelabra",
+        "candle",
+        "candlestick",
+        "fire",
+        "flame",
+        "light",
+        "gold",
+        "prop",
+        "mansion",
+        "furniture"
+      ],
+      "style": "Pixel Art",
+      "color_descriptors": [
+        "golden brown",
+        "bright yellow",
+        "fiery orange",
+        "deep bronze"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename 'frame0003.png' ends with a sequential frame index in an animation folder ('candelabra_gold_on'), indicating it is an individual subframe of a multi-file animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:31.652998+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/finalbossblues/quirky-npcs/extracted/quirky_npcs/tf_color/2x(RMVX)/coolcat_shadow_png",
+    "name": "coolcat_shadow",
+    "asset_pack_identifier": "finalbossblues/quirky-npcs",
+    "type": "sprite_sheet",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "sprite_sheet",
+      "source_files": [
+        "/Assets/finalbossblues/quirky-npcs/extracted/quirky_npcs/tf_color/2x(RMVX)/coolcat_shadow.png"
+      ],
+      "cell_dimensions": {
+        "width": 92,
+        "height": 96
+      },
+      "inferred_grid": {
+        "columns": 3,
+        "rows": 4,
+        "cell_width": 92,
+        "cell_height": 96,
+        "contains_multiple_animations": true,
+        "inferred_animations": [
+          {
+            "name": "idle_left",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 0 contains 3 frames of the cat facing left while idling with a cigarette."
+              }
+            ]
+          },
+          {
+            "name": "smoke_left",
+            "row": 1,
+            "start_frame": 0,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 1 contains 3 frames of the cat facing left, taking the cigarette from its mouth."
+              }
+            ]
+          },
+          {
+            "name": "idle_right",
+            "row": 2,
+            "start_frame": 0,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 2 contains 3 frames of the cat facing right while idling with a cigarette."
+              }
+            ]
+          },
+          {
+            "name": "smoke_right",
+            "row": 3,
+            "start_frame": 0,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 3 contains 3 frames of the cat facing right, taking the cigarette from its mouth."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "e809b57c3e7828f20036d0ef9a3af2eaf9b0acf4cd375a7945848ead64d52ac1"
+    },
+    "theme_profile": {
+      "description": "A retro pixel art sprite sheet of a cool blue anthropomorphic cat wearing sunglasses and a dark vest, smoking a cigarette, with ground drop shadows.",
+      "tags": [
+        "coolcat",
+        "cat",
+        "feline",
+        "anthropomorphic",
+        "sunglasses",
+        "leather vest",
+        "smoking",
+        "npc",
+        "shadow",
+        "rpg maker vx"
+      ],
+      "style": "16-bit retro RPG pixel art",
+      "color_descriptors": [
+        "vibrant blue",
+        "dark slate gray",
+        "charcoal black",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename ends with '_shadow', indicating a variant with drop shadows under the character."
+      },
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "The 276x384 image evenly divides into a 3-column by 4-row sprite grid of 92x96 pixel cells, showing directional idle and smoking animation frames."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#00000000",
+        "#304048",
+        "#48a8f8",
+        "#484460",
+        "#4878f0",
+        "#285c88",
+        "#505458",
+        "#607478",
+        "#f0f0c0",
+        "#de4138"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:39.642543+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 12,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/helmets/helmet_162_png",
+    "name": "helmet_162",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/helmets/helmet_162.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "7b2da9e2bc548c77371ccb3400634459c322872685f0dfd779d4c7723d9f03e1"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art helmet crafted from frosty crystal or icy metal, adorned with horned tips and glowing cyan gemstones.",
+      "tags": [
+        "helmet",
+        "armor",
+        "headgear",
+        "ice",
+        "frost",
+        "crystal",
+        "rpg icon",
+        "equipment",
+        "item"
+      ],
+      "style": "16-bit RPG Pixel Art",
+      "color_descriptors": [
+        "frosty white",
+        "ice blue",
+        "cyan",
+        "dark slate"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone pixel art graphic representing an equipment item (helmet) from an RPG icon pack, so is_icon is set to true."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The path explicitly references '16x16', matching the exact dimensions of the image file (16x16 pixels)."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#000000",
+        "#839ace",
+        "#151515",
+        "#daeaf2",
+        "#ffffff",
+        "#4a5462",
+        "#fff8d0",
+        "#4b2a4b",
+        "#017595",
+        "#249fde",
+        "#b1bee8"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:45.165098+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/finalbossblues/quirky-npcs/extracted/quirky_npcs/preview_gifs/twins_p_gif",
+    "name": "twins_p",
+    "asset_pack_identifier": "finalbossblues/quirky-npcs",
+    "type": "preview",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "preview",
+      "source_files": [
+        "/Assets/finalbossblues/quirky-npcs/extracted/quirky_npcs/preview_gifs/twins_p.gif"
+      ],
+      "cell_dimensions": {
+        "width": null,
+        "height": null
+      },
+      "inferred_grid": null,
+      "hash": "fac1b92a6657b81656f24fa6ab1a3f25f4da4d702297c213e5bef489cbd97eca"
+    },
+    "theme_profile": {
+      "description": "A preview asset showcasing a two-headed, muscular conjoined twin NPC character in a classic RPG pixel art style.",
+      "tags": [
+        "two-headed",
+        "twins",
+        "conjoined",
+        "npc",
+        "brawler",
+        "character",
+        "preview",
+        "pixel art",
+        "rpg"
+      ],
+      "style": "16-bit retro RPG pixel art",
+      "color_descriptors": [
+        "peach skin tone",
+        "chestnut brown hair",
+        "deep maroon outline",
+        "warm yellow belt details"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 9: Mockups & Previews",
+        "rationale": "The asset is located in the 'preview_gifs' folder with the suffix '_p.gif', indicating it is an animated preview file intended for demonstration rather than an in-engine sprite sheet."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "Visual inspection reveals a standalone animated frame/preview of a two-headed humanoid character scaled up on a black background."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#ffffff00",
+        "#000000",
+        "#dba463",
+        "#f4d29c",
+        "#73172d",
+        "#bb7547",
+        "#71413b",
+        "#422433",
+        "#b6752b",
+        "#fffc40"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:51.148717+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_splatter_small_black/frame0002_png",
+    "name": "frame0002",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_splatter_small_black/frame0002.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "6fcbe57fd0defb0c1d1ba50afcd0ccf8de3636ff4cf109c2dd75583fb24cabc5"
+    },
+    "theme_profile": {
+      "description": "A dark pixel art splatter effect subframe depicting flying droplets or ink particles dispersing outwards.",
+      "tags": [
+        "vfx",
+        "splatter",
+        "impact",
+        "blood",
+        "ink",
+        "liquid",
+        "particles",
+        "black",
+        "small"
+      ],
+      "style": "Pixel Art",
+      "color_descriptors": [
+        "dark navy black",
+        "muted indigo"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "Filename 'frame0002.png' uses sequential zero-padded numbering denoting a frame within a multi-file animation sequence, setting is_subframe to true."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The folder name prefix 'fx1_' and keyword 'splatter' classify this asset as a visual effect particle/impact sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The directory name contains modifiers 'small' and 'black', identifying size and color variants of the splatter effect."
+      }
+    ],
+    "color_profile": {
+      "color_space": "11-color exact",
+      "palette": [
+        "#00000000",
+        "#392a5200",
+        "#392a52",
+        "#46406800",
+        "#54577f",
+        "#54577f00",
+        "#42396100",
+        "#4b487000",
+        "#4d4b7300",
+        "#3f355d00",
+        "#433c6400"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:40:56.742219+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Static/Props-individual sprites/Crystals5_14_png",
+    "name": "Crystals5_14",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Static/Props-individual sprites/Crystals5_14.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "bc89121d7b6cf904154fee375a87017be568cdda09f1db9a3a96e72045082ca8"
+    },
+    "theme_profile": {
+      "description": "A tilted cyan and teal crystal shard protruding from dark rocky ground, featuring a soft luminescence.",
+      "tags": [
+        "crystal",
+        "mineral",
+        "gem",
+        "cyan",
+        "prop",
+        "static prop",
+        "cave",
+        "mining",
+        "environment"
+      ],
+      "style": "16-bit pixel art",
+      "color_descriptors": [
+        "cyan",
+        "teal",
+        "light blue",
+        "dark navy",
+        "deep shadow green"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "The asset is located in the 'Props/Static/Props-individual sprites' directory, indicating it is an individual static prop variant representing an in-world crystal formation rather than a sequential animation frame."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The numerical suffix '_14' signifies a numbered prop variation within the Crystals5 set."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:03.502547+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/gloves/glove_041_png",
+    "name": "glove_041",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/gloves/glove_041.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "80f283ccbe90a20cbf1144fc025d24c9da3c7cfd57383e27a2e9bcf1617da4b4"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art inventory icon of a clenched brown leather glove or gauntlet featuring a glowing cyan wristband.",
+      "tags": [
+        "icon",
+        "glove",
+        "gauntlet",
+        "armor",
+        "equipment",
+        "handwear",
+        "leather",
+        "fist",
+        "item"
+      ],
+      "style": "16-bit modern RPG pixel art",
+      "color_descriptors": [
+        "warm brown",
+        "dark brown",
+        "cyan blue",
+        "deep charcoal"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone graphic depicting an equippable armor item (glove) within an RPG icon set, designating it as an inventory icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The directory path 'Pixeltiers_16x16_Modern_RPG_Update_3' explicitly references the 16x16 pixel dimensions of the asset."
+      },
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The path contains 'icon-set' and categorizes the item for inventory/equipment interface display."
+      }
+    ],
+    "color_profile": {
+      "color_space": "9-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#634d40",
+        "#9a7d53",
+        "#322b28",
+        "#b1bee8",
+        "#6687a7",
+        "#221c1a",
+        "#015476"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:09.958507+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-asset-pack-crypt/extracted/EPIC RPG World Pack - Crypt V_1_5_1/Props/animated/spike trap4_png",
+    "name": "spike trap4",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-asset-pack-crypt",
+    "type": "sprite_sheet",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "sprite_sheet",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-asset-pack-crypt/extracted/EPIC RPG World Pack - Crypt V.1.5.1/Props/animated/spike trap4.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": {
+        "columns": 9,
+        "rows": 1,
+        "cell_width": 32,
+        "cell_height": 32,
+        "contains_multiple_animations": false,
+        "inferred_animations": [
+          {
+            "name": "spring",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 9,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "The 288x32 image contains exactly nine 32x32 frames showing the progressive emergence and extension of floor spikes from a trap plate."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "7c49de500d91ab43dd86d90d49552a46bafa5b3734640976d831d08eff77bbd1"
+    },
+    "theme_profile": {
+      "description": "A 9-frame animated sequence of a deadly floor-mounted spike trap triggering and extending sharp metal spikes from recessed holes.",
+      "tags": [
+        "trap",
+        "spike trap",
+        "hazard",
+        "crypt",
+        "dungeon",
+        "prop",
+        "animated",
+        "pixel art",
+        "floor mechanism"
+      ],
+      "style": "Dark fantasy top-down pixel art",
+      "color_descriptors": [
+        "dark slate purple",
+        "steel cyan",
+        "deep charcoal"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "Dividing the 288px width by the 32px height reveals 9 uniform 32x32 frames depicting an animated trap sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename suffix 'spike trap4' denotes variant 4 of the spike trap hazard props in the crypt asset pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "11-color exact",
+      "palette": [
+        "#3d354c",
+        "#1a1f2e4c",
+        "#222a3c",
+        "#202636",
+        "#20232f",
+        "#362f43",
+        "#242a3b",
+        "#4d626c",
+        "#839ead",
+        "#627a85",
+        "#433b53"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:16.916317+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 9,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_157_png",
+    "name": "icon_157",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_157.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "6b71893f82e92cf57e3263a739db5aa72d050925b703455f97e13b39345352ed"
+    },
+    "theme_profile": {
+      "description": "A 16-bit pixel art icon of a small house with a chimney and doorway.",
+      "tags": [
+        "house",
+        "home",
+        "building",
+        "cottage",
+        "ui",
+        "interface",
+        "200%",
+        "pixel art"
+      ],
+      "style": "Pixel Art UI Iconography",
+      "color_descriptors": [
+        "creamy white",
+        "dark brown outline",
+        "warm pale yellow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The directory path contains 'User Interface Icons' and 'icon_157.png', indicating an interface element."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The folder name '200% Icons' denotes a 200% scaled UI icon variant."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The image is a 32x32 standalone pixel art graphic depicting a home icon, qualifying it as an icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "16-color exact",
+      "palette": [
+        "#ffffff",
+        "#00000000",
+        "#5b3138",
+        "#fef3c0",
+        "#8e5252",
+        "#5b313800",
+        "#8e525200",
+        "#b38b8b00",
+        "#12202000",
+        "#7d474900",
+        "#fad6b8",
+        "#6c3c4000",
+        "#74414500",
+        "#8f615b00",
+        "#83615a00",
+        "#b3877600"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:21.356631+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/helmets/helmet_149_png",
+    "name": "helmet_149",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/helmets/helmet_149.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "28cd024664bac85765cba8abe019a6292945edb118bb042ce9e84875ae3bd611"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art dark metal full-face helmet or great helm with a rounded dome and cheek guards.",
+      "tags": [
+        "helmet",
+        "armor",
+        "headgear",
+        "great helm",
+        "dark metal",
+        "equipment",
+        "rpg icon",
+        "item"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "charcoal grey",
+        "dark slate blue",
+        "black"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The 16x16 resolution and visual depiction of a piece of head armor indicate a standalone inventory/equipment icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The path 'pixeltiers-16x16-rpg-icon-pack' and the actual image dimensions confirm the 16x16 pixel format."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "Although the filename ends with an integer ('_149'), this denotes an indexed item variation in an RPG icon pack rather than a sequence of animation frames."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#0a1423",
+        "#00000000",
+        "#272d35",
+        "#333941",
+        "#405054",
+        "#1a2637",
+        "#151515"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:29.614697+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Static/Props-individual sprites/Crystals4_21_png",
+    "name": "Crystals4_21",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Static/Props-individual sprites/Crystals4_21.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "c11f1c4dbbe4077b027f169277f8b3b5c0742d104f1dacf12b48526517b7f719"
+    },
+    "theme_profile": {
+      "description": "A small glowing emerald-green crystal cluster or mineral node resting on a dark base.",
+      "tags": [
+        "crystal",
+        "green crystal",
+        "mineral",
+        "ore",
+        "cave",
+        "glowing",
+        "prop",
+        "static"
+      ],
+      "style": "16-bit pixel art",
+      "color_descriptors": [
+        "emerald green",
+        "mint green",
+        "deep shadow black"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "Located in 'Props/Static/Props-individual sprites/', indicating it is an individual static environmental prop rather than a multi-file animation sequence despite numerical indexing."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The '_21' suffix denotes a cataloged variant number within the crystal prop set."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:36.294815+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/pants/pants_006_png",
+    "name": "pants_006",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/pants/pants_006.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "3fe905d74513547b63622d004edda41cade03c5672e3da5d9d7e3fac47cef804"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art inventory icon depicting a pair of light purple or lavender trousers with a dark belt and buckle.",
+      "tags": [
+        "pants",
+        "trousers",
+        "clothing",
+        "armor",
+        "equipment",
+        "item",
+        "rpg",
+        "inventory"
+      ],
+      "style": "16-bit RPG Pixel Art",
+      "color_descriptors": [
+        "lavender purple",
+        "dark brown",
+        "gold",
+        "black outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone graphic representing a piece of wearable equipment (pants) for an inventory or UI system."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder path specifies 'Pixeltiers_16x16_Modern_RPG_Update_3', confirming the exact 16x16 resolution."
+      },
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The file path indicates it originates from 'pixeltiers-modern-rpg-icon-set', signifying it is an item icon for game menus and interfaces."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#9b7497",
+        "#221c1a",
+        "#c9aceb",
+        "#695065",
+        "#634d40",
+        "#423934",
+        "#cec7b7",
+        "#ffffff"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:44.669286+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_aura_energy_small_violet/frame0001_png",
+    "name": "frame0001",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_aura_energy_small_violet/frame0001.png"
+      ],
+      "cell_dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "inferred_grid": null,
+      "hash": "fa6a353565d72466e69d1ca86fe239b7fe53c8682d506d5c6705763b9222c92b"
+    },
+    "theme_profile": {
+      "description": "A circular violet energy aura VFX animation frame glowing with concentric rings and a soft pink-white core.",
+      "tags": [
+        "vfx",
+        "aura",
+        "energy",
+        "violet",
+        "magic",
+        "ring",
+        "glow",
+        "subframe"
+      ],
+      "style": "Pixel Art VFX",
+      "color_descriptors": [
+        "vibrant violet",
+        "soft pastel pink",
+        "pure white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename 'frame0001.png' denotes a numbered sequence of frames belonging to a multi-file animation, setting 'is_subframe' to true."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The directory name 'fx1_aura_energy_small_violet' uses the prefix 'fx1_' and describes an energy aura effect, confirming it is a particle/VFX asset."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#c95af800",
+        "#c95af8",
+        "#ffffff",
+        "#fbccec",
+        "#f899da"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:49.891920+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_18_png",
+    "name": "icon_18",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_18.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "3a5d04c3cea96599aa18410c45f2e63e14bbdbca3b8661ec494043575adaa5a6"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art interface icon depicting glowing purple and magenta crystalline formations embedded in dark slate rock or armor.",
+      "tags": [
+        "icon",
+        "ui",
+        "100%",
+        "pixel-art",
+        "crystal",
+        "amethyst",
+        "ore",
+        "gem",
+        "dark-magic"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "vibrant magenta",
+        "deep purple",
+        "slate blue",
+        "charcoal black"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The asset directory includes 'User Interface Icons' and 'interface-icons', explicitly indicating it is a UI graphic element."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The folder name '100% Icons' acts as a variant modifier indicating standard resolution scale, included in tags."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The image is a 16x16 pixel standalone graphic designed as a game UI/inventory icon, requiring 'is_icon: true'."
+      }
+    ],
+    "color_profile": {
+      "color_space": "13-color exact",
+      "palette": [
+        "#181425",
+        "#68386c",
+        "#2c1e31",
+        "#b55088",
+        "#262b44",
+        "#8b9bb4",
+        "#5a6988",
+        "#3a4466",
+        "#c0cbdc",
+        "#2f273e00",
+        "#271b2e00",
+        "#3b3a5400",
+        "#2a253b00"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:41:57.467362+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/ansimuz/warped-props/extracted/Warped Props Pack  files1/sprites/shots/shot-08-01_png",
+    "name": "shot-08-01",
+    "asset_pack_identifier": "ansimuz/warped-props",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/ansimuz/warped-props/extracted/Warped Props Pack  files1/sprites/shots/shot-08-01.png"
+      ],
+      "cell_dimensions": {
+        "width": 28,
+        "height": 5
+      },
+      "inferred_grid": null,
+      "hash": "c8c6a97971987b993c925e37fe7fcce9c2fbced3c16f41e5090f9ea893021200"
+    },
+    "theme_profile": {
+      "description": "A horizontal glowing energy laser shot or projectile with a bright yellow core and orange tail effect.",
+      "tags": [
+        "projectile",
+        "shot",
+        "laser",
+        "energy beam",
+        "bullet",
+        "vfx",
+        "sci-fi"
+      ],
+      "style": "Retro Pixel Art",
+      "color_descriptors": [
+        "bright yellow",
+        "golden orange",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "Filename ends in '-01', indicating that it is the first subframe of a sequential multi-file animation (shot-08 sequence)."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The asset is located in a 'shots' directory and visually represents a laser beam or energy projectile effect."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#fffc00",
+        "#ebb70a",
+        "#fcfcfc"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:02.317774+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/coins/coin_2_png",
+    "name": "coin_2",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/coins/coin_2.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "2d4a7608ff91b4f3a6bebadba1188db87c41e36053a5045872a07d6f891580d1"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon representing a shiny silver or platinum coin with diagonal gleam highlights.",
+      "tags": [
+        "coin",
+        "silver",
+        "currency",
+        "money",
+        "item",
+        "icon",
+        "rpg",
+        "treasure"
+      ],
+      "style": "Pixel Art RPG Icon",
+      "color_descriptors": [
+        "silver-blue",
+        "light cream highlight",
+        "dark navy outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset has dimensions of 16x16 pixels and is situated in an 'rpg-icon-pack' folder, depicting a singular inventory coin/currency item."
+      },
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The file path indicates it is from an RPG icon pack under 'coins', serving as an inventory or UI element."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#7c83aa",
+        "#ffeecc",
+        "#b3b9d1",
+        "#4a5462"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:06.888753+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/HOUSE 1 DOOR_png",
+    "name": "HOUSE 1 DOOR",
+    "asset_pack_identifier": "pixeljad/megabundle",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/HOUSE 1 DOOR.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "38ebf90e43d6a294a27644d03dde7cc54afc9e71411431de155dff29b274b3e6"
+    },
+    "theme_profile": {
+      "description": "A 32x32 pixel art wooden sliding door featuring vertical wood planks and a side latch, designed for traditional Japanese architecture or rustic houses.",
+      "tags": [
+        "door",
+        "wood",
+        "plank",
+        "house",
+        "japanese",
+        "sengoku",
+        "rustic",
+        "architecture",
+        "environment",
+        "tileset prop"
+      ],
+      "style": "16-bit Sengoku Pixel Art",
+      "color_descriptors": [
+        "rich timber brown",
+        "warm wood tones",
+        "dark brown outlines",
+        "deep shadow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "Located within 'SENGOKU ADVENTURE TILESET/DAY/', indicating this 32x32 graphic functions as an environmental building element or door prop."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "The asset is a standalone single-frame 32x32 image depicting a house door rather than an animation or UI element, classifying it as a static environmental asset."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#613622",
+        "#230e06",
+        "#815132",
+        "#160300",
+        "#b07743",
+        "#352c2c",
+        "#160300cc",
+        "#574741",
+        "#3d1e19",
+        "#766558"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:13.441443+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/VILLAGE TOP DOWN/WATER DETAIL 1 - NIGHT_png",
+    "name": "WATER DETAIL 1 - NIGHT",
+    "asset_pack_identifier": "pixeljad/megabundle",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/VILLAGE TOP DOWN/WATER DETAIL 1 - NIGHT.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "883e1eaadaf0a94bb6b61c6fb7e4dd00f3a70bcaea4ad3a474d12746926176ec"
+    },
+    "theme_profile": {
+      "description": "A top-down pixel art rock submerged in rippling water, rendered with cool nighttime shading and highlights.",
+      "tags": [
+        "top-down",
+        "water detail",
+        "rock",
+        "stone",
+        "night",
+        "environment prop",
+        "nature",
+        "river decoration"
+      ],
+      "style": "16-bit Top-Down Pixel Art",
+      "color_descriptors": [
+        "cool slate gray",
+        "deep navy blue",
+        "bright cyan highlights",
+        "dark muted charcoal"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename contains '- NIGHT', indicating a nocturnal color palette variation of an environmental prop."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "The 16x16 image shows a single rock surrounded by water ripples, functioning as a standalone static decorative prop/tile for top-down aquatic environments."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#837b7b",
+        "#9d958d",
+        "#34364800",
+        "#484456",
+        "#343648",
+        "#676470",
+        "#509cb7",
+        "#1c4376",
+        "#1c437600",
+        "#397aa4",
+        "#837b7b00",
+        "#a8bac5",
+        "#39abb8",
+        "#509cb700"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:22.350482+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/underwear/underpants_017_png",
+    "name": "underpants_017",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/underwear/underpants_017.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "f45fa35f35c4b9300303fa77cb8ff884c017d526bd210f8a2ce1e490277ef32d"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon depicting a pair of light blue briefs or underwear.",
+      "tags": [
+        "underwear",
+        "underpants",
+        "briefs",
+        "clothing",
+        "apparel",
+        "item",
+        "modern rpg",
+        "pixel art"
+      ],
+      "style": "16-bit modern RPG item icon",
+      "color_descriptors": [
+        "light blue",
+        "pale white",
+        "soft denim blue",
+        "dark gray outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The filepath contains '16x16', matching the 16x16 pixel dimensions of the image."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The file is a 16x16 standalone item sprite from a modern RPG icon pack representing equipment/clothing, designating it as an icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#daeaf2",
+        "#151515",
+        "#4a5462",
+        "#7bb2d6",
+        "#6687a7"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:30.647180+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/guns and ammunition/gun_001_png",
+    "name": "gun_001",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/guns and ammunition/gun_001.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "8e2deb76d778f2b957fbb2135ac2b1db57920fde5268de7afded24ee62cb62c9"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon depicting a dark tactical assault rifle angled diagonally.",
+      "tags": [
+        "gun",
+        "weapon",
+        "assault rifle",
+        "rifle",
+        "firearm",
+        "modern",
+        "military",
+        "inventory icon",
+        "16x16"
+      ],
+      "style": "16-bit Modern Pixel Art",
+      "color_descriptors": [
+        "charcoal black",
+        "slate gray",
+        "dark gunmetal blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset has a 16x16 resolution and is located in an icon pack path ('guns and ammunition/'), depicting a standalone weapon icon for inventory or UI use."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder path explicitly specifies '16x16', matching the exact dimensions of the image."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#1a2637",
+        "#333941",
+        "#405054",
+        "#445e5c"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:35.969637+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/finalbossblues/quirky-npcs/extracted/quirky_npcs/fullcolor/3x(RMMVMZ)/cobra_png",
+    "name": "cobra",
+    "asset_pack_identifier": "finalbossblues/quirky-npcs",
+    "type": "sprite_sheet",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "sprite_sheet",
+      "source_files": [
+        "/Assets/finalbossblues/quirky-npcs/extracted/quirky_npcs/fullcolor/3x(RMMVMZ)/cobra.png"
+      ],
+      "cell_dimensions": {
+        "width": 138,
+        "height": 144
+      },
+      "inferred_grid": {
+        "columns": 3,
+        "rows": 4,
+        "cell_width": 138,
+        "cell_height": 144,
+        "contains_multiple_animations": true,
+        "inferred_animations": [
+          {
+            "name": "basket_peek",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 0 displays a wicker basket gradually lifting its lid until pairs of eyes peer out."
+              }
+            ]
+          },
+          {
+            "name": "emerge",
+            "row": 1,
+            "start_frame": 3,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 1 displays the cobra pushing the basket lid upward as its body rises."
+              }
+            ]
+          },
+          {
+            "name": "dance_with_lid",
+            "row": 2,
+            "start_frame": 6,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 2 shows the cobra swaying side to side while balancing the basket lid like a hat."
+              }
+            ]
+          },
+          {
+            "name": "dance_bare",
+            "row": 3,
+            "start_frame": 9,
+            "frame_count": 3,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Row 3 depicts the smiling cobra swaying and dancing out in the open without the lid."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "acdf09c2e2cc02740a0461d56e2494a9bf5ae0c23a89b02ecd0c2736dec1d33e"
+    },
+    "theme_profile": {
+      "description": "A charming pixel art animation sheet of a friendly green cobra emerging from a woven wicker basket and swaying playfully.",
+      "tags": [
+        "cobra",
+        "snake",
+        "basket",
+        "snake charmer",
+        "npc",
+        "creature",
+        "rpg maker",
+        "pixel art"
+      ],
+      "style": "16-bit RPG Maker MV/MZ pixel art sprite",
+      "color_descriptors": [
+        "woven golden tan",
+        "bright grassy green",
+        "deep shadow brown",
+        "forest green"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "The 414x576 image neatly subdivides into 3 columns (138px wide) and 4 rows (144px tall), representing standard 3x scaled RPG Maker character event frames."
+      },
+      {
+        "rule": "Rule 3: Action Signatures",
+        "rationale": "Each row represents a distinct animation phase of the cobra character (peeking, emerging, dancing with lid, dancing openly)."
+      }
+    ],
+    "color_profile": {
+      "color_space": "20-color exact",
+      "palette": [
+        "#09423100",
+        "#ffffff00",
+        "#1a7a3e00",
+        "#e5bf7500",
+        "#000000",
+        "#3b1725",
+        "#e5bf75",
+        "#995c33",
+        "#6a362f",
+        "#b6752b",
+        "#dba46300",
+        "#ecdb8e",
+        "#dba463",
+        "#3b172500",
+        "#1a7a3e",
+        "#094231",
+        "#59c135",
+        "#6a362f00",
+        "#a4db4d",
+        "#b6752b00"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:45.902027+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 12,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/swords/sword_2_png",
+    "name": "sword_2",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/swords/sword_2.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "11148d6fb563588aa235c24351f1279c5183e774929c5bac3362c4362d9877f6"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art RPG weapon icon featuring a magical sword with a glowing blue single-edged blade, dark crossguard, and leather-wrapped hilt.",
+      "tags": [
+        "sword",
+        "weapon",
+        "blade",
+        "magic sword",
+        "crystal sword",
+        "rpg icon",
+        "inventory item"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "cyan",
+        "azure blue",
+        "dark charcoal",
+        "warm brown"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The image is a 16x16 pixel standalone representation of a sword intended for an inventory or UI element in an RPG icon pack, qualifying it as an icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The path 'Pixeltiers_16x16_RPG_Pack' specifies 16x16 pixel dimensions, which match the native image resolution."
+      }
+    ],
+    "color_profile": {
+      "color_space": "8-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#249fde",
+        "#ffffff",
+        "#80ffea",
+        "#b3b9d1",
+        "#6a4529",
+        "#9c7c5c"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:51.329037+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/misc/cup_1_png",
+    "name": "cup_1",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/misc/cup_1.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "d6a587a2cde898257f0e9e96e3af48d05de1d9fa6c21e645eb431d95a0e4092e"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon depicting an hourglass-shaped glass cup or chalice with light reflections.",
+      "tags": [
+        "cup",
+        "glass",
+        "goblet",
+        "chalice",
+        "glassware",
+        "vessel",
+        "item",
+        "icon",
+        "rpg"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "pale blue",
+        "white",
+        "slate blue",
+        "black outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 pixel graphic representing a standalone RPG item (a cup), classifying it clearly as an icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The directory path 'pixeltiers-16x16-rpg-icon-pack' explicitly embeds the 16x16 dimensions, matching the file's resolution exactly."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename 'cup_1' indicates this is an individual design variant among cup/chalice item types in the asset pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#f8f8e8",
+        "#7c83aa",
+        "#b3b9d1",
+        "#ffeecc",
+        "#4a5462"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:42:57.679014+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_98_png",
+    "name": "icon_98",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_98.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "91dedb62388ca023b31254efbe6092ad61443008802379adb118d1eac7aafa8d"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art double up-arrow (chevron) icon, featuring coral pink and magenta tones with warm highlights, commonly used for level ups, stat boosts, or upward navigation.",
+      "tags": [
+        "ui",
+        "icon",
+        "arrow",
+        "double arrow",
+        "chevron",
+        "level up",
+        "upgrade",
+        "rank up",
+        "pixel art"
+      ],
+      "style": "16-bit retro UI pixel art",
+      "color_descriptors": [
+        "coral pink",
+        "vibrant magenta",
+        "pale peach",
+        "deep purple"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The directory path 'interface-icons/extracted/User Interface Icons' and filename 'icon_98.png' explicitly mark this asset as a user interface element."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a standalone 16x16 graphic representing an interface button or indicator, qualifying as an icon (is_icon: true)."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The path segment '100% Icons' indicates standard scale/variant resolution tagging."
+      }
+    ],
+    "color_profile": {
+      "color_space": "13-color exact",
+      "palette": [
+        "#00000000",
+        "#f6757a",
+        "#68386c",
+        "#181425",
+        "#b55088",
+        "#e8b796",
+        "#18142500",
+        "#68386c00",
+        "#974c7000",
+        "#4d2c5400",
+        "#32203c00",
+        "#193c3e00",
+        "#29405200"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:03.001923+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/FARM ROCK 2_png",
+    "name": "FARM ROCK 2",
+    "asset_pack_identifier": "pixeljad/megabundle",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/FARM ROCK 2.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "12160ec695554538c434a241f5d66f19c4e5f4290cb8c57b8a5d98bcbbb1e9d1"
+    },
+    "theme_profile": {
+      "description": "A top-down pixel art cluster of slate-grey rocks and boulders sitting on a warm-toned dirt ground.",
+      "tags": [
+        "rock",
+        "stone",
+        "boulder",
+        "farm",
+        "terrain",
+        "prop",
+        "tileset",
+        "top-down",
+        "sengoku",
+        "day"
+      ],
+      "style": "16-bit Top-Down Pixel Art",
+      "color_descriptors": [
+        "slate gray",
+        "dark charcoal",
+        "warm sandy ochre",
+        "earthy brown"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "The asset is located in the 'SENGOKU ADVENTURE TILESET/DAY/' directory, indicating it is an environmental prop/tile element for top-down terrain."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename 'FARM ROCK 2' designates it as a numeric variant among rock decoration tiles."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#6e786f",
+        "#545d58",
+        "#343f46",
+        "#c6b86b",
+        "#be9c54",
+        "#25232d",
+        "#a7874b",
+        "#98a194",
+        "#a47a52",
+        "#332021",
+        "#2b181d",
+        "#725046",
+        "#523430",
+        "#94684b"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:09.036825+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shirts/shirt_92_png",
+    "name": "shirt_92",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shirts/shirt_92.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "e14d504f34be009c6896a54e9cb391f9256cc04ff5e93659da894a7682c7176c"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art RPG equipment icon of a grey tunic or cuirass adorned with white sleeves and a glowing golden gem brooch at the center of the chest.",
+      "tags": [
+        "shirt",
+        "armor",
+        "tunic",
+        "chestpiece",
+        "equipment",
+        "inventory icon",
+        "rpg"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "slate grey",
+        "off-white",
+        "golden orange",
+        "dark charcoal"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder path specifies '16x16', matching the exact dimensions of the image (16x16 pixels)."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 standalone item graphic from an RPG icon pack representing a wearable shirt/armor piece."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#151515",
+        "#a0938d",
+        "#00000000",
+        "#7c7070",
+        "#dbcea3",
+        "#ffffff",
+        "#423934",
+        "#122020",
+        "#a28e77",
+        "#5a4e44",
+        "#4e4a4e",
+        "#bb7547",
+        "#fef3c0",
+        "#dba463"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:15.686605+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shields/shield_119_png",
+    "name": "shield_119",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shields/shield_119.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "a2fbd2cf9767034fbf74f9a67897c696c4598ac80e99d7db6bd11388f2c6f071"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art shield icon with a steel rim, a reddish-brown leather or copper frame, and a central spherical metal boss.",
+      "tags": [
+        "shield",
+        "defense",
+        "armor",
+        "equipment",
+        "rpg icon",
+        "item",
+        "pixel art",
+        "buckler",
+        "heater shield"
+      ],
+      "style": "16-bit pixel art",
+      "color_descriptors": [
+        "reddish-brown",
+        "steel blue",
+        "white highlight",
+        "dark gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 16x16 pixel graphic depicting a standalone RPG shield item icon, belonging to an icon pack."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The path explicitly includes '16x16', matching the native 16x16 pixel dimensions of the image."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#ba756a",
+        "#71413b",
+        "#6d758d",
+        "#b3b9d1",
+        "#daeaf2",
+        "#3b1c1e",
+        "#3b1725",
+        "#422433",
+        "#7c83aa",
+        "#f8f8e8"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:21.620733+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/dreamir/elves-pack/extracted/Elves_Pack/Elf_Mage/Elf_Mage_Idle/Elf_Mage_Idle1_png",
+    "name": "Elf_Mage_Idle1",
+    "asset_pack_identifier": "dreamir/elves-pack",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/dreamir/elves-pack/extracted/Elves_Pack/Elf_Mage/Elf_Mage_Idle/Elf_Mage_Idle1.png"
+      ],
+      "cell_dimensions": {
+        "width": 110,
+        "height": 80
+      },
+      "inferred_grid": null,
+      "hash": "45ae1edb1a660bb65e9e97d7bc470d2ab2ca2b676b03dffab2b43576f4eafaeb"
+    },
+    "theme_profile": {
+      "description": "A blonde elf mage clad in green robes, holding a wooden staff topped with a glowing blue orb in a floating idle stance.",
+      "tags": [
+        "elf",
+        "mage",
+        "spellcaster",
+        "female",
+        "idle",
+        "staff",
+        "fantasy",
+        "magic",
+        "pixel art",
+        "character"
+      ],
+      "style": "Classic fantasy 2D pixel art",
+      "color_descriptors": [
+        "forest green",
+        "golden blonde",
+        "sapphire blue",
+        "earthy brown"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename ends with a sequential number ('Elf_Mage_Idle1.png'), identifying it as a single frame in a multi-file animation sequence."
+      },
+      {
+        "rule": "Rule 3: Action Signatures",
+        "rationale": "The directory and file name include the action verb 'Idle', indicating a character idle animation."
+      }
+    ],
+    "color_profile": {
+      "color_space": "25-color exact",
+      "palette": [
+        "#00000000",
+        "#4b692f",
+        "#344820",
+        "#dbaf00",
+        "#6a4020",
+        "#12190b",
+        "#eec39a",
+        "#513118",
+        "#3f2613",
+        "#233116",
+        "#2a1504",
+        "#d0a680",
+        "#2b1a0d",
+        "#d4ad89",
+        "#170e07",
+        "#5e8cff",
+        "#bf9c7c",
+        "#ffce00",
+        "#000082",
+        "#0000cc",
+        "#b8997b",
+        "#a0acee",
+        "#ffffff",
+        "#687de3",
+        "#e89808"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:27.153583+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/world-map-pixel-art-tileset/extracted/world_map/pieces/objects/town_C_png",
+    "name": "town_C",
+    "asset_pack_identifier": "untiedgames/world-map-pixel-art-tileset",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/untiedgames/world-map-pixel-art-tileset/extracted/world_map/pieces/objects/town_C.png"
+      ],
+      "cell_dimensions": {
+        "width": 48,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "38dfcdab70c605a77685d659ed3c29e69303bcc85ca8cefad21a86f9c4861807"
+    },
+    "theme_profile": {
+      "description": "A miniature overworld town piece with small stone houses, terracotta tile roofs, and a chimney set along green landscape patches.",
+      "tags": [
+        "town",
+        "village",
+        "settlement",
+        "houses",
+        "world map",
+        "overworld",
+        "retro",
+        "modular object"
+      ],
+      "style": "16-bit JRPG overworld pixel art",
+      "color_descriptors": [
+        "terracotta orange",
+        "slate blue-gray",
+        "forest green"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "The asset belongs to an extracted 'world_map/pieces/objects' directory in a tileset collection, functioning as a multi-tile modular world map prop."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The filename suffix '_C' denotes variant C of town map objects."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff00",
+        "#98a2b9",
+        "#32743a",
+        "#d56758",
+        "#804456",
+        "#7e7e97",
+        "#423b44",
+        "#f4b17e",
+        "#5d5867",
+        "#4d2e37",
+        "#dde8e9"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:32.806778+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Static/Props-individual sprites/pots6_0_png",
+    "name": "pots6_0",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Static/Props-individual sprites/pots6_0.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "062a3f47fb1b1d03ff58bfe4fbf1810ce9079a4f460fe03a27774abda29d8b85"
+    },
+    "theme_profile": {
+      "description": "A slender brown clay bottle or ceramic jug sealed with a small blue stopper, suitable as a dungeon or fantasy interior prop.",
+      "tags": [
+        "prop",
+        "pot",
+        "bottle",
+        "clay jar",
+        "ceramic",
+        "dungeon",
+        "container"
+      ],
+      "style": "16-bit pixel art",
+      "color_descriptors": [
+        "earthy brown",
+        "warm ochre",
+        "blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename 'pots6_0.png' ends with a sequential numeric suffix ('_0'), indicating it is part of a multi-file sequence (such as a breakable prop animation sequence or sequential variation)."
+      }
+    ],
+    "color_profile": {
+      "color_space": "19-color exact",
+      "palette": [
+        "#00000000",
+        "#9a5814",
+        "#744318",
+        "#74431800",
+        "#a57a20",
+        "#402d2400",
+        "#402d24",
+        "#1e4bb000",
+        "#5b2e17",
+        "#51342000",
+        "#1e5eb1",
+        "#623b1c00",
+        "#3c466400",
+        "#1e5eb100",
+        "#4f454a00",
+        "#1e57b000",
+        "#1e4bb0",
+        "#7d481700",
+        "#6b3c1700"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:44.558676+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/misc-weapons/weapon_153_png",
+    "name": "weapon_153",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/misc-weapons/weapon_153.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "de8359cd57a2e0833b297c79e39775ef5176674a14a3f8c08553c7da5c7c5712"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art flail weapon featuring a wooden shaft and a dangling chain connected to a glowing blue spiked head.",
+      "tags": [
+        "weapon",
+        "flail",
+        "mace",
+        "bludgeon",
+        "magic weapon",
+        "blue glow",
+        "rpg icon",
+        "16x16"
+      ],
+      "style": "16-bit RPG pixel art icon",
+      "color_descriptors": [
+        "glowing cyan",
+        "deep blue",
+        "wooden brown",
+        "black outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a standalone 16x16 pixel graphic depicting a weapon item from an RPG icon pack, designating it as an icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The file path indicates '16x16-rpg-icon-pack', matching the native resolution of 16x16 pixels."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#4bccff",
+        "#6a4529",
+        "#266eff",
+        "#283b73",
+        "#ffffff"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:48.856873+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_electric_zap_large_green/frame0001_png",
+    "name": "frame0001",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_electric_zap_large_green/frame0001.png"
+      ],
+      "cell_dimensions": {
+        "width": 72,
+        "height": 72
+      },
+      "inferred_grid": null,
+      "hash": "42ddeb462e940b8c39966206bdd4f04e75e435c94c042864792aa58f8dd0ab88"
+    },
+    "theme_profile": {
+      "description": "An electric discharge animation frame featuring crackling arcs of lightning and radiating energy waves.",
+      "tags": [
+        "vfx",
+        "electric",
+        "zap",
+        "lightning",
+        "energy",
+        "burst",
+        "shockwave",
+        "pixel art"
+      ],
+      "style": "Pixel Art VFX",
+      "color_descriptors": [
+        "pale electric blue",
+        "soft chartreuse green",
+        "mint white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "Filename 'frame0001.png' follows sequential numbering within an animation folder, identifying it as a subframe of a multi-file sequence."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The folder name 'fx1_electric_zap_large_green' explicitly denotes a visual effect of an electric zap."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "Descriptors 'large' and 'green' denote size and color palette variations of the electric zap effect."
+      }
+    ],
+    "color_profile": {
+      "color_space": "18-color exact",
+      "palette": [
+        "#00000000",
+        "#e2f1f100",
+        "#e2f1f1",
+        "#bce3fc",
+        "#bce3fc00",
+        "#e9f99300",
+        "#e9f993",
+        "#e5f5c200",
+        "#e6f6b200",
+        "#e4f3d100",
+        "#e3f3d900",
+        "#e7f7aa00",
+        "#c8e7f800",
+        "#e7f7a500",
+        "#e4f4cb00",
+        "#e3f2de00",
+        "#cfeaf600",
+        "#d8edf300"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:43:54.487947+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/WATER GROUND 17_png",
+    "name": "WATER GROUND 17",
+    "asset_pack_identifier": "pixeljad/megabundle",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/DAY/WATER GROUND 17.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "06ef096aec969e2171b316c16e5289ca659a4fb39603a3cf650fe6231b8e8806"
+    },
+    "theme_profile": {
+      "description": "A 32x32 pixel art environment tile featuring lush green foliage covering a rocky edge next to water.",
+      "tags": [
+        "tileset",
+        "foliage",
+        "leaves",
+        "grass",
+        "rock",
+        "water ground",
+        "nature",
+        "sengoku",
+        "environment"
+      ],
+      "style": "16-bit Japanese feudal adventure pixel art",
+      "color_descriptors": [
+        "vibrant green",
+        "lime green",
+        "slate grey",
+        "deep blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename ends with sequential number '17', indicating it is part of an exported sequence of tiles within the tileset."
+      },
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "The directory path contains 'SENGOKU ADVENTURE TILESET', confirming this asset is an environment tile for a level map."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#378f44",
+        "#57b83f",
+        "#8bd345",
+        "#236343",
+        "#546a91",
+        "#7a8a96",
+        "#374e77",
+        "#97a5b0",
+        "#b2bdc1",
+        "#1f3262",
+        "#347f99",
+        "#18687e",
+        "#08416e",
+        "#0ba6c1"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:01.132305+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_small_red/frame0012_png",
+    "name": "frame0012",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_small_red/frame0012.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "23ed9b09876cc8ea167e1c78faa10df37bb4a668108d26f9e84e15d7e94be3a0"
+    },
+    "theme_profile": {
+      "description": "A single animation frame of a small red pixel-art energy shield or shockwave deflecting an impact.",
+      "tags": [
+        "vfx",
+        "fx",
+        "energy shield",
+        "forcefield",
+        "barrier",
+        "impact",
+        "pixel art",
+        "red"
+      ],
+      "style": "16-bit retro pixel art VFX",
+      "color_descriptors": [
+        "bright red",
+        "coral pink",
+        "soft orange"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename 'frame0012.png' ends with sequential numbers within an animation directory, confirming it is part of a multi-file animation sequence (is_subframe: true)."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The prefix 'fx1_' and directory name 'energy_shield_small_red' indicate this asset is a visual particle/shield effect."
+      }
+    ],
+    "color_profile": {
+      "color_space": "17-color exact",
+      "palette": [
+        "#00000000",
+        "#fc9c7e00",
+        "#fc9c7e",
+        "#fc5842",
+        "#fc584200",
+        "#fdcdbe",
+        "#fdcdbe00",
+        "#fc7a6000",
+        "#fc928000",
+        "#fcaf9f00",
+        "#fcbca800",
+        "#fcac9300",
+        "#fcb49e00",
+        "#fc756100",
+        "#fc8b6f00",
+        "#fc695100",
+        "#fcc0ae00"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:06.305946+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Small_Cliff_Grass/SmallCliff_Grass_2_png",
+    "name": "SmallCliff_Grass_2",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Small_Cliff_Grass/SmallCliff_Grass_2.png"
+      ],
+      "cell_dimensions": {
+        "width": 96,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "241569cda19d700bfff2ec3458384c06c33f9cad45b636ae040fb18f25502ac6"
+    },
+    "theme_profile": {
+      "description": "A horizontal slice of small cliff terrain featuring yellow-green grass atop earthy brown soil with a turquoise water edge foam line.",
+      "tags": [
+        "cliff",
+        "grass",
+        "water edge",
+        "shoreline",
+        "terrain",
+        "nature",
+        "subframe",
+        "pixel art"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "olive yellow-green",
+        "earthy brown",
+        "vibrant turquoise",
+        "pale lilac-white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename ends in a sequential number ('_2.png') and is located within an 'Animation' directory, signifying that this asset is an individual subframe of a multi-file animation sequence."
+      },
+      {
+        "rule": "Rule 5: Tileset Geography",
+        "rationale": "The asset visually represents horizontal modular terrain elements (grass, cliff face, and water shore)."
+      }
+    ],
+    "color_profile": {
+      "color_space": "13-color exact",
+      "palette": [
+        "#743d37",
+        "#502629",
+        "#1e00003c",
+        "#c0a920",
+        "#9b5b45",
+        "#14ad82",
+        "#360f1a",
+        "#8d7f20",
+        "#715620",
+        "#23cfa1",
+        "#c07954",
+        "#5ef6cb",
+        "#00000000"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:12.510083+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-props-mansion-pack-1/extracted/Super Pixel Props - Mansion Pack 1/PNG/wall_sconce_gold_on/frame0000_png",
+    "name": "frame0000",
+    "asset_pack_identifier": "untiedgames/super-pixel-props-mansion-pack-1",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-props-mansion-pack-1/extracted/Super Pixel Props - Mansion Pack 1/PNG/wall_sconce_gold_on/frame0000.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "ccaaee5933e7cc3385a1cdda0db54771c68c870c22201a988f3b8926799e17fa"
+    },
+    "theme_profile": {
+      "description": "A golden two-candle wall sconce with glowing, animated flames designed for an interior mansion setting.",
+      "tags": [
+        "prop",
+        "lighting",
+        "wall sconce",
+        "candle",
+        "flame",
+        "fire",
+        "gold",
+        "mansion",
+        "pixel art"
+      ],
+      "style": "16-bit detailed pixel art",
+      "color_descriptors": [
+        "golden brown",
+        "warm yellow",
+        "fiery orange",
+        "deep copper"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename 'frame0000.png' located inside 'wall_sconce_gold_on' follows a numbered sequence pattern, indicating this asset is an individual subframe of a multi-file animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:18.448899+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Mockup1_1x_png",
+    "name": "Mockup1_1x",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "preview",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "preview",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Mockup1_1x.png"
+      ],
+      "cell_dimensions": {
+        "width": 640,
+        "height": 368
+      },
+      "inferred_grid": null,
+      "hash": "b6102d098d8975334ddc618f0d9192c42c9c96f052b67e4682e0d788ee772a35"
+    },
+    "theme_profile": {
+      "description": "A full top-down scene mockup displaying a vibrant fantasy forest clearing with a cascading waterfall, clear pond with water lilies, massive ancient trees with shelf fungi, and rocky cliffs.",
+      "tags": [
+        "mockup",
+        "preview",
+        "grasslands",
+        "fantasy",
+        "forest",
+        "waterfall",
+        "pond",
+        "nature",
+        "top-down",
+        "rpg"
+      ],
+      "style": "16-bit top-down fantasy pixel art",
+      "color_descriptors": [
+        "mossy yellow-green",
+        "vibrant teal water",
+        "earthy bark brown",
+        "dark pine green",
+        "crimson red mushrooms"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 9: Mockups & Previews",
+        "rationale": "The filename contains 'Mockup' and visually demonstrates an assembled in-game scene showcasing the tileset and environment assets in context."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The '_1x' suffix denotes standard native scale resolution variant of the mockup."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:24.187434+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Animation/Waterfall/32x32_Waterfall_Middle_png",
+    "name": "32x32_Waterfall_Middle",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "animation_frames",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Animation/Waterfall/32x32_Waterfall_Middle.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": {
+        "columns": 8,
+        "rows": 1,
+        "cell_width": 32,
+        "cell_height": 32,
+        "contains_multiple_animations": false,
+        "inferred_animations": [
+          {
+            "name": "waterfall_flow",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 8,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 2: Embedded Resolution",
+                "rationale": "Filename specifies '32x32', giving 8 frames across 256x32 pixels."
+              },
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "Visual inspection shows 8 contiguous 32x32 looping animation frames of cascading middle waterfall flow."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "605f3cb275b61b958ee179e0341571accee3a4741092660c6a5e03eda80a5b46"
+    },
+    "theme_profile": {
+      "description": "An 8-frame seamless looping animation strip of a vibrant turquoise pixel art waterfall middle segment.",
+      "tags": [
+        "waterfall",
+        "water",
+        "nature",
+        "environment",
+        "animated",
+        "liquid",
+        "stream",
+        "grasslands"
+      ],
+      "style": "Pixel Art 16-bit Fantasy",
+      "color_descriptors": [
+        "turquoise",
+        "emerald green",
+        "mint green",
+        "aquamarine"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The filename prefix '32x32' denotes a cell size of 32x32 pixels."
+      },
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "The image dimensions are 256x32, which cleanly divides into 8 columns of 32x32 frames representing a single looping animation."
+      }
+    ],
+    "color_profile": {
+      "color_space": "5-color exact",
+      "palette": [
+        "#14ad82",
+        "#44c8a6",
+        "#76decc",
+        "#4fd4b6",
+        "#138d59"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:29.404430+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 8,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Animation/Small_Cliff_Sand/SmallCliff_Sand_4_png",
+    "name": "SmallCliff_Sand_4",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "animation_frames",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v1/Animation/Small_Cliff_Sand/SmallCliff_Sand_4.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": {
+        "columns": 6,
+        "rows": 1,
+        "cell_width": 16,
+        "cell_height": 16,
+        "contains_multiple_animations": false,
+        "inferred_animations": [
+          {
+            "name": "water_lapping",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 6,
+            "inference_reasoning": [
+              {
+                "rule": "Rule 13: Visual Grid Deduction",
+                "rationale": "The 96x16 image divides into 6 horizontal cells of 16x16 pixels depicting an animated water shoreline cycle."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "c98bf8d79ab8f0099bf21bb17ca9f01b96b892cd761e0c6eb509bf1e9db15cb1"
+    },
+    "theme_profile": {
+      "description": "A 6-frame animation strip showing turquoise water lapping against a diagonal brown cliff and sand edge.",
+      "tags": [
+        "water",
+        "cliff",
+        "sand",
+        "shoreline",
+        "animated tile",
+        "grasslands",
+        "pixel art",
+        "environment"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "bright turquoise",
+        "earthy brown",
+        "pale sand beige",
+        "deep maroon"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 13: Visual Grid Deduction",
+        "rationale": "96 pixels wide by 16 pixels high evenly breaks down into 6 frames of 16x16 pixels forming a looping shoreline animation."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "Although the filename ends in '_4', it refers to tile configuration piece #4 rather than a single subframe, as the image itself contains the complete 6-frame animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "11-color exact",
+      "palette": [
+        "#00000000",
+        "#1e00003c",
+        "#502629",
+        "#743d37",
+        "#14ad82",
+        "#9b5b45",
+        "#360f1a",
+        "#4c4c58",
+        "#23cfa1",
+        "#5ef6cb",
+        "#9b492f"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:38.313336+00:00"
+    },
+    "animation_profile": {
+      "num_frames": 6,
+      "base_frame_duration": 0.1,
+      "loop_type": "forward"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/potions/potion_59_png",
+    "name": "potion_59",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/potions/potion_59.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "32ef8c6c21791c320eadec5644025ae7c874f04cd9029eef5dc71e4f8255f473"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art potion bottle filled with a pale golden or beige liquid, bearing a white capital letter 'F' or emblem on the label/glass, capped with a stopper.",
+      "tags": [
+        "potion",
+        "item",
+        "icon",
+        "consumable",
+        "alchemy",
+        "bottle",
+        "magic",
+        "rpg"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "pale yellow",
+        "cream",
+        "white",
+        "black outline",
+        "light brown"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset has dimensions of 16x16 pixels and represents a single inventory potion item from an RPG icon pack, qualifying it directly as an icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The path contains '16x16', matching the 16x16 pixel dimensions of this individual icon asset."
+      }
+    ],
+    "color_profile": {
+      "color_space": "9-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#c7b08b",
+        "#ffffff",
+        "#f4d29c",
+        "#ba756a",
+        "#ffeecc",
+        "#fef3c0",
+        "#6a4529"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:42.306541+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shirts/shirt_60_png",
+    "name": "shirt_60",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/shirts/shirt_60.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "83dd20f7ade91474b598e679ecec00370ea6cde4f7f2340421b0e709e770f14e"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon depicting a white or light-colored shirt or cloth tunic with dark trim.",
+      "tags": [
+        "shirt",
+        "armor",
+        "clothing",
+        "tunic",
+        "rpg icon",
+        "inventory item",
+        "equipment"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "white",
+        "cream",
+        "black outline",
+        "pale yellow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The image is a 16x16 standalone graphic from an RPG icon pack representing a shirt/equipment item, indicating it is an inventory icon."
+      },
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The folder path specifies '16x16', matching the asset's exact dimensions."
+      }
+    ],
+    "color_profile": {
+      "color_space": "5-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#ffffff",
+        "#a28e77",
+        "#dbcea3"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:46.842576+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/dreamir/elves-pack/extracted/Elves_Pack/Elf_Mage/Elf_Mage_Spell_2NoEffeckt/Elf_Mage_Spell_6_png",
+    "name": "Elf_Mage_Spell_6",
+    "asset_pack_identifier": "dreamir/elves-pack",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/dreamir/elves-pack/extracted/Elves_Pack/Elf_Mage/Elf_Mage_Spell_2NoEffeckt/Elf_Mage_Spell_6.png"
+      ],
+      "cell_dimensions": {
+        "width": 110,
+        "height": 80
+      },
+      "inferred_grid": null,
+      "hash": "a623812679d4d6f05779a692685aa2aaec657e7ce513cc3ae8ecaaa331bb913d"
+    },
+    "theme_profile": {
+      "description": "A pixel art blonde elf mage in a green tunic holding a staff adorned with a blue orb during a spellcasting motion.",
+      "tags": [
+        "elf",
+        "mage",
+        "spellcaster",
+        "staff",
+        "spell",
+        "cast",
+        "pixel-art",
+        "no-effect"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "forest green",
+        "blonde yellow",
+        "deep brown",
+        "sapphire blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename ends in '_6.png', designating it as frame 6 within an animation sequence composed of individual image files."
+      },
+      {
+        "rule": "Rule 3: Action Signatures",
+        "rationale": "The keyword 'Spell' in the folder and filename indicates an entity casting/attack animation."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The folder name contains 'NoEffeckt', indicating this is a variant version of the animation rendered without particle or visual effects."
+      }
+    ],
+    "color_profile": {
+      "color_space": "22-color exact",
+      "palette": [
+        "#00000000",
+        "#4b692f",
+        "#6a4020",
+        "#344820",
+        "#3f2613",
+        "#dbaf00",
+        "#513118",
+        "#2a1504",
+        "#eec39a",
+        "#d0a680",
+        "#233116",
+        "#d4ad89",
+        "#bf9c7c",
+        "#5e8cff",
+        "#2b1a0d",
+        "#12190b",
+        "#ffce00",
+        "#170e07",
+        "#000082",
+        "#0000cc",
+        "#ffffff",
+        "#a0acee"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:53.263204+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Animated props/individual files/lightning-2tiles-frame6_png",
+    "name": "lightning-2tiles-frame6",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "multi_file",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "multi_file",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Animated props/individual files/lightning-2tiles-frame6.png"
+      ],
+      "cell_dimensions": {
+        "width": 96,
+        "height": 160
+      },
+      "inferred_grid": null,
+      "hash": "8ba66892b800c1f1c7fbd68e117f416cc15cd57aed4bf23d37a0ca676d5d4c95"
+    },
+    "theme_profile": {
+      "description": "A single subframe capturing residual dissipating electric sparks from a vertical lightning strike.",
+      "tags": [
+        "lightning",
+        "electric",
+        "vfx",
+        "sparks",
+        "animated prop",
+        "energy",
+        "spell"
+      ],
+      "style": "Pixel Art VFX",
+      "color_descriptors": [
+        "light cyan",
+        "sky blue",
+        "electric blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 4: Multi-File Sequences",
+        "rationale": "The filename ends with sequential indicator 'frame6' located in an 'individual files' directory, confirming it is an individual subframe belonging to a multi-file sequence."
+      },
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The asset is an electrical lightning effect, categorized under animated visual effects/props."
+      }
+    ],
+    "color_profile": {
+      "color_space": "3-color exact",
+      "palette": [
+        "#00000000",
+        "#ebf7fd1b",
+        "#b6e5fe"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:44:59.308287+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Static/Props-individual sprites/items-weapons_11_png",
+    "name": "items-weapons_11",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Static/Props-individual sprites/items-weapons_11.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "c36610c4d89e62f24050ac7679d3536bfb8121d12b5b620d842abba9d400e62f"
+    },
+    "theme_profile": {
+      "description": "A pixel art hammer item featuring a sturdy wooden handle and a heavy, rectangular head.",
+      "tags": [
+        "hammer",
+        "warhammer",
+        "weapon",
+        "tool",
+        "item",
+        "equipment",
+        "static prop",
+        "pixel art",
+        "rpg"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "dusty mauve",
+        "slate purple",
+        "reddish brown",
+        "dark gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a 32x32 pixel graphic depicting an isolated weapon/item, making it an icon/item sprite."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "The folder path 'Props/Static/Props-individual sprites' confirms this is an individual static prop/item icon rather than part of an animated sequence despite numerical indexing."
+      }
+    ],
+    "color_profile": {
+      "color_space": "",
+      "palette": [],
+      "dominant_colors": [],
+      "transparent": false
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:45:09.035354+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/swords/sword_170_png",
+    "name": "sword_170",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/swords/sword_170.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "34d190fe2f804c37eaa8fbbc87033592a5a28fe5aa9154f27c6603d6e73310ac"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon depicting a short sword or curved dagger with a sharp silver blade, a rounded dark handguard, and a hilt.",
+      "tags": [
+        "sword",
+        "dagger",
+        "blade",
+        "weapon",
+        "rpg icon",
+        "melee",
+        "16x16",
+        "pixel art"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "silver blade",
+        "dark charcoal guard",
+        "cool gray highlights"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 2: Embedded Resolution",
+        "rationale": "The filepath contains '16x16', matching the exact dimensions of the image (16x16 pixels)."
+      },
+      {
+        "rule": "Rule 7: UI & HUD",
+        "rationale": "The filepath includes 'icon-pack' and is categorized under 'swords', designating it as an inventory/UI item icon."
+      },
+      {
+        "rule": "Rule 12: Icons & Small Graphics",
+        "rationale": "The asset is a standalone 16x16 pixel graphic representing a weapon item, qualifying it with is_icon: true."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#242234",
+        "#8b93af",
+        "#b3b9d1",
+        "#4a5462",
+        "#ffffff"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:45:14.769131+00:00"
+    }
   }
 ]

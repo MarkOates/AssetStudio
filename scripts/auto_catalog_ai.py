@@ -68,7 +68,7 @@ def main():
     uncat_files = [f for f in uncat_files if f not in proposed_paths]
     
     # Process 500 new files
-    batch = uncat_files[:500]
+    batch = uncat_files[:50]
     print(f"Found {len(uncat_files)} uncatalogued files. Processing {len(batch)}...")
     
     system_instruction = """You are an expert game asset cataloger and data engineer.
@@ -78,8 +78,8 @@ Given an image and its file path, analyze it using the Formalized Heuristic Rule
     * **Rule 1: Strip Suffix Matching** - If the filename matches `_strip<N>`, it is `animation_frames` with exactly `<N>` frames.
 * **Rule 2: Embedded Resolution** - If the filename states a resolution like `16x16px`, these are likely the cell or tile dimensions.
 * **Rule 3: Action Signatures** - Action verbs like `idle`, `walk`, `run`, `attack`, `jump`, `death` indicate character/entity animations.
-* **Rule 4: Multi-File Sequences** - Filenames ending in sequential numbers denote a `multi_file` animation. You must flag `is_subframe: true` because it is part of a sequence.
-* **Rule 5: Tileset Geography** - Filenames containing `tileset`, `terrain`, `grid` indicate environment Tilemaps.
+* **Rule 4: Multi-File Sequences** - Filenames ending in sequential numbers denote a `multi_file_animation`. You must flag `is_subframe: true` because it is part of a sequence.
+* **Rule 5: Environment/Tilesets** - Filenames with `tileset`, `map`, `bg`, `layer` are usually environmental. 
 * **Rule 6: Parallax Backgrounds** - Wide aspect ratios or keywords like `sky`, `mountains`, `layers/`, `far`, `mid` indicate Background layers.
 * **Rule 7: UI & HUD** - Keywords `gui`, `ui`, `border`, `cursor`, `icon` indicate interface elements.
 * **Rule 8: Visual Effects (VFX)** - Keywords like `fx1_`, `explosion`, `spark`, `impact` denote particle/VFX assets.
@@ -88,11 +88,24 @@ Given an image and its file path, analyze it using the Formalized Heuristic Rule
 * **Rule 11: Alternative Reasoning** - If you cannot find a specific rule that fits perfectly, state your own logical reasoning here.
 * **Rule 12: Icons & Small Graphics** - If the asset is a very small standalone graphic (like 16x16 or 32x32) representing an item, weapon, material, or UI element, you must flag `is_icon: true`.
 * **Rule 13: Visual Grid Deduction** - You MUST visually analyze sprite sheets. Do not just rely on the filename. Count the columns and rows to deduce exact pixel dimensions. If a single sheet contains MULTIPLE distinct animations on different rows, you MUST return a separate proposal for each animation sequence.
+* **Rule 14: Type Definitions** - 
+    - `animation_frames`: A discrete animation sequence, typically arranged as a 1D strip of frames.
+    - `sprite_sheet`: A 2D atlas containing multiple distinct animations (e.g., idle, walk, attack) or an atlas of distinct items.
+    - `sprite_sheet_cell`: A single static asset intended to be extracted from a larger sheet of props or items.
+    - `tileset`: An environmental grid of map tiles intended to be assembled in a level editor.
+    - `multi_file_animation`: A single frame image belonging to a sequentially numbered directory of frames.
+    - `static_image`: A standalone image containing no animation data.
+    - `preview`: Vendor promotional art or layout mockups.
+    - `sound_effect` / `music`: Audio files.
+    - `pixel_font` / `ttf_font`: Typography files.
+    - `3d_model`: 3D object files.
+    - `text`: Documentation, license, or readme files.
+* **Rule 15: Multi-Directional Character Sheets** - Character sprites are frequently arranged in grids where each row represents the same animation sequence (e.g., a walk cycle) rendered from a different cardinal direction. These should be interpreted as a single animation entity (`contains_multiple_animations: false`) rather than distinct narrative actions.
 
 You MUST output ONLY valid JSON matching this exact schema:
 {
   "catalog_proposal": {
-    "type": "animation_frames | multi_file | static_image | preview | sprite_sheet | sprite_sheet_cell",
+    "type": "animation_frames | multi_file_animation | static_image | preview | sprite_sheet | sprite_sheet_cell | tileset | sound_effect | music | pixel_font | ttf_font | 3d_model | text",
     "num_frames": 1,
     "cell_dimensions": {"width": null, "height": null},
     "is_subframe": false,

@@ -94,7 +94,7 @@ function renderAnimations(showAnimations) {
         if (!showAnimations) {
             if (type === 'spritesheet') {
                 el.style.backgroundPosition = `-${sx}px -${sy}px`;
-            } else if (type === 'multifile') {
+            } else if (type === 'multi_file_animation') {
                 const frames = JSON.parse(el.dataset.frames);
                 el.querySelector('img').src = frames[0];
             }
@@ -113,7 +113,7 @@ function renderAnimations(showAnimations) {
                 el.style.backgroundPosition = `-${newX}px -${sy}px`;
             }, intervalMs);
             animationTimers.push(timer);
-        } else if (type === 'multifile') {
+        } else if (type === 'multi_file_animation') {
             const frames = JSON.parse(el.dataset.frames);
             const img = el.querySelector('img');
             const timer = setInterval(() => {
@@ -153,10 +153,10 @@ function generateAssetPreviewHtml(asset, boxHeight = 180) {
                                 style="width: ${w}px; height: ${h}px; margin: 0 auto; background-image: url('${src}'); background-position: -${sx}px -${sy}px; background-repeat: no-repeat; image-rendering: pixelated; transform: scale(${scale}); transform-origin: center;"></div>`;
                 
                 imagesHtml = `<div style="height: ${boxHeight}px; width: 100%; display: flex; align-items: center; justify-content: center; background: #161616; overflow:hidden;">${innerHtml}</div>`;
-            } else if (asset.resource.type === 'multi_file' && asset.resource.source_files.length > 1) {
+            } else if (asset.resource.type === 'multi_file_animation' && asset.resource.source_files.length > 1) {
                 const framesStr = JSON.stringify(asset.resource.source_files).replace(/"/g, '&quot;');
                 imagesHtml = `<div class="anim-container" 
-                                data-type="multifile" 
+                                data-type="multi_file_animation" 
                                 data-frames-count="${anim.num_frames}" 
                                 data-duration="${anim.base_frame_duration}"
                                 data-frames="${framesStr}"
@@ -192,7 +192,8 @@ function renderAssetGrid(assets, container, showAnimations = true) {
         if (asset.type === 'animation') typeIcon = '<i class="fa-solid fa-film" title="Animation"></i>';
         else if (asset.type === 'sprite_sheet') typeIcon = '<i class="fa-solid fa-border-all" title="Sprite Sheet"></i>';
         else if (asset.type === 'image') typeIcon = '<i class="fa-solid fa-image" title="Image"></i>';
-        else if (asset.type === 'audio' || asset.type === 'sfx' || asset.type === 'music') typeIcon = '<i class="fa-solid fa-music" title="Audio"></i>';
+        else if (asset.type === 'audio' || asset.type === 'sound_effect' || asset.type === 'music') typeIcon = '<i class="fa-solid fa-music" title="Audio"></i>';
+        else if (asset.type === 'pixel_font' || asset.type === 'ttf_font') typeIcon = '<i class="fa-solid fa-font" title="Font"></i>';
 
         const assetUrl = `asset.html?id=${encodeURIComponent(asset.identifier)}`;
 
