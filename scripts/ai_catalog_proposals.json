@@ -1,0 +1,1474 @@
+[
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_126_png",
+    "name": "icon_126",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/100% Icons/icon_126.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "07800cf8a6fafbe8e1e0432bed37cde33de1ebb721bc52a6bfc4e549921e56f2"
+    },
+    "theme_profile": {
+      "description": "A classic 16x16 pixel art image icon showing a framed landscape with green rolling hills or mountains under a blue sky with a bright yellow sun.",
+      "tags": [
+        "icon",
+        "user interface",
+        "image",
+        "picture",
+        "photo",
+        "gallery",
+        "landscape",
+        "pixel art",
+        "mountain",
+        "sun"
+      ],
+      "style": "16-bit retro UI pixel art",
+      "color_descriptors": [
+        "vibrant green",
+        "sky blue",
+        "bright yellow",
+        "dark framing"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule: Icon Categorization",
+        "rationale": "The asset displays standard UI iconography for an image/gallery item within a 16x16 square frame."
+      },
+      {
+        "rule": "Rule: Static Single-Frame Detection",
+        "rationale": "The asset consists of a single standalone 16x16 icon without animation frames or sprite sheet layout."
+      }
+    ],
+    "color_profile": {
+      "color_space": "15-color exact",
+      "palette": [
+        "#14a02e",
+        "#249fde",
+        "#221c1a",
+        "#333941",
+        "#221c1a00",
+        "#20d6c7",
+        "#33394100",
+        "#24523b",
+        "#2a2a2d00",
+        "#27252700",
+        "#2d2f3400",
+        "#fffc40",
+        "#24202000",
+        "#28272900",
+        "#2c2d3100"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:03.509128+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/world-map-pixel-art-tileset/extracted/world_map/pieces/terrain/deep_ocean_edge_west_f3_png",
+    "name": "deep_ocean_edge_west_f3",
+    "asset_pack_identifier": "untiedgames/world-map-pixel-art-tileset",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/untiedgames/world-map-pixel-art-tileset/extracted/world_map/pieces/terrain/deep_ocean_edge_west_f3.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "fee07aa9a75268d8546fc3717b4e567b3b1b02297932c78b0d316a9342f337e3"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art tile frame depicting the west transition edge of deep ocean water, showing a subtle dark blue to medium blue seam.",
+      "tags": [
+        "water",
+        "deep ocean",
+        "ocean edge",
+        "terrain",
+        "world map",
+        "tile",
+        "pixel art",
+        "overworld"
+      ],
+      "style": "16-bit retro pixel art",
+      "color_descriptors": [
+        "dark navy purple",
+        "medium ocean blue"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Filename Analysis",
+        "rationale": "The filename 'deep_ocean_edge_west_f3.png' directly designates this asset as frame 3 of an animated western ocean edge tile."
+      },
+      {
+        "rule": "Dimension and Visual Context",
+        "rationale": "A 16x16 pixel asset with an edge boundary on the west side fits a standard modular overworld tileset grid."
+      }
+    ],
+    "color_profile": {
+      "color_space": "2-color exact",
+      "palette": [
+        "#392e4d",
+        "#3d4480"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:06.780764+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/dreamir/elves-pack/extracted/Elves_Pack/Elf_Swordsman/Elf_Swordman_Attack2/Elf_Swordman_Attack2_4_png",
+    "name": "Elf_Swordman_Attack2_4",
+    "asset_pack_identifier": "dreamir/elves-pack",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/dreamir/elves-pack/extracted/Elves_Pack/Elf_Swordsman/Elf_Swordman_Attack2/Elf_Swordman_Attack2_4.png"
+      ],
+      "cell_dimensions": {
+        "width": 138,
+        "height": 96
+      },
+      "inferred_grid": null,
+      "hash": "670f067f469da1841a74b3d4f3055d66381b3bbd928aaf4aca36f57a23d7e6eb"
+    },
+    "theme_profile": {
+      "description": "An elven swordsman with blonde hair completing a low downward sword slash, accompanied by a subtle white motion trail.",
+      "tags": [
+        "elf",
+        "swordsman",
+        "attack",
+        "slash",
+        "pixel art",
+        "fantasy",
+        "warrior",
+        "sword"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "golden blonde",
+        "forest green",
+        "earthy brown",
+        "steel grey",
+        "faint white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "File Naming Convention",
+        "rationale": "The filename 'Elf_Swordman_Attack2_4.png' indicates this is an individual frame (frame 4) of a multi-frame attack animation sequence."
+      },
+      {
+        "rule": "Visual Deduction",
+        "rationale": "The image shows a single pose of an elven warrior driving a sword downwards with a motion slash arc, characteristic of an action frame in a 2D side-scrolling sprite animation."
+      }
+    ],
+    "color_profile": {
+      "color_space": "26-color exact",
+      "palette": [
+        "#00000000",
+        "#f8f8f8",
+        "#2b1a0d",
+        "#233116",
+        "#2a2b2b",
+        "#1a1a1a",
+        "#323334",
+        "#4e4f50",
+        "#3f2613",
+        "#eec39a",
+        "#dbaf00",
+        "#a7a7b4",
+        "#a87008",
+        "#0c0c0c",
+        "#d0d0e0",
+        "#e89808",
+        "#344820",
+        "#4b692f",
+        "#d6b08b",
+        "#ffce00",
+        "#080808",
+        "#f8d010",
+        "#d4ad89",
+        "#1d1d1d",
+        "#979ca0",
+        "#a0acee"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:10.051467+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/NIGHT/NIGHT WATER GROUND 16_png",
+    "name": "NIGHT WATER GROUND 16",
+    "asset_pack_identifier": "pixeljad/megabundle",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeljad/megabundle/extracted/MEGA BUNDLE 12 ASSET PACKS/SENGOKU ADVENTURE TILESET/NIGHT/NIGHT WATER GROUND 16.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "3c34eb812d12b3515dd3958a04422c8f19f5706edbc27e1132f6f7b5f43392ab"
+    },
+    "theme_profile": {
+      "description": "Pixel art night-palette tile featuring lush foliage meeting a dark water shoreline.",
+      "tags": [
+        "tileset",
+        "terrain",
+        "water",
+        "ground",
+        "foliage",
+        "night",
+        "pixel art",
+        "top-down"
+      ],
+      "style": "16-bit feudal Japanese night pixel art",
+      "color_descriptors": [
+        "deep navy",
+        "slate blue",
+        "muted forest green",
+        "pale mint"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Tile Asset Identification",
+        "rationale": "Single 32x32 tile showing a shoreline boundary, meant for top-down map construction."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#2b4742",
+        "#3b705a",
+        "#172a2b",
+        "#409061",
+        "#2a384f",
+        "#405965",
+        "#5b7677",
+        "#181c38",
+        "#738a84",
+        "#0b102d",
+        "#323a5b",
+        "#2f5474",
+        "#121c3f",
+        "#1c2038"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:13.776878+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/legs/leg_51_png",
+    "name": "leg_51",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/legs/leg_51.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "53cd57686bfe0b5a4598f562cf9eaca6424207ea0b1499e782b6a7bf498ac842"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art RPG equipment icon representing leather or bronze leg guards with a blue waistband and cuffs.",
+      "tags": [
+        "pixel art",
+        "rpg icon",
+        "legs",
+        "armor",
+        "pants",
+        "leather armor",
+        "equipment",
+        "greaves",
+        "breeches"
+      ],
+      "style": "16-bit RPG inventory icon",
+      "color_descriptors": [
+        "warm brown",
+        "golden tan",
+        "slate blue",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Visual Item Identification",
+        "rationale": "The asset clearly depicts a pair of pants or leg armor designed as an inventory icon."
+      },
+      {
+        "rule": "Dimension and Asset Class Matching",
+        "rationale": "The 16x16 pixel size and file path classify it as a single standalone inventory icon rather than an animation strip or sprite sheet."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#925c3d",
+        "#ba7a4e",
+        "#6b3f2c",
+        "#283b73",
+        "#e4ca95",
+        "#b3b9d1",
+        "#ffffff",
+        "#7c83aa",
+        "#f8f8e8",
+        "#849be4"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:16.919383+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_large_white/frame0000_png",
+    "name": "frame0000",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_large_white/frame0000.png"
+      ],
+      "cell_dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "inferred_grid": null,
+      "hash": "d2065cd9a366baf394b9a16407380ffb520fb128c9c928f8234ee8388d53a3de"
+    },
+    "theme_profile": {
+      "description": "Initial frame of a pixel-art energy shield or barrier barrier effect glowing in crisp white and soft icy cyan.",
+      "tags": [
+        "energy shield",
+        "barrier",
+        "force field",
+        "sci-fi",
+        "defense",
+        "vfx",
+        "pixel art",
+        "frame"
+      ],
+      "style": "Pixel Art VFX",
+      "color_descriptors": [
+        "pure white",
+        "pale cyan",
+        "black"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Filename Pattern Inference",
+        "rationale": "The filename 'frame0000.png' within a numbered folder indicates this is a single frame of a multi-frame sequence."
+      },
+      {
+        "rule": "Visual Content Deduction",
+        "rationale": "The asset displays a vertical elliptical barrier rim forming an energy shield effect in a single 64x64 pixel frame."
+      }
+    ],
+    "color_profile": {
+      "color_space": "16-color exact",
+      "palette": [
+        "#00000000",
+        "#e2f1f100",
+        "#e2f1f1",
+        "#c4dbe0",
+        "#c4dbe000",
+        "#cee2e500",
+        "#d3e6e800",
+        "#d8e9eb00",
+        "#d6e8ea00",
+        "#cbe0e400",
+        "#c9dee200",
+        "#d5e7e900",
+        "#d0e3e600",
+        "#ddedee00",
+        "#dceced00",
+        "#d0e4e700"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:20.206450+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_140_png",
+    "name": "icon_140",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_140.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "d2f0a9901cedd377a9e481e161496a1043697e8166b4b662756dd49b65b6290a"
+    },
+    "theme_profile": {
+      "description": "A pixel art shopping cart with a red frame and grey basket.",
+      "tags": [
+        "shopping cart",
+        "shop",
+        "store",
+        "market",
+        "ui",
+        "icon"
+      ],
+      "style": "Chunky pixel UI",
+      "color_descriptors": [
+        "red",
+        "slate grey",
+        "white",
+        "dark purple"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Visual Deduction",
+        "rationale": "Single standalone 32x32 pixel art icon depicting a retail shopping cart for UI shop menus."
+      }
+    ],
+    "color_profile": {
+      "color_space": "18-color exact",
+      "palette": [
+        "#00000000",
+        "#3b1725",
+        "#3b172500",
+        "#8b93af",
+        "#b4202a",
+        "#4a5462",
+        "#8b93af00",
+        "#221c1a00",
+        "#55405300",
+        "#4a546200",
+        "#59192600",
+        "#42354300",
+        "#5a637500",
+        "#631a2600",
+        "#4f364700",
+        "#3e263400",
+        "#33394100",
+        "#56546600"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:23.780337+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_59_png",
+    "name": "icon_59",
+    "asset_pack_identifier": "kazzter-k/interface-icons",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/kazzter-k/interface-icons/extracted/User Interface Icons/Separated Icons/200% Icons/icon_59.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": null,
+      "hash": "51194a5d3fac106f1085aa0ff20eafd5d6e612cc0b9aa70d5b79a3a35d406910"
+    },
+    "theme_profile": {
+      "description": "Pixel art defense debuff icon displaying 'DEF' with downward-pointing chevrons.",
+      "tags": [
+        "defense",
+        "debuff",
+        "ui",
+        "icon",
+        "stat down",
+        "rpg"
+      ],
+      "style": "16-bit pixel art UI",
+      "color_descriptors": [
+        "cyan",
+        "white",
+        "navy blue",
+        "dark purple"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 1: Dimensions and Format",
+        "rationale": "Single standalone 32x32 pixel image representing an individual user interface status icon."
+      },
+      {
+        "rule": "Rule 2: Semantic Visual Cues",
+        "rationale": "Downward-pointing arrow above the letters 'DEF' universally indicates a defense reduction or debuff."
+      }
+    ],
+    "color_profile": {
+      "color_space": "14-color exact",
+      "palette": [
+        "#181425",
+        "#2ce8f5",
+        "#0095e9",
+        "#18142500",
+        "#00000000",
+        "#124e89",
+        "#ffffff",
+        "#124e8900",
+        "#103f6600",
+        "#3d7fb300",
+        "#1e5a6a00",
+        "#143a6700",
+        "#15315700",
+        "#14294500"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:26.442017+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/dreamir/elves-pack/extracted/Elves_Pack/Elf_Assassin/Elf_Assassin_Attack1/Elf_Assassin_Attack1_2_png",
+    "name": "Elf_Assassin_Attack1_2",
+    "asset_pack_identifier": "dreamir/elves-pack",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/dreamir/elves-pack/extracted/Elves_Pack/Elf_Assassin/Elf_Assassin_Attack1/Elf_Assassin_Attack1_2.png"
+      ],
+      "cell_dimensions": {
+        "width": 110,
+        "height": 80
+      },
+      "inferred_grid": null,
+      "hash": "e960388759bbe49f553e388a2ae88fa8ab8682432b8a9b6e388b0403f24c9a5c"
+    },
+    "theme_profile": {
+      "description": "A pixel art hooded elf assassin lunging forward and slashing upward with a dagger, accompanied by a white slash effect.",
+      "tags": [
+        "elf",
+        "assassin",
+        "rogue",
+        "attack",
+        "slash",
+        "dagger",
+        "pixel art",
+        "fantasy",
+        "character frame"
+      ],
+      "style": "16-bit fantasy pixel art",
+      "color_descriptors": [
+        "dark charcoal",
+        "earthy brown",
+        "translucent white",
+        "pale peach"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Naming Convention and Path Structure",
+        "rationale": "The file name 'Elf_Assassin_Attack1_2.png' ends with an indexed number following an action label, identifying it as an individual animation frame."
+      },
+      {
+        "rule": "Visual Motion Analysis",
+        "rationale": "The single pose captures a dynamic upward dagger strike with an active weapon trail effect typical of mid-swing animation frames."
+      }
+    ],
+    "color_profile": {
+      "color_space": "24-color exact",
+      "palette": [
+        "#00000000",
+        "#f8f8f8",
+        "#3f2613",
+        "#2b1a0d",
+        "#323334",
+        "#212121",
+        "#191a1a",
+        "#353636",
+        "#0c0c0c",
+        "#23150b",
+        "#4e4f50",
+        "#61330b",
+        "#eec39a",
+        "#d4ad89",
+        "#bf9c7c",
+        "#7c7d7e",
+        "#080808",
+        "#1d1d1d",
+        "#a7a7b4",
+        "#170e07",
+        "#d0d0e0",
+        "#f8d010",
+        "#e89808",
+        "#a0acee"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:30.768713+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_aura_energy_small_blue/frame0003_png",
+    "name": "frame0003",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_aura_energy_small_blue/frame0003.png"
+      ],
+      "cell_dimensions": {
+        "width": 28,
+        "height": 28
+      },
+      "inferred_grid": null,
+      "hash": "e4d4f7189a59dae50d9cfd852e3a1e213091fb580b57caa4daf515e9a4f36ead"
+    },
+    "theme_profile": {
+      "description": "A small blue circular energy aura with radiating sparks.",
+      "tags": [
+        "energy",
+        "aura",
+        "fx",
+        "pixel art",
+        "magic",
+        "spark",
+        "blue"
+      ],
+      "style": "Pixel Art VFX",
+      "color_descriptors": [
+        "sky blue",
+        "cyan",
+        "white",
+        "soft yellow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Filename & Directory Pattern",
+        "rationale": "Named 'frame0003.png' inside 'fx1_aura_energy_small_blue', confirming it is a single frame of an animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "11-color exact",
+      "palette": [
+        "#00000000",
+        "#27abfa00",
+        "#27abfa",
+        "#fcd64b00",
+        "#bce3fc",
+        "#93d5fc",
+        "#ffffff",
+        "#fcd64b",
+        "#6eb9bf00",
+        "#a6c49100",
+        "#67bcd700"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:34.020794+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_explosion_large_violet/frame0004_png",
+    "name": "frame0004",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_explosion_large_violet/frame0004.png"
+      ],
+      "cell_dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "inferred_grid": null,
+      "hash": "17c267c13d4395918132c5bb699dc8a121924053f0ffea06e38064ca3f36ff9c"
+    },
+    "theme_profile": {
+      "description": "A single animation frame depicting an expanding cloud of pale smoke intertwined with a vibrant violet energy core and scattered shockwave particles.",
+      "tags": [
+        "pixel art",
+        "explosion",
+        "energy burst",
+        "vfx",
+        "violet",
+        "smoke effect",
+        "fx frame"
+      ],
+      "style": "16-bit retro pixel art",
+      "color_descriptors": [
+        "vibrant violet",
+        "soft lavender pink",
+        "pale grayish blue",
+        "deep indigo"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Sequential Frame Naming",
+        "rationale": "The filename 'frame0004.png' within a dedicated visual effects directory indicates this image is an isolated frame of a multi-frame animation sequence."
+      },
+      {
+        "rule": "Visual Explosion Progression",
+        "rationale": "The asset depicts a symmetrical expanding smoke puff and energy burst mid-detonation on a transparent background, matching standard pixel art visual effect frame conventions."
+      }
+    ],
+    "color_profile": {
+      "color_space": "8-color exact",
+      "palette": [
+        "#00000000",
+        "#8398af",
+        "#c4dbe0",
+        "#e2f1f1",
+        "#5633a8",
+        "#873ad5",
+        "#c95af8",
+        "#f899da"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:37.709686+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/hats and helmets/helmet_018_png",
+    "name": "helmet_018",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/hats and helmets/helmet_018.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "d6833e3b01f431f31a74fc0804812476b3ba4d29dde8106c54492e46609767da"
+    },
+    "theme_profile": {
+      "description": "A futuristic space or astronaut helmet featuring a white outer casing and dark blue tinted visor.",
+      "tags": [
+        "helmet",
+        "astronaut",
+        "sci-fi",
+        "space",
+        "armor",
+        "headwear",
+        "icon",
+        "pixel art"
+      ],
+      "style": "16-bit modern RPG pixel art",
+      "color_descriptors": [
+        "white",
+        "dark navy blue",
+        "silver gray",
+        "black"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Dimension and Metadata Verification",
+        "rationale": "Single standalone 16x16 sprite located in an RPG equipment icon collection representing a helmet."
+      }
+    ],
+    "color_profile": {
+      "color_space": "8-color exact",
+      "palette": [
+        "#0a1423",
+        "#00000000",
+        "#ffffff",
+        "#b3b9d1",
+        "#6d758d",
+        "#333941",
+        "#01284d",
+        "#405054"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:40.677090+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1_2/Props/Animated props/individual files/chest-opening no squeeze-frame4_png",
+    "name": "chest-opening no squeeze-frame4",
+    "asset_pack_identifier": "rafaelmatos/epic-rpg-world-the-depths-of-the-mountain",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/rafaelmatos/epic-rpg-world-the-depths-of-the-mountain/extracted/Epic RPG World - The dephs of the Mountain V1.2/Props/Animated props/individual files/chest-opening no squeeze-frame4.png"
+      ],
+      "cell_dimensions": {
+        "width": 160,
+        "height": 128
+      },
+      "inferred_grid": null,
+      "hash": "be9c463c698f7f7039fb1a51004db1af76a271cd48e19d144072af53110dd8cd"
+    },
+    "theme_profile": {
+      "description": "Animation frame showing a dark stone and wood chest bursting open with debris.",
+      "tags": [
+        "chest",
+        "opening",
+        "ruins",
+        "dungeon",
+        "animated prop",
+        "pixel art"
+      ],
+      "style": "16-bit top-down pixel art",
+      "color_descriptors": [
+        "dark slate gray",
+        "wood brown",
+        "golden yellow"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Filename Convention",
+        "rationale": "Filename 'chest-opening no squeeze-frame4.png' identifies this as frame 4 of a multi-frame animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "18-color exact",
+      "palette": [
+        "#00000000",
+        "#1f1918",
+        "#282d2f",
+        "#6c371e",
+        "#4b2e22",
+        "#905024",
+        "#30373a",
+        "#1d1f21",
+        "#3c4446",
+        "#1a1c25",
+        "#292322",
+        "#30221f",
+        "#799294",
+        "#243b4e",
+        "#4a5b5c",
+        "#5a5521",
+        "#8f8627",
+        "#4b5959"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:44.363532+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Water_Plants/Colour1/NoShadow/32x32_WaterPlants_NoShadow_6_png",
+    "name": "32x32_WaterPlants_NoShadow_6",
+    "asset_pack_identifier": "aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack",
+    "type": "animation_frames",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/aamatniekss/grasslands-era-of-fantasy-pixelart-asset-pack/extracted/EraOfFantasy_Grasslands_v2/Animation/Water_Plants/Colour1/NoShadow/32x32_WaterPlants_NoShadow_6.png"
+      ],
+      "cell_dimensions": {
+        "width": 32,
+        "height": 32
+      },
+      "inferred_grid": {
+        "columns": 6,
+        "rows": 1,
+        "cell_width": 32,
+        "cell_height": 32,
+        "contains_multiple_animations": false,
+        "inferred_animations": [
+          {
+            "name": "idle_sway",
+            "row": 0,
+            "start_frame": 0,
+            "frame_count": 6,
+            "inference_reasoning": [
+              {
+                "rule": "Visual Continuity",
+                "rationale": "Frames display sequential subtle movement of cattails swaying in water across a 6-frame loop."
+              }
+            ]
+          }
+        ]
+      },
+      "hash": "aa9ed3dc746f9652f318deae2f23fdc0ed2968ba3a44be906330020564844914"
+    },
+    "theme_profile": {
+      "description": "A looping pixel art animation strip of cattails and reeds swaying gently in shallow water.",
+      "tags": [
+        "water plant",
+        "cattails",
+        "reeds",
+        "vegetation",
+        "nature",
+        "swamp",
+        "pond",
+        "pixel art",
+        "animation"
+      ],
+      "style": "16-bit Top-down Fantasy Pixel Art",
+      "color_descriptors": [
+        "deep maroon brown",
+        "moss green",
+        "bright aqua cyan",
+        "forest green"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Grid Dimension Rule",
+        "rationale": "The total image dimensions are 192x32 pixels, dividing evenly into six 32x32 pixel frames arranged horizontally."
+      },
+      {
+        "rule": "Animation Sequence Rule",
+        "rationale": "Each consecutive 32x32 cell displays incremental frame-by-frame motion of the reeds and water ripples, indicating an animated loop."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#00000000",
+        "#3f4c34",
+        "#26302a",
+        "#201227",
+        "#6a794c",
+        "#63242a",
+        "#360f1a",
+        "#14ad82",
+        "#23c196",
+        "#5ef6cb"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:48.052287+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/ansimuz/warped-city-backgrounds-1/extracted/SynthCitiesFiles/layers/pink/mountains_png",
+    "name": "mountains",
+    "asset_pack_identifier": "ansimuz/warped-city-backgrounds-1",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/ansimuz/warped-city-backgrounds-1/extracted/SynthCitiesFiles/layers/pink/mountains.png"
+      ],
+      "cell_dimensions": {
+        "width": 160,
+        "height": 240
+      },
+      "inferred_grid": null,
+      "hash": "80dec8c1050fd9a54175af31020b3112215b7d58aa2ea651e1a65ff7a2f9a2f2"
+    },
+    "theme_profile": {
+      "description": "Pixel art purple mountain range layer for parallax backgrounds.",
+      "tags": [
+        "mountains",
+        "parallax",
+        "background",
+        "pixel art",
+        "synthwave",
+        "retro"
+      ],
+      "style": "Synthwave Pixel Art",
+      "color_descriptors": [
+        "deep purple",
+        "magenta",
+        "violet"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Background Layer Deduction",
+        "rationale": "Single standalone background layer graphic designed for vertical/horizontal parallax scrolling."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#684888",
+        "#00000000",
+        "#904890",
+        "#b04890"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:51.204482+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/dreamir/elves-pack/extracted/Elves_Pack/Elf_Archer/Elf_Archer_DeathNoEffeckt/Elf_Archer_Death5_png",
+    "name": "Elf_Archer_Death5",
+    "asset_pack_identifier": "dreamir/elves-pack",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/dreamir/elves-pack/extracted/Elves_Pack/Elf_Archer/Elf_Archer_DeathNoEffeckt/Elf_Archer_Death5.png"
+      ],
+      "cell_dimensions": {
+        "width": 110,
+        "height": 80
+      },
+      "inferred_grid": null,
+      "hash": "cdf856dd32dc6ef8b6db067946dfb3c8127fa3e032b9684cd74b86c8130231a8"
+    },
+    "theme_profile": {
+      "description": "Pixel art blonde elf archer falling backwards mid-death animation.",
+      "tags": [
+        "elf",
+        "archer",
+        "death",
+        "pixel art",
+        "fantasy",
+        "character"
+      ],
+      "style": "16-bit Fantasy Pixel Art",
+      "color_descriptors": [
+        "forest green",
+        "bright yellow",
+        "earth brown"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Sequential Frame Naming",
+        "rationale": "Filename 'Elf_Archer_Death5.png' indicates frame 5 of an exported death animation sequence."
+      }
+    ],
+    "color_profile": {
+      "color_space": "27-color exact",
+      "palette": [
+        "#00000000",
+        "#4b692f",
+        "#dbaf00",
+        "#344820",
+        "#321e0f",
+        "#3f2613",
+        "#a8a8a8",
+        "#513118",
+        "#233116",
+        "#6a4020",
+        "#eec39a",
+        "#323334",
+        "#170e07",
+        "#2b1a0d",
+        "#d4ad89",
+        "#4e4f50",
+        "#12190b",
+        "#192310",
+        "#080907",
+        "#1d0f03",
+        "#bf9c7c",
+        "#61330b",
+        "#ffce00",
+        "#b8997b",
+        "#f8d010",
+        "#e89808",
+        "#979ca0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:54.501942+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/hats and helmets/hat_040_png",
+    "name": "hat_040",
+    "asset_pack_identifier": "pixeltier/pixeltiers-modern-rpg-icon-set",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-modern-rpg-icon-set/extracted/Pixeltiers_16x16_Modern_RPG_Update_3/hats and helmets/hat_040.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "7156e7843e81171d80e05b4f75b4f58be9afec0f68932d575e546910ede2b4aa"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon of a brown wide-brimmed fedora or explorer hat with a light hatband.",
+      "tags": [
+        "hat",
+        "fedora",
+        "headwear",
+        "explorer hat",
+        "apparel",
+        "brown hat",
+        "rpg icon"
+      ],
+      "style": "16-bit RPG Icon Pixel Art",
+      "color_descriptors": [
+        "earthy brown",
+        "dark brown",
+        "soft white",
+        "black outline"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule: Icon Dimensions and Hierarchy",
+        "rationale": "The asset is a single 16x16 image located in a 'hats and helmets' folder within an RPG icon set pack, indicating it is an individual inventory item icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#0a1423",
+        "#634d40",
+        "#423934",
+        "#ffffff",
+        "#b3b9d1",
+        "#221c1a"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:27:57.192572+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_large_violet/frame0009_png",
+    "name": "frame0009",
+    "asset_pack_identifier": "untiedgames/super-pixel-effects-pack-1",
+    "type": "animation_frames",
+    "is_subframe": true,
+    "is_icon": false,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "animation_frames",
+      "source_files": [
+        "/Assets/untiedgames/super-pixel-effects-pack-1/extracted/Super Pixel Effects Pack 1/PNG/fx1_energy_shield_large_violet/frame0009.png"
+      ],
+      "cell_dimensions": {
+        "width": 64,
+        "height": 64
+      },
+      "inferred_grid": null,
+      "hash": "0b6f7255234594f02fcd03cd154a3ea8a567b3e4b809469e06487690f7d28e50"
+    },
+    "theme_profile": {
+      "description": "A single animation frame depicting an expanding violet and pink energy barrier with radiating elliptical force fields and dissolving pixel particles.",
+      "tags": [
+        "energy shield",
+        "forcefield",
+        "violet",
+        "pink",
+        "pixel art",
+        "vfx",
+        "barrier",
+        "sci-fi"
+      ],
+      "style": "Retro Pixel Art VFX",
+      "color_descriptors": [
+        "bright violet",
+        "light magenta",
+        "soft lavender",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Sequential Frame Naming Scheme",
+        "rationale": "The filename 'frame0009.png' within a numbered series folder indicates an individual animation frame."
+      },
+      {
+        "rule": "Single Visual Asset",
+        "rationale": "The 64x64 canvas contains a single state of a shield dissipation effect, identifying it as a subframe rather than a full sprite sheet."
+      }
+    ],
+    "color_profile": {},
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:28:00.327501+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/materials/logs2_6_png",
+    "name": "logs2_6",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/materials/logs2_6.png"
+      ],
+      "cell_dimensions": {
+        "width": 16,
+        "height": 16
+      },
+      "inferred_grid": null,
+      "hash": "d7b732fb9afbac3d80b93e6f788c1ca6d5ac51c727ef33371c46e1b9605e0644"
+    },
+    "theme_profile": {
+      "description": "A stacked pile of freshly cut wooden logs.",
+      "tags": [
+        "logs",
+        "wood",
+        "timber",
+        "lumber",
+        "crafting material",
+        "resource",
+        "icon"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "light tan",
+        "warm wood brown",
+        "dark brown outlines"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 1: Dimension and Path Analysis",
+        "rationale": "The 16x16 pixel size and 'materials' folder path identify this asset as an inventory or crafting resource icon."
+      },
+      {
+        "rule": "Rule 2: Visual Composition",
+        "rationale": "Displays six cut logs arranged in a 3-2-1 triangular stack, representing wood materials."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#ba7a4e",
+        "#925c3d",
+        "#e4ca95",
+        "#dba463"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:28:03.207266+00:00"
+    }
+  },
+  {
+    "identifier": "synthetic/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/axes/axe_15_png",
+    "name": "axe_15",
+    "asset_pack_identifier": "pixeltier/pixeltiers-16x16-rpg-icon-pack",
+    "type": "static_image",
+    "is_subframe": false,
+    "is_icon": true,
+    "visibility": "public",
+    "sheet_row_number": null,
+    "resource": {
+      "type": "static_image",
+      "source_files": [
+        "/Assets/pixeltier/pixeltiers-16x16-rpg-icon-pack/extracted/Pixeltiers_16x16_RPG_Pack_Update_8/axes/axe_15.png"
+      ],
+      "cell_dimensions": {
+        "width": null,
+        "height": null
+      },
+      "inferred_grid": null,
+      "hash": "a6bda23ed9a9f1c37361adc1ec3964f1a2733e847f0aa51b9dc1c93d824eb5d4"
+    },
+    "theme_profile": {
+      "description": "A 16x16 pixel art icon of a sturdy double-bladed battle axe with pale greenish-steel blades and a long wooden haft.",
+      "tags": [
+        "axe",
+        "battle axe",
+        "weapon",
+        "rpg icon",
+        "pixel art",
+        "melee weapon",
+        "equipment"
+      ],
+      "style": "16-bit RPG pixel art",
+      "color_descriptors": [
+        "pale mint green",
+        "silver white",
+        "woody brown",
+        "dark slate gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 1: Dimension & Single Frame Analysis",
+        "rationale": "The asset measures 16x16 pixels and represents a complete, self-contained item graphic, confirming it is a static icon rather than a sprite sheet or animation sequence."
+      },
+      {
+        "rule": "Rule 2: Icon Classification",
+        "rationale": "Both the directory context ('rpg-icon-pack/axes') and the visual layout (diagonally oriented weapon centered within a small square frame) indicate this is an inventory or equipment icon."
+      }
+    ],
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#151515",
+        "#a0c0b0",
+        "#ffffff",
+        "#608070",
+        "#6a4529"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    },
+    "ai_audit": {
+      "pass1_model": "gemini-flash-latest",
+      "pass1_timestamp": "2026-09-12T17:28:06.624790+00:00"
+    }
+  }
+]
