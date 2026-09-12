@@ -28,7 +28,7 @@ test('Asset Viewer loads and navigates', async ({ page }) => {
   expect(exceptions).toEqual([]);
   expect(networkErrors).toEqual([]);
 
-  const firstAssetLink = page.locator('.card-body h3 a').first();
+  const firstAssetLink = page.locator('.card-body div a').first();
   await firstAssetLink.click();
 
   await expect(page).toHaveURL(/.*asset\.html\?id=.*/);

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Asset Details</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -11,6 +12,9 @@
         <nav>
             <a href="index.html">All Assets</a>
             <a href="vendor.html">Vendors</a>
+            <a href="audit.html">Audit Dashboard</a>
+            <a href="https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM" target="_blank">Sheet</a>
+            <button onclick="syncData()" id="sync-btn" class="nav-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
         </nav>
     </header>
     <main>
@@ -34,8 +38,13 @@
                         imagesHtml = asset.FileMapping.source_files.map(f => `<img src="${f}" alt="Asset Image" class="detail-img" onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c; width:150px; display:inline-flex; margin-right:10px; margin-bottom:10px;\\'>File Not Found</div>';">`).join('');
                     }
 
+                    const sheetUrl = `https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM/edit#gid=646986983&range=A${asset.sheet_row_number}`;
+                    
                     container.innerHTML = `
-                        <h2>${asset.name}</h2>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h2 style="margin: 0;">${asset.name}</h2>
+                            <a href="${sheetUrl}" target="_blank" class="nav-btn" style="text-decoration: none; padding: 6px 12px; border: 1px solid #3a3a3a; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; margin: 0;"><i class="fa-solid fa-pen-to-square"></i> Edit Row ${asset.sheet_row_number}</a>
+                        </div>
                         <p><strong>Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(provider)}">${provider}</a></p>
                         <p><strong>Pack:</strong> ${pack.pack_name || 'Unknown'}</p>
                         <p><strong>Type:</strong> ${asset.type}</p>

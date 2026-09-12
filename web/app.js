@@ -1,6 +1,40 @@
 let GLOBAL_DATA = null;
 let animationTimers = [];
 
+async function openInFinder(targetPath) {
+    try {
+        await fetch('/api/open-finder', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: targetPath })
+        });
+    } catch (e) {
+        console.error("Failed to open finder", e);
+    }
+}
+
+async function syncData() {
+    const btn = document.getElementById('sync-btn');
+    if (btn) {
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Syncing...';
+        btn.disabled = true;
+    }
+    
+    try {
+        const res = await fetch('/api/sync', { method: 'POST' });
+        if (!res.ok) throw new Error("Sync failed");
+        
+        // Reload page to fetch new JSON
+        window.location.reload();
+    } catch (e) {
+        console.error(e);
+        if (btn) {
+            btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error';
+            btn.style.background = '#e74c3c';
+        }
+    }
+}
+
 async function loadData() {
     if (GLOBAL_DATA) return GLOBAL_DATA;
     try {
@@ -125,17 +159,153 @@ function renderAssetGrid(assets, container, showAnimations = true) {
 
         const assetUrl = `asset.html?id=${encodeURIComponent(asset.identifier)}`;
 
+        let typeIcon = '<i class="fa-solid fa-file"></i>';
+        if (asset.type === 'animation') typeIcon = '<i class="fa-solid fa-film"></i>';
+        else if (asset.type === 'sprite_sheet' || asset.type === 'spritesheet' || asset.type === 'image') typeIcon = '<i class="fa-solid fa-image"></i>';
+        else if (asset.type === 'audio') typeIcon = '<i class="fa-solid fa-music"></i>';
+
         card.innerHTML = `
             <a href="${assetUrl}" style="display:block;">${imgHtml}</a>
-            <div class="card-body">
-                <h3><a href="${assetUrl}">${asset.name}</a></h3>
-                <p><strong>Type:</strong> ${asset.type}</p>
-                <p><strong>Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(providerName)}">${providerName}</a></p>
-                ${asset.visibility === 'hidden' ? '<p style="color: #e74c3c; font-size: 0.8rem;">[Hidden]</p>' : ''}
+            <div class="card-body" style="padding: 0.75rem 1rem;">
+                <div style="font-size: 0.85rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <a href="${assetUrl}" style="color: #999999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#cccccc'" onmouseout="this.style.color='#999999'">${asset.name}</a>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                    <a href="vendor.html?name=${encodeURIComponent(providerName)}" style="color: #666666; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#999999'" onmouseout="this.style.color='#666666'">${providerName}</a>
+                    <span title="${asset.type}" style="cursor: help; color: #555555; transition: color 0.2s;" onmouseover="this.style.color='#999999'" onmouseout="this.style.color='#555555'">${typeIcon}</span>
+                </div>
+                ${asset.visibility === 'hidden' ? '<div style="color: #e74c3c; font-size: 0.8rem; margin-top: 0.25rem;">[hidden]</div>' : ''}
             </div>
         `;
         container.appendChild(card);
     });
 
     renderAnimations(showAnimations);
+}
+
+function renderDashboard(errors) {
+    if (!errors) errors = [];
+    
+    // 1. Group Errors
+    const groups = {};
+    errors.forEach(err => {
+        if (!groups[err.type]) groups[err.type] = [];
+        groups[err.type].push(err);
+    });
+    
+    // 2. Render Stats
+    const statsContainer = document.getElementById('dashboard-stats');
+    let statsHtml = `
+        <div class="stat-card">
+            <h3>Total Discrepancies</h3>
+            <div class="value" style="color: #e74c3c;">${errors.length.toLocaleString()}</div>
+        </div>
+    `;
+    
+    // Sort types by count descending
+    const sortedTypes = Object.keys(groups).sort((a,b) => groups[b].length - groups[a].length);
+    
+    sortedTypes.forEach(type => {
+        statsHtml += `
+            <div class="stat-card">
+                <h3>${type}</h3>
+                <div class="value">${groups[type].length.toLocaleString()}</div>
+            </div>
+        `;
+    });
+    statsContainer.innerHTML = statsHtml;
+    
+    // 3. Render Error Tables
+    const errorsContainer = document.getElementById('dashboard-errors');
+    let errorsHtml = '';
+    
+    sortedTypes.forEach(type => {
+        const errs = groups[type];
+        
+        let ctxKeys = [];
+        if (errs.length > 0) {
+            ctxKeys = Object.keys(errs[0].context);
+        }
+        
+        let tableRows = '';
+        // Limit to 1000 for DOM safety
+        const limit = 1000;
+        for(let i=0; i<Math.min(errs.length, limit); i++) {
+            const err = errs[i];
+            let rowHtml = '';
+            ctxKeys.forEach(k => {
+                let val = err.context[k] || '';
+                
+                // --- RICH DATA TREATMENTS ---
+                if (k === 'pack_id' && typeof val === 'string' && val.includes('/')) {
+                    const provider = val.split('/')[0];
+                    val = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-family: monospace; color: #eeeeee;">${val}</span>
+                            <div style="display: flex; gap: 20px; font-size: 1.1em;">
+                                <a href="vendor.html?name=${encodeURIComponent(provider)}" style="color: #aaaaaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#eeeeee'" onmouseout="this.style.color='#aaaaaa'" title="View Vendor Page"><i class="fa-solid fa-store"></i></a>
+                                <button onclick="openInFinder('${val}')" style="background: none; border: none; color: #aaaaaa; cursor: pointer; padding: 0; font-size: 1em; transition: color 0.2s;" onmouseover="this.style.color='#eeeeee'" onmouseout="this.style.color='#aaaaaa'" title="Reveal in Finder"><i class="fa-solid fa-folder-open"></i></button>
+                            </div>
+                        </div>`;
+                } else if (k === 'identifier') {
+                    val = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-family: monospace; color: #eeeeee;">${val}</span>
+                            <a href="asset.html?id=${encodeURIComponent(val)}" style="color: #aaaaaa; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#eeeeee'" onmouseout="this.style.color='#aaaaaa'" title="View Asset Details"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>`;
+                } else if (k === 'file' && err.type === 'UncataloguedFile') {
+                    const fileUrl = `/Assets/${val}`;
+                    const isImg = val.match(/\.(png|jpg|jpeg|gif)$/i);
+                    val = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                ${isImg ? `<a href="${fileUrl}" target="_blank"><div style="width: 24px; height: 24px; background-image: url('${fileUrl}'); background-size: contain; background-repeat: no-repeat; background-position: center; border: 1px solid #444; border-radius: 3px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#888'" onmouseout="this.style.borderColor='#444'" title="Preview Image"></div></a>` : ''}
+                                <span style="font-family: monospace; color: #eeeeee;">${val}</span>
+                            </div>
+                            <div style="display: flex; gap: 20px; font-size: 1.1em;">
+                                <a href="${fileUrl}" target="_blank" style="color: #aaaaaa; transition: color 0.2s;" onmouseover="this.style.color='#eeeeee'" onmouseout="this.style.color='#aaaaaa'" title="Open in Browser"><i class="fa-solid fa-globe"></i></a>
+                                <button onclick="openInFinder('${fileUrl}')" style="background: none; border: none; color: #aaaaaa; cursor: pointer; padding: 0; font-size: 1em; transition: color 0.2s;" onmouseover="this.style.color='#eeeeee'" onmouseout="this.style.color='#aaaaaa'" title="Reveal in Finder"><i class="fa-solid fa-folder-open"></i></button>
+                            </div>
+                        </div>
+                    `;
+                } else if (k === 'file') {
+                    val = `<span style="font-family: monospace; color: #eeeeee;">${val}</span>`;
+                }
+                
+                rowHtml += `<td>${val}</td>`;
+            });
+            tableRows += `<tr>${rowHtml}</tr>`;
+        }
+        
+        let truncatedMsg = '';
+        if (errs.length > limit) {
+            truncatedMsg = `<tr><td colspan="${ctxKeys.length}" style="text-align: center; color: #a0a0a5; padding: 1rem; font-style: italic;">... and ${(errs.length - limit).toLocaleString()} more suppressed</td></tr>`;
+        }
+        
+        const genericMessage = errs.length > 0 ? errs[0].message : '';
+        const theadHtml = `<tr>${ctxKeys.map(k => `<th>${k}</th>`).join('')}</tr>`;
+        
+        errorsHtml += `
+            <div class="error-group">
+                <div class="error-group-header" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+                    <h3>${type}</h3>
+                    <div style="color: #999;">${errs.length.toLocaleString()} items &nbsp; <i class="fa-solid fa-chevron-down"></i></div>
+                </div>
+                <div class="error-group-content">
+                    <p style="color: #bbbbbb; margin-top: 0; margin-bottom: 1.5rem; font-size: 0.95rem;">${genericMessage}</p>
+                    <table class="error-table">
+                        <thead>
+                            ${theadHtml}
+                        </thead>
+                        <tbody>
+                            ${tableRows}
+                            ${truncatedMsg}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+    });
+    
+    errorsContainer.innerHTML = errorsHtml;
 }
