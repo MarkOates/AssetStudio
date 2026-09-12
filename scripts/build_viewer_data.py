@@ -281,6 +281,18 @@ def main():
             log_error("UncataloguedFile", "File exists on disk but is uncatalogued", {"file": rel_file})
 
     # Output to JSON
+    # Inject AI Proposals for uncatalogued files
+    proposals_path = os.path.join(os.path.dirname(__file__), 'ai_catalog_proposals.json')
+    if os.path.exists(proposals_path):
+        try:
+            with open(proposals_path, 'r', encoding='utf-8') as pf:
+                proposals = json.load(pf)
+                assets.extend(proposals)
+                print(f"Injected {len(proposals)} AI catalog proposals as synthetic assets.")
+        except Exception as e:
+            print(f"Failed to load AI proposals: {e}")
+
+    # Output to JSON
     output_data = {
         "providers": providers,
         "asset_packs": asset_packs,

@@ -2,13 +2,558 @@
   "164bbcc529729b892c4646d1d77248d455dfe69cdcb79639c922613f4ad0ba75": {
     "theme_profile": {
       "description": "(CACHE HIT) A beautifully animated 2D pixel-art cat happily walking.",
-      "tags": ["cat", "pet", "animal", "walk", "cute", "pixel_art"],
+      "tags": [
+        "cat",
+        "pet",
+        "animal",
+        "walk",
+        "cute",
+        "pixel_art"
+      ],
       "style": "pixel_art"
     },
     "color_profile": {
       "color_space": "16-bit",
-      "palette": ["#FFaa00", "#000000", "#FFFFFF"],
+      "palette": [
+        "#FFaa00",
+        "#000000",
+        "#FFFFFF"
+      ],
       "is_exact_palette": false,
+      "palette_swappable": true
+    }
+  },
+  "95442adcc1e38b7f50bd551d04605d3e2d2078e2b1c272a325d5e4be0964e8dc": {
+    "theme_profile": {
+      "description": "A 4-frame pixel art animation strip depicting a cute brown cat crouching low and leaping into the air.",
+      "tags": [
+        "cat",
+        "feline",
+        "jump",
+        "leap",
+        "pet",
+        "animal",
+        "brown cat",
+        "cute",
+        "sprite sheet",
+        "platformer"
+      ],
+      "style": "pixel_art"
+    },
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#967d67",
+        "#000000",
+        "#6d4b39",
+        "#3c291a",
+        "#f4cca1"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "d9619b835dfd230908c1c6691c10e711ea733aca8ece9eead7171327a39e1e90": {
+    "theme_profile": {
+      "description": "An eight-frame pixel art animation strip of a cute small brown cat standing idle while gently wagging its tail.",
+      "tags": [
+        "cat",
+        "kitten",
+        "pet",
+        "animal",
+        "idle animation",
+        "sprite sheet",
+        "feline",
+        "creature"
+      ],
+      "style": "pixel_art"
+    },
+    "color_profile": {
+      "color_space": "6-color exact",
+      "palette": [
+        "#00000000",
+        "#967d67",
+        "#000000",
+        "#6d4b39",
+        "#3c291a",
+        "#f4cca1"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "3f70a3cff0e0f41d65482d88c0692e4fd2b2bb8be4ee6c5d5f0b7b2e737b0495": {
+    "theme_profile": {
+      "description": "A 2D pixel art sprite sheet showing a small brown cat performing a leaping pounce or swipe attack animation.",
+      "tags": [
+        "pixel art",
+        "cat",
+        "feline",
+        "animal",
+        "attack",
+        "sprite sheet",
+        "side-scroller"
+      ],
+      "style": "Chibi Pixel Art",
+      "color_descriptors": [
+        "warm brown",
+        "dark slate",
+        "soft blue-gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 1: Strip Suffix Matching",
+        "rationale": "The filename suffix '_strip7' indicates a horizontal sprite sheet slice consisting of 7 distinct animation frames."
+      },
+      {
+        "rule": "Rule 3: Action Signatures",
+        "rationale": "The keyword 'attack' in the filename identifies this asset as a character combat animation."
+      }
+    ],
+    "color_profile": {
+      "color_space": "7-color exact",
+      "palette": [
+        "#00000000",
+        "#967d67",
+        "#000000",
+        "#6d4b39",
+        "#cbdbfc",
+        "#3c291a",
+        "#f4cca1"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "829d7a44c0608927e5c5af12ae4b0b5c6ab48594bdf57454b68d030948a76f06": {
+    "theme_profile": {
+      "description": "A 5-frame horizontal pixel art sprite strip showing a compact cyan and teal puff explosion that bursts and dissipates into fine particles.",
+      "tags": [
+        "vfx",
+        "explosion",
+        "pixel art",
+        "poof",
+        "smoke",
+        "impact",
+        "particles",
+        "spritesheet",
+        "retro"
+      ],
+      "style": "16-bit retro arcade pixel art",
+      "color_descriptors": [
+        "pale cyan",
+        "teal",
+        "soft blue-gray",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The asset path contains 'warped-explosions-pack-8' and the filename is 'explosion-a', directly matching VFX keywords and depicting a visual particle burst."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The trailing '-a' in the filename indicates this is variant 'A' of multiple explosion styles provided within the pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#a0e0e0",
+        "#ffffff",
+        "#60a0b0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "32488e48611621ab5719436d0865fd5afec6e9d45582ed63f30fe1db288c4bd3": {
+    "theme_profile": {
+      "description": "A 6-frame horizontal spritesheet showing a stylized pixel art puffy smoke or frost explosion expanding and dissipating into fine mist particles.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "smoke",
+        "puff",
+        "frost",
+        "particles",
+        "impact",
+        "pixel-art",
+        "spritesheet",
+        "retro"
+      ],
+      "style": "Retro 16-Bit Pixel Art VFX",
+      "color_descriptors": [
+        "pale teal",
+        "frost blue",
+        "mint white",
+        "cyan"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The asset name 'explosion-b' and path 'Explosions Pack 8 files' explicitly feature the keyword 'explosion', denoting an animated visual effect/particle sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The trailing '-b' suffix signifies that this is variation 'B' within an explosion effect pack containing multiple stylistic variants."
+      },
+      {
+        "rule": "Rule 11: Alternative Reasoning",
+        "rationale": "Visual inspection reveals a 6-frame horizontal animation strip showing the lifecycle of an impact puff from inception to cloud bloom and particle fadeout."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff",
+        "#a0e0e0",
+        "#60a0b0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "893ad48c7e963c1320550be4ab3645c5bf0faf713237dbf4b05e41cd5957ab26": {
+    "theme_profile": {
+      "description": "A horizontal pixel art spritesheet strip showing a 6-frame expanding cyan energy shockwave that bursts outward and dissipates into fading particles.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "energy burst",
+        "shockwave",
+        "cyan",
+        "pixel art",
+        "spritesheet",
+        "particle effect",
+        "sci-fi"
+      ],
+      "style": "Retro 16-Bit Sci-Fi Pixel Art",
+      "color_descriptors": [
+        "cyan",
+        "light aqua",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename contains 'explosion' and the directory path resides in 'Explosions Pack 8 files', identifying it as an animated visual effect (VFX) asset."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The suffix '-c' in 'explosion-c' denotes variant 'c' among a collection of different explosion types within the pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff",
+        "#a0e0e0",
+        "#60a0b0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "2cd4e488f6eadab0e530dfb8ebfa9805bea00637d1f9a1dc79215288d2963b64": {
+    "theme_profile": {
+      "description": "A horizontal pixel art sprite sheet showing a vertical burst or explosion dissipating into a cloud of cyan particles.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "particles",
+        "smoke",
+        "burst",
+        "retro",
+        "pixel-art",
+        "dissipate"
+      ],
+      "style": "Retro 2D Pixel Art VFX",
+      "color_descriptors": [
+        "cyan",
+        "teal",
+        "pale aqua",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename contains 'explosion', identifying the asset as a visual effect animation sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The suffix '-d' indicates an animation variant within the explosion pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff",
+        "#a0e0e0",
+        "#60a0b0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "dbcdfd248b31a8a0012b790b24ae9598490a7068be59844cc6f25a4e313b0822": {
+    "theme_profile": {
+      "description": "A horizontal pixel art explosion spritesheet showing a burst rising into a mushroom cloud, shockwave ring, and dispersing into particles.",
+      "tags": [
+        "vfx",
+        "explosion",
+        "spritesheet",
+        "blast",
+        "mushroom-cloud",
+        "shockwave",
+        "pixel-art",
+        "variant-e"
+      ],
+      "style": "Retro 2D pixel art VFX line-sketch",
+      "color_descriptors": [
+        "cyan",
+        "teal",
+        "white"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename contains 'explosion', identifying the asset as an animated visual effect sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The trailing suffix '-e' signifies that this asset is an alphabetical variant within the explosion asset pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "4-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff",
+        "#a0e0e0",
+        "#60a0b0"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "a66a5254bc51df393034827ee937f7d6528bb0c728ea94ef76effe4fa3c6df54": {
+    "theme_profile": {
+      "description": "A 9-frame pixel art explosion animation spritesheet showing a fiery ignition that swirls outward into flame rings, concluding with scattered smoke and debris particles.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "fire",
+        "blast",
+        "spritesheet",
+        "smoke",
+        "flame",
+        "burst",
+        "pixel-art",
+        "retro"
+      ],
+      "style": "16-bit retro arcade pixel art",
+      "color_descriptors": [
+        "bright pale yellow",
+        "vibrant orange",
+        "crimson red",
+        "charcoal slate gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename contains 'explosion' and the directory structure references 'warped-explosions-pack-8', clearly indicating a visual effect animation sequence."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The trailing '-f' in 'explosion-f' designates this asset as variant F among a series of explosion effect animations."
+      }
+    ],
+    "color_profile": {
+      "color_space": "13-color exact",
+      "palette": [
+        "#00000000",
+        "#ffffff",
+        "#4b4450",
+        "#ffe394",
+        "#de3800",
+        "#bb1e09",
+        "#f78a21",
+        "#f7641b",
+        "#6d0007",
+        "#ffb25a",
+        "#5c5462",
+        "#66636b",
+        "#85818c"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "0741457116f5615c3a423f1ae538cee6a5b65701325e9b53dc095dcfcb5f7cb9": {
+    "theme_profile": {
+      "description": "A 9-frame pixel art explosion spritesheet showing a brilliant initial starburst flash rapidly blooming into an intense fiery fireball that darkens into billowing charcoal smoke particles dispersing outward.",
+      "tags": [
+        "vfx",
+        "explosion",
+        "fire",
+        "smoke",
+        "blast",
+        "pixel-art",
+        "animated-spritesheet",
+        "impact",
+        "burst"
+      ],
+      "style": "Retro 16-bit arcade pixel art",
+      "color_descriptors": [
+        "bright flash yellow",
+        "vibrant fiery orange",
+        "crimson red",
+        "dark charcoal grey"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The keyword 'explosion' in the filename and path, coupled with the animated sequence depicting an expanding fiery blast and dissipating smoke clouds, clearly identifies this as a visual particle effect (VFX)."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The suffix '-g' in 'explosion-g' designates this asset as variant 'G' within the Warped Explosions Pack 8 series."
+      }
+    ],
+    "color_profile": {
+      "color_space": "12-color exact",
+      "palette": [
+        "#00000000",
+        "#4b4450",
+        "#5c5462",
+        "#6d0007",
+        "#de3800",
+        "#ffffff",
+        "#bb1e09",
+        "#ffe394",
+        "#f7641b",
+        "#ffb25a",
+        "#f78a21",
+        "#85818c"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "1d38faba17f5083a1d4d36cb9bbb38dcf26e75484e09d60d2ac011f3f83da93b": {
+    "theme_profile": {
+      "description": "A 6-frame horizontal sprite strip depicting a retro pixel art fiery explosion, beginning with an initial blast ring, blossoming into a vibrant plume of fire, and dissipating into dispersing smoke rings.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "particle effect",
+        "blast",
+        "fire",
+        "smoke",
+        "spritesheet",
+        "burst",
+        "retro",
+        "pixel art"
+      ],
+      "style": "16-bit Retro Pixel Art VFX",
+      "color_descriptors": [
+        "bright fiery yellow",
+        "warm orange",
+        "crimson red",
+        "dark charcoal grey"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename contains the keyword 'explosion' and the asset portrays a sequential frame-by-frame blast and smoke dispersion effect."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The suffix '-h' specifies variant 'h' within the warped explosions asset pack."
+      }
+    ],
+    "color_profile": {
+      "color_space": "10-color exact",
+      "palette": [
+        "#00000000",
+        "#6d0007",
+        "#bb1e09",
+        "#de3800",
+        "#f7641b",
+        "#ffffff",
+        "#4b4450",
+        "#ffe394",
+        "#ffb25a",
+        "#f78a21"
+      ],
+      "is_exact_palette": true,
+      "palette_swappable": true
+    }
+  },
+  "0e9b2008ace2e15bbdafb568e8e9e2ed19d148a1ed41342cae912b253a22f80a": {
+    "theme_profile": {
+      "description": "A horizontal pixel art explosion spritesheet showing an 8-frame blast sequence that expands from an initial flash ring into a vibrant fireball, cools into deep crimson embers, and dissipates into dark smoke particles.",
+      "tags": [
+        "explosion",
+        "vfx",
+        "blast",
+        "fireball",
+        "smoke",
+        "detonation",
+        "pixel-art",
+        "spritesheet",
+        "particle",
+        "retro"
+      ],
+      "style": "Retro 16-bit Pixel Art",
+      "color_descriptors": [
+        "bright yellow",
+        "vivid orange",
+        "dark crimson red",
+        "ash gray"
+      ]
+    },
+    "inference_reasoning": [
+      {
+        "rule": "Rule 8: Visual Effects (VFX)",
+        "rationale": "The filename 'explosion-i' and parent directory 'Explosions Pack 8 files' explicitly define this asset as a visual effect (VFX) detonation animation."
+      },
+      {
+        "rule": "Rule 10: Variant Tagging",
+        "rationale": "The suffix '-i' denotes an indexed variation of an explosion asset within the asset collection."
+      }
+    ],
+    "color_profile": {
+      "color_space": "11-color exact",
+      "palette": [
+        "#00000000",
+        "#ffe394",
+        "#ffffff",
+        "#ffb25a",
+        "#f78a21",
+        "#6d0007",
+        "#4b4450",
+        "#f7641b",
+        "#bb1e09",
+        "#5c5462",
+        "#85818c"
+      ],
+      "is_exact_palette": true,
       "palette_swappable": true
     }
   }
