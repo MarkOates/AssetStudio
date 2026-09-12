@@ -40,3 +40,7 @@ allegro.log
 *.swo
 
 
+# Node & Playwright files
+node_modules/
+playwright-report/
+test-results/

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Asset Viewer</h1>
+        <nav>
+            <a href="index.html">All Assets</a>
+            <a href="vendor.html">Vendors</a>
+        </nav>
+    </header>
+    <main>
+        <div id="asset-details">Loading...</div>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData().then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const assetId = urlParams.get('id');
+                const asset = data.assets.find(a => a.identifier === assetId);
+                
+                if (asset) {
+                    const pack = data.asset_packs[asset.asset_pack_id] || {};
+                    const provider = pack.provider || 'Unknown';
+                    const container = document.getElementById('asset-details');
+                    
+                    let imagesHtml = '';
+                    if (asset.FileMapping && asset.FileMapping.source_files) {
+                        imagesHtml = asset.FileMapping.source_files.map(f => `<img src="${f}" alt="Asset Image" class="detail-img" onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c; width:150px; display:inline-flex; margin-right:10px; margin-bottom:10px;\\'>File Not Found</div>';">`).join('');
+                    }
+
+                    container.innerHTML = `
+                        <h2>${asset.name}</h2>
+                        <p><strong>Provider:</strong> <a href="vendor.html?name=${encodeURIComponent(provider)}">${provider}</a></p>
+                        <p><strong>Pack:</strong> ${pack.pack_name || 'Unknown'}</p>
+                        <p><strong>Type:</strong> ${asset.type}</p>
+                        <p><strong>Source URL:</strong> <a href="${pack.source_url}" target="_blank" style="color: #3498db;">${pack.source_url || 'N/A'}</a></p>
+                        <p><strong>Sync Status:</strong> ${pack.sync_status === 'synced' ? '<span style="color: #2ecc71;">Synced</span>' : `<span style="color: #e74c3c;">${pack.sync_status}</span>`}</p>
+                        
+                        <h3>Files:</h3>
+                        <div class="file-list">${imagesHtml}</div>
+                        
+                        <h3>Raw Data:</h3>
+                        <pre>${JSON.stringify(asset, null, 2)}</pre>
+                    `;
+                } else {
+                    document.getElementById('asset-details').textContent = "Asset not found.";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

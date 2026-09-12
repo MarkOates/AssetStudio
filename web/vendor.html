@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Viewer - Vendors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Asset Viewer</h1>
+        <nav>
+            <a href="index.html">All Assets</a>
+            <a href="vendor.html">Vendors</a>
+        </nav>
+    </header>
+    <main>
+        <h2 id="vendor-title">Vendors</h2>
+        <div id="vendor-list"></div>
+        <div id="asset-grid" class="grid" style="display: none;"></div>
+    </main>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            loadData().then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const vendorName = urlParams.get('name');
+                
+                if (vendorName) {
+                    document.getElementById('vendor-title').textContent = `Vendor: ${vendorName}`;
+                    document.getElementById('asset-grid').style.display = 'grid';
+                    
+                    const filteredAssets = data.assets.filter(a => {
+                        const pack = data.asset_packs[a.asset_pack_id];
+                        return pack && pack.provider === vendorName;
+                    });
+                    
+                    renderAssetGrid(filteredAssets, document.getElementById('asset-grid'));
+                } else {
+                    // Show list of vendors
+                    const vendors = Object.keys(data.providers);
+                    const list = document.getElementById('vendor-list');
+                    vendors.forEach(v => {
+                        const link = document.createElement('a');
+                        link.href = `vendor.html?name=${encodeURIComponent(v)}`;
+                        link.textContent = data.providers[v].name || v;
+                        link.style.display = 'block';
+                        link.style.marginBottom = '10px';
+                        list.appendChild(link);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
