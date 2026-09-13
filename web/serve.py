@@ -73,6 +73,37 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
             return
+            
+        elif parsed_url.path == "/api/flag":
+            import json
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data)
+            
+            identifier = data.get('identifier')
+            flag_type = data.get('flag_type') # 'favorite', 'error', 'none'
+            
+            flags_path = os.path.join(WEB_DIR, 'flags.json')
+            flags = {}
+            if os.path.exists(flags_path):
+                with open(flags_path, 'r', encoding='utf-8') as f:
+                    try: flags = json.load(f)
+                    except: pass
+            
+            if flag_type == 'none':
+                if identifier in flags:
+                    del flags[identifier]
+            else:
+                flags[identifier] = flag_type
+                
+            with open(flags_path, 'w', encoding='utf-8') as f:
+                json.dump(flags, f)
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok"}).encode('utf-8'))
+            return
 
         self.send_response(404)
         self.end_headers()

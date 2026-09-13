@@ -45,3 +45,27 @@ node_modules/
 playwright-report/
 test-results/
 __pycache__/
+
+# Environment variables
+.env
+.env.*
+
+# Large JSON datasets
+web/viewer_data.json
+scripts/ai_catalog_proposals.json
+scripts/ai_subagent_proposals.json
+scripts/asset_catalog_proposals.json
+scripts/canary_cheap.json
+scripts/canary_expensive.json
+scripts/ai_cache.json
+web/flags.json
+
+# Scratch texts and logs
+*.log
+scripts/*.log
+batch_*_log.txt
+targets_*.txt
+next*.json
+subagents_*.json
+payload_*.json
+

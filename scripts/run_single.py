@@ -4,57 +4,22 @@ import os
 import google.generativeai as genai
 from PIL import Image
 import hashlib
+import ast
 
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 from auto_catalog_ai import extract_color_profile, get_file_hash, PROPOSALS_PATH, ASSETS_DIR
 
-system_instruction = """You are an expert game asset cataloger and data engineer.
-You are analyzing game assets visually on a strict 1:1 file-to-asset basis. Do not slice the file.
-
-You MUST output ONLY valid JSON matching this exact schema:
-{
-  "catalog_proposal": {
-    "type": "animation_frames | multi_file | static_image | preview",
-    "num_frames": 1,
-    "cell_dimensions": {"width": null, "height": null},
-    "is_subframe": false,
-    "is_icon": false,
-    "inferred_grid": {
-      "columns": 1,
-      "rows": 1,
-      "cell_width": 128,
-      "cell_height": 128,
-      "contains_multiple_animations": false,
-      "inferred_animations": [
-        {
-          "name": "idle",
-          "row": 0,
-          "start_frame": 0,
-          "frame_count": 7,
-          "inference_reasoning": [
-            {
-              "rule": "Visual Deduction",
-              "rationale": "Row 0 clearly shows a character standing still."
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "theme_profile": {
-    "description": "A short, vivid description.",
-    "tags": ["tag1"],
-    "style": "Invent a creative style descriptor.",
-    "color_descriptors": ["deep purples"]
-  },
-  "inference_reasoning": [
-    {
-      "rule": "Rule X",
-      "rationale": "Explicit reason."
-    }
-  ]
-}
-"""
+# Dynamically extract system_instruction from auto_catalog_ai.py to avoid hardcoding
+with open('scripts/auto_catalog_ai.py', 'r') as f:
+    source = f.read()
+tree = ast.parse(source)
+system_instruction = ""
+for node in ast.walk(tree):
+    if isinstance(node, ast.Assign):
+        for target in node.targets:
+            if isinstance(target, ast.Name) and target.id == 'system_instruction':
+                system_instruction = node.value.value
+                break
 
 def run_single(rel_path):
     print(f"Running on {rel_path}...")

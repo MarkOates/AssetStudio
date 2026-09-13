@@ -291,6 +291,16 @@ def main():
                 print(f"Injected {len(proposals)} AI catalog proposals as synthetic assets.")
         except Exception as e:
             print(f"Failed to load AI proposals: {e}")
+            
+    subagent_proposals_path = os.path.join(os.path.dirname(__file__), 'ai_subagent_proposals.json')
+    if os.path.exists(subagent_proposals_path):
+        try:
+            with open(subagent_proposals_path, 'r', encoding='utf-8') as sf:
+                sub_proposals = json.load(sf)
+                assets.extend(sub_proposals)
+                print(f"Injected {len(sub_proposals)} subagent proposals as synthetic assets.")
+        except Exception as e:
+            print(f"Failed to load subagent proposals: {e}")
 
     # Output to JSON
     output_data = {

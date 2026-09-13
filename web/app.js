@@ -1,3 +1,45 @@
+async function setFlag(event, identifier, flagType) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Toggle logic: if clicking the same flag, remove it.
+    if (GLOBAL_DATA.flags[identifier] === flagType) {
+        flagType = 'none';
+    }
+    
+    GLOBAL_DATA.flags[identifier] = (flagType === 'none') ? undefined : flagType;
+    
+    const card = event.currentTarget.closest('.card');
+    
+    try {
+        await fetch('/api/flag', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({identifier, flag_type: flagType})
+        });
+        
+        // Update DOM visual state
+        if (card) {
+            const favBtn = card.querySelector('.flag-fav');
+            const errBtn = card.querySelector('.flag-err');
+            if (favBtn) favBtn.style.color = (flagType === 'favorite') ? '#ffca28' : 'rgba(255,255,255,0.3)';
+            if (errBtn) errBtn.style.color = (flagType === 'error') ? '#ef5350' : 'rgba(255,255,255,0.3)';
+            
+            // Add or remove colored border
+            if (flagType !== 'none') {
+                card.style.borderColor = (flagType === 'favorite') ? '#ffca28' : '#ef5350';
+                card.style.borderWidth = '2px';
+                card.style.borderStyle = 'solid';
+            } else {
+                card.style.borderColor = '';
+                card.style.borderWidth = '';
+                card.style.borderStyle = '';
+            }
+        }
+    } catch (e) {
+        console.error("Failed to set flag", e);
+    }
+}
 let GLOBAL_DATA = null;
 let animationTimers = [];
 
@@ -41,6 +83,14 @@ async function loadData() {
         const response = await fetch('viewer_data.json');
         if (!response.ok) throw new Error("viewer_data.json not found");
         GLOBAL_DATA = await response.json();
+        
+        try {
+            const flagsRes = await fetch('flags.json');
+            GLOBAL_DATA.flags = flagsRes.ok ? await flagsRes.json() : {};
+        } catch {
+            GLOBAL_DATA.flags = {};
+        }
+        
         return GLOBAL_DATA;
     } catch (e) {
         console.error("Could not load viewer_data.json.", e);
@@ -133,19 +183,28 @@ function generateAssetPreviewHtml(asset, boxHeight = 180) {
         const isMissingHandler = `onerror="this.onerror=null; this.outerHTML='<div class=\\'placeholder\\' style=\\'color:#e74c3c;\\'>File Not Found</div>';"`;
 
         if (anim && anim.num_frames > 1) {
-            if (asset.resource.type === 'animation_frames' && asset.resource.cell_dimensions) {
+            if ((asset.resource.type === 'animation_frames' || asset.resource.type === 'multi_directional_sprite') && asset.resource.cell_dimensions) {
                 const w = asset.resource.cell_dimensions.width;
                 const h = asset.resource.cell_dimensions.height;
                 // Dynamically scale sprite to fit box height, capped at 12x
                 const scale = Math.min(12, Math.max(1, Math.floor((boxHeight - 20) / h)));
                 
-                const startOffset = asset.resource.start_offset || { x: 0, y: 0 };
-                const sx = startOffset.x || 0;
-                const sy = startOffset.y || 0;
+                let renderNumFrames = anim.num_frames;
+                let sx = asset.resource.start_offset ? (asset.resource.start_offset.x || 0) : 0;
+                let sy = asset.resource.start_offset ? (asset.resource.start_offset.y || 0) : 0;
+                
+                if (asset.resource.inferred_grid) {
+                    // Clamp to columns to prevent 1D overflow
+                    renderNumFrames = asset.resource.inferred_grid.columns || renderNumFrames;
+                    if (asset.resource.inferred_grid.inferred_animations && asset.resource.inferred_grid.inferred_animations.length > 0) {
+                        const firstAnim = asset.resource.inferred_grid.inferred_animations[0];
+                        sy += (firstAnim.row || 0) * h;
+                    }
+                }
                 
                 const innerHtml = `<div class="anim-container" 
                                 data-type="spritesheet" 
-                                data-frames-count="${anim.num_frames}" 
+                                data-frames-count="${renderNumFrames}" 
                                 data-duration="${anim.base_frame_duration}"
                                 data-cell-width="${w}"
                                 data-start-x="${sx}"
@@ -190,18 +249,38 @@ function renderAssetGrid(assets, container, showAnimations = true) {
         
         let typeIcon = '<i class="fa-solid fa-file"></i>';
         if (asset.type === 'animation') typeIcon = '<i class="fa-solid fa-film" title="Animation"></i>';
-        else if (asset.type === 'sprite_sheet') typeIcon = '<i class="fa-solid fa-border-all" title="Sprite Sheet"></i>';
-        else if (asset.type === 'image') typeIcon = '<i class="fa-solid fa-image" title="Image"></i>';
+        else if (asset.type === 'sprite_sheet' || asset.type === 'multi_directional_sprite') typeIcon = '<i class="fa-solid fa-border-all" title="Sprite Sheet"></i>';
+        else if (asset.type === 'image' || asset.type === 'static_image') typeIcon = '<i class="fa-solid fa-image" title="Image"></i>';
         else if (asset.type === 'audio' || asset.type === 'sound_effect' || asset.type === 'music') typeIcon = '<i class="fa-solid fa-music" title="Audio"></i>';
         else if (asset.type === 'pixel_font' || asset.type === 'ttf_font') typeIcon = '<i class="fa-solid fa-font" title="Font"></i>';
 
         const assetUrl = `asset.html?id=${encodeURIComponent(asset.identifier)}`;
 
+        const currentFlag = GLOBAL_DATA.flags[asset.identifier] || 'none';
+        const isFav = currentFlag === 'favorite';
+        const isErr = currentFlag === 'error';
+        
+        if (currentFlag !== 'none') {
+            card.style.borderWidth = '2px';
+            card.style.borderStyle = 'solid';
+            card.style.borderColor = isFav ? '#ffca28' : '#ef5350';
+        }
+
         card.innerHTML = `
-            <a href="${assetUrl}" style="display:block; text-decoration: none;">${imagesHtml}</a>
+            <a href="${assetUrl}" style="display:block; text-decoration: none; position: relative;">
+                ${imagesHtml}
+            </a>
             <div class="card-body" style="padding: 0.75rem 1rem;">
-                <div style="font-size: 0.85rem; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                    <a href="${assetUrl}" style="color: #999999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#cccccc'" onmouseout="this.style.color='#999999'">${asset.name}</a>
+                <div style="font-size: 0.85rem; margin-bottom: 0.25rem; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <a href="${assetUrl}" style="color: #999999; text-decoration: none; transition: color 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;" onmouseover="this.style.color='#cccccc'" onmouseout="this.style.color='#999999'">${asset.name}</a>
+                    <div style="display: flex; gap: 0.5rem; font-size: 1rem; flex-shrink: 0;">
+                        <button class="flag-fav" onclick="setFlag(event, '${asset.identifier.replace(/'/g, "\\'")}', 'favorite')" style="background: none; border: none; cursor: pointer; color: ${isFav ? '#ffca28' : 'rgba(255,255,255,0.3)'}; padding: 0; margin: 0; transition: color 0.2s;" onmouseover="this.style.color='#ffca28'" onmouseout="if(GLOBAL_DATA.flags['${asset.identifier.replace(/'/g, "\\'")}'] !== 'favorite') this.style.color='rgba(255,255,255,0.3)'">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button class="flag-err" onclick="setFlag(event, '${asset.identifier.replace(/'/g, "\\'")}', 'error')" style="background: none; border: none; cursor: pointer; color: ${isErr ? '#ef5350' : 'rgba(255,255,255,0.3)'}; padding: 0; margin: 0; transition: color 0.2s;" onmouseover="this.style.color='#ef5350'" onmouseout="if(GLOBAL_DATA.flags['${asset.identifier.replace(/'/g, "\\'")}'] !== 'error') this.style.color='rgba(255,255,255,0.3)'">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </button>
+                    </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
                     <a href="vendor.html?name=${encodeURIComponent(providerName)}" style="color: #666666; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#999999'" onmouseout="this.style.color='#666666'">${providerName}</a>

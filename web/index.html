@@ -25,6 +25,9 @@
             <h2 style="margin-bottom: 0;">Assets</h2>
             <div style="display: flex; gap: 1rem;">
                 <label class="toggle-btn">
+                    <input type="checkbox" id="show-previews-toggle" checked> show previews
+                </label>
+                <label class="toggle-btn">
                     <input type="checkbox" id="show-animations-toggle" checked> play animations
                 </label>
                 <label class="toggle-btn">
@@ -62,11 +65,24 @@
                     if (!document.getElementById('show-subframes-toggle').checked) {
                         filtered = filtered.filter(a => !a.is_subframe);
                     }
+                    if (!document.getElementById('show-previews-toggle').checked) {
+                        filtered = filtered.filter(a => a.type !== 'preview');
+                    }
                     if (!document.getElementById('show-icons-toggle').checked) {
                         filtered = filtered.filter(a => !a.is_icon);
                     }
                     if (currentSearchQuery) {
-                        filtered = filtered.filter(a => a.name.toLowerCase().includes(currentSearchQuery) || (a.theme_profile && a.theme_profile.tags.some(t => t.toLowerCase().includes(currentSearchQuery))));
+                        filtered = filtered.filter(a => {
+                            const pack = data.asset_packs[a.asset_pack_identifier] || {};
+                            const provider = (pack.provider || '').toLowerCase();
+                            const packName = (pack.pack_name || '').toLowerCase();
+                            
+                            return a.name.toLowerCase().includes(currentSearchQuery) || 
+                                   (a.theme_profile && a.theme_profile.tags.some(t => t.toLowerCase().includes(currentSearchQuery))) ||
+                                   provider.includes(currentSearchQuery) ||
+                                   packName.includes(currentSearchQuery) ||
+                                   (a.resource && a.resource.source_files && a.resource.source_files.some(f => f.toLowerCase().includes(currentSearchQuery)));
+                        });
                     }
                     renderAssetGrid(filtered, grid, showAnimations);
                 }
@@ -80,6 +96,7 @@
                 
                 document.getElementById('show-hidden-toggle').addEventListener('change', updateGrid);
                 document.getElementById('show-subframes-toggle').addEventListener('change', updateGrid);
+                document.getElementById('show-previews-toggle').addEventListener('change', updateGrid);
                 document.getElementById('show-icons-toggle').addEventListener('change', updateGrid);
                 
                 document.getElementById('show-animations-toggle').addEventListener('change', (e) => {
