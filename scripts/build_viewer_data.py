@@ -302,12 +302,26 @@ def main():
         except Exception as e:
             print(f"Failed to load subagent proposals: {e}")
 
+    resolved_files = set()
+    for a in assets:
+        if a.get('identifier', '').startswith('synthetic/'):
+            if 'resource' in a and 'source_files' in a['resource']:
+                for sf in a['resource']['source_files']:
+                    rel = sf.replace('/Assets/', '', 1)
+                    resolved_files.add(rel)
+
+    final_errors = []
+    for err in audit_errors:
+        if err['type'] == 'UncataloguedFile' and err['context'].get('file') in resolved_files:
+            continue
+        final_errors.append(err)
+        
     # Output to JSON
     output_data = {
         "providers": providers,
         "asset_packs": asset_packs,
         "assets": assets,
-        "errors": audit_errors
+        "errors": final_errors
     }
     
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)

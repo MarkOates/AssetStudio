@@ -273,3 +273,78 @@ pre {
     color: #777777;
     font-style: italic;
 }
+
+/* Toggles for layout */
+main.full-width {
+    max-width: none;
+    padding: 2rem 4rem;
+}
+
+.grid.flush-grid {
+    gap: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.grid.flush-grid .card {
+    border: none;
+    border-radius: 0;
+    position: relative;
+}
+
+.grid.flush-grid .card-body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.5); /* subtle background for icons */
+    border-radius: 0 0 0 5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.grid.flush-grid .card:hover .card-body {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.grid.flush-grid .card-body > div > a,
+.grid.flush-grid .card-body > div:nth-child(2),
+.grid.flush-grid .card-body > div:nth-child(3) {
+    display: none !important;
+}
+
+.grid.flush-grid .card-body > div:first-child {
+    justify-content: flex-end;
+    margin-bottom: 0;
+}
+
+/* Icon Toggles */
+.icon-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: #252525;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    color: #999999;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.icon-toggle-btn:hover {
+    background: #2d2d2d;
+    color: #ffffff;
+    border-color: #555555;
+}
+
+.icon-toggle-btn input[type="checkbox"] {
+    display: none;
+}
+
+.icon-toggle-btn input:checked + span {
+    color: #0a84ff; /* macOS blue */
+    text-shadow: 0 0 8px rgba(10, 132, 255, 0.4);
+}

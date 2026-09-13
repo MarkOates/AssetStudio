@@ -5,6 +5,7 @@
     <title>Asset Viewer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -20,32 +21,51 @@
             <button onclick="syncData()" id="sync-btn" class="nav-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
         </nav>
     </header>
-    <main>
+    <main class="full-width">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="margin-bottom: 0;">Assets</h2>
-            <div style="display: flex; gap: 1rem;">
-                <label class="toggle-btn">
-                    <input type="checkbox" id="show-previews-toggle" checked> show previews
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end;">
+                <label class="icon-toggle-btn" title="fill window">
+                    <input type="checkbox" id="fill-window-toggle" checked>
+                    <span class="material-symbols-outlined">fullscreen</span>
                 </label>
-                <label class="toggle-btn">
-                    <input type="checkbox" id="show-animations-toggle" checked> play animations
+                <label class="icon-toggle-btn" title="flush images">
+                    <input type="checkbox" id="flush-images-toggle" checked>
+                    <span class="material-symbols-outlined">grid_view</span>
                 </label>
-                <label class="toggle-btn">
-                    <input type="checkbox" id="show-icons-toggle"> show icons
+                <label class="icon-toggle-btn" title="show previews">
+                    <input type="checkbox" id="show-previews-toggle">
+                    <span class="material-symbols-outlined">image</span>
                 </label>
-                <label class="toggle-btn">
-                    <input type="checkbox" id="show-subframes-toggle"> show subframes
+                <label class="icon-toggle-btn" title="play animations">
+                    <input type="checkbox" id="show-animations-toggle" checked>
+                    <span class="material-symbols-outlined">play_circle</span>
                 </label>
-                <label class="toggle-btn">
-                    <input type="checkbox" id="show-hidden-toggle"> show hidden
+                <label class="icon-toggle-btn" title="show icons">
+                    <input type="checkbox" id="show-icons-toggle">
+                    <span class="material-symbols-outlined">category</span>
+                </label>
+                <label class="icon-toggle-btn" title="show subframes">
+                    <input type="checkbox" id="show-subframes-toggle">
+                    <span class="material-symbols-outlined">burst_mode</span>
+                </label>
+                <label class="icon-toggle-btn" title="show hidden">
+                    <input type="checkbox" id="show-hidden-toggle">
+                    <span class="material-symbols-outlined">visibility_off</span>
                 </label>
             </div>
         </div>
-        <div id="asset-grid" class="grid"></div>
+        <div id="asset-grid" class="grid flush-grid"></div>
     </main>
     <script src="app.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Synchronize UI layout state with checkboxes (handles browser back/forward form restoration)
+            const mainEl = document.querySelector('main');
+            const gridEl = document.getElementById('asset-grid');
+            if (document.getElementById('fill-window-toggle').checked) { mainEl.classList.add('full-width'); } else { mainEl.classList.remove('full-width'); }
+            if (document.getElementById('flush-images-toggle').checked) { gridEl.classList.add('flush-grid'); } else { gridEl.classList.remove('flush-grid'); }
+
             let showAnimations = document.getElementById('show-animations-toggle').checked;
             let currentSearchQuery = '';
             
@@ -102,6 +122,22 @@
                 document.getElementById('show-animations-toggle').addEventListener('change', (e) => {
                     showAnimations = e.target.checked;
                     updateGrid();
+                });
+                
+                document.getElementById('fill-window-toggle').addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        document.querySelector('main').classList.add('full-width');
+                    } else {
+                        document.querySelector('main').classList.remove('full-width');
+                    }
+                });
+                
+                document.getElementById('flush-images-toggle').addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        document.getElementById('asset-grid').classList.add('flush-grid');
+                    } else {
+                        document.getElementById('asset-grid').classList.remove('flush-grid');
+                    }
                 });
             });
         });
