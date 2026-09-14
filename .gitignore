@@ -69,3 +69,4 @@ next*.json
 subagents_*.json
 payload_*.json
 
+snapshots/

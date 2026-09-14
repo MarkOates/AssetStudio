@@ -9,7 +9,7 @@ async function setFlag(event, identifier, flagType) {
     
     GLOBAL_DATA.flags[identifier] = (flagType === 'none') ? undefined : flagType;
     
-    const card = event.currentTarget.closest('.card');
+    const container = event.currentTarget.closest('.card, .show-page-header');
     
     try {
         await fetch('/api/flag', {
@@ -19,25 +19,27 @@ async function setFlag(event, identifier, flagType) {
         });
         
         // Update DOM visual state
-        if (card) {
-            const favBtn = card.querySelector('.flag-fav');
-            const errBtn = card.querySelector('.flag-err');
+        if (container) {
+            const favBtn = container.querySelector('.flag-fav');
+            const errBtn = container.querySelector('.flag-err');
             if (favBtn) favBtn.style.color = (flagType === 'favorite') ? '#ffca28' : 'rgba(255,255,255,0.3)';
             if (errBtn) errBtn.style.color = (flagType === 'error') ? '#ef5350' : 'rgba(255,255,255,0.3)';
             
-            // Add or remove colored border
-            if (flagType !== 'none') {
-                card.style.borderColor = (flagType === 'favorite') ? '#ffca28' : '#ef5350';
-                card.style.borderWidth = '2px';
-                card.style.borderStyle = 'solid';
-            } else {
-                card.style.borderColor = '';
-                card.style.borderWidth = '';
-                card.style.borderStyle = '';
+            // Add or remove colored border only if it's a grid card
+            if (container.classList.contains('card')) {
+                if (flagType !== 'none') {
+                    container.style.borderColor = (flagType === 'favorite') ? '#ffca28' : '#ef5350';
+                    container.style.borderWidth = '2px';
+                    container.style.borderStyle = 'solid';
+                } else {
+                    container.style.borderColor = '';
+                    container.style.borderWidth = '';
+                    container.style.borderStyle = '';
+                }
             }
         }
     } catch (e) {
-        console.error("Failed to set flag", e);
+        console.error("Failed to set flag:", e);
     }
 }
 let GLOBAL_DATA = null;
@@ -90,6 +92,13 @@ async function loadData() {
         } catch {
             GLOBAL_DATA.flags = {};
         }
+        try {
+            const notesRes = await fetch('notes.json');
+            GLOBAL_DATA.notes = notesRes.ok ? await notesRes.json() : {};
+        } catch {
+            GLOBAL_DATA.notes = {};
+        }
+
         
         return GLOBAL_DATA;
     } catch (e) {
@@ -457,4 +466,26 @@ function renderDashboard(errors) {
     });
     
     errorsContainer.innerHTML = errorsHtml;
+}
+
+async function saveNote(identifier) {
+    const textarea = document.getElementById('user-note-input');
+    if (!textarea) return;
+    const note = textarea.value;
+    const btn = document.getElementById('save-note-btn');
+    
+    try {
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+        await fetch('/api/note', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({identifier, note})
+        });
+        GLOBAL_DATA.notes[identifier] = note;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        setTimeout(() => { btn.innerHTML = 'Save Note'; }, 2000);
+    } catch (e) {
+        console.error("Failed to save note:", e);
+        btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error';
+    }
 }

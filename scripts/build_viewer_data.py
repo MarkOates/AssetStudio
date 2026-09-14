@@ -207,6 +207,7 @@ def main():
                 asset = {
                     "identifier": identifier,
                     "name": intra_pack_id,
+                    "blacklisted_type": None,
                     "asset_pack_identifier": asset_pack_id,
                     "type": asset_type,
                     "visibility": visibility,

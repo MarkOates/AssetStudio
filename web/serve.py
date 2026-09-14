@@ -2,6 +2,8 @@ import http.server
 import socketserver
 import os
 import urllib.parse
+import json
+import subprocess
 
 PORT = 8000
 WEB_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -16,35 +18,26 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
     def translate_path(self, path):
-        # Parse and UNQUOTE the URL path (vital for spaces in folder names)
         parsed_path = urllib.parse.unquote(urllib.parse.urlparse(path).path)
-        
-        # If the path starts with /Assets/, route it to the actual Assets directory on disk
         if parsed_path.startswith("/Assets/"):
             return os.path.join(ASSETS_DIR, parsed_path[len("/Assets/"):])
-            
-        # Otherwise, serve from the current web/ directory
         return os.path.join(WEB_DIR, parsed_path.lstrip('/'))
 
     def do_POST(self):
         parsed_url = urllib.parse.urlparse(self.path)
+        
         if parsed_url.path == "/api/open-finder":
-            import json
-            import subprocess
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             data = json.loads(post_data)
             target = data.get('target', '')
             
-            # Map /Assets/ URL to physical path
             if target.startswith('/Assets/'):
                 target = os.path.join(ASSETS_DIR, target[len('/Assets/'):])
             elif target and not target.startswith('/'):
-                # Handle relative pack IDs (e.g. "provider/pack")
                 target = os.path.join(ASSETS_DIR, target)
                 
             if os.path.exists(target):
-                # Use macOS 'open -R' to reveal the file/folder in Finder
                 subprocess.Popen(['open', '-R', target])
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
@@ -56,10 +49,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             return
             
         elif parsed_url.path == "/api/sync":
-            import subprocess
-            import json
             try:
-                # Delegate the multi-step CI pipeline to a dedicated shell script
                 pipeline_script = os.path.join(os.path.dirname(WEB_DIR), "scripts", "rebuild_viewer.sh")
                 subprocess.run([pipeline_script], check=True)
                 
@@ -75,7 +65,6 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             return
             
         elif parsed_url.path == "/api/flag":
-            import json
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             data = json.loads(post_data)
@@ -98,6 +87,36 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 
             with open(flags_path, 'w', encoding='utf-8') as f:
                 json.dump(flags, f)
+                
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok"}).encode('utf-8'))
+            return
+            
+        elif parsed_url.path == "/api/note":
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data)
+            
+            identifier = data.get('identifier')
+            note = data.get('note', '')
+            
+            notes_path = os.path.join(WEB_DIR, 'notes.json')
+            notes = {}
+            if os.path.exists(notes_path):
+                with open(notes_path, 'r', encoding='utf-8') as f:
+                    try: notes = json.load(f)
+                    except: pass
+            
+            if note:
+                notes[identifier] = note
+            else:
+                if identifier in notes:
+                    del notes[identifier]
+                
+            with open(notes_path, 'w', encoding='utf-8') as f:
+                json.dump(notes, f)
                 
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
