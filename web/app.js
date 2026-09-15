@@ -86,6 +86,7 @@ async function loadData() {
         if (!response.ok) throw new Error("viewer_data.json not found");
         GLOBAL_DATA = await response.json();
         
+        // 2. Fetch User Flags
         try {
             const flagsRes = await fetch('flags.json');
             GLOBAL_DATA.flags = flagsRes.ok ? await flagsRes.json() : {};

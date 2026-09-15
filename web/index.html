@@ -16,6 +16,7 @@
         <nav style="display: flex; align-items: center;">
             <a href="index.html">Assets</a>
             <a href="vendor.html">Artists</a>
+            <a href="pack.html">Packs</a>
             <a href="audit.html">Audit</a>
             <a href="https://docs.google.com/spreadsheets/d/1qWKh4-TxAhIQEa7LUg-ih9xsCWANSLRtvwzVyYH0HIM" target="_blank">Sheet</a>
             <button onclick="syncData()" id="sync-btn" class="nav-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
@@ -24,35 +25,62 @@
     <main class="full-width">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="margin-bottom: 0;">Assets</h2>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end;">
-                <label class="icon-toggle-btn" title="fill window">
-                    <input type="checkbox" id="fill-window-toggle" checked>
-                    <span class="material-symbols-outlined">fullscreen</span>
-                </label>
-                <label class="icon-toggle-btn" title="flush images">
-                    <input type="checkbox" id="flush-images-toggle" checked>
-                    <span class="material-symbols-outlined">grid_view</span>
-                </label>
-                <label class="icon-toggle-btn" title="show previews">
-                    <input type="checkbox" id="show-previews-toggle">
-                    <span class="material-symbols-outlined">image</span>
-                </label>
-                <label class="icon-toggle-btn" title="play animations">
-                    <input type="checkbox" id="show-animations-toggle" checked>
-                    <span class="material-symbols-outlined">play_circle</span>
-                </label>
-                <label class="icon-toggle-btn" title="show icons">
-                    <input type="checkbox" id="show-icons-toggle">
-                    <span class="material-symbols-outlined">category</span>
-                </label>
-                <label class="icon-toggle-btn" title="show subframes">
-                    <input type="checkbox" id="show-subframes-toggle">
-                    <span class="material-symbols-outlined">burst_mode</span>
-                </label>
-                <label class="icon-toggle-btn" title="show hidden">
-                    <input type="checkbox" id="show-hidden-toggle">
-                    <span class="material-symbols-outlined">visibility_off</span>
-                </label>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end;">
+                <!-- Group 1: Playback -->
+                <div class="toolbar-group">
+                    <label class="icon-toggle-btn" title="play animations">
+                        <input type="checkbox" id="show-animations-toggle" checked>
+                        <span class="material-symbols-outlined">play_circle</span>
+                    </label>
+                </div>
+
+                <!-- Group 2: Layout -->
+                <div class="toolbar-group">
+                    <label class="icon-toggle-btn" title="fill window">
+                        <input type="checkbox" id="fill-window-toggle" checked>
+                        <span class="material-symbols-outlined">fullscreen</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="flush images">
+                        <input type="checkbox" id="flush-images-toggle" checked>
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </label>
+                </div>
+                
+                <!-- Group 3: Visibility -->
+                <div class="toolbar-group">
+                    <label class="icon-toggle-btn" title="show icons">
+                        <input type="checkbox" id="show-icons-toggle">
+                        <span class="material-symbols-outlined">category</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="show subframes">
+                        <input type="checkbox" id="show-subframes-toggle">
+                        <span class="material-symbols-outlined">burst_mode</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="show hidden">
+                        <input type="checkbox" id="show-hidden-toggle">
+                        <span class="material-symbols-outlined">visibility_off</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="show previews">
+                        <input type="checkbox" id="show-previews-toggle">
+                        <span class="material-symbols-outlined">image</span>
+                    </label>
+                </div>
+
+                <!-- Group 4: Filters -->
+                <div class="toolbar-group">
+                    <label class="icon-toggle-btn" title="filter favorites">
+                        <input type="checkbox" id="show-favorites-toggle">
+                        <span class="material-symbols-outlined">star</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="filter errors">
+                        <input type="checkbox" id="show-errors-toggle">
+                        <span class="material-symbols-outlined">error</span>
+                    </label>
+                    <label class="icon-toggle-btn" title="filter icons">
+                        <input type="checkbox" id="filter-icons-toggle">
+                        <span class="material-symbols-outlined">category</span>
+                    </label>
+                </div>
             </div>
         </div>
         <div id="asset-grid" class="grid flush-grid"></div>
@@ -67,8 +95,6 @@
             if (document.getElementById('flush-images-toggle').checked) { gridEl.classList.add('flush-grid'); } else { gridEl.classList.remove('flush-grid'); }
 
             let showAnimations = document.getElementById('show-animations-toggle').checked;
-            let currentSearchQuery = '';
-            
             // Global keyboard listener for '/'
             document.addEventListener('keydown', (e) => {
                 if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
@@ -81,6 +107,7 @@
                 const grid = document.getElementById('asset-grid');
                 
                 function updateGrid() {
+                    const currentSearchQuery = document.getElementById('search-input').value.toLowerCase();
                     let filtered = document.getElementById('show-hidden-toggle').checked ? data.assets : data.assets.filter(a => a.visibility !== 'hidden');
                     if (!document.getElementById('show-subframes-toggle').checked) {
                         filtered = filtered.filter(a => !a.is_subframe);
@@ -90,6 +117,15 @@
                     }
                     if (!document.getElementById('show-icons-toggle').checked) {
                         filtered = filtered.filter(a => !a.is_icon);
+                    }
+                    if (document.getElementById('filter-icons-toggle').checked) {
+                        filtered = filtered.filter(a => a.is_icon);
+                    }
+                    if (document.getElementById('show-favorites-toggle').checked) {
+                        filtered = filtered.filter(a => GLOBAL_DATA.flags && GLOBAL_DATA.flags[a.identifier] === 'favorite');
+                    }
+                    if (document.getElementById('show-errors-toggle').checked) {
+                        filtered = filtered.filter(a => GLOBAL_DATA.flags && GLOBAL_DATA.flags[a.identifier] === 'error');
                     }
                     if (currentSearchQuery) {
                         filtered = filtered.filter(a => {
@@ -101,6 +137,8 @@
                                    (a.theme_profile && a.theme_profile.tags.some(t => t.toLowerCase().includes(currentSearchQuery))) ||
                                    provider.includes(currentSearchQuery) ||
                                    packName.includes(currentSearchQuery) ||
+                                   (a.ai_audit && a.ai_audit.pass1_model && a.ai_audit.pass1_model.toLowerCase().includes(currentSearchQuery)) ||
+                                   (a.ai_audit && a.ai_audit.run_id && a.ai_audit.run_id.toLowerCase().includes(currentSearchQuery)) ||
                                    (a.resource && a.resource.source_files && a.resource.source_files.some(f => f.toLowerCase().includes(currentSearchQuery)));
                         });
                     }
@@ -108,9 +146,12 @@
                 }
 
                 updateGrid();
+                setTimeout(updateGrid, 100);
+                window.addEventListener('pageshow', (e) => {
+                    if (e.persisted) updateGrid();
+                });
                 
-                document.getElementById('search-input').addEventListener('input', (e) => {
-                    currentSearchQuery = e.target.value.toLowerCase();
+                document.getElementById('search-input').addEventListener('input', () => {
                     updateGrid();
                 });
                 
@@ -118,6 +159,9 @@
                 document.getElementById('show-subframes-toggle').addEventListener('change', updateGrid);
                 document.getElementById('show-previews-toggle').addEventListener('change', updateGrid);
                 document.getElementById('show-icons-toggle').addEventListener('change', updateGrid);
+                document.getElementById('filter-icons-toggle').addEventListener('change', updateGrid);
+                document.getElementById('show-favorites-toggle').addEventListener('change', updateGrid);
+                document.getElementById('show-errors-toggle').addEventListener('change', updateGrid);
                 
                 document.getElementById('show-animations-toggle').addEventListener('change', (e) => {
                     showAnimations = e.target.checked;

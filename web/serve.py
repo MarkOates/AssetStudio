@@ -50,7 +50,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             
         elif parsed_url.path == "/api/sync":
             try:
-                pipeline_script = os.path.join(os.path.dirname(WEB_DIR), "scripts", "rebuild_viewer.sh")
+                pipeline_script = os.path.join(os.path.dirname(WEB_DIR), "scripts", "rebuild_ui_data.sh")
                 subprocess.run([pipeline_script], check=True)
                 
                 self.send_response(200)

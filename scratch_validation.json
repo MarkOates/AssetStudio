@@ -1,0 +1,50 @@
+{
+  "catalog_proposal": {
+    "type": "animation_frames",
+    "perspective": "side",
+    "num_frames": 1,
+    "cell_dimensions": {
+      "width": 64,
+      "height": 64
+    },
+    "is_subframe": true,
+    "is_icon": false,
+    "inferred_grid": null
+  },
+  "theme_profile": {
+    "description": "An extracted single character animation frame depicting a crouching pose from Final Boss Blues Side-View Animated RPG Battlers.",
+    "tags": [
+      "side-view",
+      "rpg",
+      "battler",
+      "character",
+      "animation",
+      "crouch",
+      "pixel-art",
+      "final-boss-blues"
+    ],
+    "style": "pixel-art",
+    "color_descriptors": [
+      "detailed",
+      "fantasy"
+    ]
+  },
+  "inference_reasoning": [
+    {
+      "rule": "Rule 1: Asset Type Classification",
+      "rationale": "The asset path indicates an extracted single frame from an animation set, classified as animation_frames."
+    },
+    {
+      "rule": "Rule 16: Perspective Analysis",
+      "rationale": "The path explicitly references side-view animated RPG battlers, confirming side perspective."
+    },
+    {
+      "rule": "Rule 3: Grid & Cell Dimension Inference",
+      "rationale": "Dimensions inferred from standard Final Boss Blues side-view battler cell sizing (64x64)."
+    },
+    {
+      "rule": "Rule 8: State / Pose Identification",
+      "rationale": "The filename '2_3_crouch' clearly identifies the pose as a crouching state."
+    }
+  ]
+}

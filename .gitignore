@@ -70,3 +70,6 @@ subagents_*.json
 payload_*.json
 
 snapshots/
+web/images/
+
+web/viewer_data.json

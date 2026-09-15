@@ -103,9 +103,9 @@ def main():
                 log_path = os.path.join(pack_path, "download_log.txt")
                 extracted_dir = os.path.join(pack_path, "extracted")
                 
-                # Check MissingOrigin
+                # Check MissingDownloadLogFile
                 if not os.path.exists(log_path):
-                    log_error("MissingOrigin", "Missing download_log.txt", {"pack_id": pack_id})
+                    log_error("MissingDownloadLogFile", "Missing download_log.txt", {"pack_id": pack_id})
                 
                 source_url, expected_count, expected_files = read_download_log(pack_path)
                 
